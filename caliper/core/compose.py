@@ -269,11 +269,29 @@ def _with_clause(graph: ProductFactGraph) -> str:
     return f.display if f else ""
 
 
+def _dedupe_words(text: str) -> str:
+    """Drop a word the line has already used.
+
+    Series and item type are detected separately and can share a word --
+    "Trex Alum Post Sleeve Select Alum ... Railing" says Alum twice. The first
+    occurrence is kept; later ones are dropped, and punctuation is tidied.
+    """
+    seen, out = set(), []
+    for word in text.split():
+        key = re.sub(r"[^a-z0-9]", "", word.lower())
+        if key and len(key) > 2 and key in seen:
+            continue
+        if key:
+            seen.add(key)
+        out.append(word)
+    return re.sub(r"\s+,", ",", " ".join(out)).strip(" ,")
+
+
 def build_short_desc(graph: ProductFactGraph, spec_keys: Sequence[str] = ()) -> str:
     """Product title: Brand + Series + MPN + Item Type + differentiators."""
     lead = [p for p in (graph.value("brand"), graph.value("series"),
                         graph.value("mpn"), graph.value("item_type")) if p]
-    title = " ".join(lead)
+    title = _dedupe_words(" ".join(lead))
     with_c = _with_clause(graph)
     if with_c:
         title += " {}".format(with_c)

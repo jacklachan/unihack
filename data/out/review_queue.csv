@@ -80,7 +80,7 @@
 903,578810,needs_review,0.8962,F-8ecfff1c,CG-MOB-01,info,MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.623
 903,578810,needs_review,0.8962,F-8ecfff1c,item_type_unresolved,review,No item type could be resolved from 'S GR PRO 10'.,6,0.623
 903,578810,needs_review,0.8962,F-8ecfff1c,classification_abstained,review,"No taxonomy rule matched item type '578810 Festool 3x4 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.623
-762,25168,needs_review,0.7336,F-34dca312,CG-MOB-01,info,MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.533
+762,25168,needs_review,0.7293,F-34dca312,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.541
 713,FE-EFX-6L,blocked,0.7456,F-33a94537,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.509
 713,FE-EFX-6L,blocked,0.7456,F-33a94537,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",2,0.509
 713,FE-EFX-6L,blocked,0.7456,F-33a94537,classification_abstained,review,"No taxonomy rule matched item type 'Lith Fire Extinguisher'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.509
@@ -137,6 +137,8 @@
 325,PP-12CH,blocked,0.8857,F-ef19266c,CG-MOB-01,info,MOBILE_DESC is 31 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,3,0.343
 325,PP-12CH,blocked,0.8857,F-ef19266c,CG-BRD-01,error,No approved brand resolved.,3,0.343
 325,PP-12CH,blocked,0.8857,F-ef19266c,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,3,0.343
+300,1517602,needs_review,0.8303,F-c417013b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.339
+303,1517605,needs_review,0.8303,F-914c168e,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.339
 586,NEB-FLT-1021,blocked,0.6721,F-1f5ff37c,CG-MOB-01,info,MOBILE_DESC is 49 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.328
 586,NEB-FLT-1021,blocked,0.6721,F-1f5ff37c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.328
 586,NEB-FLT-1021,blocked,0.6721,F-1f5ff37c,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.328
@@ -148,6 +150,8 @@
 362,AYCL-153PH-LA,blocked,0.8371,F-942892b3,CG-MOB-01,info,MOBILE_DESC is 28 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.326
 362,AYCL-153PH-LA,blocked,0.8371,F-942892b3,CG-BRD-01,error,No approved brand resolved.,2,0.326
 362,AYCL-153PH-LA,blocked,0.8371,F-942892b3,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,2,0.326
+301,1517603,needs_review,0.8378,F-c417013b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.324
+302,1517604,needs_review,0.8378,F-914c168e,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.324
 363,AYCL-153PH-WH,blocked,0.8475,F-942892b3,CG-MOB-01,info,MOBILE_DESC is 35 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.305
 363,AYCL-153PH-WH,blocked,0.8475,F-942892b3,CG-BRD-01,error,No approved brand resolved.,2,0.305
 363,AYCL-153PH-WH,blocked,0.8475,F-942892b3,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,2,0.305
@@ -185,13 +189,14 @@
 761,35115,blocked,0.7214,F-31e2c577,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.279
 761,35115,blocked,0.7214,F-31e2c577,classification_abstained,review,"No taxonomy rule matched item type 'Line Twist'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.279
 764,35494,needs_review,0.7254,F-f3c76f8a,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.275
-346,BM-DW20-YLW-6,needs_review,0.7336,F-e434851b,CG-MOB-01,info,MOBILE_DESC is 55 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.266
+346,BM-DW20-YLW-6,needs_review,0.7293,F-e434851b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.271
+345,SL1672,blocked,0.7315,F-b0eb3833,CG-MOB-01,info,MOBILE_DESC is 37 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.268
+345,SL1672,blocked,0.7315,F-b0eb3833,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.268
+345,SL1672,blocked,0.7315,F-b0eb3833,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.268
+345,SL1672,blocked,0.7315,F-b0eb3833,classification_abstained,review,"No taxonomy rule matched item type 'Supply'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.268
 977,578512,needs_review,0.7458,F-2c299578,low_confidence,review,Row confidence below threshold.,1,0.254
 981,578441,needs_review,0.7458,F-632a564e,CG-MOB-01,info,MOBILE_DESC is 53 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.254
 329,2733,needs_review,0.7473,F-9cab475c,low_confidence,review,Row confidence below threshold.,1,0.253
-345,SL1672,blocked,0.7467,F-b0eb3833,CG-MOB-01,info,MOBILE_DESC is 26 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.253
-345,SL1672,blocked,0.7467,F-b0eb3833,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.253
-345,SL1672,blocked,0.7467,F-b0eb3833,classification_abstained,review,"No taxonomy rule matched item type 'Supply'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.253
 775,25762,needs_review,0.7473,F-52a57620,low_confidence,review,Row confidence below threshold.,1,0.253
 293,73019598,blocked,0.8748,F-ec3aac3e,CG-BRD-01,error,No approved brand resolved.,2,0.25
 294,73019647,blocked,0.8748,F-ec3aac3e,CG-BRD-01,error,No approved brand resolved.,2,0.25
@@ -209,8 +214,15 @@
 622,XOU24WDZGBR,blocked,0.8807,F-d0894c16,CG-MOB-01,info,MOBILE_DESC is 35 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.239
 622,XOU24WDZGBR,blocked,0.8807,F-d0894c16,CG-BRD-01,error,No approved brand resolved.,2,0.239
 622,XOU24WDZGBR,blocked,0.8807,F-d0894c16,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,2,0.239
+698,1624157,blocked,0.761,F-8badf14a,CG-MOB-01,info,MOBILE_DESC is 58 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.239
+698,1624157,blocked,0.761,F-8badf14a,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.239
+698,1624157,blocked,0.761,F-8badf14a,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.239
+698,1624157,blocked,0.761,F-8badf14a,classification_abstained,review,"No taxonomy rule matched item type 'Vin Wrapped'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.239
 688,73002252,blocked,0.7673,F-67b3a2f8,CG-MOB-01,info,MOBILE_DESC is 40 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.233
 688,73002252,blocked,0.7673,F-67b3a2f8,CG-BRD-01,error,No approved brand resolved.,1,0.233
+588,97708,blocked,0.7692,F-13fe41e6,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.231
+588,97708,blocked,0.7692,F-13fe41e6,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.231
+588,97708,blocked,0.7692,F-13fe41e6,classification_abstained,review,"No taxonomy rule matched item type 'Police Headlight'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.231
 71,D519127,blocked,0.77,F-f12c8edc,CG-MOB-01,info,MOBILE_DESC is 15 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.23
 71,D519127,blocked,0.77,F-f12c8edc,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.23
 71,D519127,blocked,0.77,F-f12c8edc,CG-BRD-01,error,No approved brand resolved.,1,0.23
@@ -233,9 +245,6 @@
 452,141465,blocked,0.8876,F-4a8a1d1a,classification_abstained,review,"No taxonomy rule matched item type 'Flor'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.225
 454,392225,blocked,0.8876,F-4a8a1d1a,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.225
 454,392225,blocked,0.8876,F-4a8a1d1a,classification_abstained,review,"No taxonomy rule matched item type 'Flor'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.225
-698,1624157,blocked,0.776,F-8badf14a,CG-MOB-01,info,MOBILE_DESC is 49 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.224
-698,1624157,blocked,0.776,F-8badf14a,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.224
-698,1624157,blocked,0.776,F-8badf14a,classification_abstained,review,"No taxonomy rule matched item type 'Vin Wrapped'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.224
 651,PMOS1980AF,blocked,0.8886,F-d98df265,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.223
 651,PMOS1980AF,blocked,0.8886,F-d98df265,CG-BRD-01,error,No approved brand resolved.,2,0.223
 651,PMOS1980AF,blocked,0.8886,F-d98df265,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,2,0.223
@@ -256,11 +265,15 @@
 283,61109090,blocked,0.8905,F-6d2cf554,CG-BRD-01,error,No approved brand resolved.,2,0.219
 281,61109087,blocked,0.7825,F-0fc2ccaf,CG-MOB-01,info,MOBILE_DESC is 45 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.217
 281,61109087,blocked,0.7825,F-0fc2ccaf,CG-BRD-01,error,No approved brand resolved.,1,0.217
+309,1515974,blocked,0.7837,F-c06f2840,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.216
+309,1515974,blocked,0.7837,F-c06f2840,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.216
+309,1515974,blocked,0.7837,F-c06f2840,classification_abstained,review,"No taxonomy rule matched item type 'Lowe- Half'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.216
 277,73018131,blocked,0.8934,F-9d6cdf88,CG-MOB-01,info,MOBILE_DESC is 46 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.213
 277,73018131,blocked,0.8934,F-9d6cdf88,CG-BRD-01,error,No approved brand resolved.,2,0.213
-588,97708,blocked,0.79,F-13fe41e6,CG-MOB-01,info,MOBILE_DESC is 48 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.21
-588,97708,blocked,0.79,F-13fe41e6,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.21
-588,97708,blocked,0.79,F-13fe41e6,classification_abstained,review,"No taxonomy rule matched item type 'Police Headlight'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.21
+984,4000-2/32,blocked,0.7879,F-a617bb7c,CG-MOB-01,info,MOBILE_DESC is 30 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.212
+984,4000-2/32,blocked,0.7879,F-a617bb7c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.212
+984,4000-2/32,blocked,0.7879,F-a617bb7c,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.212
+984,4000-2/32,blocked,0.7879,F-a617bb7c,classification_abstained,review,"No taxonomy rule matched item type 'Tool'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.212
 97,38-E,needs_review,0.7948,F-a3d88629,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
 98,59-J,needs_review,0.7948,F-d4c61955,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
 99,44-A,needs_review,0.7948,F-0fd30e8f,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
@@ -268,8 +281,6 @@
 889,924422,blocked,0.795,F-a075ba81,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.205
 889,924422,blocked,0.795,F-a075ba81,CG-BRD-01,error,No approved brand resolved.,1,0.205
 889,924422,blocked,0.795,F-a075ba81,classification_abstained,review,"No taxonomy rule matched item type 'Mafell Carpentry'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.205
-309,1515974,blocked,0.8,F-c06f2840,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.2
-309,1515974,blocked,0.8,F-c06f2840,classification_abstained,review,"No taxonomy rule matched item type 'Lowe- Half'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.2
 701,48-22-3302,blocked,0.8005,F-1ee31467,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.2
 701,48-22-3302,blocked,0.8005,F-1ee31467,classification_abstained,review,"No taxonomy rule matched item type 'Lead'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.2
 702,48-22-3303,blocked,0.8005,F-20b470f8,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.2
@@ -278,6 +289,9 @@
 741,48-11-2330,blocked,0.8005,F-9b95fd63,classification_abstained,review,"No taxonomy rule matched item type 'Power Source'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.2
 827,DZN930,blocked,0.8005,F-dcdfd3dd,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.2
 827,DZN930,blocked,0.8005,F-dcdfd3dd,classification_abstained,review,"No taxonomy rule matched item type 'Degree'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.2
+331,8912220,blocked,0.8033,F-ed7f76de,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.197
+331,8912220,blocked,0.8033,F-ed7f76de,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.197
+331,8912220,blocked,0.8033,F-ed7f76de,classification_abstained,review,"No taxonomy rule matched item type 'Smooth Primed'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.197
 94,05134545001,blocked,0.8084,F-fa7a7f81,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.192
 94,05134545001,blocked,0.8084,F-fa7a7f81,classification_abstained,review,"No taxonomy rule matched item type 'Opener'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.192
 778,133164,blocked,0.8084,F-84f885a5,CG-MOB-01,info,MOBILE_DESC is 58 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.192
@@ -292,8 +306,15 @@
 990,MAG:2044-230-1,needs_review,0.8076,F-380c5a11,CG-MOB-01,info,MOBILE_DESC is 57 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.192
 990,MAG:2044-230-1,needs_review,0.8076,F-380c5a11,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.192
 758,35459,needs_review,0.8129,F-25f12fb3,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.187
+985,3100-1/15,blocked,0.8143,F-54bb7056,CG-MOB-01,info,MOBILE_DESC is 34 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.186
+985,3100-1/15,blocked,0.8143,F-54bb7056,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.186
+985,3100-1/15,blocked,0.8143,F-54bb7056,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.186
+985,3100-1/15,blocked,0.8143,F-54bb7056,classification_abstained,review,"No taxonomy rule matched item type 'Tool'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.186
 319,1501767,blocked,0.8204,F-a00d7faf,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.18
 319,1501767,blocked,0.8204,F-a00d7faf,classification_abstained,review,"No taxonomy rule matched item type 'Blue Plusosb'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.18
+332,8904015,blocked,0.82,F-d216408b,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.18
+332,8904015,blocked,0.82,F-d216408b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.18
+332,8904015,blocked,0.82,F-d216408b,classification_abstained,review,"No taxonomy rule matched item type 'Smooth Primed'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.18
 768,37300952,blocked,0.82,F-202f8f0e,CG-MOB-01,info,MOBILE_DESC is 29 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.18
 768,37300952,blocked,0.82,F-202f8f0e,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.18
 768,37300952,blocked,0.82,F-202f8f0e,CG-BRD-01,error,No approved brand resolved.,1,0.18
@@ -319,13 +340,12 @@
 912,230.312.08,blocked,0.8206,F-55e49ba5,classification_abstained,review,"No taxonomy rule matched item type 'Locked Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.179
 587,NEB-FLT-0053,needs_review,0.8216,F-810190df,CG-MOB-01,info,MOBILE_DESC is 57 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.178
 587,NEB-FLT-0053,needs_review,0.8216,F-810190df,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.178
-984,4000-2/32,blocked,0.8218,F-a617bb7c,CG-MOB-01,info,MOBILE_DESC is 23 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.178
-984,4000-2/32,blocked,0.8218,F-a617bb7c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.178
-984,4000-2/32,blocked,0.8218,F-a617bb7c,classification_abstained,review,"No taxonomy rule matched item type 'Tool'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.178
-331,8912220,blocked,0.8268,F-ed7f76de,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.173
-331,8912220,blocked,0.8268,F-ed7f76de,classification_abstained,review,"No taxonomy rule matched item type 'Smooth Primed'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.173
 652,WMMS3330RZ,blocked,0.8273,F-bd4725fe,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.173
 652,WMMS3330RZ,blocked,0.8273,F-bd4725fe,classification_abstained,review,"No taxonomy rule matched item type 'Otr Mocrowave'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.173
+367,TNIDP12,needs_review,0.8291,F-8e1bf76a,CG-MOB-01,info,MOBILE_DESC is 46 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.171
+367,TNIDP12,needs_review,0.8291,F-8e1bf76a,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.171
+776,21839NN,needs_review,0.8303,F-c6e704a7,CG-MOB-01,info,MOBILE_DESC is 52 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.17
+776,21839NN,needs_review,0.8303,F-c6e704a7,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.17
 687,HS-DA,blocked,0.8305,F-7cd134f1,CG-MOB-01,info,MOBILE_DESC is 59 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.169
 687,HS-DA,blocked,0.8305,F-7cd134f1,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.169
 687,HS-DA,blocked,0.8305,F-7cd134f1,classification_abstained,review,"No taxonomy rule matched item type 'Driveway Alert'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.169
@@ -333,6 +353,8 @@
 993,SSCMS,blocked,0.8305,F-cda7df02,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.169
 993,SSCMS,blocked,0.8305,F-cda7df02,classification_abstained,review,"No taxonomy rule matched item type 'Miter Sled'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.169
 732,DPG15,needs_review,0.8322,F-a9477227,brand_manufacturer_mismatch,review,Supplied manufacturer 'Radians (7363)' does not correspond to the approved manufacturer 'Stanley Black & Decker' for brand DEWALT®.,1,0.168
+503,GT-CB-100C,needs_review,0.8356,F-072553ed,CG-MOB-01,info,MOBILE_DESC is 54 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.164
+503,GT-CB-100C,needs_review,0.8356,F-072553ed,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.164
 333,25796,blocked,0.8369,F-70341b83,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.163
 333,25796,blocked,0.8369,F-70341b83,classification_abstained,review,"No taxonomy rule matched item type 'Cedar'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.163
 335,25825,blocked,0.8369,F-fc80a5fa,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.163
@@ -341,10 +363,20 @@
 337,543650101,blocked,0.8369,F-7a89489f,classification_abstained,review,"No taxonomy rule matched item type 'Wall Mount'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.163
 338,543650010,blocked,0.8369,F-64b6aac7,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.163
 338,543650010,blocked,0.8369,F-64b6aac7,classification_abstained,review,"No taxonomy rule matched item type 'End Cap'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.163
+299,27233,needs_review,0.8378,F-c7f70831,CG-MOB-01,info,MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.162
+299,27233,needs_review,0.8378,F-c7f70831,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.162
+414,603571,needs_review,0.8392,F-208cf9fe,CG-MOB-01,info,MOBILE_DESC is 39 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.161
+414,603571,needs_review,0.8392,F-208cf9fe,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.161
 484,564492,blocked,0.9193,F-6721cf24,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.161
 484,564492,blocked,0.9193,F-6721cf24,classification_abstained,review,"No taxonomy rule matched item type 'Adjustable Base'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.161
 573,564500,blocked,0.9193,F-6721cf24,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.161
 573,564500,blocked,0.9193,F-6721cf24,classification_abstained,review,"No taxonomy rule matched item type 'Adjustable Base'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.161
+365,TNOCD002,needs_review,0.84,F-69717d33,CG-MOB-01,info,MOBILE_DESC is 35 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
+365,TNOCD002,needs_review,0.84,F-69717d33,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.16
+366,TNDHD002,needs_review,0.84,F-bbe361b4,CG-MOB-01,info,MOBILE_DESC is 35 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
+366,TNDHD002,needs_review,0.84,F-bbe361b4,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.16
+368,TNIW24,needs_review,0.84,F-d2158e37,CG-MOB-01,info,MOBILE_DESC is 33 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
+368,TNIW24,needs_review,0.84,F-d2158e37,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.16
 691,DCGG581B,blocked,0.8405,F-733f31a3,CG-MOB-01,info,MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
 691,DCGG581B,blocked,0.8405,F-733f31a3,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
 691,DCGG581B,blocked,0.8405,F-733f31a3,classification_abstained,review,"No taxonomy rule matched item type 'Gun Speed'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
@@ -369,14 +401,15 @@
 976,DWV9401,blocked,0.8405,F-9be4af30,CG-MOB-01,info,MOBILE_DESC is 52 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
 976,DWV9401,blocked,0.8405,F-9be4af30,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
 976,DWV9401,blocked,0.8405,F-9be4af30,classification_abstained,review,"No taxonomy rule matched item type 'Paper Bag'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
+603,PBUC013,needs_review,0.8426,F-4e5bf320,CG-MOB-01,info,MOBILE_DESC is 36 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.157
+603,PBUC013,needs_review,0.8426,F-4e5bf320,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.157
 343,1728ABL,blocked,0.845,F-73278ad5,CG-MOB-01,info,MOBILE_DESC is 42 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.155
 343,1728ABL,blocked,0.845,F-73278ad5,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.155
 343,1728ABL,blocked,0.845,F-73278ad5,CG-BRD-01,error,No approved brand resolved.,1,0.155
 343,1728ABL,blocked,0.845,F-73278ad5,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.155
 343,1728ABL,blocked,0.845,F-73278ad5,classification_abstained,review,"No taxonomy rule matched item type 'Fine Fissured'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.155
-985,3100-1/15,blocked,0.8464,F-54bb7056,CG-MOB-01,info,MOBILE_DESC is 27 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.154
-985,3100-1/15,blocked,0.8464,F-54bb7056,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.154
-985,3100-1/15,blocked,0.8464,F-54bb7056,classification_abstained,review,"No taxonomy rule matched item type 'Tool'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.154
+485,603449,needs_review,0.8469,F-19bd450c,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.153
+288,73272TBK,needs_review,0.8485,F-fd895e0c,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.152
 310,640383,blocked,0.8484,F-d72ae225,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.152
 310,640383,blocked,0.8484,F-d72ae225,classification_abstained,review,"No taxonomy rule matched item type 'Easi Lite'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.152
 311,653258,blocked,0.8484,F-0abfc16c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.152
@@ -395,13 +428,13 @@
 896,24-35M-320,blocked,0.8484,F-43d1fc29,CG-MOB-01,info,MOBILE_DESC is 59 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.152
 896,24-35M-320,blocked,0.8484,F-43d1fc29,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.152
 896,24-35M-320,blocked,0.8484,F-43d1fc29,classification_abstained,review,"No taxonomy rule matched item type 'Iridium Grip'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.152
+350,A410RCAR,needs_review,0.8504,F-152411e1,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.15
+350,A410RCAR,needs_review,0.8504,F-152411e1,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.15
+694,156436WHT,needs_review,0.8509,F-68ad82a8,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.149
 618,R50-0SL13-000,blocked,0.9258,F-7d803cd8,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.148
 618,R50-0SL13-000,blocked,0.9258,F-7d803cd8,classification_abstained,review,"No taxonomy rule matched item type 'G Wallplate Blank'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.148
 95,LNL65301,blocked,0.8535,F-1db27af6,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.147
 95,LNL65301,blocked,0.8535,F-1db27af6,CG-BRD-01,error,No approved brand resolved.,1,0.147
-332,8904015,blocked,0.8535,F-d216408b,CG-MOB-01,info,MOBILE_DESC is 49 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.147
-332,8904015,blocked,0.8535,F-d216408b,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.147
-332,8904015,blocked,0.8535,F-d216408b,classification_abstained,review,"No taxonomy rule matched item type 'Smooth Primed'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.147
 619,R52-0PJ13-00W,blocked,0.927,F-7d803cd8,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.146
 619,R52-0PJ13-00W,blocked,0.927,F-7d803cd8,classification_abstained,review,"No taxonomy rule matched item type 'G Wallplate Blank'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.146
 612,R20-05378-P00,blocked,0.8552,F-a2c8020e,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.145

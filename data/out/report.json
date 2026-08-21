@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 11.914,
+  "elapsed_s": 8.305,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -5832,23 +5832,23 @@
       ]
     }
   ],
-  "fill_rate": 0.1028,
-  "mean_columns_filled": 25.91,
+  "fill_rate": 0.1029,
+  "mean_columns_filled": 25.93,
   "status_counts": {
-    "ready": 787,
+    "ready": 770,
     "blocked": 176,
-    "needs_review": 37
+    "needs_review": 54
   },
   "flag_counts": {
     "classification_abstained": 125,
     "brand_unresolved": 51,
     "family_anomaly": 2,
-    "brand_not_in_approved_list": 14,
+    "brand_not_in_approved_list": 41,
     "item_type_unresolved": 19,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 343,
+    "CG-MOB-01": 339,
     "CG-TAX-01": 112,
     "CG-BRD-01": 75
   },
@@ -5856,10 +5856,10 @@
   "classification_rate": 0.888,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.657,
+    "MOBILE_DESC": 0.661,
     "SHORT_DESC": 1.0
   },
-  "mobile_data_limited": 0.343,
+  "mobile_data_limited": 0.339,
   "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,

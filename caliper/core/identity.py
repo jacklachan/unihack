@@ -352,9 +352,16 @@ def resolve_identity(registry: BrandRegistry, *, mpn: str = "", description: str
                              "Fuzzy-matched '{}' at {:.0%}.".format(value, fz[1]))
             res.brand = value
             res.brand_display = value
+            # The guidelines pair these two fields: where one is absent the
+            # other stands in. Leaving MANUFACTURER_NAME empty while
+            # BRAND_NAME is populated produces a half-identified row.
+            res.manufacturer = value
             res.method, res.confidence = "input", 0.70
             res.evidence_text, res.evidence_source = value, src
-            res.detail = "Brand column value not present in the approved list."
+            res.detail = ("Brand column value is not on the approved list; used "
+                          "as supplied and carried into the manufacturer field, "
+                          "flagged for verification.")
+            res.unverified = True
             return res
 
     hit = registry.scan_text(description)
