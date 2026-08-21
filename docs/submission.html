@@ -159,13 +159,21 @@ Part_Manuf   : Milwaukee Accessory (4031)</pre>
     <p>Every extractor writes into one structure — a typed, evidenced <strong>Product Fact Graph</strong>. Rules, the brand registry, taxonomy, family consensus and the model all <em>write facts</em>. Composition, validation and export only <em>read them</em>.</p>
   </div>
   <div class="figure">
-<pre><b>brand</b>       Milwaukee®     registry   0.94   <i>← "Milwaukee Accessory (4031)"</i>
-<b>item_type</b>   Cut Off Disc   ITM-LEX-01 0.91   <i>← "Cut Off Disc"</i>
-<b>diameter</b>    14 in          DIM-CHN-02 0.92   <i>← chars 5–18  14"x1/8"x1"</i>
-<b>thickness</b>   1/8 in         DIM-CHN-02 0.92   <i>← chars 5–18  14"x1/8"x1"</i>
-<b>arbor_size</b>  1 in           DIM-CHN-02 0.92   <i>← chars 5–18  14"x1/8"x1"</i>
-<b>application</b> Masonry        LLM-EXT-01 0.80   <i>← "Masonry"</i></pre>
-    <div class="cap">Every fact carries value, method, rule id, confidence, and the characters that justify it.</div>
+<pre><b>brand</b>        Milwaukee®              IDN-BRD-01  0.88   <i>← "Milw"</i>
+<b>manufacturer</b> Milwaukee Tool          IDN-MFR-01  0.86   <i>← registry entry</i>
+<b>mpn</b>          49-94-1940              IDN-MPN-01  0.99   <i>← supplied</i>
+<b>dimensions</b>   14 in x 1/8 in x 1 in   DIM-CHN-01  0.92   <i>← 14"x1/8"x1"</i>
+<b>diameter</b>     14 in                   DIM-CHN-02  0.92   <i>← 14"x1/8"x1"</i>
+<b>thickness</b>    1/8 in                  DIM-CHN-02  0.92   <i>← 14"x1/8"x1"</i>
+<b>arbor_size</b>   1 in                    DIM-CHN-02  0.92   <i>← 14"x1/8"x1"</i>
+<b>application</b>  Masonry                 APP-MAT-01  0.92   <i>← "Masonry"</i>
+<b>item_type</b>    Cut Off Disc            ITM-LEX-01  0.95   <i>← "Cut Off Disc"</i></pre>
+    <div class="cap">The real graph for that row. Every fact carries a value, the rule that produced it, a confidence, and the characters that justify it — copied from the run, not written by hand.</div>
+  </div>
+  <div class="figure">
+<pre><i>which composes to</i>
+<b>SHORT_DESC</b>   Milwaukee® 49-94-1940 Cut Off Disc, 14 in x 1/8 in x 1 in, Masonry
+<b>INVOICE_DESC</b> CUT OFF DISC 14IN 1/8IN 1IN          <i>27/40 characters</i></pre>
   </div>
   <div class="col">
     <p>That one-way boundary is the whole design, and three properties fall out of it:</p>
