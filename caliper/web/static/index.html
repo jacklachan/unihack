@@ -552,10 +552,13 @@ function board(){
 
   const dg=$('#degraded');
   if(R.ai_degraded){
+    const served=(R.llm_served||0)+(R.llm_cached||0);
+    const gated=R.llm_invoked||0;
     dg.innerHTML='<b>The AI provider ran out of quota during this run.</b> '
-      +(R.llm_invoked||0).toLocaleString()+' row(s) received a model pass before '
-      +'the budget was exhausted; the remainder were enriched deterministically. '
-      +'All 252 columns are still populated, and every value is still traceable — '
+      +'The gate selected '+gated.toLocaleString()+' row(s) for a model pass; '
+      +served.toLocaleString()+' actually reached the model before the budget '
+      +'was exhausted, and the rest fell back to the deterministic engines. '
+      +'All 252 columns are still populated and every value is still traceable — '
       +'the model never writes an output cell directly.';
     dg.classList.remove('hide');
   } else dg.classList.add('hide');
@@ -609,7 +612,9 @@ function board(){
     row('Family anomalies',R.family_anomalies||0,'source defects','amber')+
     row('Reviewer corrections',cr.corrections||0,(cr.rows_affected||0)+' rows fixed','amber')+
     row('Leverage',(cr.rows_per_correction||0)+'×','rows per decision','pos')+
-    row('Model-assisted rows',R.llm_invoked||0,pct((R.llm_invoked||0)/(R.n_rows||1)));
+    row('Rows sent to model',(R.llm_served||0)+(R.llm_cached||0),
+        'of '+(R.llm_invoked||0)+' selected')+
+    row('Served from cache',R.llm_cached||0,'reproducible offline');
 
   const names={brand_manufacturer_mismatch:'brand and manufacturer disagree in the source data',
     brand_unresolved:'no approved brand could be resolved',

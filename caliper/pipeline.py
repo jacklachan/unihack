@@ -150,6 +150,8 @@ class PipelineReport:
     family_inherited: int = 0
     family_anomalies: int = 0
     llm_invoked: int = 0
+    llm_served: int = 0
+    llm_cached: int = 0
     ai_degraded: bool = False
     ai_notice: str = ""
     audited_rows: int = 0
@@ -862,6 +864,13 @@ class Pipeline:
             from .llm.provider import Stats as _S
             rep.ai_degraded = bool(_S.exhausted)
             rep.ai_notice = _S.exhausted_reason
+            # `llm_invoked` counts rows the gate selected for a model pass.
+            # Once the breaker trips those calls short-circuit, so the number
+            # that actually reached a model is calls + cache hits, not the
+            # number selected. Reporting the former as the latter would
+            # overstate the model's contribution.
+            rep.llm_served = _S.calls
+            rep.llm_cached = _S.cache_hits
         except Exception:
             pass
         rep.llm_invoked = self.llm_invoked
