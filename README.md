@@ -104,7 +104,7 @@ python -m caliper run data/input/sample_1000_items.csv -o data/out
 | `delivery.csv` / `delivery.xlsx` | The 252-column delivery format, header byte-identical to the published sheet |
 | `audit_provenance.csv` | One row per populated cell: value, method, confidence, rule id, evidence span |
 | `review_queue.csv` | Rows needing a human, ranked by value of review |
-| `relationships.csv` | The product relationship graph — 589 evidence-backed edges |
+| `relationships.csv` | The product relationship graph — 614 evidence-backed edges |
 | `corrections.csv` | Reviewer decisions and how many rows each one fixed |
 | `report.json` | Every metric below |
 
@@ -120,7 +120,7 @@ Open `python -m caliper serve` and the first screen asks how to run:
 
 | Mode | What it does |
 |---|---|
-| **Deterministic only** | Rules, registries and induced specs. No network, no key, fully reproducible. ~2 s for 1,000 rows. |
+| **Deterministic only** | Rules, registries and induced specs. No network, no key, fully reproducible. ~8 s for 1,000 rows. |
 | **Deterministic + AI** | Everything above, plus a model on the rows rules could not resolve, and an optional second-opinion audit. Needs your own key. |
 
 Pick a provider (Groq, Gemini, Anthropic, OpenAI), paste a key, upload a file.
@@ -240,17 +240,17 @@ runs on files dropped into the console.
 
 | | |
 |---|---|
-| Throughput | 1,000 rows in 5.3 s (deterministic), no API key required |
+| Throughput | 1,000 rows in 8.02 s (deterministic), no API key required |
 | Brand resolved to an approved name | **92.5 %** |
 | Classified to a classpath | **88.2 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
-| `MOBILE_DESC` in the 60–80 window | 65.7 % — the remaining 34.3 % are data-limited, 0.0 % composition faults |
-| Rows invoking the LLM | **22 %** — the rest are resolved by rules |
-| Product families found | 566 from 1,000 rows |
-| Facts inherited by family consensus | 77 |
-| Relationship edges derived | **589** — 61 % of products connected |
-| Source-data defects flagged | 4 brand/manufacturer mismatches, 2 family anomalies |
+| `MOBILE_DESC` in the 60–80 window | 67.6 % — the remaining 32.4 % are data-limited, 0.0 % composition faults |
+| Rows invoking the LLM | gated: only rows the rules could not resolve |
+| Product families found | 578 from 1,000 rows |
+| Facts inherited by family consensus | 37 |
+| Relationship edges derived | **614** — 60 % of products connected |
+| Source-data defects flagged | 4 brand/manufacturer mismatches |
 | Reviewer-correction leverage | 1 decision → 6 rows (family-scoped) |
 
 ### Self-consistency, measured on all 1,000 rows
@@ -299,7 +299,7 @@ labels it as such.
 
 ---
 
-## Three findings from the data
+## Four findings from the data
 
 These came out of measurement, and each one changed the build.
 
@@ -460,14 +460,14 @@ number is how bad data gets laundered into a catalogue.
 ### Relationship graph
 
 A flat 252-column sheet cannot say that this battery powers that ratchet. From
-facts already extracted, CALIPER derives **589 edges** across 61 % of the
+facts already extracted, CALIPER derives **614 edges** across 60 % of the
 catalogue — every one carrying a rule id, a confidence and the shared evidence
 that licenses it:
 
 | Relation | Edges | Licensed by |
 |---|---|---|
-| `variant_of` | 370 | same product family |
-| `same_series` | 195 | same brand and collection |
+| `variant_of` | 358 | same product family |
+| `same_series` | 232 | same brand and collection |
 | `powers` | 18 | same brand and battery platform |
 | `cross_reference` | 6 | same item type and dimensions, different manufacturer |
 | `fits` | **0** | shared arbor size, or shared lamp base |
