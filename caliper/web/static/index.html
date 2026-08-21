@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CALIPER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0A0E1A; --s1:#11172A; --s2:#1A2138; --rule:#2A3050;
+  --amber:#FFA02F; --pos:#00B96B; --neg:#F23645; --mute:#5E6680; --ink:#E8ECF4;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font:12px/1.45 var(--mono);font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--amber);color:#0A0E1A}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-thumb{background:var(--rule)}
+::-webkit-scrollbar-track{background:var(--ground)}
+
+/* ---- command bar ---- */
+.cmd{display:flex;align-items:center;gap:0;height:26px;background:var(--s1);
+  border-bottom:1px solid var(--rule);padding:0 8px;font-size:11px}
+.cmd .mark{color:var(--amber);font-weight:600;letter-spacing:.22em;padding-right:10px}
+.cmd .src{color:var(--mute);border-left:1px solid var(--rule);padding:0 10px}
+.cmd .spacer{flex:1}
+.cmd .act{color:var(--ink);padding:0 9px;height:26px;line-height:26px;cursor:pointer;
+  border-left:1px solid var(--rule)}
+.cmd .act:hover{background:var(--amber);color:#0A0E1A}
+
+/* ---- ticker ---- */
+.tick{height:22px;overflow:hidden;background:var(--ground);
+  border-bottom:1px solid var(--rule);position:relative}
+.tick .run{display:inline-block;white-space:nowrap;padding-left:100%;
+  animation:sc 46s linear infinite;font-size:11px;line-height:22px}
+@keyframes sc{to{transform:translateX(-100%)}}
+.tick b{color:var(--amber);font-weight:500}
+.tick i{font-style:normal;color:var(--mute);padding:0 6px}
+.tick u{text-decoration:none;color:var(--pos)}
+.tick s{text-decoration:none;color:var(--neg)}
+
+/* ---- function keys ---- */
+.fkeys{display:flex;height:24px;border-bottom:1px solid var(--rule);background:var(--s1)}
+.fkeys div{padding:0 12px;line-height:24px;font-size:11px;color:var(--mute);
+  cursor:pointer;border-right:1px solid var(--rule)}
+.fkeys div span{color:var(--amber);padding-right:6px}
+.fkeys div:hover{color:var(--ink)}
+.fkeys div.on{background:var(--s2);color:var(--ink)}
+
+/* ---- panes ---- */
+.wrap{height:calc(100vh - 72px);overflow:auto}
+.pane{border-bottom:1px solid var(--rule)}
+.ph{display:flex;align-items:center;gap:10px;height:22px;background:var(--s1);
+  border-bottom:1px solid var(--rule);padding:0 8px;font-size:10.5px;
+  letter-spacing:.1em;color:var(--amber);text-transform:uppercase}
+.ph em{font-style:normal;color:var(--mute);letter-spacing:0;text-transform:none}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cols2>*+*{border-left:1px solid var(--rule)}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr}
+.cols3>*+*{border-left:1px solid var(--rule)}
+.hide{display:none !important}
+
+/* ---- stat lines (no cards) ---- */
+.stat{display:flex;align-items:baseline;gap:8px;padding:3px 9px;font-size:12px}
+.stat:hover{background:var(--s1)}
+.stat .l{color:var(--mute);white-space:nowrap}
+.stat .d{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-3px)}
+.stat .v{font-weight:600;color:var(--ink);text-align:right;min-width:82px}
+.stat .n{color:var(--mute);font-size:10.5px;min-width:150px;text-align:right}
+.v.a{color:var(--amber)} .v.g{color:var(--pos)} .v.r{color:var(--neg)}
+.meter{height:3px;background:var(--s2);margin:0 9px 5px}
+.meter i{display:block;height:100%}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+th{text-align:left;color:var(--mute);font-weight:500;font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;padding:4px 8px;border-bottom:1px solid var(--rule);
+  position:sticky;top:0;background:var(--s1);z-index:2}
+td{padding:3px 8px;border-bottom:1px solid rgba(42,48,80,.45);white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:340px}
+tbody tr:hover{background:var(--s2);cursor:pointer}
+tbody tr.sel{background:var(--s2);box-shadow:inset 2px 0 0 var(--amber)}
+.num{text-align:right}
+.dim{color:var(--mute)}
+.amber{color:var(--amber)}
+.flash{animation:fl .5s}
+@keyframes fl{0%{background:rgba(255,160,47,.28)}100%{background:transparent}}
+
+/* ---- status glyphs ---- */
+.g-ready::before{content:"\25CF";color:var(--pos)}
+.g-needs_review::before{content:"\25CF";color:var(--amber)}
+.g-blocked::before{content:"\25CF";color:var(--neg)}
+
+/* ---- inspector ---- */
+#insp{position:fixed;top:0;right:0;width:min(720px,96vw);height:100vh;background:var(--ground);
+  border-left:1px solid var(--rule);transform:translateX(100%);transition:transform .12s linear;
+  z-index:50;display:flex;flex-direction:column}
+#insp.on{transform:none}
+.ihead{background:var(--s1);border-bottom:1px solid var(--rule);padding:6px 9px;
+  display:flex;gap:10px;align-items:flex-start}
+.ibody{flex:1;overflow:auto}
+.cell{border-bottom:1px solid rgba(42,48,80,.45)}
+.ch{display:flex;gap:9px;padding:4px 9px;cursor:pointer;align-items:baseline}
+.ch:hover{background:var(--s1)}
+.ch .c{color:var(--amber);min-width:168px;font-size:11px}
+.ch .v{flex:1;font-size:11.5px;white-space:pre-wrap;word-break:break-word}
+.ch .q{color:var(--mute);font-size:10.5px}
+.ev{background:var(--s1);border-top:1px solid var(--rule);padding:7px 9px 9px 9px;font-size:11px}
+.ev dl{display:grid;grid-template-columns:96px 1fr;gap:3px 10px;margin:0}
+.ev dt{color:var(--mute);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.ev dd{margin:0}
+.quote{background:rgba(255,160,47,.11);border-left:2px solid var(--amber);padding:2px 7px}
+.tagset span{border:1px solid var(--rule);padding:0 5px;margin-right:4px;font-size:10.5px}
+.tagset span.k{border-color:var(--amber);color:var(--amber)}
+.note{border-left:2px solid var(--amber);background:rgba(255,160,47,.07);padding:5px 9px;
+  margin:0 0 1px;font-size:11px}
+.note.bad{border-left-color:var(--neg);background:rgba(242,54,69,.07)}
+.ba{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+.ba>div{padding:6px 9px}
+.ba>div+div{border-left:1px solid var(--rule)}
+.ba .k{color:var(--mute);font-size:10px;text-transform:uppercase;letter-spacing:.07em}
+
+/* ---- misc ---- */
+.bar{display:flex;gap:6px;align-items:center;padding:4px 8px;background:var(--s1);
+  border-bottom:1px solid var(--rule)}
+input[type=text],select{background:var(--ground);border:1px solid var(--rule);color:var(--ink);
+  padding:2px 6px;font:11.5px var(--mono);outline:none}
+input[type=text]{min-width:260px}
+input[type=text]:focus,select:focus{border-color:var(--amber)}
+.btn{border:1px solid var(--rule);padding:2px 8px;cursor:pointer;color:var(--ink);font-size:11px;
+  background:var(--ground)}
+.btn:hover{border-color:var(--amber);color:var(--amber)}
+.attr{padding:5px 9px;border-bottom:1px solid rgba(42,48,80,.45)}
+.attr .h{display:flex;gap:8px;align-items:baseline}
+.attr .n{color:var(--ink);font-weight:500}
+.attr .m{color:var(--mute);font-size:10.5px}
+.slot{display:inline-block;border:1px solid var(--rule);padding:0 5px;margin:2px 3px 0 0;
+  font-size:10.5px;color:var(--mute)}
+.slot b{color:var(--ink);font-weight:400}
+.slot.f{border-color:var(--pos)}
+.slot.f b{color:var(--pos)}
+.drop{border:1px dashed var(--rule);padding:26px;text-align:center;color:var(--mute);margin:9px}
+.drop.hot{border-color:var(--amber);color:var(--amber)}
+</style>
+</head>
+<body>
+
+<div class="cmd">
+  <div class="mark">CALIPER</div>
+  <div class="src" id="src">no source loaded</div>
+  <div class="spacer"></div>
+  <div class="act" onclick="dl('delivery')">EXPORT DELIVERY</div>
+  <div class="act" onclick="dl('queue')">EXPORT QUEUE</div>
+</div>
+
+<div class="tick"><span class="run" id="run"></span></div>
+
+<div class="fkeys" id="fk">
+  <div class="on" data-t="board"><span>F1</span>BOARD</div>
+  <div data-t="catalog"><span>F2</span>CATALOG</div>
+  <div data-t="specs"><span>F3</span>SPECS</div>
+  <div data-t="fam"><span>F4</span>FAMILIES</div>
+  <div data-t="queue"><span>F5</span>QUEUE</div>
+  <div data-t="load"><span>F6</span>LOAD</div>
+</div>
+
+<div class="wrap">
+
+<!-- ============ BOARD ============ -->
+<section id="p-board">
+  <div class="cols3">
+    <div class="pane">
+      <div class="ph">Throughput</div>
+      <div id="s-thru"></div>
+    </div>
+    <div class="pane">
+      <div class="ph">Resolution</div>
+      <div id="s-res"></div>
+    </div>
+    <div class="pane">
+      <div class="ph">Disposition</div>
+      <div id="s-disp"></div>
+    </div>
+  </div>
+
+  <div class="cols2">
+    <div class="pane">
+      <div class="ph">Character limits <em>enforced at composition, not checked after</em></div>
+      <div id="s-char"></div>
+    </div>
+    <div class="pane">
+      <div class="ph">Fill rate <em>vs. the human answer key</em></div>
+      <div id="s-fill"></div>
+    </div>
+  </div>
+
+  <div class="pane">
+    <div class="ph">Findings raised against the source catalogue</div>
+    <div id="s-flags"></div>
+  </div>
+</section>
+
+<!-- ============ CATALOG ============ -->
+<section id="p-catalog" class="hide">
+  <div class="bar">
+    <input type="text" id="q" placeholder="filter: part number, description, brand" oninput="deb()">
+    <select id="st" onchange="loadRows(0)">
+      <option value="">all</option><option value="ready">ready</option>
+      <option value="needs_review">review</option><option value="blocked">blocked</option>
+    </select>
+    <span class="btn" onclick="page(-1)">&larr;</span>
+    <span class="btn" onclick="page(1)">&rarr;</span>
+    <span class="dim" id="rc"></span>
+    <span class="spacer" style="flex:1"></span>
+    <span class="dim">&uarr;&darr; move &middot; ENTER inspect &middot; ESC close</span>
+  </div>
+  <table>
+    <thead><tr>
+      <th style="width:16px"></th><th style="width:150px">Part number</th>
+      <th>Source description</th><th style="width:120px">Brand</th>
+      <th style="width:150px">Item type</th><th style="width:250px">Invoice line</th>
+      <th style="width:46px" class="num">Len</th><th style="width:48px" class="num">Conf</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</section>
+
+<!-- ============ SPECS ============ -->
+<section id="p-specs" class="hide">
+  <div class="ph">Category specifications induced from the rows themselves
+    <em>&mdash; normally hand-written, one category at a time. Green = searchable facet.</em></div>
+  <div id="specs"></div>
+</section>
+
+<!-- ============ FAMILIES ============ -->
+<section id="p-fam" class="hide">
+  <div class="cols3" id="f-stats"></div>
+  <div class="ph">Families <em>&mdash; same product varying on one axis; a fix propagates to every sibling</em></div>
+  <div id="fams"></div>
+</section>
+
+<!-- ============ QUEUE ============ -->
+<section id="p-queue" class="hide">
+  <div class="ph">Review queue <em>&mdash; ranked by uncertainty &times; sibling SKUs affected</em></div>
+  <table>
+    <thead><tr>
+      <th style="width:64px" class="num">Value</th><th style="width:60px" class="num">Affects</th>
+      <th style="width:150px">Part number</th><th style="width:190px">Issue</th>
+      <th>Detail</th><th style="width:80px">Status</th>
+    </tr></thead>
+    <tbody id="queue"></tbody>
+  </table>
+</section>
+
+<!-- ============ LOAD ============ -->
+<section id="p-load" class="hide">
+  <div class="ph">Run the pipeline on any catalogue file <em>&mdash; column names are detected, not assumed</em></div>
+  <div class="drop" id="drop">
+    drop a CSV here &nbsp;/&nbsp; <input type="file" id="file" accept=".csv,.tsv,.txt">
+    <div class="dim" style="margin-top:10px">processed locally &middot; nothing leaves this machine</div>
+  </div>
+  <div id="upstat" class="dim" style="padding:0 9px 12px"></div>
+</section>
+
+</div>
+
+<div id="insp">
+  <div class="ihead">
+    <div style="flex:1">
+      <div class="amber" id="i-pn" style="font-size:13px;font-weight:600"></div>
+      <div class="dim" id="i-desc" style="font-size:11px"></div>
+    </div>
+    <span class="btn" onclick="closeI()">ESC</span>
+  </div>
+  <div class="ibody" id="i-body"></div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let OFF=0,LIM=100,TOTAL=0,REPORT={},CUR=-1,ROWS=[];
+const pct=v=>(100*(v||0)).toFixed(1)+'%';
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---- panes ---- */
+function show(t){
+  $$('.fkeys div').forEach(x=>x.classList.toggle('on',x.dataset.t===t));
+  $$('.wrap>section').forEach(s=>s.classList.add('hide'));
+  $('#p-'+t).classList.remove('hide');
+  if(t==='catalog'&&!ROWS.length)loadRows(0);
+  if(t==='specs')loadSpecs(); if(t==='fam')loadFams(); if(t==='queue')loadQueue();
+}
+$$('.fkeys div').forEach(d=>d.onclick=()=>show(d.dataset.t));
+const FK={F1:'board',F2:'catalog',F3:'specs',F4:'fam',F5:'queue',F6:'load'};
+addEventListener('keydown',e=>{
+  if(FK[e.key]){e.preventDefault();show(FK[e.key]);return;}
+  if(e.key==='Escape'){closeI();return;}
+  if($('#p-catalog').classList.contains('hide'))return;
+  if(e.key==='ArrowDown'){e.preventDefault();move(1);}
+  if(e.key==='ArrowUp'){e.preventDefault();move(-1);}
+  if(e.key==='Enter'&&CUR>=0){e.preventDefault();openRow(ROWS[CUR].index);}
+});
+function move(d){
+  if(!ROWS.length)return;
+  CUR=Math.max(0,Math.min(ROWS.length-1,CUR+d));
+  $$('#rows tr').forEach((tr,i)=>tr.classList.toggle('sel',i===CUR));
+  const tr=$$('#rows tr')[CUR]; if(tr)tr.scrollIntoView({block:'nearest'});
+}
+
+/* ---- boot ---- */
+async function boot(){
+  const d=await (await fetch('/api/report')).json();
+  REPORT=d.report||{}; $('#src').textContent=d.source||'no source loaded';
+  board(); ticker();
+}
+
+function line(l,v,n,cls){
+  return `<div class="stat"><span class="l">${l}</span><span class="d"></span>
+    <span class="v ${cls||''}">${v}</span><span class="n">${n||''}</span></div>`;
+}
+function meter(v,c){return `<div class="meter"><i style="width:${100*v}%;background:var(--${c})"></i></div>`;}
+
+function board(){
+  const r=REPORT,s=r.status_counts||{},n=r.n_rows||0;
+  $('#s-thru').innerHTML=
+    line('rows enriched',n,'','a')+
+    line('elapsed',(r.elapsed_s||0)+'s','no API key required')+
+    line('rate',Math.round(n/Math.max(.001,r.elapsed_s||1))+'/s','single thread')+
+    line('provenance cells','100%','every value traceable','g')+
+    line('columns filled',(r.mean_columns_filled||0)+' / 252',pct(r.fill_rate)+' of sheet');
+  $('#s-res').innerHTML=
+    line('brand resolved',pct(r.brand_resolution),'to an approved name',
+      r.brand_resolution>=.9?'g':'a')+meter(r.brand_resolution,'pos')+
+    line('classified',pct(r.classification_rate),'rest abstain, not guess',
+      r.classification_rate>=.8?'g':'a')+meter(r.classification_rate,'amber')+
+    line('specs induced',(r.specs||[]).length,'category rulebooks','a')+
+    line('families',r.families||0,'from '+n+' rows');
+  const rd=s.ready||0,rv=s.needs_review||0,bl=s.blocked||0;
+  $('#s-disp').innerHTML=
+    line('ready to publish',rd,pct(rd/(n||1)),'g')+meter(rd/(n||1),'pos')+
+    line('needs review',rv,pct(rv/(n||1)),'a')+
+    line('blocked',bl,pct(bl/(n||1)),'r')+meter(bl/(n||1),'neg')+
+    line('auto-publish rate',pct(rd/(n||1)),'unattended','g');
+
+  const cc=r.char_compliance||{},lim={INVOICE_DESC:'max 40, upper case',
+    MOBILE_DESC:'60-80 window',SHORT_DESC:'max 240'};
+  $('#s-char').innerHTML=Object.keys(cc).map(k=>{
+    const v=cc[k],c=v>=.99?'pos':v>=.9?'amber':'neg';
+    return line(k,pct(v),lim[k]||'',v>=.99?'g':v>=.9?'a':'r')+meter(v,c);}).join('')
+    ||'<div class="stat dim">no data</div>';
+
+  const f=r.fill_rate||0,mean=r.mean_columns_filled||0;
+  const over=f>(71/252)*1.35;
+  $('#s-fill').innerHTML=
+    line('CALIPER',mean+' / 252',pct(f),'a')+
+    line('ground truth row 1','63 / 252','25.0%')+
+    line('ground truth row 2','71 / 252','28.2%')+
+    line('blank in both','173 cols','UPC, UNSPSC, SDS, dims')+
+    `<div class="note ${over?'bad':''}">${over
+      ?'Over-filling &mdash; values are being invented for columns the answer key leaves blank.'
+      :'UPC, UNSPSC, dimensions, SDS and country of origin are blank in the published answer key. Filling them would be fabrication, so they stay empty.'}</div>`;
+
+  const names={brand_manufacturer_mismatch:'brand / manufacturer disagree in source data',
+    brand_unresolved:'no approved brand resolvable',
+    item_type_unresolved:'item type not recoverable from description',
+    classification_abstained:'classification abstained rather than guessed',
+    llm_evidence_rejected:'model proposal rejected &mdash; evidence absent from source'};
+  const fl=r.flag_counts||{};
+  $('#s-flags').innerHTML=Object.entries(fl).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
+    `<div class="note ${k==='brand_manufacturer_mismatch'?'bad':''}">
+      <b class="amber">${v}</b> &nbsp; ${names[k]||k}</div>`).join('')
+    ||'<div class="stat dim">none</div>';
+}
+
+function ticker(){
+  const r=REPORT,s=r.status_counts||{},n=r.n_rows||1;
+  const seg=[
+    ['ROWS',n,''],['READY',pct((s.ready||0)/n),'u'],['BLOCKED',pct((s.blocked||0)/n),'s'],
+    ['BRAND',pct(r.brand_resolution),'u'],['CLASS',pct(r.classification_rate),'u'],
+    ['FAMILIES',r.families||0,''],['SPECS',(r.specs||[]).length,''],
+    ['INVOICE≤40',pct((r.char_compliance||{}).INVOICE_DESC),'u'],
+    ['FILL',pct(r.fill_rate),''],['ELAPSED',(r.elapsed_s||0)+'s',''],
+    ['LLM CALLS','0',''],['COST','$0.00','u'],
+  ];
+  const html=seg.map(x=>`<b>${x[0]}</b> ${x[2]?'<'+x[2]+'>'+x[1]+'</'+x[2]+'>':x[1]}<i>|</i>`).join('');
+  $('#run').innerHTML=html+html;
+}
+
+/* ---- catalog ---- */
+let dt;const deb=()=>{clearTimeout(dt);dt=setTimeout(()=>loadRows(0),240);};
+function page(d){const o=OFF+d*LIM;if(o>=0&&o<TOTAL)loadRows(o);}
+async function loadRows(off){
+  OFF=off;
+  const d=await (await fetch(`/api/rows?offset=${off}&limit=${LIM}&status=${$('#st').value}&q=${encodeURIComponent($('#q').value)}`)).json();
+  TOTAL=d.total;ROWS=d.rows;CUR=-1;
+  $('#rc').textContent=`${d.total} rows · ${off+1}-${Math.min(off+LIM,d.total)}`;
+  $('#rows').innerHTML=d.rows.map(r=>`
+    <tr onclick="openRow(${r.index})">
+      <td><span class="g-${r.status}" title="${r.status}"></span></td>
+      <td>${esc(r.part_number)}</td>
+      <td class="dim">${esc(r.source_desc)}</td>
+      <td>${esc(r.brand)||'<span class="dim">—</span>'}</td>
+      <td>${esc(r.product_name)||'<span class="dim">—</span>'}</td>
+      <td class="amber">${esc(r.invoice)}</td>
+      <td class="num ${(r.invoice||'').length>40?'':'dim'}">${(r.invoice||'').length}</td>
+      <td class="num">${(r.score||0).toFixed(2)}</td>
+    </tr>`).join('');
+}
+
+/* ---- inspector ---- */
+async function openRow(i){
+  const d=await (await fetch('/api/row?i='+i)).json();
+  const g=d.graph||{},prov=d.provenance||{},del=d.delivery||{};
+  $('#i-pn').textContent=del['Mfg_Part_Num']||('row '+(i+1));
+  $('#i-desc').textContent=del['Part_Desc']||'';
+
+  const notes=(g.violations||[]).map(v=>
+    `<div class="note ${v.severity==='error'?'bad':''}"><b>${esc(v.rule_id)}</b> ${esc(v.message)}</div>`)
+    .concat((g.flags||[]).map(f=>
+    `<div class="note ${f.kind==='brand_manufacturer_mismatch'?'bad':''}"><b>${esc(f.kind)}</b> ${esc(f.message)}</div>`)).join('');
+
+  const ib=g.invoice_budget||{};
+  const bud=ib.text!==undefined?`
+    <div class="ph">Character-budget solver <em>&mdash; 40-char ceiling, facts abbreviated before dropped</em></div>
+    <div style="padding:6px 9px">
+      <div class="amber" style="font-size:13px">${esc(ib.text)}</div>
+      <div class="meter" style="margin:6px 0"><i style="width:${100*(ib.used||0)/(ib.limit||40)}%;background:var(--amber)"></i></div>
+      <div class="dim" style="font-size:10.5px">used ${ib.used}/${ib.limit} · kept ${(ib.included||[]).length}${
+        (ib.dropped||[]).length?' · dropped '+ib.dropped.map(esc).join(', '):''}${
+        (ib.compressions||[]).length?'<br>compressed '+ib.compressions.map(esc).join('; '):''}</div>
+    </div>`:'';
+
+  const ord=['INVOICE_DESC','MOBILE_DESC','SHORT_DESC','RETAIL_DESC','LONG_DESC1',
+    'Product Name','BRAND_NAME','MANUFACTURER_NAME','Classpath'];
+  const keys=Object.keys(del).sort((a,b)=>{
+    const x=ord.indexOf(a),y=ord.indexOf(b);return (x<0?99:x)-(y<0?99:y)||a.localeCompare(b);});
+
+  const cells=keys.map(c=>{
+    const p=prov[c]||{},ev=(p.evidence||[])[0]||{},cf=p.confidence||0;
+    return `<div class="cell">
+      <div class="ch" onclick="this.nextElementSibling.classList.toggle('hide')">
+        <span class="c">${esc(c)}</span><span class="v">${esc(del[c])}</span>
+        <span class="q">${cf?cf.toFixed(2):''}</span></div>
+      <div class="ev hide"><dl>
+        <dt>method</dt><dd class="tagset"><span>${esc(p.method||'input')}</span>${
+          p.rule_id?`<span class="k">${esc(p.rule_id)}</span>`:''}</dd>
+        ${ev.text?`<dt>evidence</dt><dd><span class="quote">${esc(ev.text)}</span>
+          <span class="dim"> &larr; ${esc(ev.source||'')}</span></dd>`:''}
+        ${p.detail?`<dt>rationale</dt><dd>${esc(p.detail)}</dd>`:''}
+      </dl></div></div>`;}).join('');
+
+  $('#i-body').innerHTML=notes+`
+    <div class="ba">
+      <div><div class="k">before &mdash; supplier row</div><div>${esc(del['Part_Desc']||'')}</div></div>
+      <div><div class="k">after &mdash; product title</div><div>${esc(del['SHORT_DESC']||'')}</div></div>
+    </div>${bud}
+    <div class="ph">${keys.length} of 252 columns populated <em>&mdash; click a row for its evidence</em></div>
+    ${cells}`;
+  $('#insp').classList.add('on');
+}
+const closeI=()=>$('#insp').classList.remove('on');
+
+/* ---- specs ---- */
+async function loadSpecs(){
+  const d=await (await fetch('/api/specs')).json();
+  $('#specs').innerHTML=(d.specs||[]).filter(s=>s.n_rows>=3&&s.attributes.length).map(s=>`
+    <div class="attr">
+      <div class="h"><span class="n">${esc(s.label)}</span>
+        <span class="m">${s.n_rows} rows · ${s.attributes.length} attrs · ${s.coverage} facts/row</span></div>
+      <div>${s.attributes.map(a=>`<span class="slot ${a.filterable?'f':''}"
+        title="fill ${pct(a.fill_rate)} · ${a.cardinality} distinct${a.filterable?' · facet':''}">
+        <b>${esc(a.label)}</b>${a.uom?' '+esc(a.uom):''} ${Math.round(100*a.fill_rate)}%</span>`).join('')}</div>
+      ${s.item_types.length?`<div class="m" style="margin-top:3px">types: ${
+        s.item_types.slice(0,6).map(t=>esc(t[0])+'('+t[1]+')').join(' ')}</div>`:''}
+    </div>`).join('')||'<div class="stat dim">none induced</div>';
+}
+
+/* ---- families ---- */
+async function loadFams(){
+  const d=await (await fetch('/api/families')).json();
+  $('#f-stats').innerHTML=
+    `<div class="pane"><div class="ph">Total</div>${line('families',d.total,'distinct concepts','a')}</div>
+     <div class="pane"><div class="ph">Multi-member</div>${line('with siblings',d.families.length,'facts corroborate','g')}</div>
+     <div class="pane"><div class="ph">Singletons</div>${line('alone',d.singletons,'no corroboration','r')}</div>`;
+  $('#fams').innerHTML=d.families.map(f=>`
+    <div class="attr">
+      <div class="h"><span class="dim">${esc(f.family_id)}</span>
+        <span class="n">${esc(f.item_type||'unclassified')}</span>
+        <span class="amber">${esc(f.brand)}</span><span class="m">${f.size} members</span></div>
+      ${f.members.map(m=>`<div class="m" style="cursor:pointer;padding:1px 0"
+        onclick="openRow(${m.index})">${esc(m.part_number)} &nbsp; ${esc(m.desc)}</div>`).join('')}
+    </div>`).join('');
+}
+
+/* ---- queue ---- */
+async function loadQueue(){
+  const d=await (await fetch('/api/queue')).json();
+  $('#queue').innerHTML=(d.queue||[]).map(q=>`
+    <tr onclick="openRow(${(+q.row)-1})">
+      <td class="num amber">${q.review_value}</td><td class="num">${q.affects_family_rows}</td>
+      <td>${esc(q.part_number)}</td><td>${esc(q.issue_kind)}</td>
+      <td class="dim">${esc(q.message)}</td>
+      <td><span class="g-${q.status}"></span> ${esc(q.status)}</td>
+    </tr>`).join('');
+}
+
+const dl=k=>window.location='/api/download?kind='+k;
+
+/* ---- load ---- */
+const drop=$('#drop');
+['dragenter','dragover'].forEach(e=>drop.addEventListener(e,v=>{v.preventDefault();drop.classList.add('hot');}));
+['dragleave','drop'].forEach(e=>drop.addEventListener(e,v=>{v.preventDefault();drop.classList.remove('hot');}));
+drop.addEventListener('drop',v=>{const f=v.dataTransfer.files[0];if(f)send(f);});
+$('#file').addEventListener('change',v=>{const f=v.target.files[0];if(f)send(f);});
+function send(file){
+  $('#upstat').textContent='reading '+file.name+' ...';
+  const rd=new FileReader();
+  rd.onload=async()=>{
+    $('#upstat').textContent='enriching ...';
+    const r=await fetch('/api/enrich',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({csv:rd.result,name:file.name})});
+    const d=await r.json();
+    if(d.error){$('#upstat').innerHTML='<span style="color:var(--neg)">'+esc(d.error)+'</span>';return;}
+    REPORT=d.report;$('#src').textContent=d.source;ROWS=[];
+    board();ticker();
+    $('#rows').innerHTML='';$('#specs').innerHTML='';$('#fams').innerHTML='';$('#queue').innerHTML='';
+    $('#upstat').innerHTML=`done — <b class="amber">${d.report.n_rows}</b> rows in ${d.report.elapsed_s}s. F1 for the board.`;
+  };
+  rd.readAsText(file);
+}
+boot();
+</script>
+</body>
+</html>

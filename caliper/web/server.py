@@ -1,0 +1,303 @@
+"""Dashboard server.
+
+Standard library only -- ``python -m caliper serve`` needs no pip install and
+no build step, which matters because the people evaluating this will run it
+once, on their own machine, without reading the setup notes.
+
+Serves the enrichment view, the per-cell evidence panel, the induced category
+specs, the review queue and the scoreboard, plus a live upload endpoint that
+runs the full pipeline on a file dropped into the browser.
+"""
+from __future__ import annotations
+
+import io
+import json
+import mimetypes
+import os
+import posixpath
+import threading
+import urllib.parse
+import webbrowser
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from typing import Any, Dict, List, Optional, Tuple
+
+from ..io.tabular import read_table, write_csv
+from ..pipeline import Pipeline, RowResult
+from ..schema import DELIVERY_COLUMNS, detect_schema
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_STATIC = os.path.join(_HERE, "static")
+
+
+class State:
+    """In-memory results for the running dashboard."""
+
+    def __init__(self) -> None:
+        self.lock = threading.Lock()
+        self.results: List[RowResult] = []
+        self.report: Dict[str, Any] = {}
+        self.source_name: str = ""
+        self.queue: List[Dict[str, Any]] = []
+
+    def load_from_disk(self, data_dir: str) -> None:
+        rep = os.path.join(data_dir, "report.json")
+        graphs = os.path.join(data_dir, "graphs.json")
+        if os.path.exists(rep):
+            with open(rep, "r", encoding="utf-8") as fh:
+                self.report = json.load(fh)
+        if os.path.exists(graphs):
+            with open(graphs, "r", encoding="utf-8") as fh:
+                self._cached_rows = json.load(fh)
+        else:
+            self._cached_rows = []
+        deliv = os.path.join(data_dir, "delivery.csv")
+        if os.path.exists(deliv):
+            rows, _ = read_table(deliv)
+            self._cached_delivery = rows
+            self.source_name = os.path.basename(deliv)
+        else:
+            self._cached_delivery = []
+        q = os.path.join(data_dir, "review_queue.csv")
+        if os.path.exists(q):
+            self.queue, _ = read_table(q)
+
+    def set_results(self, results: List[RowResult], report: Dict[str, Any],
+                    name: str) -> None:
+        with self.lock:
+            self.results = results
+            self.report = report
+            self.source_name = name
+            self._cached_rows = [r.to_dict() for r in results]
+            self._cached_delivery = [r.delivery for r in results]
+            from ..cli import export_review_queue
+            self.queue = export_review_queue(results)
+
+    # -- views -------------------------------------------------------------
+    def rows_page(self, offset: int, limit: int, status: str = "",
+                  query: str = "") -> Dict[str, Any]:
+        rows = getattr(self, "_cached_rows", [])
+        deliv = getattr(self, "_cached_delivery", [])
+        idx = list(range(len(rows)))
+        if status:
+            idx = [i for i in idx if rows[i].get("status") == status]
+        if query:
+            q = query.lower()
+            idx = [i for i in idx
+                   if q in json.dumps(deliv[i] if i < len(deliv) else {}).lower()]
+        total = len(idx)
+        page = idx[offset:offset + limit]
+        out = []
+        for i in page:
+            d = deliv[i] if i < len(deliv) else {}
+            g = rows[i]
+            out.append({
+                "index": i,
+                "status": g.get("status"),
+                "score": g.get("score"),
+                "family_id": g.get("family_id"),
+                "filled": g.get("filled"),
+                "part_number": d.get("Mfg_Part_Num", ""),
+                "source_desc": d.get("Part_Desc", ""),
+                "brand": d.get("BRAND_NAME", ""),
+                "classpath": d.get("Classpath", ""),
+                "product_name": d.get("Product Name", ""),
+                "invoice": d.get("INVOICE_DESC", ""),
+                "mobile": d.get("MOBILE_DESC", ""),
+                "short": d.get("SHORT_DESC", ""),
+                "n_flags": len(g.get("flags", [])),
+                "n_violations": len(g.get("violations", [])),
+            })
+        return {"total": total, "offset": offset, "limit": limit, "rows": out}
+
+    def row_detail(self, i: int) -> Dict[str, Any]:
+        rows = getattr(self, "_cached_rows", [])
+        deliv = getattr(self, "_cached_delivery", [])
+        if i < 0 or i >= len(rows):
+            return {}
+        d = deliv[i] if i < len(deliv) else {}
+        populated = {k: v for k, v in d.items() if str(v).strip()}
+        prov = {}
+        if i < len(self.results):
+            prov = self.results[i].provenance
+        return {"index": i, "delivery": populated, "graph": rows[i],
+                "provenance": prov, "columns": DELIVERY_COLUMNS}
+
+
+STATE = State()
+
+
+class Handler(BaseHTTPRequestHandler):
+    server_version = "CALIPER/1.0"
+
+    def log_message(self, fmt: str, *args: Any) -> None:      # quieter console
+        pass
+
+    # -- helpers -----------------------------------------------------------
+    def _json(self, obj: Any, code: int = 200) -> None:
+        body = json.dumps(obj).encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _file(self, path: str) -> None:
+        if not os.path.isfile(path):
+            self.send_error(404)
+            return
+        ctype = mimetypes.guess_type(path)[0] or "application/octet-stream"
+        with open(path, "rb") as fh:
+            body = fh.read()
+        self.send_response(200)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _query(self) -> Dict[str, str]:
+        q = urllib.parse.urlparse(self.path).query
+        return {k: v[0] for k, v in urllib.parse.parse_qs(q).items()}
+
+    # -- routes ------------------------------------------------------------
+    def do_GET(self) -> None:
+        route = urllib.parse.urlparse(self.path).path
+        q = self._query()
+
+        if route in ("/", "/index.html"):
+            return self._file(os.path.join(_STATIC, "index.html"))
+        if route.startswith("/static/"):
+            rel = posixpath.normpath(route[len("/static/"):]).lstrip("/\\")
+            return self._file(os.path.join(_STATIC, rel))
+
+        if route == "/api/report":
+            return self._json({"report": STATE.report, "source": STATE.source_name})
+        if route == "/api/rows":
+            return self._json(STATE.rows_page(
+                int(q.get("offset", 0)), min(200, int(q.get("limit", 50))),
+                q.get("status", ""), q.get("q", "")))
+        if route == "/api/row":
+            return self._json(STATE.row_detail(int(q.get("i", 0))))
+        if route == "/api/specs":
+            return self._json({"specs": STATE.report.get("specs", [])})
+        if route == "/api/queue":
+            return self._json({"queue": STATE.queue[:400], "total": len(STATE.queue)})
+        if route == "/api/families":
+            return self._json(self._families())
+        if route == "/api/download":
+            kind = q.get("kind", "delivery")
+            return self._download(kind)
+        self.send_error(404)
+
+    def _families(self) -> Dict[str, Any]:
+        rows = getattr(STATE, "_cached_rows", [])
+        deliv = getattr(STATE, "_cached_delivery", [])
+        fam: Dict[str, List[int]] = {}
+        for i, g in enumerate(rows):
+            fam.setdefault(g.get("family_id", "?"), []).append(i)
+        out = []
+        for fid, members in sorted(fam.items(), key=lambda x: -len(x[1])):
+            if len(members) < 2:
+                continue
+            sample = deliv[members[0]] if members[0] < len(deliv) else {}
+            out.append({
+                "family_id": fid, "size": len(members),
+                "item_type": sample.get("Product Name", ""),
+                "brand": sample.get("BRAND_NAME", ""),
+                "members": [
+                    {"index": m,
+                     "part_number": deliv[m].get("Mfg_Part_Num", "") if m < len(deliv) else "",
+                     "desc": deliv[m].get("Part_Desc", "") if m < len(deliv) else ""}
+                    for m in members[:25]],
+            })
+        singles = sum(1 for m in fam.values() if len(m) == 1)
+        return {"families": out[:120], "total": len(fam), "singletons": singles}
+
+    def _download(self, kind: str) -> None:
+        rows = getattr(STATE, "_cached_delivery", [])
+        if kind == "delivery":
+            buf = io.StringIO()
+            import csv as _csv
+            w = _csv.DictWriter(buf, fieldnames=DELIVERY_COLUMNS, extrasaction="ignore")
+            w.writeheader()
+            for r in rows:
+                w.writerow({k: r.get(k, "") for k in DELIVERY_COLUMNS})
+            body = buf.getvalue().encode("utf-8-sig")
+            fname = "caliper_delivery.csv"
+        elif kind == "queue":
+            import csv as _csv
+            buf = io.StringIO()
+            cols = list(STATE.queue[0].keys()) if STATE.queue else ["row"]
+            w = _csv.DictWriter(buf, fieldnames=cols, extrasaction="ignore")
+            w.writeheader()
+            for r in STATE.queue:
+                w.writerow(r)
+            body = buf.getvalue().encode("utf-8-sig")
+            fname = "caliper_review_queue.csv"
+        else:
+            self.send_error(404)
+            return
+        self.send_response(200)
+        self.send_header("Content-Type", "text/csv; charset=utf-8")
+        self.send_header("Content-Disposition",
+                         'attachment; filename="{}"'.format(fname))
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_POST(self) -> None:
+        route = urllib.parse.urlparse(self.path).path
+        if route != "/api/enrich":
+            self.send_error(404)
+            return
+        length = int(self.headers.get("Content-Length", 0))
+        raw = self.rfile.read(length)
+        try:
+            payload = json.loads(raw.decode("utf-8"))
+        except Exception:
+            return self._json({"error": "invalid payload"}, 400)
+
+        text = payload.get("csv", "")
+        name = payload.get("name", "upload.csv")
+        limit = int(payload.get("limit", 0) or 0)
+        if not text.strip():
+            return self._json({"error": "empty file"}, 400)
+
+        tmp = os.path.join(_HERE, "_upload.csv")
+        with open(tmp, "w", encoding="utf-8", newline="") as fh:
+            fh.write(text)
+        try:
+            rows, header = read_table(tmp)
+        finally:
+            try:
+                os.remove(tmp)
+            except OSError:
+                pass
+        if not rows:
+            return self._json({"error": "no rows parsed"}, 400)
+        if limit:
+            rows = rows[:limit]
+
+        schema = detect_schema(header, rows)
+        pipe = Pipeline()
+        results, report = pipe.run(rows, schema)
+        STATE.set_results(results, report.to_dict(), name)
+        return self._json({"ok": True, "report": report.to_dict(),
+                           "source": name})
+
+
+def serve(host: str = "127.0.0.1", port: int = 8765,
+          data_dir: str = "data/out", open_browser: bool = True) -> None:
+    STATE.load_from_disk(data_dir)
+    httpd = ThreadingHTTPServer((host, port), Handler)
+    url = "http://{}:{}/".format(host, port)
+    print("CALIPER dashboard -> {}".format(url))
+    print("  loaded {} rows from {}".format(
+        len(getattr(STATE, "_cached_rows", [])), data_dir))
+    print("  Ctrl-C to stop")
+    if open_browser:
+        threading.Timer(0.6, lambda: webbrowser.open(url)).start()
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("\nstopped")
+        httpd.shutdown()
