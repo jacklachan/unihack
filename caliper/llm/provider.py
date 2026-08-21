@@ -106,6 +106,68 @@ Return STRICT JSON only:
 {"facts":[{"key":"snake_case","label":"Title Case","value":"...","uom":"","evidence":"exact substring","confidence":0.0}]}"""
 
 
+class Limits:
+    """Live view of the provider's rate limits, read from response headers.
+
+    Free tiers are usually capped on tokens-per-minute rather than requests,
+    and a caller that ignores that just collects 429s. Pacing against the
+    reported remainder turns a failing run into a slow one.
+    """
+    remaining_tokens: Optional[float] = None
+    reset_tokens_s: float = 0.0
+    remaining_requests: Optional[float] = None
+    reset_requests_s: float = 0.0
+    last_seen: float = 0.0
+
+
+def _parse_duration(text: str) -> float:
+    """Groq reports resets as '6h51m50.399s' or '577ms'."""
+    if not text:
+        return 0.0
+    t = str(text).strip()
+    m = re.fullmatch(r"([\d.]+)ms", t)
+    if m:
+        return float(m.group(1)) / 1000.0
+    total = 0.0
+    for value, unit in re.findall(r"([\d.]+)\s*(h|m|s)", t):
+        total += float(value) * {"h": 3600, "m": 60, "s": 1}[unit]
+    return total
+
+
+def _read_limits(headers: Any) -> None:
+    try:
+        get = headers.get
+    except AttributeError:
+        return
+    rt = get("x-ratelimit-remaining-tokens")
+    if rt is not None:
+        try:
+            Limits.remaining_tokens = float(rt)
+        except ValueError:
+            pass
+    rr = get("x-ratelimit-remaining-requests")
+    if rr is not None:
+        try:
+            Limits.remaining_requests = float(rr)
+        except ValueError:
+            pass
+    Limits.reset_tokens_s = _parse_duration(get("x-ratelimit-reset-tokens") or "")
+    Limits.reset_requests_s = _parse_duration(get("x-ratelimit-reset-requests") or "")
+    Limits.last_seen = time.time()
+
+
+def _pace(estimated_tokens: int = 700) -> None:
+    """Wait when the reported token budget cannot cover the next call."""
+    if Limits.remaining_tokens is None:
+        return
+    if Limits.remaining_tokens >= estimated_tokens:
+        return
+    wait = min(65.0, max(1.0, Limits.reset_tokens_s or 60.0))
+    Stats.paced += 1
+    time.sleep(wait)
+    Limits.remaining_tokens = None      # force a fresh reading
+
+
 def _post(url: str, payload: Dict[str, Any], headers: Dict[str, str],
           timeout: int = 60) -> Dict[str, Any]:
     req = urllib.request.Request(
@@ -113,6 +175,7 @@ def _post(url: str, payload: Dict[str, Any], headers: Dict[str, str],
         headers=dict({"Content-Type": "application/json",
                       "User-Agent": UA, "Accept": "application/json"}, **headers))
     with urllib.request.urlopen(req, timeout=timeout) as resp:
+        _read_limits(resp.headers)
         return json.loads(resp.read().decode("utf-8"))
 
 
@@ -145,6 +208,27 @@ def _pick_model(cfg: Dict[str, Any], key: str) -> str:
     return prefer[0]
 
 
+def _extract_any(text: str) -> Dict[str, Any]:
+    """Parse an audit response: a list of verdicts rather than facts."""
+    if not text:
+        return {"verdicts": []}
+    text = re.sub(r"^\s*```(?:json)?|```\s*$", "", text.strip(), flags=re.M)
+    try:
+        obj = json.loads(text)
+    except json.JSONDecodeError:
+        m = re.search(r"\{.*\}", text, re.S)
+        if not m:
+            return {"verdicts": []}
+        try:
+            obj = json.loads(m.group(0))
+        except json.JSONDecodeError:
+            return {"verdicts": []}
+    if isinstance(obj, list):
+        return {"verdicts": obj}
+    v = obj.get("verdicts", obj.get("results", [])) if isinstance(obj, dict) else []
+    return {"verdicts": v if isinstance(v, list) else []}
+
+
 def _extract_json(text: str) -> Dict[str, Any]:
     """Models wrap JSON in prose or fences often enough that this must be
     tolerant -- but it never invents facts, it only fails to find them."""
@@ -172,8 +256,8 @@ def _extract_json(text: str) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 # Cache
 # ---------------------------------------------------------------------------
-def _cache_key(provider: str, model: str, user: str) -> str:
-    h = hashlib.sha256("{}|{}|{}|{}".format(provider, model, SYSTEM, user)
+def _cache_key(provider: str, model: str, user: str, system: str = "") -> str:
+    h = hashlib.sha256("{}|{}|{}|{}".format(provider, model, system or SYSTEM, user)
                        .encode("utf-8")).hexdigest()
     return h[:40]
 
@@ -203,6 +287,7 @@ class Stats:
     cache_hits = 0
     errors = 0
     retries = 0
+    paced = 0
 
 
 def _build_user(payload: Dict[str, Any]) -> str:
@@ -212,7 +297,28 @@ def _build_user(payload: Dict[str, Any]) -> str:
                     json.dumps(payload.get("known", {}), sort_keys=True)))
 
 
-def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
+def _build_audit_user(payload: Dict[str, Any]) -> str:
+    return "Description: {}\nAttributes to audit:\n{}".format(
+        payload.get("description", ""),
+        json.dumps(payload.get("facts", []), sort_keys=True, indent=1))
+
+
+def get_auditor(name: str = "", use_cache: bool = True, api_key: str = ""
+                ) -> Optional[Callable[[Dict[str, Any]], Dict[str, Any]]]:
+    """A provider callable that renders verdicts instead of producing values.
+
+    Uses its own system prompt and its own cache namespace, so audit responses
+    never collide with extraction responses for the same product.
+    """
+    from .audit import AUDIT_SYSTEM
+    return get_provider(name, use_cache=use_cache, system=AUDIT_SYSTEM,
+                        build_user=_build_audit_user, tag="audit",
+                        api_key=api_key)
+
+
+def get_provider(name: str = "", use_cache: bool = True, offline: bool = False,
+                 system: str = "", build_user: Optional[Callable[[Dict[str, Any]], str]] = None,
+                 tag: str = "extract", api_key: str = ""
                  ) -> Optional[Callable[[Dict[str, Any]], Dict[str, Any]]]:
     """Return a callable ``fn(payload) -> {"facts": [...]}``.
 
@@ -220,6 +326,8 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
     network -- this is how a judge reproduces the AI-enriched run without a key.
     """
     load_dotenv()
+    system = system or SYSTEM
+    build_user = build_user or _build_user
 
     if offline:
         def cached_only(payload: Dict[str, Any]) -> Dict[str, Any]:
@@ -239,15 +347,15 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
         cfg = PROVIDERS.get(prov)
         if not cfg:
             continue
-        key = os.environ.get(cfg["env"])
+        key = api_key or os.environ.get(cfg["env"])
         if not key:
             continue
         model = _pick_model(cfg, key)
 
-        def call(payload: Dict[str, Any], _p=prov, _k=key, _c=cfg, _m=model
-                 ) -> Dict[str, Any]:
-            user = _build_user(payload)
-            ck = _cache_key(_p, _m, user)
+        def call(payload: Dict[str, Any], _p=prov, _k=key, _c=cfg, _m=model,
+                 _sys=system, _bu=build_user, _tag=tag) -> Dict[str, Any]:
+            user = _bu(payload)
+            ck = _cache_key(_p, _m, _tag + "|" + user, _sys)
             if use_cache:
                 hit = _cache_read(ck)
                 if hit is not None:
@@ -258,6 +366,7 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
             last_err: Optional[Exception] = None
             for attempt in range(4):
                 try:
+                    _pace()
                     if style == "gemini":
                         url = _c["url"].format(model=_m) + "?key=" + _k
                         body = {"contents": [{"parts": [{"text": SYSTEM + "\n\n" + user}]}],
@@ -266,7 +375,7 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
                         data = _post(url, body, {})
                         txt = data["candidates"][0]["content"]["parts"][0]["text"]
                     elif style == "anthropic":
-                        body = {"model": _m, "max_tokens": 1024, "system": SYSTEM,
+                        body = {"model": _m, "max_tokens": 1024, "system": _sys,
                                 "temperature": 0,
                                 "messages": [{"role": "user", "content": user}]}
                         data = _post(_c["url"], body,
@@ -275,12 +384,12 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
                     else:
                         body = {"model": _m, "temperature": 0,
                                 "response_format": {"type": "json_object"},
-                                "messages": [{"role": "system", "content": SYSTEM},
+                                "messages": [{"role": "system", "content": _sys},
                                              {"role": "user", "content": user}]}
                         data = _post(_c["url"], body, {"Authorization": "Bearer " + _k})
                         txt = data["choices"][0]["message"]["content"]
 
-                    out = _extract_json(txt)
+                    out = _extract_json(txt) if _tag == "extract" else _extract_any(txt)
                     Stats.calls += 1
                     if use_cache:
                         _cache_write(ck, out)
@@ -288,9 +397,14 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
 
                 except urllib.error.HTTPError as exc:
                     last_err = exc
+                    _read_limits(getattr(exc, "headers", None))
                     if exc.code in (429, 500, 502, 503, 529):
                         Stats.retries += 1
-                        time.sleep(min(20.0, 1.5 * (2 ** attempt)))
+                        # Honour the provider's own reset hint when it gives one.
+                        hinted = _parse_duration(
+                            (getattr(exc, "headers", None) or {}).get(
+                                "retry-after", "") or "")
+                        time.sleep(min(65.0, hinted or (1.5 * (2 ** attempt))))
                         continue
                     break
                 except Exception as exc:
@@ -300,6 +414,8 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False
             Stats.errors += 1
             raise last_err if last_err else RuntimeError("llm call failed")
 
-        call.name = "{} ({})".format(prov, model)             # type: ignore
+        call.name = "{} ({}, {})".format(prov, model, tag)     # type: ignore
+        call.provider = prov                                   # type: ignore
+        call.model = model                                     # type: ignore
         return call
     return None

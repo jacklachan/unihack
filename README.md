@@ -82,6 +82,45 @@ Then open the console:
 python -m caliper serve
 ```
 
+### Two ways to run it
+
+Open `python -m caliper serve` and the first screen asks how to run:
+
+| Mode | What it does |
+|---|---|
+| **Deterministic only** | Rules, registries and induced specs. No network, no key, fully reproducible. ~2 s for 1,000 rows. |
+| **Deterministic + AI** | Everything above, plus a model on the rows rules could not resolve, and an optional second-opinion audit. Needs your own key. |
+
+Pick a provider (Groq, Gemini, Anthropic, OpenAI), paste a key, upload a file.
+The key is held in the server process's memory for the session only — never
+written to disk, never logged, and never returned to the browser.
+
+### The model as auditor, not author
+
+Extraction asks a model to produce values, which is where hallucination enters.
+`--audit` inverts it: the deterministic engines produce the facts, and the model
+only renders a verdict on facts that **already exist**.
+
+```
+SUPPORTED    the source text supports this value
+UNSUPPORTED  the source cannot support it
+UNKNOWN      the source is silent; no opinion
+```
+
+A verdict cannot create a value, so the audit pass has no path to inventing
+anything. What it can do is disagree — and disagreement is the useful signal:
+
+- a fact the rules produced **and** an independent model confirms has two
+  methods behind it, and its confidence rises by *agreement* rather than by a
+  constant attached to a rule;
+- a fact the model rejects keeps its value but loses confidence and is routed to
+  review, because a value two independent methods disagree about is exactly what
+  a steward should look at.
+
+```bash
+python -m caliper run <input.csv> --llm groq --audit -o data/out
+```
+
 ### Turning the AI layer on
 
 ```bash

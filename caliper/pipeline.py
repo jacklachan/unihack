@@ -150,6 +150,8 @@ class PipelineReport:
     family_inherited: int = 0
     family_anomalies: int = 0
     llm_invoked: int = 0
+    audited_rows: int = 0
+    audit_counts: Dict[str, int] = field(default_factory=dict)
     guardrail_findings: Dict[str, int] = field(default_factory=dict)
     knowledge: Dict[str, Any] = field(default_factory=dict)
     corrections: Dict[str, Any] = field(default_factory=dict)
@@ -167,9 +169,13 @@ class Pipeline:
 
     def __init__(self, registry: Optional[BrandRegistry] = None,
                  llm: Optional[Callable[[Dict[str, Any]], Dict[str, Any]]] = None,
+                 auditor: Optional[Callable[[Dict[str, Any]], Dict[str, Any]]] = None,
                  emit_asset_conventions: bool = False):
         self.registry = registry or BrandRegistry.load()
         self.llm = llm
+        self.auditor = auditor
+        self.audited = 0
+        self.audit_counts = {"supported": 0, "unsupported": 0, "unknown": 0}
         self.emit_asset_conventions = emit_asset_conventions
         self.lexicon: Optional[ItemTypeLexicon] = None
         self.vocab: Dict[str, int] = {}
@@ -408,7 +414,33 @@ class Pipeline:
         # 8. physical and logical guardrails --------------------------------
         apply_guardrails(graph)
 
+        # 9. model audit -- a second opinion on facts that already exist ----
+        # The auditor cannot create a value, only agree or disagree with one.
+        # Agreement is what raises confidence; disagreement routes to review.
+        if self.auditor is not None:
+            self._audit(graph, desc)
+
         return self._finalise(graph, row, schema, index, c)
+
+    def _audit(self, graph: ProductFactGraph, desc: str) -> None:
+        from .llm.audit import apply_verdicts, auditable_facts
+        facts = auditable_facts(graph)
+        if not facts:
+            return
+        try:
+            out = self.auditor({
+                "description": desc,
+                "facts": [{"key": f.key, "label": f.label, "value": f.display}
+                          for f in facts]})
+        except Exception as exc:
+            graph.note("audit_error", "Audit call failed: {}".format(exc),
+                       severity="info")
+            return
+        verdicts = (out or {}).get("verdicts", [])
+        counts = apply_verdicts(graph, verdicts, model_name="audit")
+        self.audited += 1
+        for k, v in counts.items():
+            self.audit_counts[k] = self.audit_counts.get(k, 0) + v
 
     @staticmethod
     def _needs_model(graph: ProductFactGraph, item_type: str, c) -> bool:
@@ -825,6 +857,8 @@ class Pipeline:
         rep.family_inherited = inherited
         rep.family_anomalies = anomalies
         rep.llm_invoked = self.llm_invoked
+        rep.audited_rows = self.audited
+        rep.audit_counts = dict(self.audit_counts)
         rep.schema = schema.to_dict()
         rep.families = len({r.graph.family_id for r in results})
         rep.specs = [s.to_dict() for s in sorted(

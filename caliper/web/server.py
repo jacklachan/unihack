@@ -39,6 +39,13 @@ class State:
         self.source_name: str = ""
         self.queue: List[Dict[str, Any]] = []
         self.edges: List[Dict[str, Any]] = []
+        # Session AI settings. The key lives in this process's memory for the
+        # lifetime of the server and is never written to disk, never logged and
+        # never echoed back to the browser.
+        self.provider: str = ""
+        self.api_key: str = ""
+        self.use_audit: bool = False
+        self.model_name: str = ""
 
     def load_from_disk(self, data_dir: str) -> None:
         rep = os.path.join(data_dir, "report.json")
@@ -197,6 +204,19 @@ class Handler(BaseHTTPRequestHandler):
                 "edges": rows[:400], "total": len(rows)})
         if route == "/api/corrections":
             return self._json(STATE.report.get("corrections", {}))
+        if route == "/api/session":
+            from ..llm.provider import PROVIDERS, load_dotenv
+            load_dotenv()
+            env_ready = sorted(p for p, c in PROVIDERS.items()
+                               if os.environ.get(c["env"]))
+            return self._json({
+                "providers": sorted(PROVIDERS),
+                "configured": bool(STATE.api_key) or bool(env_ready),
+                "provider": STATE.provider,
+                "model": STATE.model_name,
+                "audit": STATE.use_audit,
+                "from_env": env_ready,
+            })
         if route == "/api/download":
             kind = q.get("kind", "delivery")
             return self._download(kind)
@@ -260,6 +280,35 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         route = urllib.parse.urlparse(self.path).path
+        if route == "/api/session":
+            length = int(self.headers.get("Content-Length", 0))
+            try:
+                body = json.loads(self.rfile.read(length).decode("utf-8"))
+            except Exception:
+                return self._json({"error": "invalid payload"}, 400)
+            mode = str(body.get("mode", "deterministic"))
+            if mode == "deterministic":
+                STATE.provider = STATE.api_key = STATE.model_name = ""
+                STATE.use_audit = False
+                return self._json({"ok": True, "mode": "deterministic"})
+
+            provider = str(body.get("provider", "")).strip().lower()
+            key = str(body.get("api_key", "")).strip()
+            from ..llm.provider import PROVIDERS, get_provider
+            if provider not in PROVIDERS:
+                return self._json({"error": "unknown provider"}, 400)
+            if not key:
+                return self._json({"error": "no API key supplied"}, 400)
+            probe = get_provider(provider, api_key=key)
+            if probe is None:
+                return self._json({"error": "provider could not be initialised"}, 400)
+            STATE.provider, STATE.api_key = provider, key
+            STATE.use_audit = bool(body.get("audit"))
+            STATE.model_name = getattr(probe, "model", "")
+            # The key is deliberately absent from this response.
+            return self._json({"ok": True, "mode": "ai", "provider": provider,
+                               "model": STATE.model_name, "audit": STATE.use_audit})
+
         if route == "/api/correct":
             length = int(self.headers.get("Content-Length", 0))
             try:
@@ -308,7 +357,14 @@ class Handler(BaseHTTPRequestHandler):
             rows = rows[:limit]
 
         schema = detect_schema(header, rows)
-        pipe = Pipeline()
+
+        llm = auditor = None
+        if STATE.api_key and STATE.provider:
+            from ..llm.provider import get_auditor, get_provider
+            llm = get_provider(STATE.provider, api_key=STATE.api_key)
+            if STATE.use_audit:
+                auditor = get_auditor(STATE.provider, api_key=STATE.api_key)
+        pipe = Pipeline(llm=llm, auditor=auditor)
         results, report = pipe.run(rows, schema)
         STATE._last_edges = getattr(pipe, "edges", [])
         STATE.set_results(results, report.to_dict(), name)

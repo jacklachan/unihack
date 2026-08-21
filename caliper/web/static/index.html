@@ -136,6 +136,25 @@ input:focus,select:focus{border-color:var(--amber)}
   100%{width:0;margin-left:100%}}
 .err{border-left:2px solid var(--neg);background:rgba(229,72,77,.07);
   padding:var(--s3) var(--s4);font-size:12.5px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);
+  width:min(760px,94%);text-align:left}
+.mode{border:1px solid var(--line2);padding:var(--s4);cursor:pointer;
+  display:flex;flex-direction:column;gap:6px;background:transparent}
+.mode:hover{border-color:var(--mute)}
+.mode[aria-pressed=true]{border-color:var(--amber);background:rgba(245,165,36,.05)}
+.mode h3{font:600 13.5px var(--sans)}
+.mode p{font-size:12px;color:var(--mute);max-width:none}
+.mode .tagline{font:400 11px var(--mono);color:var(--faint)}
+.keyrow{display:flex;gap:var(--s2);width:min(760px,94%);align-items:center;
+  flex-wrap:wrap}
+.keyrow input[type=password]{flex:1;min-width:260px;background:var(--sunk);
+  border:1px solid var(--line2);color:var(--ink);padding:8px 10px;
+  font:400 12.5px var(--mono);outline:none}
+.keyrow input:focus{border-color:var(--amber)}
+label.chk{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--mute);
+  cursor:pointer}
+.privacy{font-size:11.5px;color:var(--faint);width:min(760px,94%);text-align:left;
+  border-left:2px solid var(--line2);padding-left:var(--s3)}
 
 /* ── notes ──────────────────────────────────────────────────────────── */
 .note{display:flex;gap:var(--s3);align-items:baseline;padding:8px var(--s4);
@@ -209,6 +228,50 @@ input:focus,select:focus{border-color:var(--amber)}
 
 <main>
 
+<!-- SETUP -->
+<div id="setup" class="stage hide">
+  <h1>How should CALIPER run?</h1>
+  <p>The deterministic engines produce all 252 columns on their own. A model, if
+     you provide a key, is used only where rules could not reach &mdash; and never
+     writes an output cell directly.</p>
+
+  <div class="modes">
+    <button class="mode" id="m-det" aria-pressed="true" onclick="setMode('deterministic')">
+      <h3>Deterministic only</h3>
+      <p>Rules, registries and induced specs. No network, no key, fully
+         reproducible. ~2 s for 1,000 rows.</p>
+      <span class="tagline">no setup required</span>
+    </button>
+    <button class="mode" id="m-ai" aria-pressed="false" onclick="setMode('ai')">
+      <h3>Deterministic + AI</h3>
+      <p>Everything above, plus a model on the rows rules could not resolve, and
+         an optional second-opinion audit of extracted facts.</p>
+      <span class="tagline">needs your own API key</span>
+    </button>
+  </div>
+
+  <div id="aicfg" class="hide" style="display:flex;flex-direction:column;
+       gap:var(--s3);align-items:center;width:100%">
+    <div class="keyrow">
+      <select id="prov">
+        <option value="groq">Groq &mdash; free tier</option>
+        <option value="gemini">Google Gemini &mdash; free tier</option>
+        <option value="anthropic">Anthropic</option>
+        <option value="openai">OpenAI</option>
+      </select>
+      <input type="password" id="key" placeholder="Paste your API key" autocomplete="off">
+      <label class="chk"><input type="checkbox" id="aud"> Audit pass</label>
+    </div>
+    <p class="privacy">The key is held in this server process's memory for the
+      session only. It is never written to disk, never logged, and never sent
+      back to the browser. Close the server and it is gone.</p>
+    <div id="setup-err" class="err hide" style="width:min(760px,94%)"></div>
+  </div>
+
+  <button class="act primary" id="go" onclick="startSession()">Continue</button>
+  <p class="hint" style="color:var(--faint)" id="envnote"></p>
+</div>
+
 <!-- EMPTY STATE -->
 <div id="empty" class="stage hide">
   <h1>Drop a supplier catalogue in.</h1>
@@ -233,6 +296,7 @@ input:focus,select:focus{border-color:var(--amber)}
   <h1>That file could not be read.</h1>
   <p id="fail-msg" class="err"></p>
   <button class="act" onclick="showEmpty()">Try another file</button>
+  <button class="act" onclick="showSetup()">Change run mode</button>
 </div>
 
 <div id="app" class="hide">
@@ -387,21 +451,55 @@ function move(d){
 }
 
 /* ── states ─────────────────────────────────────────────────────────── */
-const stages={empty:'#empty',busy:'#busy',fail:'#fail',app:'#app'};
+const stages={setup:'#setup',empty:'#empty',busy:'#busy',fail:'#fail',app:'#app'};
 function stage(name,msg){
   Object.entries(stages).forEach(([k,sel])=>$(sel).classList.toggle('hide',k!==name));
   if(name==='fail')$('#fail-msg').textContent=msg||'Unknown error.';
 }
 const showEmpty=()=>stage('empty');
+const showSetup=()=>stage('setup');
+
+/* ── setup ──────────────────────────────────────────────────────────── */
+let MODE='deterministic';
+function setMode(m){
+  MODE=m;
+  $('#m-det').setAttribute('aria-pressed', m==='deterministic');
+  $('#m-ai').setAttribute('aria-pressed', m==='ai');
+  $('#aicfg').classList.toggle('hide', m!=='ai');
+}
+async function startSession(){
+  const btn=$('#go'); btn.disabled=true; btn.textContent='Checking…';
+  const err=$('#setup-err'); err.classList.add('hide');
+  try{
+    const body= MODE==='deterministic' ? {mode:'deterministic'}
+      : {mode:'ai', provider:$('#prov').value, api_key:$('#key').value,
+         audit:$('#aud').checked};
+    const d=await (await fetch('/api/session',{method:'POST',
+      headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})).json();
+    if(d.error){err.textContent=d.error; err.classList.remove('hide');
+      btn.disabled=false; btn.textContent='Continue'; return;}
+    $('#src').textContent = d.mode==='ai'
+      ? d.provider+' · '+(d.model||'')+(d.audit?' · audit on':'') : 'deterministic';
+    stage('empty');
+  }catch(e){
+    err.textContent='Could not reach the server: '+e.message;
+    err.classList.remove('hide');
+  }
+  btn.disabled=false; btn.textContent='Continue';
+}
 
 /* ── boot ───────────────────────────────────────────────────────────── */
 async function boot(){
   try{
     const d=await (await fetch('/api/report')).json();
     R=d.report||{};
-    if(!R.n_rows){stage('empty');return;}
-    $('#src').textContent=d.source||'loaded';
-    ready();
+    if(R.n_rows){ $('#src').textContent=d.source||'loaded'; ready(); return; }
+    const sess=await (await fetch('/api/session')).json();
+    if((sess.from_env||[]).length){
+      $('#envnote').textContent='A key for '+sess.from_env.join(', ')
+        +' was found in .env and will be used if you pick the AI mode.';
+    }
+    stage('setup');
   }catch(err){stage('fail','Could not reach the CALIPER server. '+err.message);}
 }
 function ready(){

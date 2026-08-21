@@ -124,7 +124,15 @@ def cmd_run(args: argparse.Namespace) -> int:
         else:
             print("llm        : no provider key found -- running deterministic only")
 
-    pipe = Pipeline(llm=llm, emit_asset_conventions=args.asset_conventions)
+    auditor = None
+    if args.audit:
+        from .llm.provider import get_auditor
+        auditor = get_auditor(args.llm)
+        if auditor:
+            print("audit      : {}".format(getattr(auditor, "name", "on")))
+
+    pipe = Pipeline(llm=llm, auditor=auditor,
+                    emit_asset_conventions=args.asset_conventions)
     results, report = pipe.run(rows, schema, progress=_progress)
 
     os.makedirs(args.out, exist_ok=True)
@@ -176,6 +184,11 @@ def cmd_run(args: argparse.Namespace) -> int:
         print("  corrections          : {} stored, {} rows fixed ({} rows each)".format(
             c.get("corrections", 0), c.get("rows_affected", 0),
             c.get("rows_per_correction", 0)))
+    if report.audited_rows:
+        ac = report.audit_counts or {}
+        print("  audit                : {} rows · {} supported, {} rejected, {} unknown"
+              .format(report.audited_rows, ac.get("supported", 0),
+                      ac.get("unsupported", 0), ac.get("unknown", 0)))
     if report.llm_invoked:
         print("  llm                  : {} of {} rows ({:.0%})".format(
             report.llm_invoked, report.n_rows, report.llm_invoked / max(1, report.n_rows)))
@@ -290,6 +303,9 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--sheet", default=None, help="sheet name for XLSX input")
     r.add_argument("--limit", type=int, default=0, help="process only N rows")
     r.add_argument("--llm", default="", help="provider: groq|gemini|anthropic|openai")
+    r.add_argument("--audit", action="store_true",
+                   help="second-opinion pass: the model reviews facts the "
+                        "deterministic engines produced instead of writing new ones")
     r.add_argument("--asset-conventions", action="store_true",
                    help="emit convention-derived asset filenames (unverified; "
                         "routed to review)")
