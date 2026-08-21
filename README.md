@@ -242,7 +242,7 @@ runs on files dropped into the console.
 |---|---|
 | Throughput | 1,000 rows in 5.3 s (deterministic), no API key required |
 | Brand resolved to an approved name | **92.5 %** |
-| Classified to a classpath | **88.8 %** — the remainder abstain rather than guess |
+| Classified to a classpath | **88.2 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
 | `MOBILE_DESC` in the 60–80 window | 65.7 % — the remaining 34.3 % are data-limited, 0.0 % composition faults |
@@ -261,13 +261,20 @@ whole catalogue: products in the same family must agree about the facts they
 share.
 
 ```
-families with 2+ members  : 188
-attribute comparisons     : 1,540
-siblings agree            : 98.2 %
+families with 2+ members  : 182
+attribute comparisons     : 1,480
+siblings agree            : 99.2 %
 
 item_type   98.4 %      classpath  99.4 %      dept/class  100 %
-brand       95.3 %      series     94.2 %      application 100 %
+brand      100.0 %      manufacturer 100.0 %   application 100 %
 ```
+
+The metric earned its place immediately. Brand agreement started at 95.3 %,
+which looked like an extraction error and was a *clustering* error: every
+"Dishwasher SS" sold through the same appliance co-op landed in one family —
+KitchenAid, GE, Frigidaire and Whirlpool together — because the brand lives in
+the part number, not the description. Making family membership brand-aware took
+brand and manufacturer agreement to 100 %.
 
 This is not accuracy — a pipeline can be uniformly wrong and perfectly
 consistent. But an extractor that disagrees with *itself* across products that

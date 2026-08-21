@@ -136,17 +136,27 @@ def _value_already_present(graph: ProductFactGraph, value: Any) -> bool:
     return False
 
 
-def family_signature(mpn: str, desc: str, supplier: str) -> str:
+def family_signature(mpn: str, desc: str, supplier: str, brand: str = "") -> str:
     """Collapse a row to the family it belongs to.
 
     Numbers and dimension chains are the *varying* axis inside a family, so
     they are masked out; what remains is the shared product concept.
+
+    The resolved brand is part of the signature. Without it, every
+    "Dishwasher SS" sold through the same appliance co-op became one family --
+    KitchenAid, GE, Frigidaire and Whirlpool together -- because the brand
+    lives in the part number rather than the description. Products from
+    different manufacturers are not variants of each other, and treating them
+    as such is what made sibling agreement on brand look like an extraction
+    error when it was a clustering error.
     """
     d = strip_mpn_echo(desc, mpn)[0]
     d = re.sub(r"\d+(?:\.\d+)?(?:\s*/\s*\d+)?", "#", d)
     d = re.sub(r"[#\"'x\-\s]+", " ", d, flags=re.I)
     toks = sorted({t.lower() for t in re.findall(r"[A-Za-z]{3,}", d)})
-    raw = "{}|{}".format(supplier.strip().lower(), " ".join(toks))
+    raw = "{}|{}|{}".format(supplier.strip().lower(),
+                            re.sub(r"[^a-z0-9]", "", str(brand or "").lower()),
+                            " ".join(toks))
     return "F-" + hashlib.sha1(raw.encode("utf-8")).hexdigest()[:8]
 
 
@@ -388,7 +398,6 @@ class Pipeline:
         supplier = schema.get(row, "manufacturer")
 
         graph = ProductFactGraph(product_id=mpn or str(index), source_row=dict(row))
-        graph.family_id = family_signature(mpn, desc, supplier)
 
         # 1. identity ------------------------------------------------------
         res = resolve_identity(
@@ -397,6 +406,9 @@ class Pipeline:
             e1_brand=schema.get(row, "brand_e1"))
         for f in identity_facts(res):
             graph.add(f)
+        # Family membership depends on who made the thing, so it is decided
+        # once the brand is known rather than before.
+        graph.family_id = family_signature(mpn, desc, supplier, res.brand)
         mismatch = detect_mismatch(self.registry, res, supplier)
         if mismatch:
             graph.note(**mismatch)

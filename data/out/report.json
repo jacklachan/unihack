@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 6.683,
+  "elapsed_s": 8.592,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -20,7 +20,7 @@
       "manufacturer": 0.98
     }
   },
-  "families": 566,
+  "families": 578,
   "specs": [
     {
       "category_id": "UNCLASSIFIED",
@@ -6292,73 +6292,72 @@
       ]
     }
   ],
-  "fill_rate": 0.1051,
-  "mean_columns_filled": 26.49,
+  "fill_rate": 0.105,
+  "mean_columns_filled": 26.47,
   "status_counts": {
-    "ready": 770,
-    "blocked": 176,
-    "needs_review": 54
+    "ready": 772,
+    "blocked": 182,
+    "needs_review": 46
   },
   "flag_counts": {
     "classification_abstained": 125,
     "brand_unresolved": 51,
-    "family_anomaly": 2,
     "brand_not_in_approved_list": 41,
     "item_type_unresolved": 24,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 326,
-    "CG-TAX-01": 112,
+    "CG-MOB-01": 329,
+    "CG-TAX-01": 118,
     "CG-BRD-01": 75
   },
   "brand_resolution": 0.925,
-  "classification_rate": 0.888,
+  "classification_rate": 0.882,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.674,
+    "MOBILE_DESC": 0.671,
     "SHORT_DESC": 1.0
   },
   "consistency": {
-    "families_checked": 188,
-    "attribute_comparisons": 1540,
-    "agreement": 0.9818,
+    "families_checked": 185,
+    "attribute_comparisons": 1511,
+    "agreement": 0.9921,
     "per_attribute": {
       "item_type": {
-        "agreement": 0.9839,
-        "families": 186
+        "agreement": 0.9835,
+        "families": 182
       },
       "classpath": {
-        "agreement": 0.9943,
-        "families": 176
+        "agreement": 0.9942,
+        "families": 172
       },
       "dept": {
         "agreement": 1.0,
-        "families": 176
+        "families": 172
       },
       "class": {
         "agreement": 1.0,
-        "families": 176
+        "families": 172
       },
       "fine": {
-        "agreement": 0.9943,
-        "families": 176
+        "agreement": 0.9942,
+        "families": 172
       },
       "unspsc": {
-        "agreement": 0.9943,
-        "families": 176
+        "agreement": 0.9942,
+        "families": 172
       },
       "brand": {
-        "agreement": 0.9535,
-        "families": 172
+        "agreement": 1.0,
+        "families": 170
       },
       "manufacturer": {
-        "agreement": 0.9535,
-        "families": 172
+        "agreement": 1.0,
+        "families": 170
       },
       "series": {
-        "agreement": 0.9423,
-        "families": 104
+        "agreement": 0.9417,
+        "families": 103
       },
       "application": {
         "agreement": 1.0,
@@ -6374,10 +6373,10 @@
       }
     }
   },
-  "mobile_data_limited": 0.326,
+  "mobile_data_limited": 0.329,
   "mobile_composition_short": 0.0,
-  "family_inherited": 50,
-  "family_anomalies": 2,
+  "family_inherited": 47,
+  "family_anomalies": 0,
   "llm_invoked": 0,
   "llm_served": 0,
   "llm_cached": 0,
@@ -6391,15 +6390,15 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 627,
+    "edges": 613,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
-      "variant_of": 370,
-      "same_series": 233
+      "variant_of": 358,
+      "same_series": 231
     },
-    "products_connected": 613,
-    "coverage": 0.613,
+    "products_connected": 598,
+    "coverage": 0.598,
     "most_connected": [
       {
         "index": 387,
@@ -6468,8 +6467,8 @@
     "by_scope": {
       "family": 1
     },
-    "rows_affected": 6,
-    "rows_per_correction": 6.0,
+    "rows_affected": 0,
+    "rows_per_correction": 0.0,
     "items": [
       {
         "scope": "family",
@@ -6480,7 +6479,7 @@
         "note": "Festool Granat 80x133mm RTS sander sheets, 10-pack",
         "by": "mohit",
         "at": "2026-08-21T23:06:01",
-        "applied": 6
+        "applied": 0
       }
     ]
   }
