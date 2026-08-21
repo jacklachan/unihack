@@ -210,7 +210,7 @@ runs on files dropped into the console.
 |---|---|
 | Throughput | 1,000 rows in 2.5 s (deterministic), no API key required |
 | Brand resolved to an approved name | **91.0 %** |
-| Classified to a classpath | **84.0 %** — the remainder abstain rather than guess |
+| Classified to a classpath | **87.4 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
 | `MOBILE_DESC` in the 60–80 window | 65.7 % — the remaining 34.3 % are data-limited, 0.0 % composition faults |

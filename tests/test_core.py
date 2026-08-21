@@ -206,6 +206,16 @@ check_that("confirmation raises confidence",
            ga.get("item_type").confidence > 0.90)
 check_that("confirmation is recorded as an independent method",
            "model" in ga.get("item_type").agreed_by)
+from caliper.pipeline import _value_already_present
+_gr = graph_with(fact("dimensions", "1/2 in x 18 in"), fact("diameter", "9", "in"))
+check_that("a model value the parser already owns is recognised as redundant",
+           _value_already_present(_gr, "18 in"))
+check_that("the same measurement written as a decimal is also recognised",
+           _value_already_present(graph_with(fact("dimensions", "2-3/4 in x 30 in")),
+                                  "2.75"))
+check_that("a genuinely new value is not rejected as redundant",
+           not _value_already_present(_gr, "Masonry"))
+
 check_that("copied-through inputs are not sent for audit",
            all(f.method != "input" for f in auditable_facts(
                graph_with(fact("mpn", "ABC", method="input")))))

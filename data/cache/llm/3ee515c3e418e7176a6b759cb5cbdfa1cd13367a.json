@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Steel",
+   "key": "material",
+   "label": "Material",
+   "uom": "",
+   "value": "Steel"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "12\"",
+   "key": "diameter",
+   "label": "Diameter",
+   "uom": "in",
+   "value": "12"
+  }
+ ]
+}

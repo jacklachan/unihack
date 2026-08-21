@@ -1,0 +1,5875 @@
+{
+  "n_rows": 1000,
+  "elapsed_s": 10.083,
+  "schema": {
+    "roles": {
+      "mpn": "Mfg_Part_Num",
+      "description": "Part_Desc",
+      "brand_e1": "E1_Brand",
+      "brand_unilog": "Unilog_Brand",
+      "brand_dib": "DIB_Brand",
+      "manufacturer": "Part_Manuf"
+    },
+    "unmapped": [],
+    "confidence": {
+      "mpn": 0.98,
+      "description": 0.98,
+      "brand_e1": 0.98,
+      "brand_unilog": 0.98,
+      "brand_dib": 0.98,
+      "manufacturer": 0.98
+    }
+  },
+  "families": 566,
+  "specs": [
+    {
+      "category_id": "UNCLASSIFIED",
+      "label": "UNCLASSIFIED",
+      "n_rows": 252,
+      "coverage": 2.258,
+      "item_types": [
+        [
+          "Lineage",
+          14
+        ],
+        [
+          "Festool",
+          7
+        ],
+        [
+          "Abranet",
+          5
+        ],
+        [
+          "Lowe Arg",
+          4
+        ],
+        [
+          "Smooth",
+          4
+        ],
+        [
+          "Multi",
+          3
+        ],
+        [
+          "Tool",
+          3
+        ],
+        [
+          "Hiolit",
+          2
+        ],
+        [
+          "Threshold",
+          2
+        ],
+        [
+          "Smooth Primed",
+          2
+        ],
+        [
+          "Pan Cedar",
+          2
+        ],
+        [
+          "Oct",
+          2
+        ]
+      ],
+      "title_order": [
+        "wattage",
+        "color_temperature",
+        "base_type"
+      ],
+      "induced_from": [
+        "5B-332-080",
+        "5B-332-120",
+        "9A-570-240",
+        "9A-570-320",
+        "D519127",
+        "WKE100HWA",
+        "05134545001",
+        "LNL65301"
+      ],
+      "attributes": [
+        {
+          "key": "wattage",
+          "label": "Wattage",
+          "uom": "W",
+          "fill_rate": 0.4683,
+          "support": 118,
+          "cardinality": 24,
+          "filterable": true,
+          "discriminative": 0.761,
+          "values": [
+            [
+              "40",
+              30
+            ],
+            [
+              "60",
+              29
+            ],
+            [
+              "75",
+              11
+            ],
+            [
+              "65",
+              7
+            ],
+            [
+              "100",
+              6
+            ],
+            [
+              "25",
+              5
+            ],
+            [
+              "50",
+              4
+            ],
+            [
+              "150",
+              3
+            ],
+            [
+              "7",
+              3
+            ],
+            [
+              "32",
+              2
+            ],
+            [
+              "4",
+              2
+            ],
+            [
+              "8",
+              2
+            ],
+            [
+              "45",
+              2
+            ],
+            [
+              "90",
+              2
+            ],
+            [
+              "2",
+              1
+            ],
+            [
+              "10",
+              1
+            ],
+            [
+              "15",
+              1
+            ],
+            [
+              "22",
+              1
+            ],
+            [
+              "20",
+              1
+            ],
+            [
+              "6",
+              1
+            ],
+            [
+              "12",
+              1
+            ],
+            [
+              "120",
+              1
+            ],
+            [
+              "125",
+              1
+            ],
+            [
+              "250",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-W-01"
+          ]
+        },
+        {
+          "key": "color_temperature",
+          "label": "Color Temperature",
+          "uom": "K",
+          "fill_rate": 0.4405,
+          "support": 111,
+          "cardinality": 9,
+          "filterable": true,
+          "discriminative": 0.576,
+          "values": [
+            [
+              "2700",
+              57
+            ],
+            [
+              "5000",
+              35
+            ],
+            [
+              "3000",
+              8
+            ],
+            [
+              "2000",
+              6
+            ],
+            [
+              "2100",
+              1
+            ],
+            [
+              "2600",
+              1
+            ],
+            [
+              "4000",
+              1
+            ],
+            [
+              "2200",
+              1
+            ],
+            [
+              "5500",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-K-01"
+          ]
+        },
+        {
+          "key": "base_type",
+          "label": "Base Type",
+          "uom": "",
+          "fill_rate": 0.3889,
+          "support": 98,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.6421,
+          "values": [
+            [
+              "Medium Base",
+              82
+            ],
+            [
+              "Candelabra Base",
+              16
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-BAS-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.2857,
+          "support": 72,
+          "cardinality": 7,
+          "filterable": false,
+          "discriminative": 0.6324,
+          "values": [
+            [
+              "2",
+              36
+            ],
+            [
+              "3",
+              21
+            ],
+            [
+              "4",
+              11
+            ],
+            [
+              "500",
+              1
+            ],
+            [
+              "13",
+              1
+            ],
+            [
+              "5",
+              1
+            ],
+            [
+              "15",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Decking>Composite & PVC Decking",
+      "label": "Building Materials>Decking>Composite & PVC Decking",
+      "n_rows": 120,
+      "coverage": 2.083,
+      "item_types": [
+        [
+          "Decking",
+          120
+        ]
+      ],
+      "title_order": [
+        "nominal_size",
+        "length"
+      ],
+      "induced_from": [
+        "ADB15516CS",
+        "ADB15520CS",
+        "ADB15516EW",
+        "ADB15520EW",
+        "ADB15516MH",
+        "ADB15520MH",
+        "ADB15516WT",
+        "ADB15520WT"
+      ],
+      "attributes": [
+        {
+          "key": "nominal_size",
+          "label": "Nominal Size",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 120,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.5436,
+          "values": [
+            [
+              "1 in x 6 in",
+              105
+            ],
+            [
+              "7/8 in x 6 in",
+              15
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-NOM-01"
+          ]
+        },
+        {
+          "key": "length",
+          "label": "Length",
+          "uom": "ft",
+          "fill_rate": 1.0,
+          "support": 120,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.9602,
+          "values": [
+            [
+              "16",
+              48
+            ],
+            [
+              "20",
+              48
+            ],
+            [
+              "12",
+              24
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-LEN-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Cut-Off Wheels",
+      "label": "Tools & Equipment>Power Tool Accessories>Cut-Off Wheels",
+      "n_rows": 35,
+      "coverage": 3.629,
+      "item_types": [
+        [
+          "Cut Off Disc",
+          35
+        ]
+      ],
+      "title_order": [
+        "diameter",
+        "thickness",
+        "arbor_size",
+        "dimensions"
+      ],
+      "induced_from": [
+        "DBD090094101F",
+        "DBDS12125A01F",
+        "DBDS12125G01F",
+        "DBDS14125A01F",
+        "DBDS14125G01F",
+        "49-94-0013",
+        "49-94-0029",
+        "49-94-0033"
+      ],
+      "attributes": [
+        {
+          "key": "diameter",
+          "label": "Diameter",
+          "uom": "in",
+          "fill_rate": 0.8571,
+          "support": 30,
+          "cardinality": 10,
+          "filterable": true,
+          "discriminative": 0.9556,
+          "values": [
+            [
+              "14",
+              5
+            ],
+            [
+              "6",
+              5
+            ],
+            [
+              "7",
+              4
+            ],
+            [
+              "12",
+              4
+            ],
+            [
+              "4-1/2",
+              3
+            ],
+            [
+              "5",
+              2
+            ],
+            [
+              "6-1/2",
+              2
+            ],
+            [
+              "4",
+              2
+            ],
+            [
+              "10",
+              2
+            ],
+            [
+              "9",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "thickness",
+          "label": "Thickness",
+          "uom": "in",
+          "fill_rate": 0.8571,
+          "support": 30,
+          "cardinality": 6,
+          "filterable": true,
+          "discriminative": 0.7874,
+          "values": [
+            [
+              "1/8",
+              13
+            ],
+            [
+              "0.045",
+              9
+            ],
+            [
+              "3/32",
+              3
+            ],
+            [
+              "7/64",
+              3
+            ],
+            [
+              "1/16",
+              1
+            ],
+            [
+              "0.040",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "arbor_size",
+          "label": "Arbor Size",
+          "uom": "in",
+          "fill_rate": 0.8571,
+          "support": 30,
+          "cardinality": 4,
+          "filterable": true,
+          "discriminative": 0.8908,
+          "values": [
+            [
+              "7/8",
+              13
+            ],
+            [
+              "5/8",
+              8
+            ],
+            [
+              "1",
+              7
+            ],
+            [
+              "20",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.9429,
+          "support": 33,
+          "cardinality": 22,
+          "filterable": false,
+          "discriminative": 0.9571,
+          "values": [
+            [
+              "6 in x 0.045 in x 7/8 in",
+              5
+            ],
+            [
+              "5 in x 0.045 in x 7/8 in",
+              2
+            ],
+            [
+              "6-1/2 in x 1/8 in x 5/8 in",
+              2
+            ],
+            [
+              "7 in x 1/8 in x 5/8 in",
+              2
+            ],
+            [
+              "12 in x 1/8 in x 1 in",
+              2
+            ],
+            [
+              "14 in x 7/64 in x 1 in",
+              2
+            ],
+            [
+              "14 in x 1/8 in x 1 in",
+              2
+            ],
+            [
+              "4-1/2 in x 0.045 in x 7/8 in",
+              2
+            ],
+            [
+              "12 in x 20 mm",
+              1
+            ],
+            [
+              "14 in x 1 in",
+              1
+            ],
+            [
+              "14 in x 20 mm",
+              1
+            ],
+            [
+              "7 in x 1/16 in x 7/8 in",
+              1
+            ],
+            [
+              "4 in x 0.040 in x 5/8 in",
+              1
+            ],
+            [
+              "9 in x 3/32 in x 7/8 in",
+              1
+            ],
+            [
+              "12 in x 7/64 in x 1 in",
+              1
+            ],
+            [
+              "12 in x 1/8 in x 20 mm",
+              1
+            ],
+            [
+              "14 in x 1/8 in x 20 mm",
+              1
+            ],
+            [
+              "7 in x 3/32 in x 7/8 in",
+              1
+            ],
+            [
+              "10 in x 3/32 in x 5/8 in",
+              1
+            ],
+            [
+              "4 in x 1/8 in x 5/8 in",
+              1
+            ],
+            [
+              "4-1/2 in x 1/8 in x 7/8 in",
+              1
+            ],
+            [
+              "10 in x 1/8 in x 5/8 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Driver Bits",
+      "label": "Tools & Equipment>Power Tool Accessories>Driver Bits",
+      "n_rows": 32,
+      "coverage": 1.031,
+      "item_types": [
+        [
+          "Drive Bit",
+          11
+        ],
+        [
+          "Torx Drive Bit",
+          10
+        ],
+        [
+          "Bit",
+          7
+        ],
+        [
+          "Square Drive Bit",
+          4
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "QB22RU",
+        "QB22KU",
+        "220USB25U",
+        "220USBP5U",
+        "IBMG90K003",
+        "IBPH250P15T",
+        "DPH12B",
+        "DPH135B"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.8438,
+          "support": 27,
+          "cardinality": 5,
+          "filterable": true,
+          "discriminative": 0.8296,
+          "values": [
+            [
+              "2",
+              13
+            ],
+            [
+              "3-1/2",
+              6
+            ],
+            [
+              "6",
+              4
+            ],
+            [
+              "1",
+              3
+            ],
+            [
+              "3-1/4",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Trim & Moulding>Trim Board",
+      "label": "Building Materials>Trim & Moulding>Trim Board",
+      "n_rows": 30,
+      "coverage": 2.133,
+      "item_types": [
+        [
+          "Fascia",
+          10
+        ],
+        [
+          "Enhance Naturals Fascia",
+          6
+        ],
+        [
+          "Select Fascia",
+          6
+        ],
+        [
+          "Enhance Basics Fascia",
+          4
+        ],
+        [
+          "Post Trim Rdi",
+          4
+        ]
+      ],
+      "title_order": [
+        "nominal_size",
+        "length"
+      ],
+      "induced_from": [
+        "ADR5117512CS",
+        "ADR5117512MH",
+        "ADR5117512WT",
+        "ADR5117512AW",
+        "ADR5117512CG",
+        "ADR5117512FW",
+        "1508395",
+        "1508396"
+      ],
+      "attributes": [
+        {
+          "key": "nominal_size",
+          "label": "Nominal Size",
+          "uom": "",
+          "fill_rate": 0.8667,
+          "support": 26,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9612,
+          "values": [
+            [
+              "1 in x 12 in",
+              16
+            ],
+            [
+              "1 in x 8 in",
+              10
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-NOM-01"
+          ]
+        },
+        {
+          "key": "length",
+          "label": "Length",
+          "uom": "ft",
+          "fill_rate": 0.8667,
+          "support": 26,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "12",
+              26
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-LEN-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 6,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "White",
+              4
+            ],
+            [
+              "Slate",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Decking>Railing Systems",
+      "label": "Building Materials>Decking>Railing Systems",
+      "n_rows": 23,
+      "coverage": 1.913,
+      "item_types": [
+        [
+          "Rd Aluminum Balusters",
+          6
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Composite Balusters",
+          4
+        ],
+        [
+          "Black Aluminum Baluster",
+          4
+        ],
+        [
+          "Railing",
+          2
+        ],
+        [
+          "Baluster",
+          1
+        ],
+        [
+          "Rail Trex",
+          1
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "543302126",
+        "543302146",
+        "73019603",
+        "73019652",
+        "73019517",
+        "73019602",
+        "73019651",
+        "73019516"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 0.8261,
+          "support": 19,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.8694,
+          "values": [
+            [
+              "8",
+              9
+            ],
+            [
+              "6",
+              8
+            ],
+            [
+              "10",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 23,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9877,
+          "values": [
+            [
+              "Black",
+              13
+            ],
+            [
+              "White",
+              10
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Saw Blades",
+      "label": "Tools & Equipment>Power Tool Accessories>Saw Blades",
+      "n_rows": 23,
+      "coverage": 0.783,
+      "item_types": [
+        [
+          "Saw Blade",
+          13
+        ],
+        [
+          "Diamond Tile Blade",
+          5
+        ],
+        [
+          "Blade",
+          4
+        ],
+        [
+          "Tile Blade",
+          1
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "VN56920",
+        "48-44-2770",
+        "D0860X",
+        "48-40-0740",
+        "48-41-0740",
+        "A-96095",
+        "D0760UX",
+        "D0708LF"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6087,
+          "support": 14,
+          "cardinality": 12,
+          "filterable": false,
+          "discriminative": 0.9823,
+          "values": [
+            [
+              "7-1/4",
+              2
+            ],
+            [
+              "10",
+              2
+            ],
+            [
+              "1/2",
+              1
+            ],
+            [
+              "8-1/4",
+              1
+            ],
+            [
+              "5-7/8",
+              1
+            ],
+            [
+              "14",
+              1
+            ],
+            [
+              "4-1/2",
+              1
+            ],
+            [
+              "7",
+              1
+            ],
+            [
+              "4",
+              1
+            ],
+            [
+              "5",
+              1
+            ],
+            [
+              "3-3/5",
+              1
+            ],
+            [
+              "6-1/2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Light Fixtures",
+      "label": "Electrical>Lighting & Bulbs>Light Fixtures",
+      "n_rows": 18,
+      "coverage": 1.056,
+      "item_types": [
+        [
+          "Light",
+          10
+        ],
+        [
+          "Down Light",
+          6
+        ],
+        [
+          "LED Wrap Light",
+          2
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "65-1222",
+        "65-1224",
+        "43671BKCLR",
+        "65-771R3",
+        "603571",
+        "S11606",
+        "S11828",
+        "S11848"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 0.6667,
+          "support": 12,
+          "cardinality": 8,
+          "filterable": false,
+          "discriminative": 0.9172,
+          "values": [
+            [
+              "4",
+              4
+            ],
+            [
+              "8",
+              2
+            ],
+            [
+              "1",
+              1
+            ],
+            [
+              "3",
+              1
+            ],
+            [
+              "10",
+              1
+            ],
+            [
+              "12",
+              1
+            ],
+            [
+              "6",
+              1
+            ],
+            [
+              "2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Wall Lighting",
+      "label": "Electrical>Lighting & Bulbs>Wall Lighting",
+      "n_rows": 17,
+      "coverage": 0.059,
+      "item_types": [
+        [
+          "Wall Light",
+          16
+        ],
+        [
+          "Wall Sconce",
+          1
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "45297BK",
+        "45573BK",
+        "45973BK",
+        "55155BK",
+        "55157CPZ",
+        "55184BK",
+        "55185BK",
+        "55186CH"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Small Appliances>Countertop Appliances",
+      "label": "Appliances & Consumer Electronics>Small Appliances>Countertop Appliances",
+      "n_rows": 16,
+      "coverage": 0.5,
+      "item_types": [
+        [
+          "Coffee Maker",
+          5
+        ],
+        [
+          "Beverage Center",
+          3
+        ],
+        [
+          "Auto Espresso Machine",
+          2
+        ],
+        [
+          "Caf Toaster",
+          2
+        ],
+        [
+          "Caf Espresso",
+          1
+        ],
+        [
+          "Espresso Machine",
+          1
+        ],
+        [
+          "Cafe Espresso",
+          1
+        ],
+        [
+          "Cafe Toaster",
+          1
+        ]
+      ],
+      "title_order": [
+        "finish"
+      ],
+      "induced_from": [
+        "XOU2470BCGS",
+        "XOU24BCGSR",
+        "XOU24WDZGBR",
+        "C7CDAAS3PD3",
+        "C7CDAAS4PW3",
+        "C7CDABS2RS3",
+        "C7CDABS3RD3",
+        "C7CDABS4RW3"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.5,
+          "support": 8,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.8194,
+          "values": [
+            [
+              "Stainless Steel",
+              5
+            ],
+            [
+              "White",
+              2
+            ],
+            [
+              "Black",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Ranges",
+      "label": "Appliances & Consumer Electronics>Kitchen Appliances>Ranges",
+      "n_rows": 16,
+      "coverage": 1.75,
+      "item_types": [
+        [
+          "Range",
+          12
+        ],
+        [
+          "Cooktop",
+          2
+        ],
+        [
+          "Wall Oven",
+          1
+        ],
+        [
+          "Toast Oven",
+          1
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish",
+        "display_only"
+      ],
+      "induced_from": [
+        "WOSP30100SS",
+        "PEP9030DTBB",
+        "CES700P3MD1",
+        "PS960YPFS",
+        "PB900YVFS",
+        "PCFE3080AF",
+        "SLER30524SS",
+        "LSEL6333ZE"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6875,
+          "support": 11,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.4395,
+          "values": [
+            [
+              "30",
+              10
+            ],
+            [
+              "36",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.75,
+          "support": 12,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "Stainless Steel",
+              8
+            ],
+            [
+              "Black",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        },
+        {
+          "key": "display_only",
+          "label": "Display Only",
+          "uom": "",
+          "fill_rate": 0.3125,
+          "support": 5,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Yes",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "MRC-DSP-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Pendant Lighting",
+      "label": "Electrical>Lighting & Bulbs>Pendant Lighting",
+      "n_rows": 15,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Pendant Light",
+          15
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "43913BK",
+        "52476AVI",
+        "42199BK",
+        "42199BKCS",
+        "42200BK",
+        "42200BKCS",
+        "43851BK",
+        "43852BK"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Safety>Personal Protective Equipment>Hand Protection",
+      "label": "Safety>Personal Protective Equipment>Hand Protection",
+      "n_rows": 15,
+      "coverage": 1.0,
+      "item_types": [
+        [
+          "Heated Glove",
+          6
+        ],
+        [
+          "Snow Heated Glove",
+          5
+        ],
+        [
+          "Work Glove Liners",
+          4
+        ]
+      ],
+      "title_order": [
+        "finish"
+      ],
+      "induced_from": [
+        "M701B-21L",
+        "M701B-21M",
+        "M701B-21S",
+        "M701B-21XL",
+        "MWUG42010124",
+        "MWUG42010224",
+        "MWUG42010324",
+        "MWUG42010424"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 15,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Black",
+              15
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Impact Drivers & Wrenches",
+      "label": "Tools & Equipment>Power Tools>Impact Drivers & Wrenches",
+      "n_rows": 15,
+      "coverage": 2.133,
+      "item_types": [
+        [
+          "Impact Driver",
+          5
+        ],
+        [
+          "Impact Wrench",
+          5
+        ],
+        [
+          "Angle Impact",
+          3
+        ],
+        [
+          "Bare Tool",
+          1
+        ],
+        [
+          "Impact",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "voltage",
+        "size"
+      ],
+      "induced_from": [
+        "DCF860B",
+        "49-66-4567",
+        "DCF809D1",
+        "3450-20",
+        "KPTDV025A",
+        "3048-20",
+        "3049-20",
+        "2563-20"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.6,
+          "support": 9,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.8528,
+          "values": [
+            [
+              "M12",
+              5
+            ],
+            [
+              "18V",
+              3
+            ],
+            [
+              "ATOMIC",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.6,
+          "support": 9,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "20",
+              6
+            ],
+            [
+              "18",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.7333,
+          "support": 11,
+          "cardinality": 5,
+          "filterable": true,
+          "discriminative": 0.9122,
+          "values": [
+            [
+              "1/2",
+              4
+            ],
+            [
+              "1/4",
+              3
+            ],
+            [
+              "3/8",
+              2
+            ],
+            [
+              "6",
+              1
+            ],
+            [
+              "3/4",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Chandeliers",
+      "label": "Electrical>Lighting & Bulbs>Chandeliers",
+      "n_rows": 14,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Chandelier",
+          14
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "44072DBK",
+        "44073NI",
+        "52033BK",
+        "84322WH",
+        "52404BK",
+        "34686A",
+        "34687A",
+        "34688A"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Laundry Appliances>Dryers",
+      "label": "Appliances & Consumer Electronics>Laundry Appliances>Dryers",
+      "n_rows": 13,
+      "coverage": 0.923,
+      "item_types": [
+        [
+          "Dryer",
+          13
+        ]
+      ],
+      "title_order": [
+        "finish"
+      ],
+      "induced_from": [
+        "DF7004WE",
+        "DR7004BE",
+        "DV2000WE",
+        "DC5004WE",
+        "DC5004BE",
+        "PTD70GBPTDG",
+        "PTD70GBSTWS",
+        "DR5004WG"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.9231,
+          "support": 12,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "White",
+              8
+            ],
+            [
+              "Black",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Ceiling Lighting",
+      "label": "Electrical>Lighting & Bulbs>Ceiling Lighting",
+      "n_rows": 13,
+      "coverage": 1.0,
+      "item_types": [
+        [
+          "Ceiling Light",
+          13
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "42955BK",
+        "42275BK",
+        "62-1850",
+        "62-1852",
+        "62-1875",
+        "62-1876",
+        "42296BK",
+        "43849WH5CCT"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6154,
+          "support": 8,
+          "cardinality": 6,
+          "filterable": false,
+          "discriminative": 0.9671,
+          "values": [
+            [
+              "15",
+              2
+            ],
+            [
+              "19",
+              2
+            ],
+            [
+              "11",
+              1
+            ],
+            [
+              "14",
+              1
+            ],
+            [
+              "10",
+              1
+            ],
+            [
+              "13",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.3077,
+          "support": 4,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "White",
+              2
+            ],
+            [
+              "Black",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Structural>Columns & Posts",
+      "label": "Building Materials>Structural>Columns & Posts",
+      "n_rows": 12,
+      "coverage": 1.833,
+      "item_types": [
+        [
+          "Post Sleeve Rdi",
+          4
+        ],
+        [
+          "Aluminum Post Wrap",
+          3
+        ],
+        [
+          "Rdi",
+          2
+        ],
+        [
+          "Support Post",
+          2
+        ],
+        [
+          "Post Wrap",
+          1
+        ]
+      ],
+      "title_order": [
+        "dimensions",
+        "finish"
+      ],
+      "induced_from": [
+        "73018076",
+        "61109087",
+        "73018731",
+        "61109090",
+        "73053603",
+        "73053608",
+        "73272TBK",
+        "SPB-44BPL"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.9167,
+          "support": 11,
+          "cardinality": 7,
+          "filterable": false,
+          "discriminative": 0.9084,
+          "values": [
+            [
+              "4 in x 4 in",
+              4
+            ],
+            [
+              "6 in x 6 in",
+              2
+            ],
+            [
+              "4 in x 4 in x 37 in",
+              1
+            ],
+            [
+              "4 in x 4 in x 120 in",
+              1
+            ],
+            [
+              "4 in x 8 ft",
+              1
+            ],
+            [
+              "6 in x 8 ft",
+              1
+            ],
+            [
+              "6 in x 10 ft",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.75,
+          "support": 9,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9911,
+          "values": [
+            [
+              "White",
+              5
+            ],
+            [
+              "Black",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Fences & Guides",
+      "label": "Tools & Equipment>Power Tool Accessories>Fences & Guides",
+      "n_rows": 11,
+      "coverage": 0.545,
+      "item_types": [
+        [
+          "Fence",
+          9
+        ],
+        [
+          "Henry Eaveguard",
+          1
+        ],
+        [
+          "Mat",
+          1
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "2733",
+        "7547",
+        "XT524",
+        "XT536",
+        "XT546",
+        "XTP235",
+        "TGP2-FA",
+        "ATGI-FA"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.4545,
+          "support": 5,
+          "cardinality": 5,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "24",
+              1
+            ],
+            [
+              "36",
+              1
+            ],
+            [
+              "46",
+              1
+            ],
+            [
+              "35",
+              1
+            ],
+            [
+              "42",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Structural Panels>Sheathing",
+      "label": "Building Materials>Structural Panels>Sheathing",
+      "n_rows": 11,
+      "coverage": 1.091,
+      "item_types": [
+        [
+          "Insulated R Sheathing",
+          3
+        ],
+        [
+          "Line Brd Orange",
+          3
+        ],
+        [
+          "Mason Line",
+          3
+        ],
+        [
+          "Yellw",
+          1
+        ],
+        [
+          "Pink",
+          1
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "1506969",
+        "1514681",
+        "1514726",
+        "25459",
+        "35459",
+        "25759",
+        "25168",
+        "35468"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.2727,
+          "support": 3,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "4 in x 8 in",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 0.7273,
+          "support": 8,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.8194,
+          "values": [
+            [
+              "500",
+              5
+            ],
+            [
+              "1000",
+              2
+            ],
+            [
+              "250",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Wire & Cable>Building Wire",
+      "label": "Electrical>Wire & Cable>Building Wire",
+      "n_rows": 11,
+      "coverage": 1.364,
+      "item_types": [
+        [
+          "Cord",
+          5
+        ],
+        [
+          "Wire",
+          5
+        ],
+        [
+          "Cable",
+          1
+        ]
+      ],
+      "title_order": [
+        "selling_uom"
+      ],
+      "induced_from": [
+        "13093005",
+        "12-4 SO",
+        "96263-46-06",
+        "R50003-ID",
+        "10-4 SO",
+        "23346-0408",
+        "2/2/4 UD ALUM",
+        "55418901"
+      ],
+      "attributes": [
+        {
+          "key": "selling_uom",
+          "label": "Selling UOM",
+          "uom": "",
+          "fill_rate": 0.6364,
+          "support": 7,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "FT",
+              7
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-LF-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Saws",
+      "label": "Tools & Equipment>Power Tools>Saws",
+      "n_rows": 11,
+      "coverage": 1.727,
+      "item_types": [
+        [
+          "Saw",
+          3
+        ],
+        [
+          "Circ Saw",
+          2
+        ],
+        [
+          "Ionic Circ Saw",
+          2
+        ],
+        [
+          "Circular Saw",
+          1
+        ],
+        [
+          "Jig Saw",
+          1
+        ],
+        [
+          "Grip Jigsaw",
+          1
+        ],
+        [
+          "Bare Tool",
+          1
+        ]
+      ],
+      "title_order": [
+        "voltage",
+        "size"
+      ],
+      "induced_from": [
+        "2834-21HD",
+        "DCS383B",
+        "DCS590B",
+        "KPTCS725A",
+        "KPTCS450A",
+        "2545-20",
+        "KPTJS100A",
+        "DCS384B"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.2727,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "M18",
+              1
+            ],
+            [
+              "M12",
+              1
+            ],
+            [
+              "18V",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.7273,
+          "support": 8,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.5436,
+          "values": [
+            [
+              "20",
+              7
+            ],
+            [
+              "18",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.5455,
+          "support": 6,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.7897,
+          "values": [
+            [
+              "7-1/4",
+              4
+            ],
+            [
+              "4-1/2",
+              1
+            ],
+            [
+              "6-1/2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Abrasives>Sanding Discs",
+      "label": "Tools & Equipment>Abrasives>Sanding Discs",
+      "n_rows": 10,
+      "coverage": 4.0,
+      "item_types": [
+        [
+          "Stikit Film",
+          6
+        ],
+        [
+          "And Grind Disc",
+          3
+        ],
+        [
+          "Grind Disc",
+          1
+        ]
+      ],
+      "title_order": [
+        "lumens",
+        "grit",
+        "diameter",
+        "thickness",
+        "arbor_size",
+        "dimensions",
+        "selling_qty",
+        "selling_uom"
+      ],
+      "induced_from": [
+        "3MABR-7100075678",
+        "3MABR-7100045865",
+        "3MABR-7100048736",
+        "3MABR-7100075690",
+        "3MABR-7100075692",
+        "3MABR-7100145365",
+        "49-94-0803",
+        "49-94-0903"
+      ],
+      "attributes": [
+        {
+          "key": "lumens",
+          "label": "Light Output",
+          "uom": "lm",
+          "fill_rate": 0.6,
+          "support": 6,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "775",
+              6
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-LM-01"
+          ]
+        },
+        {
+          "key": "grit",
+          "label": "Grit",
+          "uom": "",
+          "fill_rate": 0.6,
+          "support": 6,
+          "cardinality": 6,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "150",
+              1
+            ],
+            [
+              "120",
+              1
+            ],
+            [
+              "80",
+              1
+            ],
+            [
+              "180",
+              1
+            ],
+            [
+              "220",
+              1
+            ],
+            [
+              "320",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ABR-GRT-01"
+          ]
+        },
+        {
+          "key": "diameter",
+          "label": "Diameter",
+          "uom": "in",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.8113,
+          "values": [
+            [
+              "4-1/2",
+              3
+            ],
+            [
+              "6",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "thickness",
+          "label": "Thickness",
+          "uom": "in",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "1/8",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "arbor_size",
+          "label": "Arbor Size",
+          "uom": "in",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.8113,
+          "values": [
+            [
+              "7/8",
+              3
+            ],
+            [
+              "5/8",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9464,
+          "values": [
+            [
+              "4-1/2 in x 1/8 in x 7/8 in",
+              2
+            ],
+            [
+              "4-1/2 in x 1/8 in x 5/8 in",
+              1
+            ],
+            [
+              "6 in x 1/8 in x 7/8 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "selling_qty",
+          "label": "Selling Qty",
+          "uom": "",
+          "fill_rate": 0.6,
+          "support": 6,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "50",
+              6
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-QTY-01"
+          ]
+        },
+        {
+          "key": "selling_uom",
+          "label": "Selling UOM",
+          "uom": "",
+          "fill_rate": 0.6,
+          "support": 6,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "BOX",
+              6
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-UOM-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Built-In Dishwashers",
+      "label": "Appliances & Consumer Electronics>Kitchen Appliances>Built-In Dishwashers",
+      "n_rows": 10,
+      "coverage": 1.3,
+      "item_types": [
+        [
+          "Dishwasher",
+          10
+        ]
+      ],
+      "title_order": [
+        "finish",
+        "display_only"
+      ],
+      "induced_from": [
+        "KDFM404KPS",
+        "PDSH4816AF",
+        "PDT715SYVFS",
+        "LDPH5554D",
+        "WDTS7024RZ",
+        "PDD415PYYFS",
+        "KDTS424SBE",
+        "KDTS324SPS"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.9,
+          "support": 9,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.7725,
+          "values": [
+            [
+              "Stainless Steel",
+              6
+            ],
+            [
+              "Black",
+              2
+            ],
+            [
+              "Black Stainless Steel",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        },
+        {
+          "key": "display_only",
+          "label": "Display Only",
+          "uom": "",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Yes",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "MRC-DSP-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Hand Tools>Layout & Measuring Tools",
+      "label": "Tools & Equipment>Hand Tools>Layout & Measuring Tools",
+      "n_rows": 10,
+      "coverage": 0.5,
+      "item_types": [
+        [
+          "Cross Line",
+          5
+        ],
+        [
+          "Square",
+          2
+        ],
+        [
+          "Dewalt Laser",
+          1
+        ],
+        [
+          "Line Laser",
+          1
+        ],
+        [
+          "Rafter",
+          1
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "52151-S-UPC",
+        "40025",
+        "DW08302CG",
+        "GCL165-42GL",
+        "DW08802CG",
+        "DW088CG",
+        "DCLE34520GB",
+        "DCLE34031B"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.2,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "20",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Refrigerators",
+      "label": "Appliances & Consumer Electronics>Kitchen Appliances>Refrigerators",
+      "n_rows": 10,
+      "coverage": 1.2,
+      "item_types": [
+        [
+          "Refrigerator",
+          10
+        ]
+      ],
+      "title_order": [
+        "finish"
+      ],
+      "induced_from": [
+        "GDE21EMKES",
+        "GNE27JYMFS",
+        "CVE28DP3ND1",
+        "GNE25JMKES",
+        "PRFS2883AF",
+        "PAD28BYTFS",
+        "PGE29BYTFS",
+        "ERFD19CGCS"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.9,
+          "support": 9,
+          "cardinality": 4,
+          "filterable": true,
+          "discriminative": 0.7233,
+          "values": [
+            [
+              "Stainless Steel",
+              6
+            ],
+            [
+              "Black",
+              1
+            ],
+            [
+              "Slate",
+              1
+            ],
+            [
+              "White",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        },
+        {
+          "key": "display_only",
+          "label": "Display Only",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Yes",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "MRC-DSP-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Safety>Personal Protective Equipment>Eye & Ear Protection",
+      "label": "Safety>Personal Protective Equipment>Eye & Ear Protection",
+      "n_rows": 10,
+      "coverage": 0.8,
+      "item_types": [
+        [
+          "Safety Glasses",
+          9
+        ],
+        [
+          "Hearing Protector",
+          1
+        ]
+      ],
+      "title_order": [
+        "finish"
+      ],
+      "induced_from": [
+        "XPAP418",
+        "XDAP419",
+        "XB11PCVS",
+        "KB121VS",
+        "KB126VS",
+        "TC121VS",
+        "TC126VS",
+        "MK113MPAP"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.8,
+          "support": 8,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Black",
+              8
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Nailers",
+      "label": "Tools & Equipment>Power Tools>Nailers",
+      "n_rows": 10,
+      "coverage": 2.3,
+      "item_types": [
+        [
+          "Nailer",
+          3
+        ],
+        [
+          "Brad Nailer",
+          3
+        ],
+        [
+          "Framing Nailer",
+          2
+        ],
+        [
+          "Finish Nailer",
+          2
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "voltage",
+        "gauge",
+        "size",
+        "includes_battery"
+      ],
+      "induced_from": [
+        "2909-20",
+        "2909-21",
+        "918200",
+        "2541-20",
+        "DCN930B",
+        "DCN930P1",
+        "XNB04Z",
+        "XNB05Z"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.7,
+          "support": 7,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.8699,
+          "values": [
+            [
+              "18V",
+              4
+            ],
+            [
+              "M18",
+              2
+            ],
+            [
+              "M12",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.6,
+          "support": 6,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "18",
+              4
+            ],
+            [
+              "20",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "gauge",
+          "label": "Gauge",
+          "uom": "GA",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "18",
+              2
+            ],
+            [
+              "16",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-GA-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.3,
+          "support": 3,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "2-1/2",
+              2
+            ],
+            [
+              "2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.3,
+          "support": 3,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Fans & Ventilation>Ceiling Fans",
+      "label": "Electrical>Fans & Ventilation>Ceiling Fans",
+      "n_rows": 9,
+      "coverage": 1.333,
+      "item_types": [
+        [
+          "Fan",
+          5
+        ],
+        [
+          "Mb Anisten Fan",
+          2
+        ],
+        [
+          "Anisten Fan",
+          2
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "51334",
+        "59210",
+        "52485",
+        "52486",
+        "52487",
+        "52488",
+        "52655",
+        "59261"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 1.0,
+          "support": 9,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "52",
+              6
+            ],
+            [
+              "44",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.3333,
+          "support": 3,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "White",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Drills",
+      "label": "Tools & Equipment>Power Tools>Drills",
+      "n_rows": 9,
+      "coverage": 0.778,
+      "item_types": [
+        [
+          "Drill",
+          7
+        ],
+        [
+          "Hammer Drill",
+          2
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "55227",
+        "D25333K",
+        "DCD803B",
+        "3401-20",
+        "KPTDR050A",
+        "DCD1007B",
+        "DCD799B",
+        "58006"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.2222,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "20",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.2222,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "1/8",
+              1
+            ],
+            [
+              "1/2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.2222,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Stationary Power Tools>Woodworking Machinery",
+      "label": "Tools & Equipment>Stationary Power Tools>Woodworking Machinery",
+      "n_rows": 9,
+      "coverage": 2.556,
+      "item_types": [
+        [
+          "Planer",
+          7
+        ],
+        [
+          "Shaper Spindle",
+          1
+        ],
+        [
+          "Jointer",
+          1
+        ]
+      ],
+      "title_order": [
+        "voltage",
+        "horsepower",
+        "phase",
+        "size"
+      ],
+      "induced_from": [
+        "790.82",
+        "794.321",
+        "10047VS",
+        "4225.201",
+        "KC-426C",
+        "10045.201",
+        "10014.201",
+        "4430.201"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.5556,
+          "support": 5,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.865,
+          "values": [
+            [
+              "230",
+              3
+            ],
+            [
+              "115",
+              1
+            ],
+            [
+              "220",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "horsepower",
+          "label": "Horsepower",
+          "uom": "HP",
+          "fill_rate": 0.5556,
+          "support": 5,
+          "cardinality": 4,
+          "filterable": false,
+          "discriminative": 0.961,
+          "values": [
+            [
+              "3",
+              2
+            ],
+            [
+              "2",
+              1
+            ],
+            [
+              "5",
+              1
+            ],
+            [
+              "2.5",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-HP-01"
+          ]
+        },
+        {
+          "key": "phase",
+          "label": "Phase",
+          "uom": "PH",
+          "fill_rate": 0.5556,
+          "support": 5,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "1",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-PH-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6667,
+          "support": 6,
+          "cardinality": 5,
+          "filterable": false,
+          "discriminative": 0.9697,
+          "values": [
+            [
+              "15",
+              2
+            ],
+            [
+              "6",
+              1
+            ],
+            [
+              "12",
+              1
+            ],
+            [
+              "13",
+              1
+            ],
+            [
+              "20",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.2222,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "2",
+              1
+            ],
+            [
+              "3",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Laundry Appliances>Washers",
+      "label": "Appliances & Consumer Electronics>Laundry Appliances>Washers",
+      "n_rows": 8,
+      "coverage": 0.875,
+      "item_types": [
+        [
+          "Washer",
+          8
+        ]
+      ],
+      "title_order": [
+        "finish"
+      ],
+      "induced_from": [
+        "FF7011WN",
+        "PTW705BSTWS",
+        "MVWP586GW",
+        "TV2000WN",
+        "TC5003BN",
+        "TR7006WN",
+        "TR7006BN",
+        "TR5006WN"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.875,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.8631,
+          "values": [
+            [
+              "White",
+              5
+            ],
+            [
+              "Black",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Roofing>Metal Roofing Panels",
+      "label": "Building Materials>Roofing>Metal Roofing Panels",
+      "n_rows": 8,
+      "coverage": 1.625,
+      "item_types": [
+        [
+          "Premier Rib",
+          5
+        ],
+        [
+          "Rib Xl Charcoal",
+          3
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "PP-8BL",
+        "PP-10BL",
+        "PP-12BL",
+        "PP-8CH",
+        "PP-10CH",
+        "PP-12CH",
+        "PP-8WH",
+        "PP-10WH"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 1.0,
+          "support": 8,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.9851,
+          "values": [
+            [
+              "8",
+              3
+            ],
+            [
+              "10",
+              3
+            ],
+            [
+              "12",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.625,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.971,
+          "values": [
+            [
+              "Black",
+              3
+            ],
+            [
+              "White",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Batteries",
+      "label": "Tools & Equipment>Power Tool Accessories>Batteries",
+      "n_rows": 8,
+      "coverage": 1.375,
+      "item_types": [
+        [
+          "Battery Max Powerpack",
+          2
+        ],
+        [
+          "Kreg",
+          2
+        ],
+        [
+          "Dewalt",
+          1
+        ],
+        [
+          "Lithium",
+          1
+        ],
+        [
+          "Two",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "voltage"
+      ],
+      "induced_from": [
+        "402-R",
+        "BM-DW20-YLW-6",
+        "DCB2108",
+        "DCB2108-2",
+        "VB0212",
+        "BATT4A",
+        "BATT2A",
+        "48-11-2422"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.5,
+          "support": 4,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9464,
+          "values": [
+            [
+              "XR",
+              2
+            ],
+            [
+              "18V",
+              1
+            ],
+            [
+              "M12",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.625,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.7219,
+          "values": [
+            [
+              "20",
+              4
+            ],
+            [
+              "18",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "6",
+              1
+            ],
+            [
+              "2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Wiring Devices>Wall Plates",
+      "label": "Electrical>Wiring Devices>Wall Plates",
+      "n_rows": 8,
+      "coverage": 1.0,
+      "item_types": [
+        [
+          "Box Cover",
+          6
+        ],
+        [
+          "Cover",
+          2
+        ]
+      ],
+      "title_order": [
+        "dimensions"
+      ],
+      "induced_from": [
+        "G1941-UPC",
+        "G1950-UPC",
+        "A410RCAR",
+        "G1951-UPC",
+        "52C3-5/8-UPC",
+        "52C14-5/8-UPC",
+        "52C3-UPC",
+        "WC1V12W-SG-UPC"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.75,
+          "support": 6,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "4 in x 4 in",
+              6
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Microwave Ovens",
+      "label": "Appliances & Consumer Electronics>Kitchen Appliances>Microwave Ovens",
+      "n_rows": 8,
+      "coverage": 1.375,
+      "item_types": [
+        [
+          "Microwave",
+          8
+        ]
+      ],
+      "title_order": [
+        "finish",
+        "display_only"
+      ],
+      "induced_from": [
+        "MSER2090S",
+        "GCST16S1WSS",
+        "PCWK15C1WSS",
+        "SMC2266KS",
+        "SMD2479JS",
+        "CVM517P3RD1",
+        "PMOS1980AF",
+        "KMMF530PBE"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.875,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.8631,
+          "values": [
+            [
+              "Stainless Steel",
+              5
+            ],
+            [
+              "Black",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        },
+        {
+          "key": "display_only",
+          "label": "Display Only",
+          "uom": "",
+          "fill_rate": 0.5,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Yes",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "MRC-DSP-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Dust Management>Vacuums & Extractors",
+      "label": "Tools & Equipment>Dust Management>Vacuums & Extractors",
+      "n_rows": 8,
+      "coverage": 0.875,
+      "item_types": [
+        [
+          "Dust Extractor",
+          3
+        ],
+        [
+          "Hepa",
+          2
+        ],
+        [
+          "Vacuum",
+          1
+        ],
+        [
+          "Precision Blower",
+          1
+        ],
+        [
+          "Blower",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform"
+      ],
+      "induced_from": [
+        "XLC10ZW",
+        "0887-20",
+        "DCBL724B",
+        "578512",
+        "577871",
+        "577874",
+        "577876",
+        "578441"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.375,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "18V",
+              1
+            ],
+            [
+              "M18",
+              1
+            ],
+            [
+              "20V MAX",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.25,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "18",
+              1
+            ],
+            [
+              "20",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Safety>Workwear>Jackets & Hoodies",
+      "label": "Safety>Workwear>Jackets & Hoodies",
+      "n_rows": 8,
+      "coverage": 1.625,
+      "item_types": [
+        [
+          "Milwaukee",
+          3
+        ],
+        [
+          "Milwaukee Gray",
+          3
+        ],
+        [
+          "Milwaukee Womens",
+          2
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "finish"
+      ],
+      "induced_from": [
+        "F200B-21L",
+        "F200B-21M",
+        "M200B-21L",
+        "M200B-21M",
+        "M200B-21XL",
+        "M200G-21L",
+        "M200G-21M",
+        "M200G-21XL"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 8,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "M12",
+              8
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.625,
+          "support": 5,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Black",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Sanders",
+      "label": "Tools & Equipment>Power Tools>Sanders",
+      "n_rows": 8,
+      "coverage": 1.25,
+      "item_types": [
+        [
+          "Sander",
+          5
+        ],
+        [
+          "Orbit Sander",
+          1
+        ],
+        [
+          "Random Orbit Sander",
+          1
+        ],
+        [
+          "Spindle Sander",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "size"
+      ],
+      "induced_from": [
+        "MID6630201US",
+        "XVP01Z",
+        "2535-20",
+        "2837-20",
+        "577728",
+        "577738",
+        "KPTRS500A",
+        "T27417"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.375,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "18V",
+              1
+            ],
+            [
+              "M12",
+              1
+            ],
+            [
+              "M18",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.25,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "18",
+              1
+            ],
+            [
+              "20",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.5,
+          "support": 4,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "3",
+              2
+            ],
+            [
+              "5",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
+      "label": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
+      "n_rows": 8,
+      "coverage": 1.25,
+      "item_types": [
+        [
+          "Hex Socket Adapter",
+          3
+        ],
+        [
+          "Milwaukee Packout",
+          3
+        ],
+        [
+          "Dewalt Drive",
+          2
+        ]
+      ],
+      "title_order": [
+        "size",
+        "pack_quantity"
+      ],
+      "induced_from": [
+        "DSA0250B",
+        "DSA0375B",
+        "DSA0500B",
+        "DWMT45422",
+        "DWMT45424",
+        "48-22-9483",
+        "48-22-9484",
+        "48-22-9485"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.625,
+          "support": 5,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9602,
+          "values": [
+            [
+              "1/4",
+              2
+            ],
+            [
+              "3/8",
+              2
+            ],
+            [
+              "1/2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.625,
+          "support": 5,
+          "cardinality": 4,
+          "filterable": false,
+          "discriminative": 0.961,
+          "values": [
+            [
+              "15",
+              2
+            ],
+            [
+              "50",
+              1
+            ],
+            [
+              "84",
+              1
+            ],
+            [
+              "30",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Grinding Wheels",
+      "label": "Tools & Equipment>Power Tool Accessories>Grinding Wheels",
+      "n_rows": 7,
+      "coverage": 4.0,
+      "item_types": [
+        [
+          "Grinding Wheel",
+          7
+        ]
+      ],
+      "title_order": [
+        "diameter",
+        "thickness",
+        "arbor_size",
+        "dimensions"
+      ],
+      "induced_from": [
+        "49-94-0501",
+        "49-94-0503",
+        "49-94-0523",
+        "49-94-1955",
+        "49-94-1965",
+        "49-94-0513",
+        "49-94-0533"
+      ],
+      "attributes": [
+        {
+          "key": "diameter",
+          "label": "Diameter",
+          "uom": "in",
+          "fill_rate": 1.0,
+          "support": 7,
+          "cardinality": 5,
+          "filterable": false,
+          "discriminative": 0.963,
+          "values": [
+            [
+              "4-1/2",
+              2
+            ],
+            [
+              "7",
+              2
+            ],
+            [
+              "4",
+              1
+            ],
+            [
+              "6",
+              1
+            ],
+            [
+              "5",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "thickness",
+          "label": "Thickness",
+          "uom": "in",
+          "fill_rate": 1.0,
+          "support": 7,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "1/4",
+              7
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "arbor_size",
+          "label": "Arbor Size",
+          "uom": "in",
+          "fill_rate": 1.0,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.5917,
+          "values": [
+            [
+              "7/8",
+              6
+            ],
+            [
+              "5/8",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-02"
+          ]
+        },
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 7,
+          "cardinality": 5,
+          "filterable": false,
+          "discriminative": 0.963,
+          "values": [
+            [
+              "4-1/2 in x 1/4 in x 7/8 in",
+              2
+            ],
+            [
+              "7 in x 1/4 in x 7/8 in",
+              2
+            ],
+            [
+              "4 in x 1/4 in x 5/8 in",
+              1
+            ],
+            [
+              "6 in x 1/4 in x 7/8 in",
+              1
+            ],
+            [
+              "5 in x 1/4 in x 7/8 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Wiring Devices>Lighting Controls",
+      "label": "Electrical>Wiring Devices>Lighting Controls",
+      "n_rows": 7,
+      "coverage": 0.857,
+      "item_types": [
+        [
+          "Timer",
+          4
+        ],
+        [
+          "Lutron Dimmer",
+          2
+        ],
+        [
+          "Dimmer",
+          1
+        ]
+      ],
+      "title_order": [
+        "voltage"
+      ],
+      "induced_from": [
+        "AYCL-153PH-LA",
+        "AYCL-153PH-WH",
+        "D23LP-R02-1RW",
+        "TNOCD002",
+        "TNDHD002",
+        "TNIDP12",
+        "TNIW24"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.5714,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "125",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.2857,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "White",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Wiring Devices>Receptacles",
+      "label": "Electrical>Wiring Devices>Receptacles",
+      "n_rows": 7,
+      "coverage": 1.714,
+      "item_types": [
+        [
+          "Outlet",
+          5
+        ],
+        [
+          "Kw GFCI Outlet",
+          2
+        ]
+      ],
+      "title_order": [
+        "amperage",
+        "finish"
+      ],
+      "induced_from": [
+        "R02-D215P-1RW",
+        "R00-GFNT1-00K",
+        "R92-GFWT1-0KW",
+        "R62-GFTA1-0KW",
+        "R02-GUAC1-0BW",
+        "R56-CBR15-00T",
+        "R62-CBR15-00W"
+      ],
+      "attributes": [
+        {
+          "key": "amperage",
+          "label": "Amperage Rating",
+          "uom": "A",
+          "fill_rate": 1.0,
+          "support": 7,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "15",
+              7
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-A-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.7143,
+          "support": 5,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "White",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Lawn & Garden>Outdoor Power Equipment>String Trimmers",
+      "label": "Lawn & Garden>Outdoor Power Equipment>String Trimmers",
+      "n_rows": 6,
+      "coverage": 1.833,
+      "item_types": [
+        [
+          "Hedge Trimmer",
+          3
+        ],
+        [
+          "String Trimmer",
+          2
+        ],
+        [
+          "Trimmer",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "voltage",
+        "size"
+      ],
+      "induced_from": [
+        "XRU23SM1",
+        "XRU15PT1",
+        "XRU23Z",
+        "3033-20",
+        "3033-21",
+        "3034-20"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.8333,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.971,
+          "values": [
+            [
+              "M18",
+              3
+            ],
+            [
+              "18V",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.3333,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "18",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6667,
+          "support": 4,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9464,
+          "values": [
+            [
+              "24",
+              2
+            ],
+            [
+              "13",
+              1
+            ],
+            [
+              "30",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Grinders",
+      "label": "Tools & Equipment>Power Tools>Grinders",
+      "n_rows": 6,
+      "coverage": 2.333,
+      "item_types": [
+        [
+          "Die Grinder",
+          3
+        ],
+        [
+          "Angle Grinder",
+          2
+        ],
+        [
+          "Grinder",
+          1
+        ]
+      ],
+      "title_order": [
+        "voltage",
+        "size",
+        "includes_battery"
+      ],
+      "induced_from": [
+        "DCG410B",
+        "DCG460B",
+        "DCG402B",
+        "3485-20",
+        "DCG420B",
+        "DCG422B"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.8333,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.7219,
+          "values": [
+            [
+              "20",
+              4
+            ],
+            [
+              "60",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6667,
+          "support": 4,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9464,
+          "values": [
+            [
+              "4-1/2",
+              2
+            ],
+            [
+              "9",
+              1
+            ],
+            [
+              "1/4",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.6667,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Chargers",
+      "label": "Tools & Equipment>Power Tool Accessories>Chargers",
+      "n_rows": 6,
+      "coverage": 1.0,
+      "item_types": [
+        [
+          "Charger",
+          5
+        ],
+        [
+          "Battery Charger",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "voltage"
+      ],
+      "induced_from": [
+        "BCB2A20A",
+        "DCB1104",
+        "48-59-1804",
+        "CRGR401A",
+        "48-59-1211",
+        "2847-20"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.3333,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "M18",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.5,
+          "support": 3,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "20",
+              2
+            ],
+            [
+              "12/20",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01",
+            "ELE-V-02"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Siding>Fiber Cement & Engineered Siding",
+      "label": "Building Materials>Siding>Fiber Cement & Engineered Siding",
+      "n_rows": 5,
+      "coverage": 1.8,
+      "item_types": [
+        [
+          "Panel",
+          5
+        ]
+      ],
+      "title_order": [
+        "dimensions",
+        "finish"
+      ],
+      "induced_from": [
+        "543340126",
+        "543340127",
+        "543340146",
+        "543340147",
+        "65-572R1"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9602,
+          "values": [
+            [
+              "6 ft x 36 in",
+              2
+            ],
+            [
+              "8 ft x 36 in",
+              2
+            ],
+            [
+              "2 in x 4 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.8,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Black",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Light Bulbs",
+      "label": "Electrical>Lighting & Bulbs>Light Bulbs",
+      "n_rows": 5,
+      "coverage": 1.8,
+      "item_types": [
+        [
+          "Bulb",
+          3
+        ],
+        [
+          "LED Bulb",
+          2
+        ]
+      ],
+      "title_order": [
+        "wattage",
+        "bulb_shape"
+      ],
+      "induced_from": [
+        "S3496",
+        "S11429",
+        "GT-CB-100C",
+        "585448",
+        "565473"
+      ],
+      "attributes": [
+        {
+          "key": "wattage",
+          "label": "Wattage",
+          "uom": "W",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 4,
+          "filterable": false,
+          "discriminative": 0.961,
+          "values": [
+            [
+              "60",
+              2
+            ],
+            [
+              "300",
+              1
+            ],
+            [
+              "100",
+              1
+            ],
+            [
+              "120",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-W-01"
+          ]
+        },
+        {
+          "key": "color_temperature",
+          "label": "Color Temperature",
+          "uom": "K",
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "2700",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-K-01"
+          ]
+        },
+        {
+          "key": "bulb_shape",
+          "label": "Bulb Shape",
+          "uom": "",
+          "fill_rate": 0.4,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "T3",
+              1
+            ],
+            [
+              "A19",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-SHP-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Hand Tools>Ratchets",
+      "label": "Tools & Equipment>Hand Tools>Ratchets",
+      "n_rows": 5,
+      "coverage": 1.6,
+      "item_types": [
+        [
+          "Ratchet",
+          2
+        ],
+        [
+          "Dewalt Rachet",
+          1
+        ],
+        [
+          "Fuel Rachet",
+          1
+        ],
+        [
+          "Head Rachet",
+          1
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "size"
+      ],
+      "induced_from": [
+        "48-22-9491",
+        "DCF510B",
+        "3052-20",
+        "3054-20",
+        "DCF513EB"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.4,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "M12",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "20",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.6,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "1/4",
+              1
+            ],
+            [
+              "1/2",
+              1
+            ],
+            [
+              "3/8",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "242",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Sealants & Adhesives>Sealant Tape",
+      "label": "Building Materials>Sealants & Adhesives>Sealant Tape",
+      "n_rows": 4,
+      "coverage": 1.0,
+      "item_types": [
+        [
+          "Tape",
+          4
+        ]
+      ],
+      "title_order": [
+        "dimensions"
+      ],
+      "induced_from": [
+        "1700-1PK-BB40",
+        "ASH-40-40-04",
+        "925219",
+        "64-110"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.75,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "3/4 in x 60 ft",
+              1
+            ],
+            [
+              "1-1/2 in x 1-1/2 in x 13 ft",
+              1
+            ],
+            [
+              "2 in x 50 ft",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "16",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Masonry>Mortar & Grout",
+      "label": "Building Materials>Masonry>Mortar & Grout",
+      "n_rows": 4,
+      "coverage": 0.25,
+      "item_types": [
+        [
+          "Mortar",
+          4
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "25-A",
+        "38-E",
+        "59-J",
+        "44-A"
+      ],
+      "attributes": [
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Black",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Recessed Lighting",
+      "label": "Electrical>Lighting & Bulbs>Recessed Lighting",
+      "n_rows": 4,
+      "coverage": 1.75,
+      "item_types": [
+        [
+          "Downlight",
+          4
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "S11860",
+        "S11562",
+        "S11646",
+        "S11801R1"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 1.0,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "6",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.75,
+          "support": 3,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "White",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Fasteners>Nails & Staples",
+      "label": "Building Materials>Fasteners>Nails & Staples",
+      "n_rows": 4,
+      "coverage": 1.25,
+      "item_types": [
+        [
+          "Staple",
+          2
+        ],
+        [
+          "Nail",
+          1
+        ],
+        [
+          "Screw",
+          1
+        ]
+      ],
+      "title_order": [
+        "dimensions"
+      ],
+      "induced_from": [
+        "603150",
+        "d10cnk",
+        "e28cnkha",
+        "DDWSSB"
+      ],
+      "attributes": [
+        {
+          "key": "gauge",
+          "label": "Gauge",
+          "uom": "GA",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "15",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-GA-01"
+          ]
+        },
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.5,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "1/2 in x 3/8 in",
+              1
+            ],
+            [
+              "2/4 in x 1 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "2-1/2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "4000",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-M-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Safety>Life Safety>Smoke & CO Alarms",
+      "label": "Safety>Life Safety>Smoke & CO Alarms",
+      "n_rows": 4,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Smoke Co Alarm",
+          2
+        ],
+        [
+          "Voltage Detector",
+          2
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "1046793",
+        "1046870",
+        "3200-20",
+        "3202-20"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tools>Miter Saws",
+      "label": "Tools & Equipment>Power Tools>Miter Saws",
+      "n_rows": 4,
+      "coverage": 1.75,
+      "item_types": [
+        [
+          "Miter Saw",
+          4
+        ]
+      ],
+      "title_order": [
+        "voltage",
+        "size"
+      ],
+      "induced_from": [
+        "DCS714B",
+        "DCS785B",
+        "GSL02M1",
+        "DW7029"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.75,
+          "support": 3,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "20",
+              2
+            ],
+            [
+              "40",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.75,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "10",
+              1
+            ],
+            [
+              "12",
+              1
+            ],
+            [
+              "8-1/2",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "includes_battery",
+          "label": "Battery Included",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "No",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Windows & Doors>Skylights",
+      "label": "Building Materials>Windows & Doors>Skylights",
+      "n_rows": 3,
+      "coverage": 2.0,
+      "item_types": [
+        [
+          "Skylight Gray",
+          3
+        ]
+      ],
+      "title_order": [
+        "dimensions",
+        "finish"
+      ],
+      "induced_from": [
+        "FS C01 2004S",
+        "FS C04 2004S",
+        "FS C06 2004S"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "21 in x 26-7/8 in",
+              1
+            ],
+            [
+              "21 in x 37-7/8 in",
+              1
+            ],
+            [
+              "21 in x 45-7/8 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 3,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "White",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Structural>Connectors & Hangers",
+      "label": "Building Materials>Structural>Connectors & Hangers",
+      "n_rows": 3,
+      "coverage": 0.667,
+      "item_types": [
+        [
+          "Oct",
+          2
+        ],
+        [
+          "Adjust Hanger",
+          1
+        ]
+      ],
+      "title_order": [
+        "dimensions"
+      ],
+      "induced_from": [
+        "BHA1-UPC",
+        "54151-F-UPC",
+        "54151-HUR-UPC"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.6667,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "4 in x 4 in x 1-1/2 in",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Bath & Vanity Lighting",
+      "label": "Electrical>Lighting & Bulbs>Bath & Vanity Lighting",
+      "n_rows": 3,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Bath Light",
+          3
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "37418A",
+        "37423A",
+        "45496BKCLR"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Electrical>Lighting & Bulbs>Outdoor Lighting",
+      "label": "Electrical>Lighting & Bulbs>Outdoor Lighting",
+      "n_rows": 3,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Exterior Wall Light",
+          3
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "59061BSL",
+        "59062BSL",
+        "59124BKT"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Freezers",
+      "label": "Appliances & Consumer Electronics>Kitchen Appliances>Freezers",
+      "n_rows": 3,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Freezer",
+          3
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "FCM16SLWW",
+        "EUF17CDBW",
+        "EUF21CDBW"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Router Bits",
+      "label": "Tools & Equipment>Power Tool Accessories>Router Bits",
+      "n_rows": 3,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Router Bit",
+          3
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "6008",
+        "6009",
+        "3000A"
+      ],
+      "attributes": []
+    },
+    {
+      "category_id": "Tools & Equipment>Stationary Power Tools>Band Saws",
+      "label": "Tools & Equipment>Stationary Power Tools>Band Saws",
+      "n_rows": 3,
+      "coverage": 2.333,
+      "item_types": [
+        [
+          "Bandsaw",
+          2
+        ],
+        [
+          "Jet Bandsaw",
+          1
+        ]
+      ],
+      "title_order": [
+        "voltage",
+        "horsepower",
+        "phase",
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "JT1-549",
+        "JT1-1371",
+        "JT9-714400K"
+      ],
+      "attributes": [
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.3333,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "115",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "horsepower",
+          "label": "Horsepower",
+          "uom": "HP",
+          "fill_rate": 0.3333,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "1.75",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-HP-01"
+          ]
+        },
+        {
+          "key": "phase",
+          "label": "Phase",
+          "uom": "PH",
+          "fill_rate": 0.3333,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "1",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-PH-01"
+          ]
+        },
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 1.0,
+          "support": 3,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "14",
+              2
+            ],
+            [
+              "18",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.3333,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Black",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Tool Storage>Organizers & Cases",
+      "label": "Tools & Equipment>Tool Storage>Organizers & Cases",
+      "n_rows": 3,
+      "coverage": 0.667,
+      "item_types": [
+        [
+          "Organizer",
+          3
+        ]
+      ],
+      "title_order": [
+        "base_type"
+      ],
+      "induced_from": [
+        "T-90043",
+        "T-90059",
+        "T-90065"
+      ],
+      "attributes": [
+        {
+          "key": "base_type",
+          "label": "Base Type",
+          "uom": "",
+          "fill_rate": 0.6667,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "MEDIUM",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-BAS-01"
+          ]
+        }
+      ]
+    }
+  ],
+  "fill_rate": 0.1023,
+  "mean_columns_filled": 25.77,
+  "status_counts": {
+    "ready": 773,
+    "blocked": 198,
+    "needs_review": 29
+  },
+  "flag_counts": {
+    "llm_redundant_rejected": 10,
+    "classification_abstained": 139,
+    "brand_unresolved": 52,
+    "family_anomaly": 2,
+    "item_type_unresolved": 19,
+    "brand_manufacturer_mismatch": 4
+  },
+  "violation_counts": {
+    "CG-MOB-01": 350,
+    "CG-TAX-01": 126,
+    "CG-BRD-01": 90
+  },
+  "brand_resolution": 0.91,
+  "classification_rate": 0.874,
+  "char_compliance": {
+    "INVOICE_DESC": 1.0,
+    "MOBILE_DESC": 0.65,
+    "SHORT_DESC": 1.0
+  },
+  "mobile_data_limited": 0.35,
+  "mobile_composition_short": 0.0,
+  "family_inherited": 50,
+  "family_anomalies": 2,
+  "llm_invoked": 613,
+  "llm_served": 0,
+  "llm_cached": 10,
+  "ai_degraded": true,
+  "ai_notice": "Provider daily quota exhausted; continuing deterministically for the rest of this run.",
+  "audited_rows": 0,
+  "audit_counts": {
+    "supported": 0,
+    "unsupported": 0,
+    "unknown": 0
+  },
+  "guardrail_findings": {},
+  "knowledge": {
+    "edges": 597,
+    "by_relation": {
+      "powers": 18,
+      "cross_reference": 6,
+      "variant_of": 370,
+      "same_series": 203
+    },
+    "products_connected": 607,
+    "coverage": 0.607,
+    "most_connected": [
+      {
+        "index": 160,
+        "part_number": "543140016",
+        "item_type": "decking",
+        "degree": 25
+      },
+      {
+        "index": 387,
+        "part_number": "44072DBK",
+        "item_type": "exterior wall light",
+        "degree": 25
+      },
+      {
+        "index": 370,
+        "part_number": "45297BK",
+        "item_type": "wall light",
+        "degree": 18
+      },
+      {
+        "index": 123,
+        "part_number": "AGB15512CS",
+        "item_type": "decking",
+        "degree": 16
+      },
+      {
+        "index": 29,
+        "part_number": "49-94-0107",
+        "item_type": "cut off disc",
+        "degree": 14
+      },
+      {
+        "index": 245,
+        "part_number": "543140908",
+        "item_type": "decking",
+        "degree": 14
+      },
+      {
+        "index": 410,
+        "part_number": "43913BK",
+        "item_type": "pendant light",
+        "degree": 12
+      },
+      {
+        "index": 490,
+        "part_number": "588533",
+        "item_type": "light bulb",
+        "degree": 11
+      },
+      {
+        "index": 974,
+        "part_number": "2847-20",
+        "item_type": "charger",
+        "degree": 10
+      },
+      {
+        "index": 452,
+        "part_number": "391227",
+        "item_type": "light bulb",
+        "degree": 10
+      }
+    ]
+  },
+  "corrections": {
+    "corrections": 1,
+    "by_scope": {
+      "family": 1
+    },
+    "rows_affected": 6,
+    "rows_per_correction": 6.0,
+    "items": [
+      {
+        "scope": "family",
+        "target": "F-8ecfff1c",
+        "key": "item_type",
+        "value": "Sanding Sheet",
+        "uom": "",
+        "note": "Festool Granat 80x133mm RTS sander sheets, 10-pack",
+        "by": "mohit",
+        "at": "2026-08-21T23:06:01",
+        "applied": 6
+      }
+    ]
+  }
+}

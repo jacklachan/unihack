@@ -101,6 +101,41 @@ def detect_series(residual: str, item_type: str, brand: str,
 # ---------------------------------------------------------------------------
 # Family clustering
 # ---------------------------------------------------------------------------
+def _value_already_present(graph: ProductFactGraph, value: Any) -> bool:
+    """Is this value already recorded somewhere in the graph?
+
+    Compared loosely and against composite values too, so ``18`` is recognised
+    inside an existing ``1/2 in x 18 in`` dimension chain.
+    """
+    from .core.guardrails import to_number
+
+    raw = str(value or "").strip()
+    v = re.sub(r"[^a-z0-9./-]", "", raw.lower())
+    if not v or len(v) < 2:
+        return False
+
+    # Numeric comparison as well as textual: a model reported "2.75" for a belt
+    # the parser had already captured as "2-3/4 in x 30 in". Those are the same
+    # measurement written two ways, and only arithmetic sees it.
+    num = to_number(raw)
+    for f in graph.facts():
+        display = str(f.display or "")
+        existing = re.sub(r"[^a-z0-9./-]", "", display.lower())
+        if not existing:
+            continue
+        if v == existing:
+            return True
+        if len(v) >= 2 and v in existing and f.key in (
+                "dimensions", "nominal_size", "size"):
+            return True
+        if num is not None:
+            for piece in re.findall(r"[\d]+(?:\s*-\s*\d+/\d+|\.\d+|/\d+)?", display):
+                other = to_number(piece)
+                if other is not None and abs(other - num) < 1e-6:
+                    return True
+    return False
+
+
 def family_signature(mpn: str, desc: str, supplier: str) -> str:
     """Collapse a row to the family it belongs to.
 
@@ -597,6 +632,18 @@ class Pipeline:
                            "in the source text.".format(key, value, quote),
                            severity="info")
                 continue
+            # A model handed the unclaimed text will happily re-report a value
+            # the parser already owns under a different name: a 1/2 in x 18 in
+            # sanding belt came back with Length 18 in and Width 1/2 in, and
+            # the invoice line became "SANDING BELT 1/2IN X 18IN 18IN 6 1/2IN".
+            # A value already present in the graph is not new information.
+            if _value_already_present(graph, value):
+                graph.note("llm_redundant_rejected",
+                           "Discarded {}={!r}: the value is already recorded "
+                           "under another attribute.".format(key, value),
+                           severity="info")
+                continue
+
             span = None
             if quote and via == "literal":
                 i = desc.lower().find(quote.lower())

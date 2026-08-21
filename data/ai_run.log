@@ -1,0 +1,27 @@
+  enriching [                                        ]   0.1%  1/1000  enriching [#                                       ]   2.6%  26/1000  enriching [##                                      ]   5.1%  51/1000  enriching [###                                     ]   7.6%  76/1000  enriching [####                                    ]  10.1%  101/1000  enriching [#####                                   ]  12.6%  126/1000  enriching [######                                  ]  15.1%  151/1000  enriching [#######                                 ]  17.6%  176/1000  enriching [########                                ]  20.1%  201/1000  enriching [#########                               ]  22.6%  226/1000  enriching [##########                              ]  25.1%  251/1000  enriching [###########                             ]  27.6%  276/1000  enriching [############                            ]  30.1%  301/1000  enriching [#############                           ]  32.6%  326/1000  enriching [##############                          ]  35.1%  351/1000  enriching [###############                         ]  37.6%  376/1000  enriching [################                        ]  40.1%  401/1000  enriching [#################                       ]  42.6%  426/1000  enriching [##################                      ]  45.1%  451/1000  enriching [###################                     ]  47.6%  476/1000  enriching [####################                    ]  50.1%  501/1000  enriching [#####################                   ]  52.6%  526/1000  enriching [######################                  ]  55.1%  551/1000  enriching [#######################                 ]  57.6%  576/1000  enriching [########################                ]  60.1%  601/1000  enriching [#########################               ]  62.6%  626/1000  enriching [##########################              ]  65.1%  651/1000  enriching [###########################             ]  67.6%  676/1000  enriching [############################            ]  70.1%  701/1000  enriching [#############################           ]  72.6%  726/1000  enriching [##############################          ]  75.1%  751/1000  enriching [###############################         ]  77.6%  776/1000  enriching [################################        ]  80.1%  801/1000  enriching [#################################       ]  82.6%  826/1000  enriching [##################################      ]  85.1%  851/1000  enriching [###################################     ]  87.6%  876/1000  enriching [####################################    ]  90.1%  901/1000  enriching [#####################################   ]  92.6%  926/1000  enriching [######################################  ]  95.1%  951/1000  enriching [####################################### ]  97.6%  976/1000  enriching [########################################] 100.0%  1000/1000
+input      : data/input/sample_1000_items.csv (1000 rows)
+schema     : mpn=Mfg_Part_Num, description=Part_Desc, brand_e1=E1_Brand, brand_unilog=Unilog_Brand, brand_dib=DIB_Brand, manufacturer=Part_Manuf
+llm        : groq (openai/gpt-oss-120b, extract)
+
+==============================================================
+  rows enriched        : 1000
+  elapsed              : 22.477s
+  product families     : 566
+  category specs       : 63 induced
+  brand resolved       : 91.0%
+  classified           : 87.4%
+  mean columns filled  : 25.79 / 252
+  status               : {'ready': 773, 'blocked': 198, 'needs_review': 29}
+  char limit INVOICE_DESC: 100.0%
+  char limit MOBILE_DESC: 65.2%
+  char limit SHORT_DESC: 100.0%
+  relationships        : 597 edges, 61% of products connected
+  family consensus     : 50 facts inherited, 2 anomalies
+  corrections          : 1 stored, 6 rows fixed (6.0 rows each)
+  llm                  : 613 of 1000 rows (61%)
+==============================================================
+  delivery  -> data/out_ai\delivery.csv
+            -> data/out_ai\delivery.xlsx
+  audit     -> data/out_ai\audit_provenance.csv (25789 cells)
+  review    -> data/out_ai\review_queue.csv (584 items)
+  graph     -> data/out_ai\relationships.csv (597 edges)

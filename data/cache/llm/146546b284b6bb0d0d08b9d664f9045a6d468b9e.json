@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "1/2\"",
+   "key": "width",
+   "label": "Width",
+   "uom": "in",
+   "value": "1/2"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "18\"",
+   "key": "length",
+   "label": "Length",
+   "uom": "in",
+   "value": "18"
+  }
+ ]
+}
