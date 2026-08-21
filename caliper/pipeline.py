@@ -197,6 +197,8 @@ class Pipeline:
         self.vocab: Dict[str, int] = {}
         self.specs: Dict[str, CategorySpec] = {}
         self.series_vocab: Dict[str, int] = {}
+        #: (brand, series) -> item type, learned across the whole catalogue.
+        self.series_item_type: Dict[Tuple[str, str], str] = {}
         self.llm_invoked = 0
         self.edges = []
         self.packs = PackLibrary.load()
@@ -276,6 +278,59 @@ class Pipeline:
             for m in _SERIES_RE.finditer(res):
                 sc[m.group(1).strip().lower()] += 1
         self.series_vocab = {k: v for k, v in sc.items() if v >= 3}
+        self._learn_series_item_types(rows, schema, brand_terms)
+
+    def _learn_series_item_types(self, rows: Sequence[Dict[str, str]],
+                                 schema: InputSchema,
+                                 brand_terms: Iterable[str]) -> None:
+        """Learn what a brand's collection actually *is*.
+
+        Half the decking catalogue names the product ("Trex Transcend Lineage
+        Decking") and half does not ("1x8-12' Biscayne - Trex Lineage"). The
+        second kind is unclassifiable on its own, and family clustering does
+        not rescue it because the differing token sets put the two in separate
+        families. But across the catalogue the pairing is unambiguous: every
+        Trex Lineage row that *does* name its item type says Decking.
+        """
+        votes: Dict[Tuple[str, str], Counter] = defaultdict(Counter)
+        for r in rows:
+            mpn = schema.get(r, "mpn")
+            desc = schema.get(r, "description")
+            res_id = resolve_identity(
+                self.registry, mpn=mpn, description=desc,
+                supplier=schema.get(r, "manufacturer"),
+                dib_brand=schema.get(r, "brand_dib"),
+                e1_brand=schema.get(r, "brand_e1"))
+            if not res_id.brand:
+                continue
+            stripped, _ = strip_mpn_echo(desc, mpn)
+            facts = parse_description(stripped)
+            terms = [res_id.brand] + list(res_id.entry.aliases if res_id.entry else ())
+            residual = strip_terms(residual_text(stripped, facts), terms)
+            hit = self.lexicon.resolve(residual, self.vocab) if self.lexicon else None
+            if not hit:
+                continue
+            item_type, matched, _ = hit
+            # Only rows whose item type is a well-attested word get a vote; a
+            # colour name masquerading as an item type must not teach anything.
+            if self.vocab.get(matched, 0) < 3:
+                continue
+            ser = detect_series(residual, item_type, res_id.brand, self.series_vocab)
+            if ser:
+                votes[(res_id.brand.lower(), ser[0].lower())][item_type] += 1
+
+        # Index under every trailing sub-phrase of the collection name. The
+        # rows that name their item type call the collection "Transcend
+        # Lineage"; the rows that do not call it just "Lineage". Without this
+        # the two never meet and the inference never fires.
+        for (brand, series), counter in votes.items():
+            value, n = counter.most_common(1)[0]
+            if n < 2 or n / sum(counter.values()) < 0.7:
+                continue
+            words = series.split()
+            for i in range(len(words)):
+                self.series_item_type.setdefault(
+                    (brand, " ".join(words[i:])), value)
 
     def _provisional_category(self, row: Dict[str, str], schema: InputSchema,
                               brand_terms: Iterable[str]) -> str:
@@ -327,10 +382,12 @@ class Pipeline:
         brand_terms = [res.brand] + list(res.entry.aliases if res.entry else ())
         residual = strip_terms(residual_text(stripped, graph.facts()), brand_terms)
         item_type = ""
+        matched_gram = ""
         if self.lexicon:
             hit = self.lexicon.resolve(residual, self.vocab)
             if hit:
                 item_type, matched, conf = hit
+                matched_gram = matched
                 graph.add(Fact(
                     key="item_type", value=item_type, label="Item Type",
                     method="rule", rule_id="ITM-LEX-01", raw=matched,
@@ -340,6 +397,32 @@ class Pipeline:
                         detail="Resolved against the item-type vocabulary "
                                "induced from this catalogue ({} occurrences)."
                                .format(self.vocab.get(matched, 0)))]))
+        # A one-off gram is far more likely to be a colour or a collection than
+        # a product name. "Biscayne Lineage" occurs twice; "Decking" occurs 120
+        # times. Where the brand's collection is known catalogue-wide, use it.
+        if item_type and self.vocab.get(matched_gram, 0) < 3:
+            ser_guess = detect_series(residual, "", res.brand, self.series_vocab)
+            learned = None
+            if ser_guess:
+                words = ser_guess[0].lower().split()
+                for i in range(len(words)):
+                    learned = self.series_item_type.get(
+                        (res.brand.lower(), " ".join(words[i:])))
+                    if learned:
+                        break
+            if learned and learned.lower() != item_type.lower():
+                graph._facts.pop("item_type", None)
+                item_type = learned
+                graph.add(Fact(
+                    key="item_type", value=learned, label="Item Type",
+                    method="inferred", rule_id="ITM-SER-01", raw=ser_guess[0],
+                    confidence=0.80, priority=5,
+                    evidence=[Evidence(
+                        source="corpus:brand+series", text=ser_guess[0],
+                        detail="This description never names the item. Across "
+                               "the catalogue every {} {} row that does name it "
+                               "says {}.".format(res.brand, ser_guess[0], learned))]))
+
         if not item_type:
             # Nothing in the text names the item -- try to infer it from which
             # attributes co-occur. Recorded as an inference, not an extraction.

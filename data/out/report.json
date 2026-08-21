@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 5.65,
+  "elapsed_s": 5.283,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -25,8 +25,8 @@
     {
       "category_id": "UNCLASSIFIED",
       "label": "UNCLASSIFIED",
-      "n_rows": 270,
-      "coverage": 2.215,
+      "n_rows": 252,
+      "coverage": 2.258,
       "item_types": [
         [
           "Lineage",
@@ -41,24 +41,12 @@
           5
         ],
         [
-          "Premier Rib",
-          5
-        ],
-        [
           "Lowe Arg",
           4
         ],
         [
           "Smooth",
           4
-        ],
-        [
-          "Skylt Gry",
-          3
-        ],
-        [
-          "Rib Xl Charcoal",
-          3
         ],
         [
           "Multi",
@@ -73,7 +61,19 @@
           2
         ],
         [
-          "Hopper Dla Screen",
+          "Threshold",
+          2
+        ],
+        [
+          "Smooth Primed",
+          2
+        ],
+        [
+          "Pan Cedar",
+          2
+        ],
+        [
+          "Oct",
           2
         ]
       ],
@@ -87,17 +87,17 @@
         "5B-332-120",
         "9A-570-240",
         "9A-570-320",
-        "DFBLBLOMFN01G",
         "D519127",
         "WKE100HWA",
-        "05134545001"
+        "05134545001",
+        "LNL65301"
       ],
       "attributes": [
         {
           "key": "wattage",
           "label": "Wattage",
           "uom": "W",
-          "fill_rate": 0.437,
+          "fill_rate": 0.4683,
           "support": 118,
           "cardinality": 24,
           "filterable": true,
@@ -209,7 +209,7 @@
           "key": "color_temperature",
           "label": "Color Temperature",
           "uom": "K",
-          "fill_rate": 0.4111,
+          "fill_rate": 0.4405,
           "support": 111,
           "cardinality": 9,
           "filterable": true,
@@ -261,7 +261,7 @@
           "key": "base_type",
           "label": "Base Type",
           "uom": "",
-          "fill_rate": 0.363,
+          "fill_rate": 0.3889,
           "support": 98,
           "cardinality": 2,
           "filterable": true,
@@ -285,7 +285,7 @@
           "key": "pack_quantity",
           "label": "Pack Quantity",
           "uom": "",
-          "fill_rate": 0.2667,
+          "fill_rate": 0.2857,
           "support": 72,
           "cardinality": 7,
           "filterable": false,
@@ -858,6 +858,111 @@
       ]
     },
     {
+      "category_id": "Building Materials>Decking>Railing Systems",
+      "label": "Building Materials>Decking>Railing Systems",
+      "n_rows": 23,
+      "coverage": 1.913,
+      "item_types": [
+        [
+          "Rd Aluminum Balusters",
+          6
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Composite Balusters",
+          4
+        ],
+        [
+          "Black Aluminum Baluster",
+          4
+        ],
+        [
+          "Railing",
+          2
+        ],
+        [
+          "Baluster",
+          1
+        ],
+        [
+          "Rail Trex",
+          1
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "543302126",
+        "543302146",
+        "73019603",
+        "73019652",
+        "73019517",
+        "73019602",
+        "73019651",
+        "73019516"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 0.8261,
+          "support": 19,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.8694,
+          "values": [
+            [
+              "8",
+              9
+            ],
+            [
+              "6",
+              8
+            ],
+            [
+              "10",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 23,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9877,
+          "values": [
+            [
+              "Black",
+              13
+            ],
+            [
+              "White",
+              10
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01",
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
       "category_id": "Tools & Equipment>Power Tool Accessories>Saw Blades",
       "label": "Tools & Equipment>Power Tool Accessories>Saw Blades",
       "n_rows": 23,
@@ -956,107 +1061,6 @@
           "synonyms": {},
           "rule_ids": [
             "DIM-SGL-01"
-          ]
-        }
-      ]
-    },
-    {
-      "category_id": "Building Materials>Decking>Railing Systems",
-      "label": "Building Materials>Decking>Railing Systems",
-      "n_rows": 21,
-      "coverage": 2.0,
-      "item_types": [
-        [
-          "Speed Queen",
-          5
-        ],
-        [
-          "Rd Aluminum Balusters",
-          5
-        ],
-        [
-          "Composite Balusters",
-          4
-        ],
-        [
-          "Black Aluminum Baluster",
-          4
-        ],
-        [
-          "Railing",
-          2
-        ],
-        [
-          "Rail Trex",
-          1
-        ]
-      ],
-      "title_order": [
-        "size",
-        "finish"
-      ],
-      "induced_from": [
-        "543302126",
-        "543302146",
-        "73019603",
-        "73019652",
-        "73019517",
-        "73019602",
-        "73019651",
-        "73019516"
-      ],
-      "attributes": [
-        {
-          "key": "size",
-          "label": "Size",
-          "uom": "ft",
-          "fill_rate": 0.9048,
-          "support": 19,
-          "cardinality": 3,
-          "filterable": true,
-          "discriminative": 0.8694,
-          "values": [
-            [
-              "8",
-              9
-            ],
-            [
-              "6",
-              8
-            ],
-            [
-              "10",
-              2
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "DIM-SGL-01"
-          ]
-        },
-        {
-          "key": "finish",
-          "label": "Color",
-          "uom": "",
-          "fill_rate": 1.0,
-          "support": 21,
-          "cardinality": 2,
-          "filterable": true,
-          "discriminative": 0.9852,
-          "values": [
-            [
-              "Black",
-              12
-            ],
-            [
-              "White",
-              9
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "FIN-CDE-01",
-            "FIN-WRD-01"
           ]
         }
       ]
@@ -3298,6 +3302,90 @@
       ]
     },
     {
+      "category_id": "Building Materials>Roofing>Metal Roofing Panels",
+      "label": "Building Materials>Roofing>Metal Roofing Panels",
+      "n_rows": 8,
+      "coverage": 1.625,
+      "item_types": [
+        [
+          "Premier Rib",
+          5
+        ],
+        [
+          "Rib Xl Charcoal",
+          3
+        ]
+      ],
+      "title_order": [
+        "size",
+        "finish"
+      ],
+      "induced_from": [
+        "PP-8BL",
+        "PP-10BL",
+        "PP-12BL",
+        "PP-8CH",
+        "PP-10CH",
+        "PP-12CH",
+        "PP-8WH",
+        "PP-10WH"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "ft",
+          "fill_rate": 1.0,
+          "support": 8,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.9851,
+          "values": [
+            [
+              "8",
+              3
+            ],
+            [
+              "10",
+              3
+            ],
+            [
+              "12",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 0.625,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.971,
+          "values": [
+            [
+              "Black",
+              3
+            ],
+            [
+              "White",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-WRD-01"
+          ]
+        }
+      ]
+    },
+    {
       "category_id": "Tools & Equipment>Power Tool Accessories>Batteries",
       "label": "Tools & Equipment>Power Tool Accessories>Batteries",
       "n_rows": 8,
@@ -5278,6 +5366,77 @@
       ]
     },
     {
+      "category_id": "Building Materials>Windows & Doors>Skylights",
+      "label": "Building Materials>Windows & Doors>Skylights",
+      "n_rows": 3,
+      "coverage": 2.0,
+      "item_types": [
+        [
+          "Skylight Gray",
+          3
+        ]
+      ],
+      "title_order": [
+        "dimensions",
+        "finish"
+      ],
+      "induced_from": [
+        "FS C01 2004S",
+        "FS C04 2004S",
+        "FS C06 2004S"
+      ],
+      "attributes": [
+        {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "21 in x 26-7/8 in",
+              1
+            ],
+            [
+              "21 in x 37-7/8 in",
+              1
+            ],
+            [
+              "21 in x 45-7/8 in",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "finish",
+          "label": "Color",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 3,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "White",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "FIN-CDE-01"
+          ]
+        }
+      ]
+    },
+    {
       "category_id": "Building Materials>Structural>Connectors & Hangers",
       "label": "Building Materials>Structural>Connectors & Hangers",
       "n_rows": 3,
@@ -5576,33 +5735,33 @@
       ]
     }
   ],
-  "fill_rate": 0.1018,
-  "mean_columns_filled": 25.66,
+  "fill_rate": 0.1022,
+  "mean_columns_filled": 25.75,
   "status_counts": {
-    "ready": 751,
-    "blocked": 220,
+    "ready": 773,
+    "blocked": 198,
     "needs_review": 29
   },
   "flag_counts": {
-    "classification_abstained": 171,
+    "classification_abstained": 139,
     "brand_unresolved": 52,
     "family_anomaly": 2,
     "item_type_unresolved": 19,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 343,
-    "CG-TAX-01": 158,
+    "CG-MOB-01": 328,
+    "CG-TAX-01": 126,
     "CG-BRD-01": 90
   },
   "brand_resolution": 0.91,
-  "classification_rate": 0.842,
+  "classification_rate": 0.874,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.657,
+    "MOBILE_DESC": 0.672,
     "SHORT_DESC": 1.0
   },
-  "mobile_data_limited": 0.343,
+  "mobile_data_limited": 0.328,
   "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,
@@ -5619,20 +5778,26 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 571,
+    "edges": 597,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
       "variant_of": 370,
-      "same_series": 177
+      "same_series": 203
     },
-    "products_connected": 606,
-    "coverage": 0.606,
+    "products_connected": 607,
+    "coverage": 0.607,
     "most_connected": [
       {
         "index": 160,
         "part_number": "543140016",
         "item_type": "decking",
+        "degree": 25
+      },
+      {
+        "index": 387,
+        "part_number": "44072DBK",
+        "item_type": "exterior wall light",
         "degree": 25
       },
       {
@@ -5654,10 +5819,10 @@
         "degree": 14
       },
       {
-        "index": 387,
-        "part_number": "44072DBK",
-        "item_type": "chandelier",
-        "degree": 12
+        "index": 245,
+        "part_number": "543140908",
+        "item_type": "decking",
+        "degree": 14
       },
       {
         "index": 410,
@@ -5681,12 +5846,6 @@
         "index": 452,
         "part_number": "391227",
         "item_type": "light bulb",
-        "degree": 10
-      },
-      {
-        "index": 1,
-        "part_number": "3MABR-7100075678",
-        "item_type": "stikit film",
         "degree": 10
       }
     ]
