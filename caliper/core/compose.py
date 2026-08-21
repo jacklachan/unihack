@@ -156,7 +156,11 @@ def build_invoice_desc(graph: ProductFactGraph, limit: int = 40) -> BudgetResult
     # A very short line identifies nothing. When facts ran out but budget did
     # not, the part number is the most identifying thing left -- a till line
     # reading "DRILL" tells a picker less than "DRILL DCD799B".
-    if len(" ".join(chosen)) < 18:
+    #
+    # The threshold is deliberately low. The published rows never put a model
+    # number on this line, so the fallback is for lines that would otherwise
+    # be uninformative, not a licence to pad every one.
+    if len(" ".join(chosen)) < 13:
         mpn = graph.get("mpn")
         if mpn and str(mpn.value):
             cand = chosen + [str(mpn.value).upper()]
@@ -172,6 +176,20 @@ def build_invoice_desc(graph: ProductFactGraph, limit: int = 40) -> BudgetResult
 # ---------------------------------------------------------------------------
 # The other four formats.
 # ---------------------------------------------------------------------------
+def _bare(text: str) -> str:
+    """Brand without its registration symbol, for fields that omit it."""
+    return re.sub(r"[®™]", "", str(text or "")).strip()
+
+
+def _shares_root(a: str, b: str) -> bool:
+    """True when a manufacturer name is just the brand plus a legal suffix."""
+    ra = re.sub(r"[^a-z0-9]", "", _bare(a).lower())
+    rb = re.sub(r"[^a-z0-9]", "", _bare(b).lower())
+    if not ra or not rb:
+        return False
+    return ra.startswith(rb) or rb.startswith(ra)
+
+
 def _parts(graph: ProductFactGraph, keys: Sequence[str]) -> List[str]:
     out = []
     for k in keys:
@@ -191,7 +209,16 @@ def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80,
     material would. ``report`` receives that distinction so the metrics can
     separate the two instead of counting both as non-compliance.
     """
-    head = [p for p in (graph.value("manufacturer"), graph.value("brand")) if p]
+    # The published rows write this line without the (R)/(TM) symbol, unlike
+    # the title, and they never repeat a manufacturer that is just the brand's
+    # legal name: "Rheem Manufacturing FRIGIDAIRE" keeps both because the two
+    # are different companies, while Whirlpool Corporation's Whirlpool line is
+    # written once.
+    brand = _bare(graph.value("brand"))
+    manu = _bare(graph.value("manufacturer"))
+    if manu and brand and _shares_root(manu, brand):
+        manu = ""
+    head = [p for p in (manu, brand) if p]
     core = [graph.value("item_type"), graph.value("series"), graph.value("mpn")]
     parts = ([" ".join(head)] if head else []) + [c for c in core if c]
     text = ", ".join(parts)
