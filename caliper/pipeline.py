@@ -150,6 +150,8 @@ class PipelineReport:
     family_inherited: int = 0
     family_anomalies: int = 0
     llm_invoked: int = 0
+    ai_degraded: bool = False
+    ai_notice: str = ""
     audited_rows: int = 0
     audit_counts: Dict[str, int] = field(default_factory=dict)
     guardrail_findings: Dict[str, int] = field(default_factory=dict)
@@ -856,6 +858,12 @@ class Pipeline:
             for f in r.flags if f.get("guardrail")))
         rep.family_inherited = inherited
         rep.family_anomalies = anomalies
+        try:
+            from .llm.provider import Stats as _S
+            rep.ai_degraded = bool(_S.exhausted)
+            rep.ai_notice = _S.exhausted_reason
+        except Exception:
+            pass
         rep.llm_invoked = self.llm_invoked
         rep.audited_rows = self.audited
         rep.audit_counts = dict(self.audit_counts)

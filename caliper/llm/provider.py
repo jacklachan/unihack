@@ -288,6 +288,16 @@ class Stats:
     errors = 0
     retries = 0
     paced = 0
+    #: Set when the provider reports a *daily* budget exhausted. Once tripped,
+    #: further calls short-circuit instead of retrying into a wall: a run that
+    #: has run out of quota should finish deterministically, not hang.
+    exhausted = False
+    exhausted_reason = ""
+
+    @classmethod
+    def reset_breaker(cls) -> None:
+        cls.exhausted = False
+        cls.exhausted_reason = ""
 
 
 def _build_user(payload: Dict[str, Any]) -> str:
@@ -301,6 +311,61 @@ def _build_audit_user(payload: Dict[str, Any]) -> str:
     return "Description: {}\nAttributes to audit:\n{}".format(
         payload.get("description", ""),
         json.dumps(payload.get("facts", []), sort_keys=True, indent=1))
+
+
+def probe(provider: str, api_key: str = "") -> Dict[str, Any]:
+    """Check a key before a run starts.
+
+    Returns whether the provider will actually answer, and what budget is left,
+    so a user learns their quota is gone at setup rather than twenty minutes
+    into an enrichment.
+    """
+    cfg = PROVIDERS.get(provider)
+    if not cfg:
+        return {"ok": False, "error": "unknown provider"}
+    load_dotenv()
+    key = api_key or os.environ.get(cfg["env"], "")
+    if not key:
+        return {"ok": False, "error": "no API key supplied"}
+
+    model = _pick_model(cfg, key)
+    try:
+        if cfg["style"] == "gemini":
+            url = cfg["url"].format(model=model) + "?key=" + key
+            _post(url, {"contents": [{"parts": [{"text": "ping"}]}],
+                        "generationConfig": {"maxOutputTokens": 1}}, {})
+        elif cfg["style"] == "anthropic":
+            _post(cfg["url"], {"model": model, "max_tokens": 1,
+                               "messages": [{"role": "user", "content": "ping"}]},
+                  {"x-api-key": key, "anthropic-version": "2023-06-01"})
+        else:
+            _post(cfg["url"], {"model": model, "max_tokens": 1,
+                               "messages": [{"role": "user", "content": "ping"}]},
+                  {"Authorization": "Bearer " + key})
+        return {"ok": True, "model": model,
+                "remaining_tokens": Limits.remaining_tokens,
+                "remaining_requests": Limits.remaining_requests}
+    except urllib.error.HTTPError as exc:
+        _read_limits(getattr(exc, "headers", None))
+        try:
+            detail = exc.read().decode("utf-8", "replace")
+        except Exception:
+            detail = ""
+        if exc.code in (401, 403):
+            return {"ok": False, "error": "That key was rejected by {}.".format(provider)}
+        if exc.code == 429:
+            daily = bool(re.search(r"per\s*day|TPD|RPD", detail, re.I))
+            return {
+                "ok": False, "quota": True, "daily": daily, "model": model,
+                "resets_in_s": Limits.reset_tokens_s or Limits.reset_requests_s,
+                "error": ("Your {} quota is used up{}. CALIPER can still run "
+                          "everything deterministically.".format(
+                              provider,
+                              " for today" if daily else " for the moment")),
+            }
+        return {"ok": False, "error": "{} returned HTTP {}.".format(provider, exc.code)}
+    except Exception as exc:
+        return {"ok": False, "error": "Could not reach {}: {}".format(provider, exc)}
 
 
 def get_auditor(name: str = "", use_cache: bool = True, api_key: str = ""
@@ -362,6 +427,9 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False,
                     Stats.cache_hits += 1
                     return hit
 
+            if Stats.exhausted:
+                return {"facts": [], "verdicts": []}
+
             style = _c["style"]
             last_err: Optional[Exception] = None
             for attempt in range(4):
@@ -398,6 +466,20 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False,
                 except urllib.error.HTTPError as exc:
                     last_err = exc
                     _read_limits(getattr(exc, "headers", None))
+                    if exc.code == 429:
+                        try:
+                            detail = exc.read().decode("utf-8", "replace")
+                        except Exception:
+                            detail = ""
+                        # A per-minute limit is worth waiting out. A per-day
+                        # limit is not -- nothing that happens in this run will
+                        # clear it, so trip the breaker and degrade gracefully.
+                        if re.search(r"per\s*day|TPD|RPD", detail, re.I):
+                            Stats.exhausted = True
+                            Stats.exhausted_reason = (
+                                "Provider daily quota exhausted; continuing "
+                                "deterministically for the rest of this run.")
+                            return {"facts": [], "verdicts": []}
                     if exc.code in (429, 500, 502, 503, 529):
                         Stats.retries += 1
                         # Honour the provider's own reset hint when it gives one.

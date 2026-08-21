@@ -16,6 +16,7 @@ import mimetypes
 import os
 import posixpath
 import threading
+import time
 import urllib.parse
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -46,6 +47,10 @@ class State:
         self.api_key: str = ""
         self.use_audit: bool = False
         self.model_name: str = ""
+        # Live progress for the browser to poll while a run is in flight.
+        self.progress: Dict[str, Any] = {
+            "running": False, "done": 0, "total": 0, "stage": "",
+            "started": 0.0, "finished": True, "error": "", "notice": ""}
 
     def load_from_disk(self, data_dir: str) -> None:
         rep = os.path.join(data_dir, "report.json")
@@ -204,6 +209,14 @@ class Handler(BaseHTTPRequestHandler):
                 "edges": rows[:400], "total": len(rows)})
         if route == "/api/corrections":
             return self._json(STATE.report.get("corrections", {}))
+        if route == "/api/progress":
+            p = dict(STATE.progress)
+            el = max(0.001, time.time() - (p.get("started") or time.time()))
+            done, total = p.get("done", 0), p.get("total", 0) or 1
+            p["elapsed"] = round(el, 1)
+            p["rate"] = round(done / el, 1) if done else 0.0
+            p["eta"] = round((total - done) / (done / el), 0) if done else None
+            return self._json(p)
         if route == "/api/session":
             from ..llm.provider import PROVIDERS, load_dotenv
             load_dotenv()
@@ -299,15 +312,24 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json({"error": "unknown provider"}, 400)
             if not key:
                 return self._json({"error": "no API key supplied"}, 400)
-            probe = get_provider(provider, api_key=key)
-            if probe is None:
-                return self._json({"error": "provider could not be initialised"}, 400)
+            from ..llm.provider import probe as probe_provider
+            res = probe_provider(provider, key)
+            if not res.get("ok"):
+                # A used-up quota is not a dead end: offer the deterministic path.
+                return self._json({
+                    "error": res.get("error", "provider rejected the key"),
+                    "quota": bool(res.get("quota")),
+                    "daily": bool(res.get("daily")),
+                    "resets_in_s": res.get("resets_in_s") or 0,
+                    "fallback": "deterministic"}, 400)
             STATE.provider, STATE.api_key = provider, key
             STATE.use_audit = bool(body.get("audit"))
-            STATE.model_name = getattr(probe, "model", "")
+            STATE.model_name = res.get("model", "")
             # The key is deliberately absent from this response.
             return self._json({"ok": True, "mode": "ai", "provider": provider,
-                               "model": STATE.model_name, "audit": STATE.use_audit})
+                               "model": STATE.model_name, "audit": STATE.use_audit,
+                               "remaining_tokens": res.get("remaining_tokens"),
+                               "remaining_requests": res.get("remaining_requests")})
 
         if route == "/api/correct":
             length = int(self.headers.get("Content-Length", 0))
@@ -358,18 +380,54 @@ class Handler(BaseHTTPRequestHandler):
 
         schema = detect_schema(header, rows)
 
-        llm = auditor = None
-        if STATE.api_key and STATE.provider:
-            from ..llm.provider import get_auditor, get_provider
-            llm = get_provider(STATE.provider, api_key=STATE.api_key)
-            if STATE.use_audit:
-                auditor = get_auditor(STATE.provider, api_key=STATE.api_key)
-        pipe = Pipeline(llm=llm, auditor=auditor)
-        results, report = pipe.run(rows, schema)
-        STATE._last_edges = getattr(pipe, "edges", [])
-        STATE.set_results(results, report.to_dict(), name)
-        return self._json({"ok": True, "report": report.to_dict(),
-                           "source": name})
+        if STATE.progress.get("running"):
+            return self._json({"error": "a run is already in progress"}, 409)
+
+        STATE.progress = {"running": True, "done": 0, "total": len(rows),
+                          "stage": "analysing the catalogue",
+                          "started": time.time(), "finished": False,
+                          "error": "", "notice": ""}
+
+        def work() -> None:
+            try:
+                from ..llm.provider import Stats, get_auditor, get_provider
+                Stats.reset_breaker()
+                llm = auditor = None
+                if STATE.api_key and STATE.provider:
+                    llm = get_provider(STATE.provider, api_key=STATE.api_key)
+                    if STATE.use_audit:
+                        auditor = get_auditor(STATE.provider, api_key=STATE.api_key)
+
+                def tick(done: int, total: int) -> None:
+                    STATE.progress["done"] = done
+                    STATE.progress["total"] = total
+                    STATE.progress["stage"] = (
+                        "enriching with {}".format(STATE.model_name)
+                        if llm else "enriching")
+                    if Stats.exhausted:
+                        STATE.progress["notice"] = (
+                            "{} quota is used up, so the remaining rows are being "
+                            "enriched deterministically. Every one of the 252 "
+                            "columns is still produced.".format(
+                                (STATE.provider or "provider").title()))
+
+                pipe = Pipeline(llm=llm, auditor=auditor)
+                results, report = pipe.run(rows, schema, progress=tick)
+                STATE._last_edges = getattr(pipe, "edges", [])
+                STATE.set_results(results, report.to_dict(), name)
+                STATE.progress["stage"] = "done"
+                if Stats.exhausted:
+                    STATE.progress["notice"] = (
+                        "{} quota ran out during this run; the rest completed "
+                        "deterministically.".format((STATE.provider or "provider").title()))
+            except Exception as exc:
+                STATE.progress["error"] = "{}: {}".format(type(exc).__name__, exc)
+            finally:
+                STATE.progress["running"] = False
+                STATE.progress["finished"] = True
+
+        threading.Thread(target=work, daemon=True).start()
+        return self._json({"started": True, "total": len(rows)})
 
 
 def serve(host: str = "127.0.0.1", port: int = 8765,

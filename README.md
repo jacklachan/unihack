@@ -135,6 +135,35 @@ is picked up automatically. Model ids are **auto-detected** from the provider's
 Responses are cached to `data/cache/llm/` and that cache is committed — so the
 AI-enriched run reproduces byte-for-byte **with no key and no network**.
 
+### When the AI quota runs out
+
+Free tiers have daily caps — Groq's is 200,000 tokens per day, and it is not
+reported in the rate-limit headers, so it can only be discovered by hitting it.
+CALIPER handles that in three places:
+
+1. **Before the run.** The key is probed at setup. A rejected key, or a quota
+   already spent, is reported immediately with the reset time and a one-click
+   *"Continue without AI"*.
+2. **During the run.** A `429` naming a *per-day* limit trips a circuit breaker.
+   Per-minute limits are worth waiting out; per-day limits are not, because
+   nothing in this run will clear them. Further calls short-circuit instantly
+   instead of retrying into a wall, and the run finishes deterministically.
+3. **After the run.** The report carries `ai_degraded`, and the overview shows
+   how many rows got a model pass before the budget ran out.
+
+All 252 columns are produced either way. The model never writes an output cell,
+so losing it costs coverage on hard rows — not correctness on easy ones.
+
+### Tests
+
+```bash
+python tests/test_core.py     # 37 invariant checks, standard library only
+```
+
+They test the promises the design makes — an unevidenced value cannot enter the
+graph, the invoice line is compliant by construction, an audit verdict can never
+create a value — rather than numbers that move as rules improve.
+
 ### Other commands
 
 ```bash
