@@ -44,6 +44,18 @@
 726,MWUG42010624,blocked,0.8664,F-83a13378,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,5,0.668
 726,MWUG42010624,blocked,0.8664,F-83a13378,CG-BRD-01,error,No approved brand resolved.,5,0.668
 726,MWUG42010624,blocked,0.8664,F-83a13378,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,5,0.668
+898,578800,needs_review,0.8984,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M PRO 10'.,6,0.61
+898,578800,needs_review,0.8984,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578800 Festool 80x133 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.61
+899,578801,needs_review,0.8984,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F PRO 10'.,6,0.61
+899,578801,needs_review,0.8984,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578801 Festool 80x133 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.61
+900,578802,needs_review,0.8984,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S PRO 10'.,6,0.61
+900,578802,needs_review,0.8984,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578802 Festool 80x133 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.61
+901,578808,needs_review,0.8984,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M PRO 10'.,6,0.61
+901,578808,needs_review,0.8984,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578808 Festool 3x4 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.61
+902,578809,needs_review,0.8984,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F PRO 10'.,6,0.61
+902,578809,needs_review,0.8984,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578809 Festool 3x4 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.61
+903,578810,needs_review,0.8984,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S PRO 10'.,6,0.61
+903,578810,needs_review,0.8984,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578810 Festool 3x4 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.61
 727,MWUG36010225,blocked,0.8664,F-cd28832f,CG-MOB-01,info,MOBILE_DESC is 49 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,4,0.534
 727,MWUG36010225,blocked,0.8664,F-cd28832f,CG-BRD-01,error,No approved brand resolved.,4,0.534
 727,MWUG36010225,blocked,0.8664,F-cd28832f,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,4,0.534
@@ -56,30 +68,6 @@
 731,MWUG36010625,blocked,0.8664,F-cd28832f,CG-MOB-01,info,MOBILE_DESC is 46 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,4,0.534
 731,MWUG36010625,blocked,0.8664,F-cd28832f,CG-BRD-01,error,No approved brand resolved.,4,0.534
 731,MWUG36010625,blocked,0.8664,F-cd28832f,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,4,0.534
-898,578800,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
-898,578800,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
-898,578800,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M PRO 10'.,6,0.513
-898,578800,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578800 Festool 80x133 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
-899,578801,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
-899,578801,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
-899,578801,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F PRO 10'.,6,0.513
-899,578801,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578801 Festool 80x133 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
-900,578802,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
-900,578802,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
-900,578802,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S PRO 10'.,6,0.513
-900,578802,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578802 Festool 80x133 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
-901,578808,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
-901,578808,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
-901,578808,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M PRO 10'.,6,0.513
-901,578808,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578808 Festool 3x4 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
-902,578809,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
-902,578809,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
-902,578809,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F PRO 10'.,6,0.513
-902,578809,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578809 Festool 3x4 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
-903,578810,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
-903,578810,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
-903,578810,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S PRO 10'.,6,0.513
-903,578810,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578810 Festool 3x4 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
 713,FE-EFX-6L,blocked,0.7456,F-d130fe67,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.509
 713,FE-EFX-6L,blocked,0.7456,F-d130fe67,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",2,0.509
 713,FE-EFX-6L,blocked,0.7456,F-d130fe67,classification_abstained,review,"No taxonomy rule matched item type 'Lith Fire Extinguisher'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.509

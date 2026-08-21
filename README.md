@@ -242,7 +242,7 @@ runs on files dropped into the console.
 |---|---|
 | Throughput | 1,000 rows in 8.02 s (deterministic), no API key required |
 | Brand resolved to an approved name | **92.5 %** |
-| Classified to a classpath | **88.2 %** — the remainder abstain rather than guess |
+| Classified to a classpath | **88.8 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
 | `MOBILE_DESC` in the 60–80 window | 67.6 % — the remaining 32.4 % are data-limited, 0.0 % composition faults |

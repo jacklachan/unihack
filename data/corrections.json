@@ -2,14 +2,14 @@
   "corrections": [
     {
       "scope": "family",
-      "target": "F-8ecfff1c",
+      "target": "F-a3344513",
       "key": "item_type",
       "value": "Sanding Sheet",
       "uom": "",
       "note": "Festool Granat 80x133mm RTS sander sheets, 10-pack",
       "by": "mohit",
-      "at": "2026-08-21T23:06:01",
-      "applied": 0
+      "at": "2026-08-22T01:03:03",
+      "applied": 6
     }
   ]
 }

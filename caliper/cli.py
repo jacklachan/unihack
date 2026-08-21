@@ -223,6 +223,12 @@ def cmd_run(args: argparse.Namespace) -> int:
         print("  corrections          : {} stored, {} rows fixed ({} rows each)".format(
             c.get("corrections", 0), c.get("rows_affected", 0),
             c.get("rows_per_correction", 0)))
+        if c.get("stale"):
+            print("  STALE CORRECTIONS    : {} matched nothing -- their target no "
+                  "longer exists".format(c["stale"]))
+            for it in c.get("stale_items", [])[:3]:
+                print("      [{}] {} · {} = {!r}".format(
+                    it["scope"], it["target"], it["key"], it["value"]))
     if report.audited_rows:
         ac = report.audit_counts or {}
         print("  audit                : {} rows · {} supported, {} rejected, {} unknown"

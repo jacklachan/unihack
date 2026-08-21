@@ -168,17 +168,32 @@ class CorrectionStore:
         return applied
 
     # -- reporting ---------------------------------------------------------
+    def stale(self) -> List[Correction]:
+        """Corrections that matched nothing on the last run.
+
+        A family id is *derived* from the row's content, so improving the
+        clustering rule silently re-keys every family and orphans any
+        correction scoped to one. That is a real failure mode of scoping to
+        computed identifiers, and it should be visible rather than quietly
+        reducing a steward's decision to a no-op.
+        """
+        return [c for c in self.corrections if c.applied == 0]
+
     def summary(self) -> Dict[str, Any]:
         by_scope: Dict[str, int] = {}
         for c in self.corrections:
             by_scope[c.scope] = by_scope.get(c.scope, 0) + 1
         total_rows = sum(c.applied for c in self.corrections)
         leverage = round(total_rows / max(1, len(self.corrections)), 2)
+        orphans = self.stale()
         return {
             "corrections": len(self.corrections),
             "by_scope": by_scope,
             "rows_affected": total_rows,
             "rows_per_correction": leverage,
+            "stale": len(orphans),
+            "stale_items": [{"scope": c.scope, "target": c.target, "key": c.key,
+                             "value": c.value, "by": c.by} for c in orphans],
             "items": sorted((c.to_dict() for c in self.corrections),
                             key=lambda d: -d["applied"]),
         }
