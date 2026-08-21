@@ -54,8 +54,9 @@ def repair(path: str, apply: bool = True) -> int:
 
 def tracked_sources():
     try:
-        out = subprocess.run(["git", "ls-files", "*.py"],
-                             capture_output=True, text=True, check=True).stdout
+        out = subprocess.run(
+            ["git", "ls-files", "*.py", "*.html", "*.md", "*.json"],
+            capture_output=True, text=True, check=True).stdout
         return [p for p in out.split() if os.path.exists(p)]
     except Exception:
         found = []

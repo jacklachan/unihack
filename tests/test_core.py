@@ -60,8 +60,8 @@ print("\nsource integrity")
 # and the provider's daily-quota detector never matched \bTPD\b.
 import subprocess as _sp
 _root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-_files = _sp.run(["git", "ls-files", "*.py"], capture_output=True, text=True,
-                 cwd=_root).stdout.split()
+_files = _sp.run(["git", "ls-files", "*.py", "*.html", "*.md"],
+                 capture_output=True, text=True, cwd=_root).stdout.split()
 _ctrl = []
 for _f in _files:
     _p = os.path.join(_root, _f)

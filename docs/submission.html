@@ -209,8 +209,27 @@ blank in both      : 173 columns</pre>
     <p>Four rows reported an arbor hole wider than the wheel it is cut in — impossible. The dimension regex knew <span class="mono">"</span>, <span class="mono">in</span> and <span class="mono">'</span> but not metric marks. Fixing the parser cleared the relational finding; the remaining one turned out to be a false positive in the <em>guardrail</em>, whose range was stated in inches and never converted. Findings went <strong>4 → 2 → 0</strong>, and both defects were real.</p>
   </div>
 
+  <div class="finding">
+    <div class="tag">Finding 04 · a bug no reading could find</div>
+    <h4>Two live regexes were broken by an invisible byte.</h4>
+    <p>A shell heredoc turned <span class="mono">&#92;x08</span> inside two raw-string
+       patterns into a literal backspace character. The regexes never matched,
+       and <span class="mono">grep</span>, <span class="mono">sed</span> and
+       <span class="mono">cat</span> all rendered the files as correct, because a
+       terminal does not draw the byte:</p>
+<pre>on screen : re.sub(r"\s*<b>&#92;x08</b>w/\s*", " - ", txt)
+in bytes  : re.sub(r"\s*<b>&#92;x08</b>w/\s*", " - ", txt)   <i>← never matches</i></pre>
+    <p>One made the item-type resolver read
+       <span class="mono">15A Wall Tap w/USB</span> as a product called "USB".
+       The other killed <span class="mono">&#92;x08TPD&#92;x08</span> in the provider's
+       daily-quota detector, which only kept working because a second
+       alternative happened to match the wording of the error. Nine bytes across
+       two files. The test suite now fails if any control character reappears in
+       tracked source.</p>
+  </div>
+
   <div class="col">
-    <p>A fourth measurement killed a feature. An early estimate put product-family amortisation at 8×. Measured, it is <strong>1.77×</strong>, with 378 singletons. The cost argument died; family clustering was repurposed to what it is actually good for — corroborated consensus and anomaly detection.</p>
+    <p>A fifth measurement killed a feature. An early estimate put product-family amortisation at 8×. Measured, it is <strong>1.77×</strong>, with 378 singletons. The cost argument died; family clustering was repurposed to what it is actually good for — corroborated consensus and anomaly detection.</p>
   </div>
 </section>
 
@@ -323,6 +342,18 @@ DISHWASHER BSS                <i>14/40, kept 2</i></pre>
 
     <h4>The AI layer is an upgrade, not a dependency</h4>
     <p>With no key the deterministic engines still produce all 252 columns. Free tiers have daily caps that are invisible until you hit them, so a <span class="mono">429</span> naming a <em>per-day</em> limit trips a circuit breaker: per-minute limits are worth waiting out, per-day limits are not. The run finishes deterministically and says so on the front page. Keys are probed at setup, held in process memory only, never written to disk.</p>
+
+    <h4>The model is not allowed to repeat itself</h4>
+    <p>Handed the text no rule claimed, a model re-reports values the parser
+       already owns under different names. A 1/2 in x 18 in sanding belt came
+       back with <em>Length 18 in</em> and <em>Width 1/2 in</em>, and the invoice
+       line became <span class="mono">SANDING BELT 1/2IN X 18IN 18IN 6 1/2IN</span>.
+       The evidence firewall passed it — the quotes were genuinely in the source —
+       because the fault is redundancy, not groundedness. Proposals are now
+       compared against every existing value textually, as a component of a
+       composite dimension, and numerically, since <span class="mono">2.75</span>
+       and <span class="mono">2-3/4</span> are one measurement written two ways
+       and only arithmetic sees that.</p>
 
     <h4>Corrections compound</h4>
     <p>A review queue that forgets its answers makes a steward solve the same problem every run. Corrections are stored as scoped facts — part, family, classpath, or a brand alias that teaches the registry — and replayed. One family-scoped decision in the sample fixes 6 rows and re-drives classification. The largest family holds 65.</p>
