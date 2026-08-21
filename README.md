@@ -57,6 +57,38 @@ boundary is the entire design, and three things fall out of it:
 
 ---
 
+## A 60-second tour
+
+If you only have a minute, these four things are the submission:
+
+```bash
+python -m caliper serve          # then follow along below
+```
+
+**1 · The evidence panel.** Open *Catalogue*, click any row, click any cell.
+Every populated value names the rule that produced it, the characters of the
+input that justified it, and why. 26,300 cells on the sample catalogue, and the
+panel works offline from the shipped files.
+
+**2 · The character-budget solver.** In the same panel, look at
+`INVOICE_DESC`. A hard 40-character ceiling in caps, solved as a budget problem
+rather than asked of a model — facts ranked by how much they identify the
+product, shortened before they are dropped, and the trace shows what it gave up.
+**100% compliance.**
+
+**3 · What the pipeline found wrong with the client's data.** The *Overview*
+page ends with findings raised against the *source* catalogue, not against us:
+brand and manufacturer disagreeing, siblings breaking their family pattern,
+rows where classification refused to guess.
+
+**4 · Fill rate against the answer key.** Also on *Overview*. The published
+ground truth fills 63–71 of 252 columns. A pipeline filling 90% of the sheet is
+inventing two-thirds of a catalogue, so this one reports its fill rate beside
+the answer key's rather than maximising it.
+
+Then drop your own CSV on the upload button — column names are detected, not
+assumed.
+
 ## Quick start
 
 No pip install. No API key. Python 3.9+.
