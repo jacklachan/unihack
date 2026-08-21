@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 8.803,
+  "elapsed_s": 12.57,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -25,8 +25,8 @@
     {
       "category_id": "UNCLASSIFIED",
       "label": "UNCLASSIFIED",
-      "n_rows": 252,
-      "coverage": 2.258,
+      "n_rows": 239,
+      "coverage": 2.326,
       "item_types": [
         [
           "Lineage",
@@ -39,10 +39,6 @@
         [
           "Abranet",
           5
-        ],
-        [
-          "Lowe Arg",
-          4
         ],
         [
           "Smooth",
@@ -69,18 +65,23 @@
           2
         ],
         [
-          "Pan Cedar",
+          "Oct",
           2
         ],
         [
-          "Oct",
+          "Flor",
+          2
+        ],
+        [
+          "Adjustable Base",
           2
         ]
       ],
       "title_order": [
         "wattage",
         "color_temperature",
-        "base_type"
+        "base_type",
+        "pack_quantity"
       ],
       "induced_from": [
         "5B-332-080",
@@ -90,14 +91,14 @@
         "D519127",
         "WKE100HWA",
         "05134545001",
-        "LNL65301"
+        "543140908"
       ],
       "attributes": [
         {
           "key": "wattage",
           "label": "Wattage",
           "uom": "W",
-          "fill_rate": 0.4683,
+          "fill_rate": 0.4937,
           "support": 118,
           "cardinality": 24,
           "filterable": true,
@@ -209,7 +210,7 @@
           "key": "color_temperature",
           "label": "Color Temperature",
           "uom": "K",
-          "fill_rate": 0.4405,
+          "fill_rate": 0.4644,
           "support": 111,
           "cardinality": 9,
           "filterable": true,
@@ -261,7 +262,7 @@
           "key": "base_type",
           "label": "Base Type",
           "uom": "",
-          "fill_rate": 0.3889,
+          "fill_rate": 0.41,
           "support": 98,
           "cardinality": 2,
           "filterable": true,
@@ -285,7 +286,7 @@
           "key": "pack_quantity",
           "label": "Pack Quantity",
           "uom": "",
-          "fill_rate": 0.2857,
+          "fill_rate": 0.3013,
           "support": 72,
           "cardinality": 7,
           "filterable": false,
@@ -335,7 +336,11 @@
       "item_types": [
         [
           "Decking",
-          120
+          73
+        ],
+        [
+          "Square",
+          47
         ]
       ],
       "title_order": [
@@ -670,81 +675,6 @@
       ]
     },
     {
-      "category_id": "Tools & Equipment>Power Tool Accessories>Driver Bits",
-      "label": "Tools & Equipment>Power Tool Accessories>Driver Bits",
-      "n_rows": 32,
-      "coverage": 1.031,
-      "item_types": [
-        [
-          "Drive Bit",
-          11
-        ],
-        [
-          "Torx Drive Bit",
-          10
-        ],
-        [
-          "Bit",
-          7
-        ],
-        [
-          "Square Drive Bit",
-          4
-        ]
-      ],
-      "title_order": [
-        "size"
-      ],
-      "induced_from": [
-        "QB22RU",
-        "QB22KU",
-        "220USB25U",
-        "220USBP5U",
-        "IBMG90K003",
-        "IBPH250P15T",
-        "DPH12B",
-        "DPH135B"
-      ],
-      "attributes": [
-        {
-          "key": "size",
-          "label": "Size",
-          "uom": "in",
-          "fill_rate": 0.8438,
-          "support": 27,
-          "cardinality": 5,
-          "filterable": true,
-          "discriminative": 0.8296,
-          "values": [
-            [
-              "2",
-              13
-            ],
-            [
-              "3-1/2",
-              6
-            ],
-            [
-              "6",
-              4
-            ],
-            [
-              "1",
-              3
-            ],
-            [
-              "3-1/4",
-              1
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "DIM-SGL-01"
-          ]
-        }
-      ]
-    },
-    {
       "category_id": "Building Materials>Trim & Moulding>Trim Board",
       "label": "Building Materials>Trim & Moulding>Trim Board",
       "n_rows": 30,
@@ -752,19 +682,7 @@
       "item_types": [
         [
           "Fascia",
-          10
-        ],
-        [
-          "Enhance Naturals Fascia",
-          6
-        ],
-        [
-          "Select Fascia",
-          6
-        ],
-        [
-          "Enhance Basics Fascia",
-          4
+          26
         ],
         [
           "Post Trim Rdi",
@@ -860,32 +778,24 @@
     {
       "category_id": "Building Materials>Decking>Railing Systems",
       "label": "Building Materials>Decking>Railing Systems",
-      "n_rows": 23,
-      "coverage": 1.913,
+      "n_rows": 27,
+      "coverage": 1.926,
       "item_types": [
+        [
+          "Square",
+          9
+        ],
+        [
+          "Baluster",
+          9
+        ],
         [
           "Rd Aluminum Balusters",
           6
         ],
         [
-          "Square",
-          5
-        ],
-        [
-          "Composite Balusters",
-          4
-        ],
-        [
-          "Black Aluminum Baluster",
-          4
-        ],
-        [
           "Railing",
           2
-        ],
-        [
-          "Baluster",
-          1
         ],
         [
           "Rail Trex",
@@ -908,10 +818,38 @@
       ],
       "attributes": [
         {
+          "key": "dimensions",
+          "label": "Size",
+          "uom": "",
+          "fill_rate": 0.2222,
+          "support": 6,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "6 ft x 36 in",
+              2
+            ],
+            [
+              "8 ft x 36 in",
+              2
+            ],
+            [
+              "4 in x 4 in",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-CHN-01"
+          ]
+        },
+        {
           "key": "size",
           "label": "Size",
           "uom": "ft",
-          "fill_rate": 0.8261,
+          "fill_rate": 0.7037,
           "support": 19,
           "cardinality": 3,
           "filterable": true,
@@ -940,14 +878,14 @@
           "label": "Color",
           "uom": "",
           "fill_rate": 1.0,
-          "support": 23,
+          "support": 27,
           "cardinality": 2,
           "filterable": true,
-          "discriminative": 0.9877,
+          "discriminative": 0.951,
           "values": [
             [
               "Black",
-              13
+              17
             ],
             [
               "White",
@@ -963,10 +901,81 @@
       ]
     },
     {
+      "category_id": "Tools & Equipment>Power Tool Accessories>Driver Bits",
+      "label": "Tools & Equipment>Power Tool Accessories>Driver Bits",
+      "n_rows": 26,
+      "coverage": 1.038,
+      "item_types": [
+        [
+          "Drive Bit",
+          11
+        ],
+        [
+          "Torx Drive Bit",
+          10
+        ],
+        [
+          "Bit",
+          5
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "QB22RU",
+        "QB22KU",
+        "IBMG90K003",
+        "IBPH250P15T",
+        "DPH12B",
+        "DPH135B",
+        "DPH21B",
+        "DPH22B"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.8846,
+          "support": 23,
+          "cardinality": 5,
+          "filterable": true,
+          "discriminative": 0.8577,
+          "values": [
+            [
+              "2",
+              10
+            ],
+            [
+              "3-1/2",
+              6
+            ],
+            [
+              "1",
+              3
+            ],
+            [
+              "6",
+              3
+            ],
+            [
+              "3-1/4",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
       "category_id": "Tools & Equipment>Power Tool Accessories>Saw Blades",
       "label": "Tools & Equipment>Power Tool Accessories>Saw Blades",
-      "n_rows": 23,
-      "coverage": 0.783,
+      "n_rows": 22,
+      "coverage": 0.818,
       "item_types": [
         [
           "Saw Blade",
@@ -978,7 +987,7 @@
         ],
         [
           "Blade",
-          4
+          3
         ],
         [
           "Tile Blade",
@@ -990,20 +999,20 @@
       ],
       "induced_from": [
         "VN56920",
-        "48-44-2770",
         "D0860X",
         "48-40-0740",
         "48-41-0740",
         "A-96095",
         "D0760UX",
-        "D0708LF"
+        "D0708LF",
+        "D1012LF"
       ],
       "attributes": [
         {
           "key": "size",
           "label": "Size",
           "uom": "in",
-          "fill_rate": 0.6087,
+          "fill_rate": 0.6364,
           "support": 14,
           "cardinality": 12,
           "filterable": false,
@@ -1066,6 +1075,89 @@
       ]
     },
     {
+      "category_id": "Tools & Equipment>Hand Tools>Layout & Measuring Tools",
+      "label": "Tools & Equipment>Hand Tools>Layout & Measuring Tools",
+      "n_rows": 18,
+      "coverage": 0.722,
+      "item_types": [
+        [
+          "Square",
+          10
+        ],
+        [
+          "Cross Line",
+          4
+        ],
+        [
+          "Level",
+          2
+        ],
+        [
+          "Dewalt Laser",
+          1
+        ],
+        [
+          "Line Laser",
+          1
+        ]
+      ],
+      "title_order": [
+        "size"
+      ],
+      "induced_from": [
+        "52151-S-UPC",
+        "40025",
+        "DW08302CG",
+        "GCL165-42GL",
+        "DW08802CG",
+        "DW088CG",
+        "DW089CG",
+        "DCLE34520GB"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.4444,
+          "support": 8,
+          "cardinality": 6,
+          "filterable": false,
+          "discriminative": 0.9306,
+          "values": [
+            [
+              "2",
+              3
+            ],
+            [
+              "30",
+              1
+            ],
+            [
+              "1/4",
+              1
+            ],
+            [
+              "3/8",
+              1
+            ],
+            [
+              "1/2",
+              1
+            ],
+            [
+              "6",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        }
+      ]
+    },
+    {
       "category_id": "Electrical>Lighting & Bulbs>Light Fixtures",
       "label": "Electrical>Lighting & Bulbs>Light Fixtures",
       "n_rows": 18,
@@ -1073,7 +1165,7 @@
       "item_types": [
         [
           "Light",
-          10
+          9
         ],
         [
           "Down Light",
@@ -1082,6 +1174,10 @@
         [
           "LED Wrap Light",
           2
+        ],
+        [
+          "Work Light",
+          1
         ]
       ],
       "title_order": [
@@ -1191,11 +1287,11 @@
           3
         ],
         [
-          "Auto Espresso Machine",
-          2
+          "Toaster",
+          3
         ],
         [
-          "Caf Toaster",
+          "Auto Espresso Machine",
           2
         ],
         [
@@ -1208,10 +1304,6 @@
         ],
         [
           "Cafe Espresso",
-          1
-        ],
-        [
-          "Cafe Toaster",
           1
         ]
       ],
@@ -1260,14 +1352,38 @@
       ]
     },
     {
+      "category_id": "Electrical>Lighting & Bulbs>Pendant Lighting",
+      "label": "Electrical>Lighting & Bulbs>Pendant Lighting",
+      "n_rows": 15,
+      "coverage": 0.0,
+      "item_types": [
+        [
+          "Pendant Light",
+          15
+        ]
+      ],
+      "title_order": [],
+      "induced_from": [
+        "43913BK",
+        "52476AVI",
+        "42199BK",
+        "42199BKCS",
+        "42200BK",
+        "42200BKCS",
+        "43851BK",
+        "43852BK"
+      ],
+      "attributes": []
+    },
+    {
       "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Ranges",
       "label": "Appliances & Consumer Electronics>Kitchen Appliances>Ranges",
-      "n_rows": 16,
-      "coverage": 1.75,
+      "n_rows": 15,
+      "coverage": 1.8,
       "item_types": [
         [
           "Range",
-          12
+          11
         ],
         [
           "Cooktop",
@@ -1302,15 +1418,15 @@
           "key": "size",
           "label": "Size",
           "uom": "in",
-          "fill_rate": 0.6875,
-          "support": 11,
+          "fill_rate": 0.6667,
+          "support": 10,
           "cardinality": 2,
           "filterable": true,
-          "discriminative": 0.4395,
+          "discriminative": 0.469,
           "values": [
             [
               "30",
-              10
+              9
             ],
             [
               "36",
@@ -1326,7 +1442,7 @@
           "key": "finish",
           "label": "Color",
           "uom": "",
-          "fill_rate": 0.75,
+          "fill_rate": 0.8,
           "support": 12,
           "cardinality": 2,
           "filterable": true,
@@ -1350,7 +1466,7 @@
           "key": "display_only",
           "label": "Display Only",
           "uom": "",
-          "fill_rate": 0.3125,
+          "fill_rate": 0.3333,
           "support": 5,
           "cardinality": 1,
           "filterable": false,
@@ -1369,46 +1485,14 @@
       ]
     },
     {
-      "category_id": "Electrical>Lighting & Bulbs>Pendant Lighting",
-      "label": "Electrical>Lighting & Bulbs>Pendant Lighting",
-      "n_rows": 15,
-      "coverage": 0.0,
-      "item_types": [
-        [
-          "Pendant Light",
-          15
-        ]
-      ],
-      "title_order": [],
-      "induced_from": [
-        "43913BK",
-        "52476AVI",
-        "42199BK",
-        "42199BKCS",
-        "42200BK",
-        "42200BKCS",
-        "43851BK",
-        "43852BK"
-      ],
-      "attributes": []
-    },
-    {
       "category_id": "Safety>Personal Protective Equipment>Hand Protection",
       "label": "Safety>Personal Protective Equipment>Hand Protection",
       "n_rows": 15,
       "coverage": 1.0,
       "item_types": [
         [
-          "Heated Glove",
-          6
-        ],
-        [
-          "Snow Heated Glove",
-          5
-        ],
-        [
-          "Work Glove Liners",
-          4
+          "Glove",
+          15
         ]
       ],
       "title_order": [
@@ -1455,24 +1539,20 @@
       "coverage": 2.133,
       "item_types": [
         [
+          "Impact",
+          4
+        ],
+        [
           "Impact Driver",
-          5
+          4
         ],
         [
           "Impact Wrench",
-          5
+          4
         ],
         [
           "Angle Impact",
           3
-        ],
-        [
-          "Bare Tool",
-          1
-        ],
-        [
-          "Impact",
-          1
         ]
       ],
       "title_order": [
@@ -1759,16 +1839,20 @@
           4
         ],
         [
-          "Aluminum Post Wrap",
+          "Square",
           3
-        ],
-        [
-          "Rdi",
-          2
         ],
         [
           "Support Post",
           2
+        ],
+        [
+          "Post Cap",
+          1
+        ],
+        [
+          "Rdi",
+          1
         ],
         [
           "Post Wrap",
@@ -1939,7 +2023,7 @@
       "coverage": 1.091,
       "item_types": [
         [
-          "Insulated R Sheathing",
+          "Sheathing",
           3
         ],
         [
@@ -2086,7 +2170,7 @@
       "item_types": [
         [
           "Saw",
-          3
+          4
         ],
         [
           "Circ Saw",
@@ -2106,10 +2190,6 @@
         ],
         [
           "Grip Jigsaw",
-          1
-        ],
-        [
-          "Bare Tool",
           1
         ]
       ],
@@ -2520,87 +2600,6 @@
           "synonyms": {},
           "rule_ids": [
             "MRC-DSP-01"
-          ]
-        }
-      ]
-    },
-    {
-      "category_id": "Tools & Equipment>Hand Tools>Layout & Measuring Tools",
-      "label": "Tools & Equipment>Hand Tools>Layout & Measuring Tools",
-      "n_rows": 10,
-      "coverage": 0.5,
-      "item_types": [
-        [
-          "Cross Line",
-          5
-        ],
-        [
-          "Square",
-          2
-        ],
-        [
-          "Dewalt Laser",
-          1
-        ],
-        [
-          "Line Laser",
-          1
-        ],
-        [
-          "Rafter",
-          1
-        ]
-      ],
-      "title_order": [],
-      "induced_from": [
-        "52151-S-UPC",
-        "40025",
-        "DW08302CG",
-        "GCL165-42GL",
-        "DW08802CG",
-        "DW088CG",
-        "DCLE34520GB",
-        "DCLE34031B"
-      ],
-      "attributes": [
-        {
-          "key": "voltage",
-          "label": "Voltage Rating",
-          "uom": "V",
-          "fill_rate": 0.2,
-          "support": 2,
-          "cardinality": 1,
-          "filterable": false,
-          "discriminative": 0.0,
-          "values": [
-            [
-              "20",
-              2
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "ELE-V-01"
-          ]
-        },
-        {
-          "key": "includes_battery",
-          "label": "Battery Included",
-          "uom": "",
-          "fill_rate": 0.2,
-          "support": 2,
-          "cardinality": 1,
-          "filterable": false,
-          "discriminative": 0.0,
-          "values": [
-            [
-              "No",
-              2
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "TOL-BAR-01"
           ]
         }
       ]
@@ -3516,8 +3515,12 @@
           6
         ],
         [
+          "Square",
+          1
+        ],
+        [
           "Cover",
-          2
+          1
         ]
       ],
       "title_order": [
@@ -3931,102 +3934,6 @@
           "synonyms": {},
           "rule_ids": [
             "DIM-SGL-01"
-          ]
-        }
-      ]
-    },
-    {
-      "category_id": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
-      "label": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
-      "n_rows": 8,
-      "coverage": 1.25,
-      "item_types": [
-        [
-          "Hex Socket Adapter",
-          3
-        ],
-        [
-          "Milwaukee Packout",
-          3
-        ],
-        [
-          "Dewalt Drive",
-          2
-        ]
-      ],
-      "title_order": [
-        "size",
-        "pack_quantity"
-      ],
-      "induced_from": [
-        "DSA0250B",
-        "DSA0375B",
-        "DSA0500B",
-        "DWMT45422",
-        "DWMT45424",
-        "48-22-9483",
-        "48-22-9484",
-        "48-22-9485"
-      ],
-      "attributes": [
-        {
-          "key": "size",
-          "label": "Size",
-          "uom": "in",
-          "fill_rate": 0.625,
-          "support": 5,
-          "cardinality": 3,
-          "filterable": false,
-          "discriminative": 0.9602,
-          "values": [
-            [
-              "1/4",
-              2
-            ],
-            [
-              "3/8",
-              2
-            ],
-            [
-              "1/2",
-              1
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "DIM-SGL-01"
-          ]
-        },
-        {
-          "key": "pack_quantity",
-          "label": "Pack Quantity",
-          "uom": "",
-          "fill_rate": 0.625,
-          "support": 5,
-          "cardinality": 4,
-          "filterable": false,
-          "discriminative": 0.961,
-          "values": [
-            [
-              "15",
-              2
-            ],
-            [
-              "50",
-              1
-            ],
-            [
-              "84",
-              1
-            ],
-            [
-              "30",
-              1
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "PKG-PK-01"
           ]
         }
       ]
@@ -4611,48 +4518,60 @@
       ]
     },
     {
-      "category_id": "Building Materials>Siding>Fiber Cement & Engineered Siding",
-      "label": "Building Materials>Siding>Fiber Cement & Engineered Siding",
+      "category_id": "Building Materials>Windows & Doors>Doors",
+      "label": "Building Materials>Windows & Doors>Doors",
       "n_rows": 5,
-      "coverage": 1.8,
+      "coverage": 1.6,
       "item_types": [
         [
-          "Panel",
+          "Door",
           5
         ]
       ],
       "title_order": [
-        "dimensions",
+        "lumens",
         "finish"
       ],
       "induced_from": [
-        "543340126",
-        "543340127",
-        "543340146",
-        "543340147",
-        "65-572R1"
+        "27233",
+        "1517602",
+        "1517603",
+        "1517604",
+        "1517605"
       ],
       "attributes": [
+        {
+          "key": "lumens",
+          "label": "Light Output",
+          "uom": "lm",
+          "fill_rate": 0.4,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "6068",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-LM-01"
+          ]
+        },
         {
           "key": "dimensions",
           "label": "Size",
           "uom": "",
-          "fill_rate": 1.0,
-          "support": 5,
-          "cardinality": 3,
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
           "filterable": false,
-          "discriminative": 0.9602,
+          "discriminative": 0.0,
           "values": [
             [
-              "6 ft x 36 in",
-              2
-            ],
-            [
-              "8 ft x 36 in",
-              2
-            ],
-            [
-              "2 in x 4 in",
+              "24 in x 48 in",
               1
             ]
           ],
@@ -4665,19 +4584,24 @@
           "key": "finish",
           "label": "Color",
           "uom": "",
-          "fill_rate": 0.8,
-          "support": 4,
-          "cardinality": 1,
-          "filterable": false,
-          "discriminative": 0.0,
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.971,
           "values": [
             [
+              "White",
+              3
+            ],
+            [
               "Black",
-              4
+              2
             ]
           ],
           "synonyms": {},
           "rule_ids": [
+            "FIN-CDE-01",
             "FIN-WRD-01"
           ]
         }
@@ -4949,6 +4873,91 @@
           "synonyms": {},
           "rule_ids": [
             "TOL-BAR-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
+      "label": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
+      "n_rows": 5,
+      "coverage": 1.4,
+      "item_types": [
+        [
+          "Wrench",
+          3
+        ],
+        [
+          "Dewalt Drive",
+          2
+        ]
+      ],
+      "title_order": [
+        "size",
+        "pack_quantity"
+      ],
+      "induced_from": [
+        "DWMT45422",
+        "DWMT45424",
+        "48-22-9483",
+        "48-22-9484",
+        "48-22-9485"
+      ],
+      "attributes": [
+        {
+          "key": "size",
+          "label": "Size",
+          "uom": "in",
+          "fill_rate": 0.4,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "1/4",
+              1
+            ],
+            [
+              "3/8",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 4,
+          "filterable": false,
+          "discriminative": 0.961,
+          "values": [
+            [
+              "15",
+              2
+            ],
+            [
+              "50",
+              1
+            ],
+            [
+              "84",
+              1
+            ],
+            [
+              "30",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
           ]
         }
       ]
@@ -5372,7 +5381,7 @@
       "coverage": 2.0,
       "item_types": [
         [
-          "Skylight Gray",
+          "Skylight",
           3
         ]
       ],
@@ -5559,6 +5568,94 @@
       "attributes": []
     },
     {
+      "category_id": "Tools & Equipment>Hand Tools>Screwdrivers",
+      "label": "Tools & Equipment>Hand Tools>Screwdrivers",
+      "n_rows": 3,
+      "coverage": 1.333,
+      "item_types": [
+        [
+          "Screwdriver",
+          3
+        ]
+      ],
+      "title_order": [
+        "platform",
+        "voltage",
+        "pack_quantity"
+      ],
+      "induced_from": [
+        "220USB25U",
+        "XRF03Z",
+        "220USBP5U"
+      ],
+      "attributes": [
+        {
+          "key": "platform",
+          "label": "Battery Platform",
+          "uom": "",
+          "fill_rate": 0.3333,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "18V",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "TOL-PLT-01"
+          ]
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage Rating",
+          "uom": "V",
+          "fill_rate": 0.3333,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "18",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-V-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.6667,
+          "support": 2,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "25",
+              1
+            ],
+            [
+              "5",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
       "category_id": "Tools & Equipment>Stationary Power Tools>Band Saws",
       "label": "Tools & Equipment>Stationary Power Tools>Band Saws",
       "n_rows": 3,
@@ -5735,33 +5832,33 @@
       ]
     }
   ],
-  "fill_rate": 0.1022,
-  "mean_columns_filled": 25.75,
+  "fill_rate": 0.1027,
+  "mean_columns_filled": 25.88,
   "status_counts": {
-    "ready": 773,
-    "blocked": 198,
-    "needs_review": 29
+    "ready": 786,
+    "blocked": 186,
+    "needs_review": 28
   },
   "flag_counts": {
-    "classification_abstained": 139,
+    "classification_abstained": 125,
     "brand_unresolved": 52,
     "family_anomaly": 2,
     "item_type_unresolved": 19,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 350,
-    "CG-TAX-01": 126,
+    "CG-MOB-01": 354,
+    "CG-TAX-01": 112,
     "CG-BRD-01": 90
   },
   "brand_resolution": 0.91,
-  "classification_rate": 0.874,
+  "classification_rate": 0.888,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.65,
+    "MOBILE_DESC": 0.646,
     "SHORT_DESC": 1.0
   },
-  "mobile_data_limited": 0.35,
+  "mobile_data_limited": 0.354,
   "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,
@@ -5778,27 +5875,27 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 597,
+    "edges": 635,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
       "variant_of": 370,
-      "same_series": 203
+      "same_series": 241
     },
-    "products_connected": 607,
-    "coverage": 0.607,
+    "products_connected": 609,
+    "coverage": 0.609,
     "most_connected": [
-      {
-        "index": 160,
-        "part_number": "543140016",
-        "item_type": "decking",
-        "degree": 25
-      },
       {
         "index": 387,
         "part_number": "44072DBK",
         "item_type": "exterior wall light",
         "degree": 25
+      },
+      {
+        "index": 170,
+        "part_number": "543140412",
+        "item_type": "decking",
+        "degree": 22
       },
       {
         "index": 370,
@@ -5813,9 +5910,21 @@
         "degree": 16
       },
       {
+        "index": 197,
+        "part_number": "1513719",
+        "item_type": "decking",
+        "degree": 16
+      },
+      {
         "index": 29,
         "part_number": "49-94-0107",
         "item_type": "cut off disc",
+        "degree": 14
+      },
+      {
+        "index": 160,
+        "part_number": "543140016",
+        "item_type": "square",
         "degree": 14
       },
       {
@@ -5831,22 +5940,10 @@
         "degree": 12
       },
       {
-        "index": 490,
-        "part_number": "588533",
-        "item_type": "light bulb",
+        "index": 202,
+        "part_number": "1513726",
+        "item_type": "decking",
         "degree": 11
-      },
-      {
-        "index": 974,
-        "part_number": "2847-20",
-        "item_type": "charger",
-        "degree": 10
-      },
-      {
-        "index": 452,
-        "part_number": "391227",
-        "item_type": "light bulb",
-        "degree": 10
       }
     ]
   },

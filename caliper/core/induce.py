@@ -59,6 +59,20 @@ SEED_ITEM_TYPES: Tuple[str, ...] = (
     "brad nailer", "finish nailer", "framing nailer", "nail", "screw",
     "staple", "tape", "tape measure", "safety glasses", "gauge",
     "pressure gauge", "sander", "planer", "jointer", "lathe", "vacuum",
+    # Universal hand-tool and site categories. Without these the leading
+    # segment of "Screwdriver w/25pc Bit Set" has no vocabulary hit and the
+    # accessory wins on frequency, because "bit" is a far commoner word in an
+    # abrasives-heavy catalogue than "screwdriver".
+    "screwdriver", "nut driver", "wrench", "pliers", "hammer", "mallet",
+    "chisel", "file", "clamp", "vise", "socket", "socket set", "level",
+    "square", "utility knife", "snips", "shears", "punch", "pry bar",
+    "extension cord", "power strip", "surge protector", "wall tap",
+    "work light", "head lamp", "tool bag", "tool box", "organizer",
+    "holster", "glove", "knee pad", "respirator", "ear muff", "hard hat",
+    "ladder", "saw horse", "work bench", "dust collector", "air hose",
+    "coffee maker", "toaster", "blender", "range hood", "garbage disposal",
+    "skylight", "door", "window", "baluster", "railing kit", "post cap",
+    "roofing panel", "fascia", "soffit", "house wrap", "sheathing",
 )
 
 #: Tokens that are never an item type on their own.
@@ -217,6 +231,18 @@ class ItemTypeLexicon:
         """
         vocab = vocab if vocab is not None else self.finalise()
         expanded = expand_abbreviations(residual)
+
+        # A trailing qualifier is not the product. "Screwdriver w/25pc Bit Set"
+        # is a screwdriver, but "bit" is a far commoner word in this catalogue
+        # than "screwdriver", so frequency alone picks the accessory. Resolve
+        # against the leading segment first and only widen if it yields nothing.
+        segments = [seg for seg in re.split(r"\s[-–]\s|\(", expanded)
+                    if seg.strip()]
+        if len(segments) > 1:
+            lead = self._resolve_in(segments[0], vocab)
+            if lead:
+                return lead
+
         toks = _tokens(expanded)
         if not toks:
             return None
@@ -247,6 +273,31 @@ class ItemTypeLexicon:
             return _titlecase(gram), gram, min(0.95, conf)
 
         return self._fallback(residual, expanded, toks, low)
+
+    def _resolve_in(self, text: str, vocab: Dict[str, int]
+                    ) -> Optional[Tuple[str, str, float]]:
+        """Vocabulary lookup restricted to one segment of the description."""
+        toks = _tokens(text)
+        if not toks:
+            return None
+        low = [t.lower() for t in toks]
+        best = None
+        for n in (4, 3, 2, 1):
+            for i in range(len(low) - n + 1):
+                gram = " ".join(low[i:i + n])
+                if gram not in vocab or gram in MODIFIER_ONLY:
+                    continue
+                if not is_plausible_item_type(low[i + n - 1]):
+                    continue
+                cand = (1 if gram in self.seed else 0, n, vocab.get(gram, 0), gram)
+                if best is None or cand[:3] > best[:3]:
+                    best = cand
+        if not best:
+            return None
+        conf = 0.72 + min(0.2, math.log1p(best[2]) / 25.0) + 0.04 * (best[1] - 1)
+        if best[0]:
+            conf += 0.05
+        return _titlecase(best[3]), best[3], min(0.95, conf)
 
     def _fallback(self, residual: str, expanded: str,
                   toks: List[str], low: List[str]

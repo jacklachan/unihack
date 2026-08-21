@@ -65,7 +65,7 @@ No pip install. No API key. Python 3.9+.
 python -m caliper run data/input/sample_1000_items.csv -o data/out
 ```
 
-1,000 rows in ~2.5 seconds, producing:
+1,000 rows in ~5 seconds, producing:
 
 | File | What it is |
 |---|---|
@@ -157,7 +157,7 @@ so losing it costs coverage on hard rows — not correctness on easy ones.
 ### Tests
 
 ```bash
-python tests/test_core.py     # 37 invariant checks, standard library only
+python tests/test_core.py     # 42 invariant checks, standard library only
 ```
 
 They test the promises the design makes — an unevidenced value cannot enter the
@@ -208,9 +208,9 @@ runs on files dropped into the console.
 
 | | |
 |---|---|
-| Throughput | 1,000 rows in 2.5 s (deterministic), no API key required |
+| Throughput | 1,000 rows in 5.3 s (deterministic), no API key required |
 | Brand resolved to an approved name | **91.0 %** |
-| Classified to a classpath | **87.4 %** — the remainder abstain rather than guess |
+| Classified to a classpath | **88.8 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
 | `MOBILE_DESC` in the 60–80 window | 65.7 % — the remaining 34.3 % are data-limited, 0.0 % composition faults |
