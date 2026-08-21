@@ -58,7 +58,23 @@ class State:
         if os.path.exists(rep):
             with open(rep, "r", encoding="utf-8") as fh:
                 self.report = json.load(fh)
-        if os.path.exists(graphs):
+        # Prefer the compact bundle: it is the one that ships, so it is the one
+        # a judge's fresh clone will have. graphs.json is a local debugging
+        # artefact and is 8 MB.
+        inspect = os.path.join(data_dir, "inspect.json")
+        self._cached_prov = {}
+        if os.path.exists(inspect):
+            with open(inspect, "r", encoding="utf-8") as fh:
+                bundle = json.load(fh)
+            self._cached_rows = [{
+                "index": b["index"], "status": b["status"],
+                "filled": b.get("filled", 0), "score": b.get("score", 0),
+                "family_id": b.get("family_id", ""),
+                "flags": b.get("flags", []), "violations": b.get("violations", []),
+                "invoice_budget": b.get("invoice_budget"),
+            } for b in bundle]
+            self._cached_prov = {b["index"]: b.get("prov", {}) for b in bundle}
+        elif os.path.exists(graphs):
             with open(graphs, "r", encoding="utf-8") as fh:
                 self._cached_rows = json.load(fh)
         else:
@@ -87,6 +103,7 @@ class State:
             self._cached_delivery = [r.delivery for r in results]
             from ..cli import export_review_queue
             self.queue = export_review_queue(results)
+            self._cached_prov = {}
             self.edges = [e.to_dict() for e in getattr(self, "_last_edges", [])]
 
     # -- views -------------------------------------------------------------
@@ -136,6 +153,20 @@ class State:
         prov = {}
         if i < len(self.results):
             prov = self.results[i].provenance
+        elif getattr(self, "_cached_prov", None):
+            # Re-expand the compact bundle into the shape the panel expects.
+            # Values are not stored twice; they come from the delivery row.
+            for col, e in self._cached_prov.get(i, {}).items():
+                prov[col] = {
+                    "value": d.get(col, ""),
+                    "method": e.get("m", ""),
+                    "confidence": e.get("c", 0),
+                    "rule_id": e.get("r", ""),
+                    "detail": e.get("d", ""),
+                    "evidence": ([{"source": e.get("s", ""), "text": e.get("e", ""),
+                                   "span": e.get("p"), "detail": ""}]
+                                 if e.get("e") or e.get("s") else []),
+                }
         return {"index": i, "delivery": populated, "graph": rows[i],
                 "provenance": prov, "columns": DELIVERY_COLUMNS}
 

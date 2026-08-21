@@ -15,3 +15,4 @@ data/out/*
 !data/out/review_queue.csv
 !data/out/relationships.csv
 !data/out/evaluation.json
+!data/out/inspect.json

@@ -102,6 +102,38 @@ def export_review_queue(results: Sequence[RowResult]) -> List[Dict[str, Any]]:
     return out
 
 
+def write_inspection_bundle(path: str, results: Sequence[RowResult]) -> int:
+    """Everything the console needs to explain a row, and nothing else."""
+    bundle = []
+    for r in results:
+        prov = {}
+        for col, p in r.provenance.items():
+            ev = (p.get("evidence") or [{}])[0]
+            entry = {"m": p.get("method", ""), "c": p.get("confidence", 0)}
+            if p.get("rule_id"):
+                entry["r"] = p["rule_id"]
+            if p.get("detail"):
+                entry["d"] = p["detail"]
+            if ev.get("text"):
+                entry["e"] = ev["text"]
+            if ev.get("source"):
+                entry["s"] = ev["source"]
+            if ev.get("span"):
+                entry["p"] = ev["span"]
+            prov[col] = entry
+        bundle.append({
+            "index": r.index, "status": r.status, "filled": r.filled,
+            "score": round(r.graph.score(), 4),
+            "family_id": r.graph.family_id,
+            "flags": r.flags, "violations": r.violations,
+            "invoice_budget": r.invoice_budget,
+            "prov": prov,
+        })
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(bundle, fh, separators=(",", ":"))
+    return os.path.getsize(path)
+
+
 def cmd_run(args: argparse.Namespace) -> int:
     rows, header = read_table(args.input, sheet=args.sheet)
     if not rows:
@@ -160,6 +192,13 @@ def cmd_run(args: argparse.Namespace) -> int:
         json.dump(report.to_dict(), fh, indent=2)
     with open(os.path.join(args.out, "graphs.json"), "w", encoding="utf-8") as fh:
         json.dump([r.to_dict() for r in results], fh, indent=2)
+
+    # A compact bundle the console can load without the full fact dumps. The
+    # evidence panel is the point of this project, and it must work on a fresh
+    # clone -- graphs.json is 8 MB and not shipped, so everything the UI reads
+    # is written here instead, with values omitted because they are already in
+    # delivery.csv.
+    write_inspection_bundle(os.path.join(args.out, "inspect.json"), results)
 
     print()
     print("=" * 62)
