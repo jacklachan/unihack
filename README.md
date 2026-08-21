@@ -261,12 +261,12 @@ whole catalogue: products in the same family must agree about the facts they
 share.
 
 ```
-families with 2+ members  : 182
-attribute comparisons     : 1,480
-siblings agree            : 99.2 %
+families with 2+ members  : 185
+attribute comparisons     : 1,510
+siblings agree            : 99.5 %
 
-item_type   98.4 %      classpath  99.4 %      dept/class  100 %
-brand      100.0 %      manufacturer 100.0 %   application 100 %
+item_type  99.5 %      classpath  99.4 %      dept/class  100 %
+brand      100.0 %      manufacturer 100.0 %    application 100.0 %
 ```
 
 The metric earned its place immediately. Brand agreement started at 95.3 %,
@@ -279,8 +279,7 @@ brand and manufacturer agreement to 100 %.
 This is not accuracy — a pipeline can be uniformly wrong and perfectly
 consistent. But an extractor that disagrees with *itself* across products that
 differ only by size is certainly wrong somewhere, and the per-attribute split
-shows which ones are unstable rather than averaging them away. Brand and series
-are the weakest, which is exactly where the review queue concentrates.
+shows which ones are unstable rather than averaging them away.
 
 Against the published ground truth (**2 labelled rows** — sample size stated
 everywhere, because two rows is a narrow base):
