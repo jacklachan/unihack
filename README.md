@@ -253,6 +253,28 @@ runs on files dropped into the console.
 | Source-data defects flagged | 4 brand/manufacturer mismatches, 2 family anomalies |
 | Reviewer-correction leverage | 1 decision → 6 rows (family-scoped) |
 
+### Self-consistency, measured on all 1,000 rows
+
+Accuracy against two labelled rows is a narrow base, and no amount of care
+widens it. Self-consistency is a different question that *can* be asked of the
+whole catalogue: products in the same family must agree about the facts they
+share.
+
+```
+families with 2+ members  : 188
+attribute comparisons     : 1,540
+siblings agree            : 98.2 %
+
+item_type   98.4 %      classpath  99.4 %      dept/class  100 %
+brand       95.3 %      series     94.2 %      application 100 %
+```
+
+This is not accuracy — a pipeline can be uniformly wrong and perfectly
+consistent. But an extractor that disagrees with *itself* across products that
+differ only by size is certainly wrong somewhere, and the per-attribute split
+shows which ones are unstable rather than averaging them away. Brand and series
+are the weakest, which is exactly where the review queue concentrates.
+
 Against the published ground truth (**2 labelled rows** — sample size stated
 everywhere, because two rows is a narrow base):
 

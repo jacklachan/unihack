@@ -614,9 +614,13 @@ function board(){
     Object.entries(kg.by_relation||{}).sort((a,b)=>b[1]-a[1]).slice(0,4)
       .map(([k,v])=>row(k,v,'')).join('');
 
-  const cr=R.corrections||{};
+  const cr=R.corrections||{}, cs=R.consistency||{};
   const gf=Object.values(R.guardrail_findings||{}).reduce((a,b)=>a+b,0);
   $('#s-integ').innerHTML=
+    row('Sibling agreement',pct(cs.agreement),
+        (cs.attribute_comparisons||0)+' comparisons',
+        (cs.agreement||0)>=.95?'pos':'amber')+
+    track(cs.agreement||0,'pos')+
     row('Guardrail findings',gf,'physical checks',gf?'amber':'pos')+
     row('Facts by consensus',R.family_inherited||0,'≥2 siblings agreed')+
     row('Family anomalies',R.family_anomalies||0,'source defects','amber')+

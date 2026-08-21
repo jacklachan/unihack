@@ -192,6 +192,7 @@ class PipelineReport:
     brand_resolution: float = 0.0
     classification_rate: float = 0.0
     char_compliance: Dict[str, float] = field(default_factory=dict)
+    consistency: Dict[str, Any] = field(default_factory=dict)
     mobile_data_limited: float = 0.0
     mobile_composition_short: float = 0.0
     family_inherited: int = 0
@@ -943,6 +944,46 @@ class Pipeline:
                     filled += 1
         return filled
 
+    def consistency(self, results: Sequence[RowResult]) -> Dict[str, Any]:
+        """Measure agreement between siblings, without needing labels.
+
+        Accuracy against two labelled rows is a narrow base. Self-consistency
+        is not accuracy -- a pipeline can be uniformly wrong -- but it is
+        measurable on the whole catalogue, and an extractor that disagrees with
+        itself across identical products is certainly wrong somewhere. Reported
+        per attribute so the unstable ones are visible rather than averaged
+        away.
+        """
+        groups: Dict[str, List[RowResult]] = defaultdict(list)
+        for r in results:
+            groups[r.graph.family_id].append(r)
+
+        per_key: Dict[str, List[int]] = defaultdict(lambda: [0, 0])  # agree, total
+        checked = 0
+        for members in groups.values():
+            if len(members) < 2:
+                continue
+            checked += 1
+            for key in self.FAMILY_INVARIANT:
+                vals = [m.graph.value(key) for m in members if m.graph.has(key)]
+                if len(vals) < 2:
+                    continue
+                per_key[key][1] += 1
+                if len(set(vals)) == 1:
+                    per_key[key][0] += 1
+
+        agree = sum(v[0] for v in per_key.values())
+        total = sum(v[1] for v in per_key.values())
+        return {
+            "families_checked": checked,
+            "attribute_comparisons": total,
+            "agreement": round(agree / total, 4) if total else 0.0,
+            "per_attribute": {
+                k: {"agreement": round(v[0] / v[1], 4), "families": v[1]}
+                for k, v in sorted(per_key.items(), key=lambda x: -x[1][1])
+                if v[1] >= 3},
+        }
+
     def detect_family_anomalies(self, results: Sequence[RowResult]) -> int:
         """Flag siblings that break their family's pattern.
 
@@ -1018,6 +1059,7 @@ class Pipeline:
         rep = PipelineReport(n_rows=len(rows), elapsed_s=round(time.time() - t0, 3))
         rep.knowledge = knowledge.summarise(self.edges, nodes)
         rep.corrections = self.corrections.summary()
+        rep.consistency = self.consistency(results)
         rep.guardrail_findings = dict(Counter(
             f.get("kind_id", f.get("kind", "")) for r in results
             for f in r.flags if f.get("guardrail")))

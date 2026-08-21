@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 9.755,
+  "elapsed_s": 6.683,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -6318,6 +6318,61 @@
     "INVOICE_DESC": 1.0,
     "MOBILE_DESC": 0.674,
     "SHORT_DESC": 1.0
+  },
+  "consistency": {
+    "families_checked": 188,
+    "attribute_comparisons": 1540,
+    "agreement": 0.9818,
+    "per_attribute": {
+      "item_type": {
+        "agreement": 0.9839,
+        "families": 186
+      },
+      "classpath": {
+        "agreement": 0.9943,
+        "families": 176
+      },
+      "dept": {
+        "agreement": 1.0,
+        "families": 176
+      },
+      "class": {
+        "agreement": 1.0,
+        "families": 176
+      },
+      "fine": {
+        "agreement": 0.9943,
+        "families": 176
+      },
+      "unspsc": {
+        "agreement": 0.9943,
+        "families": 176
+      },
+      "brand": {
+        "agreement": 0.9535,
+        "families": 172
+      },
+      "manufacturer": {
+        "agreement": 0.9535,
+        "families": 172
+      },
+      "series": {
+        "agreement": 0.9423,
+        "families": 104
+      },
+      "application": {
+        "agreement": 1.0,
+        "families": 12
+      },
+      "lamp_type": {
+        "agreement": 1.0,
+        "families": 7
+      },
+      "platform": {
+        "agreement": 1.0,
+        "families": 7
+      }
+    }
   },
   "mobile_data_limited": 0.326,
   "mobile_composition_short": 0.0,
