@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 6.96,
+  "elapsed_s": 8.803,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -5750,7 +5750,7 @@
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 573,
+    "CG-MOB-01": 350,
     "CG-TAX-01": 126,
     "CG-BRD-01": 90
   },
@@ -5758,10 +5758,10 @@
   "classification_rate": 0.874,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.427,
+    "MOBILE_DESC": 0.65,
     "SHORT_DESC": 1.0
   },
-  "mobile_data_limited": 0.573,
+  "mobile_data_limited": 0.35,
   "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,

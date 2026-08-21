@@ -216,12 +216,23 @@ def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80,
     # written once.
     brand = _bare(graph.value("brand"))
     manu = _bare(graph.value("manufacturer"))
-    if manu and brand and _shares_root(manu, brand):
-        manu = ""
-    head = [p for p in (manu, brand) if p]
     core = [graph.value("item_type"), graph.value("series"), graph.value("mpn")]
-    parts = ([" ".join(head)] if head else []) + [c for c in core if c]
-    text = ", ".join(parts)
+
+    def assemble(with_manu: bool) -> str:
+        head = [p for p in ((manu if with_manu else ""), brand) if p]
+        bits = ([" ".join(head)] if head else []) + [c for c in core if c]
+        return ", ".join(bits)
+
+    # Prefer the concise form when the manufacturer is only the brand's legal
+    # name -- the published rows write Whirlpool Corporation's line as
+    # "Whirlpool". But the manufacturer is still a true fact, and gold row 1
+    # ("Rheem Manufacturing FRIGIDAIRE") keeps it, so the fuller form is used
+    # when the concise one cannot reach the window on its own.
+    text = assemble(with_manu=True)
+    if manu and brand and _shares_root(manu, brand):
+        concise = assemble(with_manu=False)
+        if len(concise) >= lo or len(text) > hi:
+            text = concise
 
     if len(text) < lo:
         # Grow with the next most identifying facts until inside the window.

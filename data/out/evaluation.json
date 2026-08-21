@@ -5,13 +5,13 @@
     "scored": 141,
     "exact": 0.4255,
     "normalised": 0.4255,
-    "token_f1": 0.4556
+    "token_f1": 0.4551
   },
   "in_scope": {
     "scored": 125,
     "exact": 0.48,
     "normalised": 0.48,
-    "token_f1": 0.5139
+    "token_f1": 0.5133
   },
   "retrieval_dependent": {
     "scored": 16,
@@ -475,7 +475,7 @@
       "scored": 2,
       "exact": 0.0,
       "normalised": 0.0,
-      "token_f1": 0.45,
+      "token_f1": 0.4143,
       "missed_blank": 0,
       "over_filled": 0,
       "both_blank": 0
@@ -870,10 +870,10 @@
     "MOBILE_DESC": {
       "rule_id": "CG-MOB-01",
       "populated": 2,
-      "compliant": 0.5,
+      "compliant": 1.0,
       "limit": "60-80",
       "casing": "free",
-      "mean_len": 63.0
+      "mean_len": 74.0
     },
     "SHORT_DESC": {
       "rule_id": "CG-SHT-01",
