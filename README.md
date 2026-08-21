@@ -97,7 +97,7 @@ No pip install. No API key. Python 3.9+.
 python -m caliper run data/input/sample_1000_items.csv -o data/out
 ```
 
-1,000 rows in ~5 seconds, producing:
+1,000 rows in ~9 seconds, producing:
 
 | File | What it is |
 |---|---|
@@ -120,7 +120,7 @@ Open `python -m caliper serve` and the first screen asks how to run:
 
 | Mode | What it does |
 |---|---|
-| **Deterministic only** | Rules, registries and induced specs. No network, no key, fully reproducible. ~8 s for 1,000 rows. |
+| **Deterministic only** | Rules, registries and induced specs. No network, no key, fully reproducible. ~9 s for 1,000 rows. |
 | **Deterministic + AI** | Everything above, plus a model on the rows rules could not resolve, and an optional second-opinion audit. Needs your own key. |
 
 Pick a provider (Groq, Gemini, Anthropic, OpenAI), paste a key, upload a file.
@@ -240,7 +240,7 @@ runs on files dropped into the console.
 
 | | |
 |---|---|
-| Throughput | 1,000 rows in 8.02 s (deterministic), no API key required |
+| Throughput | 1,000 rows in 8.973 s (deterministic), no API key required |
 | Brand resolved to an approved name | **92.5 %** |
 | Classified to a classpath | **88.8 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
