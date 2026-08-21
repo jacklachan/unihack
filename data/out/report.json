@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 8.305,
+  "elapsed_s": 9.389,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -26,7 +26,7 @@
       "category_id": "UNCLASSIFIED",
       "label": "UNCLASSIFIED",
       "n_rows": 239,
-      "coverage": 2.326,
+      "coverage": 2.402,
       "item_types": [
         [
           "Lineage",
@@ -49,7 +49,7 @@
           3
         ],
         [
-          "Tool",
+          "Dewalt",
           3
         ],
         [
@@ -65,15 +65,15 @@
           2
         ],
         [
+          "Pan Cedar",
+          2
+        ],
+        [
           "Oct",
           2
         ],
         [
           "Flor",
-          2
-        ],
-        [
-          "Adjustable Base",
           2
         ]
       ],
@@ -332,20 +332,21 @@
       "category_id": "Building Materials>Decking>Composite & PVC Decking",
       "label": "Building Materials>Decking>Composite & PVC Decking",
       "n_rows": 120,
-      "coverage": 2.083,
+      "coverage": 3.017,
       "item_types": [
         [
           "Decking",
-          73
+          118
         ],
         [
           "Square",
-          47
+          2
         ]
       ],
       "title_order": [
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "induced_from": [
         "ADB15516CS",
@@ -409,6 +410,30 @@
           "rule_ids": [
             "DIM-LEN-01"
           ]
+        },
+        {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "uom": "",
+          "fill_rate": 0.9333,
+          "support": 112,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9769,
+          "values": [
+            [
+              "Grooved",
+              66
+            ],
+            [
+              "Square Edge",
+              46
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DEC-EDG-01"
+          ]
         }
       ]
     },
@@ -416,7 +441,7 @@
       "category_id": "Tools & Equipment>Power Tool Accessories>Cut-Off Wheels",
       "label": "Tools & Equipment>Power Tool Accessories>Cut-Off Wheels",
       "n_rows": 35,
-      "coverage": 3.629,
+      "coverage": 4.629,
       "item_types": [
         [
           "Cut Off Disc",
@@ -427,7 +452,8 @@
         "diameter",
         "thickness",
         "arbor_size",
-        "dimensions"
+        "dimensions",
+        "application"
       ],
       "induced_from": [
         "DBD090094101F",
@@ -671,6 +697,30 @@
           "rule_ids": [
             "DIM-CHN-01"
           ]
+        },
+        {
+          "key": "application",
+          "label": "Application",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 35,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.7219,
+          "values": [
+            [
+              "Metal",
+              28
+            ],
+            [
+              "Masonry",
+              7
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APP-MAT-01"
+          ]
         }
       ]
     },
@@ -779,32 +829,41 @@
       "category_id": "Building Materials>Decking>Railing Systems",
       "label": "Building Materials>Decking>Railing Systems",
       "n_rows": 27,
-      "coverage": 1.926,
+      "coverage": 2.444,
       "item_types": [
-        [
-          "Square",
-          9
-        ],
         [
           "Baluster",
           9
         ],
         [
-          "Rd Aluminum Balusters",
-          6
+          "Rail",
+          5
+        ],
+        [
+          "Square",
+          5
+        ],
+        [
+          "Fl Rail",
+          3
         ],
         [
           "Railing",
           2
         ],
         [
-          "Rail Trex",
+          "Str Rail",
+          2
+        ],
+        [
+          "Rd Aluminum Balusters",
           1
         ]
       ],
       "title_order": [
         "size",
-        "finish"
+        "finish",
+        "configuration"
       ],
       "induced_from": [
         "543302126",
@@ -897,6 +956,26 @@
             "FIN-CDE-01",
             "FIN-WRD-01"
           ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.5185,
+          "support": 14,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Kit",
+              14
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
+          ]
         }
       ]
     },
@@ -904,7 +983,7 @@
       "category_id": "Tools & Equipment>Power Tool Accessories>Driver Bits",
       "label": "Tools & Equipment>Power Tool Accessories>Driver Bits",
       "n_rows": 26,
-      "coverage": 1.038,
+      "coverage": 1.077,
       "item_types": [
         [
           "Drive Bit",
@@ -975,27 +1054,24 @@
       "category_id": "Tools & Equipment>Power Tool Accessories>Saw Blades",
       "label": "Tools & Equipment>Power Tool Accessories>Saw Blades",
       "n_rows": 22,
-      "coverage": 0.818,
+      "coverage": 1.273,
       "item_types": [
         [
           "Saw Blade",
           13
         ],
         [
-          "Diamond Tile Blade",
-          5
+          "Diamond Blade",
+          6
         ],
         [
           "Blade",
           3
-        ],
-        [
-          "Tile Blade",
-          1
         ]
       ],
       "title_order": [
-        "size"
+        "size",
+        "application"
       ],
       "induced_from": [
         "VN56920",
@@ -1070,6 +1146,30 @@
           "synonyms": {},
           "rule_ids": [
             "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "application",
+          "label": "Application",
+          "uom": "",
+          "fill_rate": 0.4091,
+          "support": 9,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "Tile",
+              6
+            ],
+            [
+              "Wood",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APP-MAT-01"
           ]
         }
       ]
@@ -1379,7 +1479,7 @@
       "category_id": "Appliances & Consumer Electronics>Kitchen Appliances>Ranges",
       "label": "Appliances & Consumer Electronics>Kitchen Appliances>Ranges",
       "n_rows": 15,
-      "coverage": 1.8,
+      "coverage": 2.267,
       "item_types": [
         [
           "Range",
@@ -1401,7 +1501,8 @@
       "title_order": [
         "size",
         "finish",
-        "display_only"
+        "display_only",
+        "fuel_type"
       ],
       "induced_from": [
         "WOSP30100SS",
@@ -1481,6 +1582,30 @@
           "rule_ids": [
             "MRC-DSP-01"
           ]
+        },
+        {
+          "key": "fuel_type",
+          "label": "Fuel Type",
+          "uom": "",
+          "fill_rate": 0.4667,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.8631,
+          "values": [
+            [
+              "Electric",
+              5
+            ],
+            [
+              "Gas",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APL-FUE-01"
+          ]
         }
       ]
     },
@@ -1536,7 +1661,7 @@
       "category_id": "Tools & Equipment>Power Tools>Impact Drivers & Wrenches",
       "label": "Tools & Equipment>Power Tools>Impact Drivers & Wrenches",
       "n_rows": 15,
-      "coverage": 2.133,
+      "coverage": 2.333,
       "item_types": [
         [
           "Impact",
@@ -1658,6 +1783,34 @@
           "rule_ids": [
             "DIM-SGL-01"
           ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 3,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 1.0,
+          "values": [
+            [
+              "Set",
+              1
+            ],
+            [
+              "Kit",
+              1
+            ],
+            [
+              "Bare Tool",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
+          ]
         }
       ]
     },
@@ -1689,7 +1842,7 @@
       "category_id": "Appliances & Consumer Electronics>Laundry Appliances>Dryers",
       "label": "Appliances & Consumer Electronics>Laundry Appliances>Dryers",
       "n_rows": 13,
-      "coverage": 0.923,
+      "coverage": 1.923,
       "item_types": [
         [
           "Dryer",
@@ -1697,7 +1850,8 @@
         ]
       ],
       "title_order": [
-        "finish"
+        "finish",
+        "fuel_type"
       ],
       "induced_from": [
         "DF7004WE",
@@ -1732,6 +1886,30 @@
           "synonyms": {},
           "rule_ids": [
             "FIN-CDE-01"
+          ]
+        },
+        {
+          "key": "fuel_type",
+          "label": "Fuel Type",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 13,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9612,
+          "values": [
+            [
+              "Gas",
+              8
+            ],
+            [
+              "Electric",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APL-FUE-01"
           ]
         }
       ]
@@ -2111,7 +2289,7 @@
       "category_id": "Electrical>Wire & Cable>Building Wire",
       "label": "Electrical>Wire & Cable>Building Wire",
       "n_rows": 11,
-      "coverage": 1.364,
+      "coverage": 1.636,
       "item_types": [
         [
           "Cord",
@@ -2166,18 +2344,22 @@
       "category_id": "Tools & Equipment>Power Tools>Saws",
       "label": "Tools & Equipment>Power Tools>Saws",
       "n_rows": 11,
-      "coverage": 1.727,
+      "coverage": 2.091,
       "item_types": [
-        [
-          "Saw",
-          4
-        ],
         [
           "Circ Saw",
           2
         ],
         [
           "Ionic Circ Saw",
+          2
+        ],
+        [
+          "Recip Saw",
+          2
+        ],
+        [
+          "Saw",
           2
         ],
         [
@@ -2287,6 +2469,30 @@
           "rule_ids": [
             "DIM-SGL-01"
           ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.2727,
+          "support": 3,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "Kit",
+              2
+            ],
+            [
+              "Bare Tool",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
+          ]
         }
       ]
     },
@@ -2294,7 +2500,7 @@
       "category_id": "Tools & Equipment>Abrasives>Sanding Discs",
       "label": "Tools & Equipment>Abrasives>Sanding Discs",
       "n_rows": 10,
-      "coverage": 4.0,
+      "coverage": 4.4,
       "item_types": [
         [
           "Stikit Film",
@@ -2525,6 +2731,26 @@
           "rule_ids": [
             "PKG-UOM-01"
           ]
+        },
+        {
+          "key": "application",
+          "label": "Application",
+          "uom": "",
+          "fill_rate": 0.4,
+          "support": 4,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Metal",
+              4
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APP-MAT-01"
+          ]
         }
       ]
     },
@@ -2739,15 +2965,15 @@
       "category_id": "Tools & Equipment>Power Tools>Nailers",
       "label": "Tools & Equipment>Power Tools>Nailers",
       "n_rows": 10,
-      "coverage": 2.3,
+      "coverage": 2.5,
       "item_types": [
-        [
-          "Nailer",
-          3
-        ],
         [
           "Brad Nailer",
           3
+        ],
+        [
+          "Roofing Nailer",
+          2
         ],
         [
           "Framing Nailer",
@@ -2756,6 +2982,10 @@
         [
           "Finish Nailer",
           2
+        ],
+        [
+          "Nailer",
+          1
         ]
       ],
       "title_order": [
@@ -2895,6 +3125,26 @@
           "rule_ids": [
             "TOL-BAR-01"
           ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Kit",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
+          ]
         }
       ]
     },
@@ -2982,7 +3232,7 @@
       "category_id": "Tools & Equipment>Power Tools>Drills",
       "label": "Tools & Equipment>Power Tools>Drills",
       "n_rows": 9,
-      "coverage": 0.778,
+      "coverage": 0.889,
       "item_types": [
         [
           "Drill",
@@ -3253,7 +3503,7 @@
       "category_id": "Appliances & Consumer Electronics>Laundry Appliances>Washers",
       "label": "Appliances & Consumer Electronics>Laundry Appliances>Washers",
       "n_rows": 8,
-      "coverage": 0.875,
+      "coverage": 1.0,
       "item_types": [
         [
           "Washer",
@@ -3750,7 +4000,7 @@
       "category_id": "Safety>Workwear>Jackets & Hoodies",
       "label": "Safety>Workwear>Jackets & Hoodies",
       "n_rows": 8,
-      "coverage": 1.625,
+      "coverage": 2.625,
       "item_types": [
         [
           "Milwaukee",
@@ -3767,7 +4017,8 @@
       ],
       "title_order": [
         "platform",
-        "finish"
+        "finish",
+        "configuration"
       ],
       "induced_from": [
         "F200B-21L",
@@ -3818,6 +4069,26 @@
           "synonyms": {},
           "rule_ids": [
             "FIN-CDE-01"
+          ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 8,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Kit",
+              8
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
           ]
         }
       ]
@@ -3942,7 +4213,7 @@
       "category_id": "Tools & Equipment>Power Tool Accessories>Grinding Wheels",
       "label": "Tools & Equipment>Power Tool Accessories>Grinding Wheels",
       "n_rows": 7,
-      "coverage": 4.0,
+      "coverage": 5.0,
       "item_types": [
         [
           "Grinding Wheel",
@@ -3953,7 +4224,8 @@
         "diameter",
         "thickness",
         "arbor_size",
-        "dimensions"
+        "dimensions",
+        "application"
       ],
       "induced_from": [
         "49-94-0501",
@@ -4079,6 +4351,30 @@
           "synonyms": {},
           "rule_ids": [
             "DIM-CHN-01"
+          ]
+        },
+        {
+          "key": "application",
+          "label": "Application",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.8631,
+          "values": [
+            [
+              "Metal",
+              5
+            ],
+            [
+              "Masonry",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APP-MAT-01"
           ]
         }
       ]
@@ -4232,7 +4528,7 @@
       "category_id": "Lawn & Garden>Outdoor Power Equipment>String Trimmers",
       "label": "Lawn & Garden>Outdoor Power Equipment>String Trimmers",
       "n_rows": 6,
-      "coverage": 1.833,
+      "coverage": 2.167,
       "item_types": [
         [
           "Hedge Trimmer",
@@ -4250,7 +4546,8 @@
       "title_order": [
         "platform",
         "voltage",
-        "size"
+        "size",
+        "configuration"
       ],
       "induced_from": [
         "XRU23SM1",
@@ -4331,6 +4628,26 @@
           "synonyms": {},
           "rule_ids": [
             "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.3333,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Kit",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
           ]
         }
       ]
@@ -4446,7 +4763,7 @@
       "category_id": "Tools & Equipment>Power Tool Accessories>Chargers",
       "label": "Tools & Equipment>Power Tool Accessories>Chargers",
       "n_rows": 6,
-      "coverage": 1.0,
+      "coverage": 1.167,
       "item_types": [
         [
           "Charger",
@@ -4736,7 +5053,7 @@
       "category_id": "Tools & Equipment>Hand Tools>Ratchets",
       "label": "Tools & Equipment>Hand Tools>Ratchets",
       "n_rows": 5,
-      "coverage": 1.6,
+      "coverage": 1.8,
       "item_types": [
         [
           "Ratchet",
@@ -4874,6 +5191,26 @@
           "rule_ids": [
             "TOL-BAR-01"
           ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.2,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Set",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
+          ]
         }
       ]
     },
@@ -4881,20 +5218,21 @@
       "category_id": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
       "label": "Tools & Equipment>Hand Tools>Wrenches & Sockets",
       "n_rows": 5,
-      "coverage": 1.4,
+      "coverage": 2.4,
       "item_types": [
         [
           "Wrench",
           3
         ],
         [
-          "Dewalt Drive",
+          "Drive Mechanics",
           2
         ]
       ],
       "title_order": [
         "size",
-        "pack_quantity"
+        "pack_quantity",
+        "configuration"
       ],
       "induced_from": [
         "DWMT45422",
@@ -4959,6 +5297,26 @@
           "rule_ids": [
             "PKG-PK-01"
           ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Set",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
+          ]
         }
       ]
     },
@@ -4966,7 +5324,7 @@
       "category_id": "Building Materials>Sealants & Adhesives>Sealant Tape",
       "label": "Building Materials>Sealants & Adhesives>Sealant Tape",
       "n_rows": 4,
-      "coverage": 1.0,
+      "coverage": 1.25,
       "item_types": [
         [
           "Tape",
@@ -5029,6 +5387,26 @@
           "synonyms": {},
           "rule_ids": [
             "DIM-SGL-01"
+          ]
+        },
+        {
+          "key": "fuel_type",
+          "label": "Fuel Type",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Electric",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APL-FUE-01"
           ]
         }
       ]
@@ -5143,7 +5521,7 @@
       "category_id": "Building Materials>Fasteners>Nails & Staples",
       "label": "Building Materials>Fasteners>Nails & Staples",
       "n_rows": 4,
-      "coverage": 1.25,
+      "coverage": 1.5,
       "item_types": [
         [
           "Staple",
@@ -5251,6 +5629,26 @@
           "rule_ids": [
             "PKG-M-01"
           ]
+        },
+        {
+          "key": "application",
+          "label": "Application",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Drywall",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "APP-MAT-01"
+          ]
         }
       ]
     },
@@ -5282,7 +5680,7 @@
       "category_id": "Tools & Equipment>Power Tools>Miter Saws",
       "label": "Tools & Equipment>Power Tools>Miter Saws",
       "n_rows": 4,
-      "coverage": 1.75,
+      "coverage": 2.5,
       "item_types": [
         [
           "Miter Saw",
@@ -5291,7 +5689,8 @@
       ],
       "title_order": [
         "voltage",
-        "size"
+        "size",
+        "edge_profile"
       ],
       "induced_from": [
         "DCS714B",
@@ -5370,6 +5769,46 @@
           "synonyms": {},
           "rule_ids": [
             "TOL-BAR-01"
+          ]
+        },
+        {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "uom": "",
+          "fill_rate": 0.5,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Beveled",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DEC-EDG-01"
+          ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.25,
+          "support": 1,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Kit",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
           ]
         }
       ]
@@ -5571,7 +6010,7 @@
       "category_id": "Tools & Equipment>Hand Tools>Screwdrivers",
       "label": "Tools & Equipment>Hand Tools>Screwdrivers",
       "n_rows": 3,
-      "coverage": 1.333,
+      "coverage": 2.0,
       "item_types": [
         [
           "Screwdriver",
@@ -5581,7 +6020,8 @@
       "title_order": [
         "platform",
         "voltage",
-        "pack_quantity"
+        "pack_quantity",
+        "configuration"
       ],
       "induced_from": [
         "220USB25U",
@@ -5651,6 +6091,26 @@
           "synonyms": {},
           "rule_ids": [
             "PKG-PK-01"
+          ]
+        },
+        {
+          "key": "configuration",
+          "label": "Configuration",
+          "uom": "",
+          "fill_rate": 0.6667,
+          "support": 2,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "Set",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-CFG-01"
           ]
         }
       ]
@@ -5832,8 +6292,8 @@
       ]
     }
   ],
-  "fill_rate": 0.1029,
-  "mean_columns_filled": 25.93,
+  "fill_rate": 0.1051,
+  "mean_columns_filled": 26.49,
   "status_counts": {
     "ready": 770,
     "blocked": 176,
@@ -5844,11 +6304,11 @@
     "brand_unresolved": 51,
     "family_anomaly": 2,
     "brand_not_in_approved_list": 41,
-    "item_type_unresolved": 19,
+    "item_type_unresolved": 24,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 339,
+    "CG-MOB-01": 326,
     "CG-TAX-01": 112,
     "CG-BRD-01": 75
   },
@@ -5856,10 +6316,10 @@
   "classification_rate": 0.888,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.661,
+    "MOBILE_DESC": 0.674,
     "SHORT_DESC": 1.0
   },
-  "mobile_data_limited": 0.339,
+  "mobile_data_limited": 0.326,
   "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,
@@ -5876,15 +6336,15 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 637,
+    "edges": 627,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
       "variant_of": 370,
-      "same_series": 243
+      "same_series": 233
     },
-    "products_connected": 612,
-    "coverage": 0.612,
+    "products_connected": 613,
+    "coverage": 0.613,
     "most_connected": [
       {
         "index": 387,
@@ -5893,39 +6353,15 @@
         "degree": 25
       },
       {
-        "index": 170,
-        "part_number": "543140412",
-        "item_type": "decking",
-        "degree": 22
-      },
-      {
         "index": 370,
         "part_number": "45297BK",
         "item_type": "wall light",
         "degree": 18
       },
       {
-        "index": 123,
-        "part_number": "AGB15512CS",
-        "item_type": "decking",
-        "degree": 16
-      },
-      {
-        "index": 197,
-        "part_number": "1513719",
-        "item_type": "decking",
-        "degree": 16
-      },
-      {
         "index": 29,
         "part_number": "49-94-0107",
         "item_type": "cut off disc",
-        "degree": 14
-      },
-      {
-        "index": 160,
-        "part_number": "543140016",
-        "item_type": "square",
         "degree": 14
       },
       {
@@ -5941,10 +6377,34 @@
         "degree": 12
       },
       {
-        "index": 202,
-        "part_number": "1513726",
-        "item_type": "decking",
+        "index": 490,
+        "part_number": "588533",
+        "item_type": "light bulb",
         "degree": 11
+      },
+      {
+        "index": 974,
+        "part_number": "2847-20",
+        "item_type": "charger",
+        "degree": 10
+      },
+      {
+        "index": 452,
+        "part_number": "391227",
+        "item_type": "light bulb",
+        "degree": 10
+      },
+      {
+        "index": 1,
+        "part_number": "3MABR-7100075678",
+        "item_type": "stikit film",
+        "degree": 10
+      },
+      {
+        "index": 971,
+        "part_number": "48-59-1804",
+        "item_type": "charger",
+        "degree": 9
       }
     ]
   },

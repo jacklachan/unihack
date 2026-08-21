@@ -38,6 +38,19 @@ SKIP_IN_MOBILE = frozenset({
     "manufacturer", "brand", "item_type", "series", "mpn",
     "dept", "class", "fine", "classpath", "unspsc"}) | BOOLEAN_KEYS
 
+#: Components of a dimension chain. They are worth keeping as separate
+#: attributes -- a buyer filters on arbor size -- but printing them beside the
+#: chain they came from says the same thing twice and crowds out real
+#: differentiators: "Cut Off Disc, 14 in, 1/8 in, 1 in, 14 in x 1/8 in x 1 in".
+DIMENSION_PARTS = frozenset({"diameter", "thickness", "arbor_size"})
+
+
+def _suppress_redundant(graph: ProductFactGraph) -> frozenset:
+    """Keys to omit from prose because a composite already states them."""
+    if graph.has("dimensions"):
+        return DIMENSION_PARTS
+    return frozenset()
+
 INVOICE_PRIORITY: Tuple[str, ...] = (
     "item_type", "mounting", "number_of_cycles", "finish", "voltage",
     "amperage", "wattage", "color_temperature", "grit", "diameter",
@@ -320,14 +333,16 @@ def build_long_desc(graph: ProductFactGraph, spec_keys: Sequence[str] = ()) -> s
     if with_c:
         text += " {}".format(with_c)
 
+    redundant = _suppress_redundant(graph)
     body: List[str] = []
     series = graph.value("series")
     if series:
         body.append(series)
     for f in _spec_ordered(graph, spec_keys):
-        if f.key in ("brand", "manufacturer", "item_type", "series", "mpn",
-                     "classpath", "dept", "class", "fine", "unspsc",
-                     "with_feature") or f.key in BOOLEAN_KEYS:
+        if (f.key in ("brand", "manufacturer", "item_type", "series", "mpn",
+                      "classpath", "dept", "class", "fine", "unspsc",
+                      "with_feature")
+                or f.key in BOOLEAN_KEYS or f.key in redundant):
             continue
         if f.display:
             body.append(f.display)
@@ -356,9 +371,10 @@ def _spec_ordered(graph: ProductFactGraph, spec_keys: Sequence[str]) -> List[Fac
 def _differentiators(graph: ProductFactGraph, spec_keys: Sequence[str],
                      limit: int = 4) -> List[str]:
     """The attributes a buyer chooses between, in specification order."""
-    skip = {"brand", "manufacturer", "item_type", "series", "mpn", "classpath",
-            "dept", "class", "fine", "unspsc", "with_feature",
-            "additional_information"} | set(BOOLEAN_KEYS)
+    skip = ({"brand", "manufacturer", "item_type", "series", "mpn", "classpath",
+             "dept", "class", "fine", "unspsc", "with_feature",
+             "additional_information"} | set(BOOLEAN_KEYS)
+            | set(_suppress_redundant(graph)))
     out = []
     for f in _spec_ordered(graph, spec_keys):
         if f.key in skip or not f.display:

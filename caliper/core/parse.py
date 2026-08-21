@@ -202,6 +202,19 @@ RE_BULB_SHAPE = re.compile(r"\b(A\d{2}|BA\d{2}|PAR\d{2}|BR\d{2}|MR\d{2}|T\d{1,2}
 RE_BASE_TYPE = re.compile(r"\b(Med|Medium|Cand|Candelabra|GU10|GU24|E26|E12|E39)\b", re.I)
 RE_GAUGE = re.compile(r"(?<![\w.])(\d{1,2})\s*[/-]\s*(\d)\s+(SO|SOOW|SJ|UD|THHN|MC|NM|SER|SEU)\b", re.I)
 RE_TRIPLEX = re.compile(r"(?<![\w.])(\d{1,2}(?:/\d{1,2}){2})\s+(UD|SE|SER|SEU|MC)\b", re.I)
+# Decking edge profile decides whether hidden fasteners can be used at all, so
+# it is a buying decision rather than a cosmetic note.
+RE_EDGE_PROFILE = re.compile(
+    r"\b(grooved|grvd|square\s*edge|sq\s*edg(?:e)?|scalloped|bevel(?:ed)?)\b", re.I)
+# What an abrasive or blade is meant to cut.
+RE_APPLICATION = re.compile(
+    r"\b(masonry|metal|concrete|stainless|tile|wood|drywall|asphalt|"
+    r"cast\s*iron|aluminum|fiberglass|rebar)\b", re.I)
+# Appliances split hard on fuel type; it is never cosmetic.
+RE_FUEL = re.compile(r"\b(gas|electric|elect|propane|lp|dual\s*fuel|induction)\b", re.I)
+# How the item is sold: a kit and a bare tool are different SKUs.
+RE_CONFIG = re.compile(r"\b(kit|combo|set|starter\s*kit|tool\s*only|bare\s*tool)\b", re.I)
+
 RE_DISPLAY_ONLY = re.compile(r"\bdisplay\s*only\b", re.I)
 RE_LINEAR_FOOT = re.compile(r"\(?\s*linear\s*(?:foot|ft)\s*\)?", re.I)
 # A lone measurement that is not part of an x-chain: '52" MB Anisten Fan'.
@@ -440,6 +453,47 @@ def parse_description(desc: str, source: str = "input:Part_Desc") -> List[Fact]:
             add(_mk("pack_quantity", str(int(mm.group(1)) * 1000), "Pack Quantity",
                     "", "PKG-M-01", 40, source, mm.group(0), mm.span(),
                     "Fastener trade shorthand: '4M' means 4,000 count."))
+
+    # -- product-defining descriptors ---------------------------------------
+    mm = RE_EDGE_PROFILE.search(desc)
+    if mm:
+        raw_edge = mm.group(1).lower()
+        value = ("Grooved" if raw_edge.startswith(("groov", "grvd"))
+                 else "Scalloped" if raw_edge.startswith("scallop")
+                 else "Beveled" if raw_edge.startswith("bevel")
+                 else "Square Edge")
+        add(_mk("edge_profile", value, "Edge Profile", "", "DEC-EDG-01", 32,
+                source, mm.group(0), mm.span(),
+                "Board edge profile; a grooved board takes hidden fasteners, a "
+                "square edge does not."))
+
+    mm = RE_APPLICATION.search(desc)
+    if mm:
+        add(_mk("application", mm.group(1).title().replace("  ", " "),
+                "Application", "", "APP-MAT-01", 33, source, mm.group(0),
+                mm.span(), "The material this item is intended to work on."))
+
+    mm = RE_FUEL.search(desc)
+    if mm:
+        raw_fuel = mm.group(1).lower()
+        value = ("Electric" if raw_fuel.startswith("elect")
+                 else "Dual Fuel" if raw_fuel.startswith("dual")
+                 else "Propane" if raw_fuel in ("lp", "propane")
+                 else raw_fuel.title())
+        add(_mk("fuel_type", value, "Fuel Type", "", "APL-FUE-01", 27, source,
+                mm.group(0), mm.span(),
+                "Appliance fuel source; gas and electric are not "
+                "interchangeable SKUs."))
+
+    mm = RE_CONFIG.search(desc)
+    if mm:
+        raw_cfg = mm.group(1).lower()
+        value = ("Bare Tool" if "bare" in raw_cfg or "only" in raw_cfg
+                 else "Starter Kit" if "starter" in raw_cfg
+                 else raw_cfg.title())
+        add(_mk("configuration", value, "Configuration", "", "PKG-CFG-01", 44,
+                source, mm.group(0), mm.span(),
+                "How the item is sold; a kit and a bare tool are different SKUs."))
 
     # -- merchandising flags ------------------------------------------------
     mm = RE_DISPLAY_ONLY.search(desc)
