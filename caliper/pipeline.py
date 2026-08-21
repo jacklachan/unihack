@@ -129,6 +129,7 @@ class RowResult:
     filled: int = 0
     status: str = "ready"          # ready | needs_review | blocked
     invoice_budget: Optional[Dict[str, Any]] = None
+    mobile_report: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -156,6 +157,8 @@ class PipelineReport:
     brand_resolution: float = 0.0
     classification_rate: float = 0.0
     char_compliance: Dict[str, float] = field(default_factory=dict)
+    mobile_data_limited: float = 0.0
+    mobile_composition_short: float = 0.0
     family_inherited: int = 0
     family_anomalies: int = 0
     llm_invoked: int = 0
@@ -587,8 +590,17 @@ class Pipeline:
                    .format(len(budget.included), budget.used, budget.limit,
                            "; compressed " + "; ".join(budget.compressions)
                            if budget.compressions else ""))
-        put("MOBILE_DESC", build_mobile_desc(graph), method="compose", conf=0.88,
-            detail="Identity line sized into the 60-80 character window.")
+        mob_report: Dict[str, Any] = {}
+        put("MOBILE_DESC", build_mobile_desc(graph, report=mob_report),
+            method="compose", conf=0.88,
+            detail=("Identity line sized into the 60-80 character window."
+                    if mob_report.get("in_window") else
+                    "Only {} characters: every available fact is already in the "
+                    "line, so the shortfall is a limit of the source data, not "
+                    "of composition.".format(mob_report.get("length", 0))
+                    if mob_report.get("facts_exhausted") else
+                    "Only {} characters, with facts still unused."
+                    .format(mob_report.get("length", 0))))
         put("SHORT_DESC", build_short_desc(graph, spec_keys), method="compose",
             conf=0.88, detail="Title formula: brand + series + model + item type "
                               "+ differentiators.")
@@ -688,6 +700,7 @@ class Pipeline:
 
         result = RowResult(index=index, graph=graph, delivery=out, provenance=prov)
         result.invoice_budget = budget.to_dict()
+        result.mobile_report = mob_report
         result.filled = sum(1 for v in out.values() if str(v).strip())
         result.flags = list(graph.notes)
         self._validate(result)
@@ -705,9 +718,18 @@ class Pipeline:
                     "message": "{} is {} characters, limit {}.".format(
                         col, len(v), rule.max_len)})
             if rule.min_len and len(v) < rule.min_len:
+                limited = (col == "MOBILE_DESC"
+                           and r.mobile_report.get("facts_exhausted"))
                 r.violations.append({
-                    "column": col, "rule_id": rule.rule_id, "severity": "warning",
-                    "message": "{} is {} characters, minimum {}.".format(
+                    "column": col, "rule_id": rule.rule_id,
+                    "severity": "info" if limited else "warning",
+                    "data_limited": bool(limited),
+                    "message": ("{} is {} characters against a {}-character "
+                                "minimum. Every fact available for this product "
+                                "is already in the line -- the source data does "
+                                "not contain enough to reach it."
+                                if limited else
+                                "{} is {} characters, minimum {}.").format(
                         col, len(v), rule.min_len)})
             if rule.casing == "upper" and v != v.upper():
                 r.violations.append({
@@ -913,4 +935,19 @@ class Pipeline:
                          and (rule.min_len is None or len(v) >= rule.min_len))
                 comp[col] = round(ok / len(vals), 4)
             rep.char_compliance = comp
+            # Measured on the *delivered* value so these partition exactly the
+            # same population the compliance figure uses. Two numbers that do
+            # not sum to one are worse than no numbers.
+            rule = FIELD_RULES["MOBILE_DESC"]
+            mob = [(r.delivery.get("MOBILE_DESC", ""), r.mobile_report)
+                   for r in results if r.delivery.get("MOBILE_DESC", "").strip()]
+            if mob:
+                n_mob = len(mob)
+                lim = sum(1 for v, m in mob
+                          if len(v) < (rule.min_len or 0) and m.get("facts_exhausted"))
+                fault = sum(1 for v, m in mob
+                            if len(v) < (rule.min_len or 0)
+                            and not m.get("facts_exhausted"))
+                rep.mobile_data_limited = round(lim / n_mob, 4)
+                rep.mobile_composition_short = round(fault / n_mob, 4)
         return results, rep

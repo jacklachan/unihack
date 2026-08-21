@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 5.282,
+  "elapsed_s": 5.65,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -5602,6 +5602,8 @@
     "MOBILE_DESC": 0.657,
     "SHORT_DESC": 1.0
   },
+  "mobile_data_limited": 0.343,
+  "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,
   "llm_invoked": 0,

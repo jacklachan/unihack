@@ -213,7 +213,7 @@ runs on files dropped into the console.
 | Classified to a classpath | **84.0 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
-| `MOBILE_DESC` in the 60–80 window | 66.4 % |
+| `MOBILE_DESC` in the 60–80 window | 65.7 % — the remaining 34.3 % are data-limited, 0.0 % composition faults |
 | Rows invoking the LLM | **22 %** — the rest are resolved by rules |
 | Product families found | 566 from 1,000 rows |
 | Facts inherited by family consensus | 77 |
@@ -369,6 +369,23 @@ Where a labelled file exists, `learn-spec` reads the positional slot order
 straight out of it **and aligns each label to the fact key that reproduces its
 value** — so a labelled category the pipeline has never seen produces a working
 spec automatically.
+
+### Short is not always wrong
+
+`MOBILE_DESC` must land in a 60-80 character window, and 34.3 % of rows fall
+short. That number is useless on its own, so the pipeline splits it:
+
+```
+in window                : 65.7 %
+short, data-limited      : 34.3 %   every available fact is already in the line
+short, composition fault :  0.0 %   facts left unused -- the only fixable part
+```
+
+A row like `GE Appliances GE®, Dishwasher, PDT715SYVFS, Stainless Steel` is
+59 characters with nothing left to add. Reaching 60 would mean inventing
+something. The two failure modes are counted separately because only one of
+them is a bug, and an earlier build padded the gap with taxonomy nodes to make
+the metric look better.
 
 ### Physical guardrails
 

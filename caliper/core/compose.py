@@ -31,6 +31,13 @@ from .parse import ABBREV_LADDER
 #: invoice line -- it belongs in its own column, not in prose.
 BOOLEAN_KEYS = frozenset({"display_only", "includes_battery"})
 
+#: Never eligible to pad the mobile line. Dept, Class and Fine are where the
+#: product sits in a tree, not facts about it -- padding with them produced
+#: lines like "Drill, DCD799B, Tools, Power Tools".
+SKIP_IN_MOBILE = frozenset({
+    "manufacturer", "brand", "item_type", "series", "mpn",
+    "dept", "class", "fine", "classpath", "unspsc"}) | BOOLEAN_KEYS
+
 INVOICE_PRIORITY: Tuple[str, ...] = (
     "item_type", "mounting", "number_of_cycles", "finish", "voltage",
     "amperage", "wattage", "color_temperature", "grit", "diameter",
@@ -174,8 +181,16 @@ def _parts(graph: ProductFactGraph, keys: Sequence[str]) -> List[str]:
     return out
 
 
-def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80) -> str:
-    """Comma-delimited identity line sized into a 60-80 character window."""
+def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80,
+                      report: Optional[Dict[str, Any]] = None) -> str:
+    """Comma-delimited identity line sized into a 60-80 character window.
+
+    When the line falls short of ``lo`` it matters *why*. A row with facts left
+    over is a composition failure; a row that has spent every fact it owns is
+    a data limit, and no amount of rule-writing closes it -- only more source
+    material would. ``report`` receives that distinction so the metrics can
+    separate the two instead of counting both as non-compliance.
+    """
     head = [p for p in (graph.value("manufacturer"), graph.value("brand")) if p]
     core = [graph.value("item_type"), graph.value("series"), graph.value("mpn")]
     parts = ([" ".join(head)] if head else []) + [c for c in core if c]
@@ -184,14 +199,9 @@ def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80) -> st
     if len(text) < lo:
         # Grow with the next most identifying facts until inside the window.
         for f in graph.ordered():
-            # Padding to reach the window must use product attributes. Dept,
-            # Class and Fine are where the product sits in a tree, not facts
-            # about it -- appending them produced lines like
-            # "Drill, DCD799B, Tools, Power Tools".
-            if f.key in ("manufacturer", "brand", "item_type", "series", "mpn",
-                         "dept", "class", "fine", "classpath", "unspsc"):
+            if f.key in SKIP_IN_MOBILE:
                 continue
-            if f.key in BOOLEAN_KEYS or not f.display:
+            if not f.display:
                 continue
             cand = text + ", " + f.display
             if len(cand) > hi:
@@ -203,6 +213,16 @@ def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80) -> st
         while len(text) > hi and "," in text:
             text = text.rsplit(",", 1)[0].strip()
         text = text[:hi].rstrip(" ,")
+
+    if report is not None:
+        unused = [f.key for f in graph.ordered()
+                  if f.display and f.key not in SKIP_IN_MOBILE
+                  and f.display not in text]
+        report["length"] = len(text)
+        report["in_window"] = lo <= len(text) <= hi
+        report["short"] = len(text) < lo
+        report["facts_exhausted"] = not unused
+        report["unused"] = unused
     return text
 
 

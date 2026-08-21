@@ -572,9 +572,19 @@ function board(){
 
   const cc=R.char_compliance||{}, lim={INVOICE_DESC:'max 40, upper case',
     MOBILE_DESC:'60–80 window',SHORT_DESC:'max 240'};
-  $('#s-char').innerHTML=Object.entries(cc).map(([k,v])=>
+  let charHtml=Object.entries(cc).map(([k,v])=>
     row(k,pct(v),lim[k]||'',v>=.99?'pos':v>=.9?'amber':'neg')+
     track(v,v>=.99?'pos':v>=.9?'amber':'neg')).join('')||row('no data','—','');
+  // A short mobile line is only a defect if facts were left unused. Reporting
+  // the two together hides which one you can actually fix.
+  if(R.mobile_data_limited!==undefined){
+    charHtml+=row('&nbsp;&nbsp;↳ short, data-limited',pct(R.mobile_data_limited),
+                  'every fact already used')
+             +row('&nbsp;&nbsp;↳ short, our fault',pct(R.mobile_composition_short),
+                  'facts left unused',
+                  R.mobile_composition_short>0?'neg':'pos');
+  }
+  $('#s-char').innerHTML=charHtml;
 
   const f=R.fill_rate||0;
   const over=f>(71/252)*1.35;
