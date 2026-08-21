@@ -401,6 +401,8 @@ class Pipeline:
             graph.note(**mismatch)
         if res.method == "abstain":
             graph.note("brand_unresolved", res.detail, severity="review")
+        elif getattr(res, "unverified", False):
+            graph.note("brand_not_in_approved_list", res.detail, severity="review")
 
         # 2. deterministic parse -------------------------------------------
         stripped, mpn_span = strip_mpn_echo(desc, mpn)

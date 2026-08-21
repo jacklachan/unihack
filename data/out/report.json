@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 12.57,
+  "elapsed_s": 11.914,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -5832,33 +5832,34 @@
       ]
     }
   ],
-  "fill_rate": 0.1027,
-  "mean_columns_filled": 25.88,
+  "fill_rate": 0.1028,
+  "mean_columns_filled": 25.91,
   "status_counts": {
-    "ready": 786,
-    "blocked": 186,
-    "needs_review": 28
+    "ready": 787,
+    "blocked": 176,
+    "needs_review": 37
   },
   "flag_counts": {
     "classification_abstained": 125,
-    "brand_unresolved": 52,
+    "brand_unresolved": 51,
     "family_anomaly": 2,
+    "brand_not_in_approved_list": 14,
     "item_type_unresolved": 19,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 354,
+    "CG-MOB-01": 343,
     "CG-TAX-01": 112,
-    "CG-BRD-01": 90
+    "CG-BRD-01": 75
   },
-  "brand_resolution": 0.91,
+  "brand_resolution": 0.925,
   "classification_rate": 0.888,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.646,
+    "MOBILE_DESC": 0.657,
     "SHORT_DESC": 1.0
   },
-  "mobile_data_limited": 0.354,
+  "mobile_data_limited": 0.343,
   "mobile_composition_short": 0.0,
   "family_inherited": 50,
   "family_anomalies": 2,
@@ -5875,15 +5876,15 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 635,
+    "edges": 637,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
       "variant_of": 370,
-      "same_series": 241
+      "same_series": 243
     },
-    "products_connected": 609,
-    "coverage": 0.609,
+    "products_connected": 612,
+    "coverage": 0.612,
     "most_connected": [
       {
         "index": 387,

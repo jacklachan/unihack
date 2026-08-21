@@ -79,7 +79,7 @@ BOOTSTRAP_BRANDS: Tuple[BrandEntry, ...] = (
        ("TV", "TR", "DC", "DF", "AWN")),
     _B("LG", "LG Electronics", "®", ("lg electronics",), ("LDPH", "LRFD", "WM", "DLE")),
     _B("KitchenAid", "Whirlpool Corporation", "®", ("kitchenaid", "kitchen aid"),
-       ("KDFM", "KDTM", "KSES", "KDTS", "KRFF", "KSGB")),
+       ("KDFM", "KDTM", "KSES", "KDTS", "KDPS", "KDPM", "KRFF", "KSGB", "KMBP")),
     _B("GE", "GE Appliances", "®", ("ge appliances", "general electric"),
        ("PDT", "PDD", "GDT", "GTW", "GFW", "JB", "JGB")),
     _B("Maytag", "Whirlpool Corporation", "®", ("maytag",), ("MVW", "MED", "MDB")),
@@ -201,6 +201,7 @@ class Resolution:
     evidence_source: str = ""
     detail: str = ""
     is_distributor_source: bool = False
+    unverified: bool = False        # resolved, but not on the approved list
     entry: Optional[BrandEntry] = None
 
 
@@ -386,7 +387,42 @@ def resolve_identity(registry: BrandRegistry, *, mpn: str = "", description: str
         res.method, res.confidence = "abstain", 0.0
         res.evidence_source = "input:Part_Manuf"
         res.evidence_text = supplier
+        return res
+
+    if supplier:
+        # The supplier is not a distributor, so it is the manufacturer -- it is
+        # simply absent from the approved list. The content guidelines are
+        # explicit that where an item has no brand, the manufacturer name is
+        # used instead, so the cleaned supplier string is used and flagged as
+        # unverified rather than dropped. "Rees Cast Stone Company (REECA)"
+        # becomes "Rees Cast Stone Company"; the ERP code is not part of a name.
+        name = _clean_supplier_name(supplier)
+        if name:
+            res.brand = res.brand_display = name
+            res.manufacturer = name
+            res.method, res.confidence = "input", 0.58
+            res.evidence_text, res.evidence_source = supplier, "input:Part_Manuf"
+            res.detail = ("Supplier is not a known distributor, so it is treated "
+                          "as the manufacturer. This name is NOT on the approved "
+                          "list and needs verification before publication.")
+            res.unverified = True
     return res
+
+
+_SUPPLIER_TAIL = re.compile(
+    r"\s*\b(inc|llc|ltd|corp|corporation|company|co|mfg|manufacturing)\b\.?\s*$",
+    re.I)
+
+
+def _clean_supplier_name(supplier: str) -> str:
+    """Turn an ERP supplier string into something printable as a name."""
+    name = _CODE_RE.sub("", str(supplier or "").strip()).strip(" -,")
+    if not name or len(name) < 2:
+        return ""
+    name = re.sub(r"\s{2,}", " ", name)
+    # Expand the abbreviations ERP systems use for spacing reasons.
+    name = re.sub(r"\bU\s+S\b", "U.S.", name)
+    return name.strip()
 
 
 def _fill(res: Resolution, e: BrandEntry, method: str, conf: float,
