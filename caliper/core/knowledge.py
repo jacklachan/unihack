@@ -35,8 +35,17 @@ BONDED_ABRASIVE = re.compile(
     r"\b(cut off (disc|wheel)|grinding wheel|flap disc|sanding disc|blade)\b", re.I)
 ARBOR_TOOL = re.compile(r"\b(grinder|saw|table saw|miter saw|circular saw)\b", re.I)
 LAMP = re.compile(r"\b(bulb|lamp)\b", re.I)
+#: A luminaire is the thing a lamp goes *into*. "Light Bulb" contains "light",
+#: so an unguarded pattern matched both sides of the relationship and filled
+#: the graph with meaningless bulb-fits-bulb edges -- 840 of them, 59% of the
+#: total. Lamps are excluded explicitly.
 LUMINAIRE = re.compile(
-    r"\b(light|fixture|chandelier|pendant|downlight|sconce|ceiling fan)\b", re.I)
+    r"\b(fixture|chandelier|pendant|downlight|sconce|ceiling fan|"
+    r"wall light|ceiling light|bath light|flood light|motion light)\b", re.I)
+
+
+def is_luminaire(item_type: str) -> bool:
+    return bool(LUMINAIRE.search(item_type)) and not LAMP.search(item_type)
 
 
 @dataclass
@@ -139,7 +148,7 @@ def build_graph(nodes: Sequence[Node], max_per_pair: int = 25) -> List[Edge]:
             by_base[n.base_type].append(n)
     for base, group in by_base.items():
         lamps = [n for n in group if LAMP.search(n.item_type)]
-        fixtures = [n for n in group if LUMINAIRE.search(n.item_type)]
+        fixtures = [n for n in group if is_luminaire(n.item_type)]
         for l in lamps[:max_per_pair]:
             for f in fixtures[:max_per_pair]:
                 emit(l, f, "fits", "KG-BAS-01", 0.72,

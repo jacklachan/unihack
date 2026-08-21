@@ -72,7 +72,7 @@ python -m caliper run data/input/sample_1000_items.csv -o data/out
 | `delivery.csv` / `delivery.xlsx` | The 252-column delivery format, header byte-identical to the published sheet |
 | `audit_provenance.csv` | One row per populated cell: value, method, confidence, rule id, evidence span |
 | `review_queue.csv` | Rows needing a human, ranked by value of review |
-| `relationships.csv` | The product relationship graph — 1,429 evidence-backed edges |
+| `relationships.csv` | The product relationship graph — 589 evidence-backed edges |
 | `corrections.csv` | Reviewer decisions and how many rows each one fixed |
 | `report.json` | Every metric below |
 
@@ -213,11 +213,11 @@ runs on files dropped into the console.
 | Classified to a classpath | **84.0 %** — the remainder abstain rather than guess |
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | `SHORT_DESC` within limit | **100 %** |
-| `MOBILE_DESC` in the 60–80 window | 91.7 % |
+| `MOBILE_DESC` in the 60–80 window | 66.4 % |
 | Rows invoking the LLM | **22 %** — the rest are resolved by rules |
 | Product families found | 566 from 1,000 rows |
 | Facts inherited by family consensus | 77 |
-| Relationship edges derived | **1,429** — 62 % of products connected |
+| Relationship edges derived | **589** — 61 % of products connected |
 | Source-data defects flagged | 4 brand/manufacturer mismatches, 2 family anomalies |
 | Reviewer-correction leverage | 1 decision → 6 rows (family-scoped) |
 
@@ -383,20 +383,25 @@ number is how bad data gets laundered into a catalogue.
 ### Relationship graph
 
 A flat 252-column sheet cannot say that this battery powers that ratchet. From
-facts already extracted, CALIPER derives **1,429 edges** across 62 % of the
+facts already extracted, CALIPER derives **589 edges** across 61 % of the
 catalogue — every one carrying a rule id, a confidence and the shared evidence
 that licenses it:
 
 | Relation | Edges | Licensed by |
 |---|---|---|
-| `fits` | 840 | shared arbor size, or shared lamp base |
 | `variant_of` | 370 | same product family |
 | `same_series` | 195 | same brand and collection |
 | `powers` | 18 | same brand and battery platform |
 | `cross_reference` | 6 | same item type and dimensions, different manufacturer |
+| `fits` | **0** | shared arbor size, or shared lamp base |
 
-No edge is written because two products "seem related" — with nothing to point
-at, nothing is asserted.
+`fits` is implemented and tested but fires zero times on this catalogue, and
+that is reported rather than hidden. The relation needs an arbor size on the
+*tool* as well as on the wheel, and a lamp base on the *fixture* as well as on
+the bulb — neither appears in these descriptions. An earlier build reported 840
+`fits` edges; they were bulb-fits-bulb, because the luminaire pattern matched
+the word "light" inside "Light Bulb". No edge is written because two products
+"seem related" — with nothing to point at, nothing is asserted.
 
 ### Corrections that compound
 

@@ -128,7 +128,7 @@ footer{padding:44px 0 0;font:400 14px/1.6 var(--body);color:var(--ink-3)}
   <div class="meta">
     <span><b>1,000</b> rows in <b>2.4s</b></span>
     <span><b>252</b>-column delivery format</span>
-    <span><b>27,255</b> traceable cells</span>
+    <span><b>27,000+</b> traceable cells</span>
     <span><b>37</b> tests passing</span>
     <span><b>0</b> third-party packages</span>
   </div>
@@ -221,9 +221,16 @@ blank in both      : 173 columns</pre>
     <div class="metric"><div class="v">91.0%</div><div class="l">Brand resolved</div><div class="n">to an approved name</div></div>
     <div class="metric"><div class="v">84.0%</div><div class="l">Classified</div><div class="n">the rest abstain</div></div>
     <div class="metric"><div class="v">74.7%</div><div class="l">Ready to publish</div><div class="n">747 rows unattended</div></div>
-    <div class="metric"><div class="v">1,429</div><div class="l">Relationship edges</div><div class="n">62% of products linked</div></div>
+    <div class="metric"><div class="v">589</div><div class="l">Relationship edges</div><div class="n">61% of products linked</div></div>
   </div>
   <div class="cap" style="margin-bottom:34px">1,000-row working dataset, deterministic core. Full run: 2.4 seconds, no API key.</div>
+
+  <div class="finding" style="margin-bottom:34px">
+    <div class="tag">Correction · logged after review</div>
+    <h4>An earlier draft of this page claimed 1,429 edges. It was wrong.</h4>
+    <p>The luminaire pattern matched the word "light" inside "Light Bulb", so every bulb registered as both the lamp and the fixture it seats into. That produced <strong>840 bulb-fits-bulb edges — 59% of the total</strong>. With the pattern corrected the graph holds <strong>589 edges</strong>, and the <span class="mono">fits</span> relation fires <strong>zero</strong> times on this catalogue: it needs an arbor size on the tool as well as the wheel, and a lamp base on the fixture as well as the bulb. Neither appears in these descriptions.</p>
+    <p>Two other defects were found in the same review: a boolean merchandising flag rendering as a bare <span class="mono">"YES"</span> on invoice lines, and <span class="mono">MOBILE_DESC</span> padding itself to the 60-character floor with taxonomy nodes — <span class="mono">"Drill, DCD799B, Tools, Power Tools"</span>. Removing the padding dropped that field's compliance from a flattering <strong>92.3%</strong> to an honest <strong>66.4%</strong>.</p>
+  </div>
 
   <div class="two">
     <div>
@@ -275,7 +282,7 @@ blank in both      : 173 columns</pre>
  11  model audit           <i>verdicts on existing facts; cannot create a value</i>
      ────────────────────  <b>PRODUCT FACT GRAPH</b>  <i>everything above writes; nothing below does</i>
  12  composition           <i>252 columns rendered; character-budget solver</i>
- 13  relationship graph    <i>powers · fits · variant_of · cross_reference</i>
+ 13  relationship graph    <i>variant_of · same_series · powers · cross_reference</i>
  14  validation            <i>guideline-as-code; each violation cites a rule id</i>
  15  selective delivery    <i>ready / needs review / blocked</i></pre>
   </div>
@@ -329,6 +336,7 @@ DISHWASHER BSS                <i>14/40, kept 2</i></pre>
       <li><strong>Two labelled rows.</strong> Every accuracy figure rests on a calibration set of two. The harness prints the sample size beside every rate and scales untouched to a larger file.</li>
       <li><strong>No manufacturer-source retrieval.</strong> Finding 02 shows this is the binding constraint on attribute-value accuracy — not a missing rule.</li>
       <li><strong>No official controlled vocabularies.</strong> The LOV, the 27,000-row manufacturer master and the UOM standards are described in the guide but not distributed. The brand registry here is a bootstrap of roughly 75 entries; LOV coverage is measured against CALIPER's <em>induced</em> vocabulary and labelled as such. Every loader accepts the real files if they appear.</li>
+      <li><strong>Conformance is not quality.</strong> 100% character compliance is true and it is not the same as a good line. <span class="mono">INVOICE_DESC</span> for a bare drill is <span class="mono">"DRILL"</span> — compliant, and nearly useless. The metrics measure whether rules were obeyed, not whether a buyer is served, and no automated check we have closes that gap.</li>
       <li><strong>The long tail abstains.</strong> 153 distinct item types classify poorly. Hand-coding them would be overfitting to the sample, which the brief explicitly warns against.</li>
     </ul>
     <div class="claim">Enrichment is table stakes. Knowing which rows you can ship without a human looking at them — and being able to prove why — is the product.</div>

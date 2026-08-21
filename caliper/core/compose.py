@@ -27,6 +27,10 @@ from .parse import ABBREV_LADDER
 # ---------------------------------------------------------------------------
 #: Order in which facts earn space on the invoice line. Item type first -- a
 #: till receipt that does not say what the thing is has failed.
+#: Boolean merchandising flags. "Yes" is meaningless in a description or on an
+#: invoice line -- it belongs in its own column, not in prose.
+BOOLEAN_KEYS = frozenset({"display_only", "includes_battery"})
+
 INVOICE_PRIORITY: Tuple[str, ...] = (
     "item_type", "mounting", "number_of_cycles", "finish", "voltage",
     "amperage", "wattage", "color_temperature", "grit", "diameter",
@@ -114,9 +118,9 @@ def build_invoice_desc(graph: ProductFactGraph, limit: int = 40) -> BudgetResult
         if f:
             ordered.append(f)
     for f in graph.ordered():
-        if f not in ordered and f.key not in ("brand", "manufacturer", "series",
-                                              "classpath", "dept", "class", "fine",
-                                              "unspsc", "mpn"):
+        if f not in ordered and f.key not in (
+                "brand", "manufacturer", "series", "classpath", "dept",
+                "class", "fine", "unspsc", "mpn") and f.key not in BOOLEAN_KEYS:
             ordered.append(f)
 
     chosen: List[str] = []
@@ -169,9 +173,14 @@ def build_mobile_desc(graph: ProductFactGraph, lo: int = 60, hi: int = 80) -> st
     if len(text) < lo:
         # Grow with the next most identifying facts until inside the window.
         for f in graph.ordered():
-            if f.key in ("manufacturer", "brand", "item_type", "series", "mpn"):
+            # Padding to reach the window must use product attributes. Dept,
+            # Class and Fine are where the product sits in a tree, not facts
+            # about it -- appending them produced lines like
+            # "Drill, DCD799B, Tools, Power Tools".
+            if f.key in ("manufacturer", "brand", "item_type", "series", "mpn",
+                         "dept", "class", "fine", "classpath", "unspsc"):
                 continue
-            if not f.display:
+            if f.key in BOOLEAN_KEYS or not f.display:
                 continue
             cand = text + ", " + f.display
             if len(cand) > hi:
@@ -231,7 +240,7 @@ def build_long_desc(graph: ProductFactGraph, spec_keys: Sequence[str] = ()) -> s
     for f in _spec_ordered(graph, spec_keys):
         if f.key in ("brand", "manufacturer", "item_type", "series", "mpn",
                      "classpath", "dept", "class", "fine", "unspsc",
-                     "with_feature"):
+                     "with_feature") or f.key in BOOLEAN_KEYS:
             continue
         if f.display:
             body.append(f.display)
@@ -262,7 +271,7 @@ def _differentiators(graph: ProductFactGraph, spec_keys: Sequence[str],
     """The attributes a buyer chooses between, in specification order."""
     skip = {"brand", "manufacturer", "item_type", "series", "mpn", "classpath",
             "dept", "class", "fine", "unspsc", "with_feature",
-            "additional_information", "display_only"}
+            "additional_information"} | set(BOOLEAN_KEYS)
     out = []
     for f in _spec_ordered(graph, spec_keys):
         if f.key in skip or not f.display:
