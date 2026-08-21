@@ -6,334 +6,374 @@
 <title>CALIPER</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ── tokens ────────────────────────────────────────────────────────────
+   Four colours carry meaning: ink, muted, amber (accent), and a single
+   semantic pair reserved exclusively for row state. Nothing else is
+   allowed to be coloured. Spacing is a 4pt grid.                        */
 :root{
-  --ground:#0A0E1A; --s1:#11172A; --s2:#1A2138; --rule:#2A3050;
-  --amber:#FFA02F; --pos:#00B96B; --neg:#F23645; --mute:#5E6680; --ink:#E8ECF4;
-  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;
+  --bg:#0B0E14; --sunk:#080A0F; --panel:#11151E; --line:#1E242F; --line2:#2A3242;
+  --ink:#E9EEF5; --mute:#7C8798; --faint:#4E586A;
+  --amber:#F5A524; --pos:#2FBF71; --neg:#E5484D;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --sans:"IBM Plex Sans",-apple-system,Segoe UI,sans-serif;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px;
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{margin:0;background:var(--ground);color:var(--ink);
-  font:12px/1.45 var(--mono);font-variant-numeric:tabular-nums;
-  -webkit-font-smoothing:antialiased}
-::selection{background:var(--amber);color:#0A0E1A}
-::-webkit-scrollbar{width:9px;height:9px}
-::-webkit-scrollbar-thumb{background:var(--rule)}
-::-webkit-scrollbar-track{background:var(--ground)}
+body{background:var(--bg);color:var(--ink);font:400 13px/1.5 var(--sans);
+  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+::selection{background:var(--amber);color:#0B0E14}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--line2)}
+::-webkit-scrollbar-track{background:var(--sunk)}
+.mono{font-family:var(--mono)}
 
-/* ---- command bar ---- */
-.cmd{display:flex;align-items:center;gap:0;height:26px;background:var(--s1);
-  border-bottom:1px solid var(--rule);padding:0 8px;font-size:11px}
-.cmd .mark{color:var(--amber);font-weight:600;letter-spacing:.22em;padding-right:10px}
-.cmd .src{color:var(--mute);border-left:1px solid var(--rule);padding:0 10px}
-.cmd .spacer{flex:1}
-.cmd .act{color:var(--ink);padding:0 9px;height:26px;line-height:26px;cursor:pointer;
-  border-left:1px solid var(--rule)}
-.cmd .act:hover{background:var(--amber);color:#0A0E1A}
+/* ── chrome ─────────────────────────────────────────────────────────── */
+header{display:flex;align-items:center;gap:var(--s4);height:52px;padding:0 var(--s5);
+  border-bottom:1px solid var(--line);background:var(--panel)}
+.brand{font:600 15px/1 var(--mono);letter-spacing:.24em;color:var(--ink)}
+.brand b{color:var(--amber);font-weight:600}
+.srcchip{display:flex;align-items:center;gap:var(--s2);padding:5px 10px;
+  border:1px solid var(--line2);font:400 12px var(--mono);color:var(--mute)}
+.srcchip s{text-decoration:none;color:var(--amber)}
+.grow{flex:1}
+.act{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;
+  border:1px solid var(--line2);background:transparent;color:var(--ink);
+  font:500 12.5px var(--sans);cursor:pointer;white-space:nowrap}
+.act:hover{border-color:var(--amber);color:var(--amber)}
+.act.primary{background:var(--amber);border-color:var(--amber);color:#231703;font-weight:600}
+.act.primary:hover{filter:brightness(1.08);color:#231703}
+.act[disabled]{opacity:.4;cursor:not-allowed;border-color:var(--line)}
 
-/* ---- ticker ---- */
-.tick{height:22px;overflow:hidden;background:var(--ground);
-  border-bottom:1px solid var(--rule);position:relative}
-.tick .run{display:inline-block;white-space:nowrap;padding-left:100%;
-  animation:sc 46s linear infinite;font-size:11px;line-height:22px}
-@keyframes sc{to{transform:translateX(-100%)}}
-.tick b{color:var(--amber);font-weight:500}
-.tick i{font-style:normal;color:var(--mute);padding:0 6px}
-.tick u{text-decoration:none;color:var(--pos)}
-.tick s{text-decoration:none;color:var(--neg)}
+nav{display:flex;gap:0;padding:0 var(--s5);border-bottom:1px solid var(--line);
+  background:var(--panel)}
+nav button{background:none;border:0;border-bottom:2px solid transparent;
+  padding:10px 14px;color:var(--mute);font:500 12.5px var(--sans);cursor:pointer}
+nav button:hover{color:var(--ink)}
+nav button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--amber)}
+nav kbd{font:400 10px var(--mono);color:var(--faint);margin-right:6px}
 
-/* ---- function keys ---- */
-.fkeys{display:flex;height:24px;border-bottom:1px solid var(--rule);background:var(--s1)}
-.fkeys div{padding:0 12px;line-height:24px;font-size:11px;color:var(--mute);
-  cursor:pointer;border-right:1px solid var(--rule)}
-.fkeys div span{color:var(--amber);padding-right:6px}
-.fkeys div:hover{color:var(--ink)}
-.fkeys div.on{background:var(--s2);color:var(--ink)}
+main{height:calc(100vh - 105px);overflow:auto}
+.hide{display:none!important}
 
-/* ---- panes ---- */
-.wrap{height:calc(100vh - 72px);overflow:auto}
-.pane{border-bottom:1px solid var(--rule)}
-.ph{display:flex;align-items:center;gap:10px;height:22px;background:var(--s1);
-  border-bottom:1px solid var(--rule);padding:0 8px;font-size:10.5px;
-  letter-spacing:.1em;color:var(--amber);text-transform:uppercase}
-.ph em{font-style:normal;color:var(--mute);letter-spacing:0;text-transform:none}
-.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.cols2>*+*{border-left:1px solid var(--rule)}
-.cols3{display:grid;grid-template-columns:1fr 1fr 1fr}
-.cols3>*+*{border-left:1px solid var(--rule)}
-.hide{display:none !important}
+/* ── hero metrics: one dominant level, then support ─────────────────── */
+.hero{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.hero>div{padding:var(--s5);border-right:1px solid var(--line)}
+.hero>div:last-child{border-right:0}
+.hero .lab{font:500 11px/1 var(--sans);letter-spacing:.06em;color:var(--mute);
+  text-transform:uppercase}
+.hero .big{font:600 34px/1.1 var(--mono);margin-top:var(--s3);letter-spacing:-.02em}
+.hero .sub{font:400 12px var(--sans);color:var(--faint);margin-top:6px}
+.big.amber{color:var(--amber)} .big.pos{color:var(--pos)}
 
-/* ---- stat lines (no cards) ---- */
-.stat{display:flex;align-items:baseline;gap:8px;padding:3px 9px;font-size:12px}
-.stat:hover{background:var(--s1)}
-.stat .l{color:var(--mute);white-space:nowrap}
-.stat .d{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-3px)}
-.stat .v{font-weight:600;color:var(--ink);text-align:right;min-width:82px}
-.stat .n{color:var(--mute);font-size:10.5px;min-width:150px;text-align:right}
-.v.a{color:var(--amber)} .v.g{color:var(--pos)} .v.r{color:var(--neg)}
-.meter{height:3px;background:var(--s2);margin:0 9px 5px}
-.meter i{display:block;height:100%}
+/* ── panels ─────────────────────────────────────────────────────────── */
+.grid2{display:grid;grid-template-columns:1fr 1fr}
+.grid2>section+section{border-left:1px solid var(--line)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr)}
+.grid3>section+section{border-left:1px solid var(--line)}
+section.pane{border-bottom:1px solid var(--line);min-width:0}
+.ph{display:flex;align-items:baseline;gap:var(--s2);padding:var(--s3) var(--s4);
+  border-bottom:1px solid var(--line)}
+.ph h2{font:600 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink)}
+.ph span{font:400 11.5px var(--sans);color:var(--faint)}
+.body{padding:var(--s3) var(--s4) var(--s4)}
 
-/* ---- tables ---- */
-table{width:100%;border-collapse:collapse;font-size:11.5px}
-th{text-align:left;color:var(--mute);font-weight:500;font-size:10px;letter-spacing:.08em;
-  text-transform:uppercase;padding:4px 8px;border-bottom:1px solid var(--rule);
-  position:sticky;top:0;background:var(--s1);z-index:2}
-td{padding:3px 8px;border-bottom:1px solid rgba(42,48,80,.45);white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis;max-width:340px}
-tbody tr:hover{background:var(--s2);cursor:pointer}
-tbody tr.sel{background:var(--s2);box-shadow:inset 2px 0 0 var(--amber)}
-.num{text-align:right}
-.dim{color:var(--mute)}
-.amber{color:var(--amber)}
-.flash{animation:fl .5s}
-@keyframes fl{0%{background:rgba(255,160,47,.28)}100%{background:transparent}}
+/* metric rows: aligned columns, no leader dots */
+.rows{display:grid;grid-template-columns:1fr auto auto;gap:2px var(--s4);
+  align-items:baseline;font-size:12.5px}
+.rows dt{color:var(--mute);padding:3px 0}
+.rows dd.n{font-family:var(--mono);font-weight:500;text-align:right;padding:3px 0}
+.rows dd.x{color:var(--faint);font-size:11.5px;text-align:right;padding:3px 0;
+  min-width:120px}
+dd.n.amber{color:var(--amber)} dd.n.pos{color:var(--pos)} dd.n.neg{color:var(--neg)}
+.track{grid-column:1/-1;height:2px;background:var(--line);margin:2px 0 6px}
+.track i{display:block;height:100%}
 
-/* ---- status glyphs ---- */
-.g-ready::before{content:"\25CF";color:var(--pos)}
-.g-needs_review::before{content:"\25CF";color:var(--amber)}
-.g-blocked::before{content:"\25CF";color:var(--neg)}
+/* ── tables ─────────────────────────────────────────────────────────── */
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{position:sticky;top:0;z-index:2;background:var(--panel);text-align:left;
+  font:500 10.5px var(--sans);letter-spacing:.07em;text-transform:uppercase;
+  color:var(--mute);padding:8px var(--s4);border-bottom:1px solid var(--line)}
+tbody td{padding:6px var(--s4);border-bottom:1px solid var(--line);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:1px}
+tbody tr:hover{background:var(--panel);cursor:pointer}
+tbody tr[aria-selected=true]{background:var(--panel);box-shadow:inset 2px 0 0 var(--amber)}
+td.n{text-align:right;font-family:var(--mono)}
+td.dim{color:var(--mute)}
+td.key{font-family:var(--mono);color:var(--ink)}
+td.hl{font-family:var(--mono);color:var(--amber)}
+.state{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mute)}
+.state::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--faint)}
+.state.ready::before{background:var(--pos)}
+.state.needs_review::before{background:var(--amber)}
+.state.blocked::before{background:var(--neg)}
 
-/* ---- inspector ---- */
-#insp{position:fixed;top:0;right:0;width:min(720px,96vw);height:100vh;background:var(--ground);
-  border-left:1px solid var(--rule);transform:translateX(100%);transition:transform .12s linear;
-  z-index:50;display:flex;flex-direction:column}
-#insp.on{transform:none}
-.ihead{background:var(--s1);border-bottom:1px solid var(--rule);padding:6px 9px;
-  display:flex;gap:10px;align-items:flex-start}
+.toolbar{display:flex;gap:var(--s2);align-items:center;padding:var(--s3) var(--s4);
+  border-bottom:1px solid var(--line);background:var(--panel)}
+input[type=search],select{background:var(--sunk);border:1px solid var(--line2);
+  color:var(--ink);padding:6px 10px;font:400 12.5px var(--sans);outline:none}
+input[type=search]{min-width:280px}
+input:focus,select:focus{border-color:var(--amber)}
+.count{font:400 12px var(--mono);color:var(--faint)}
+
+/* ── empty / loading / error states ─────────────────────────────────── */
+.stage{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:62vh;text-align:center;padding:var(--s6);gap:var(--s3)}
+.stage h1{font:600 26px/1.2 var(--sans);letter-spacing:-.01em}
+.stage p{color:var(--mute);max-width:52ch;font-size:13.5px}
+.dropzone{width:min(560px,90%);border:1px dashed var(--line2);padding:var(--s6) var(--s5);
+  display:flex;flex-direction:column;align-items:center;gap:var(--s3);
+  transition:border-color .12s,background .12s}
+.dropzone.hot{border-color:var(--amber);background:rgba(245,165,36,.05)}
+.dropzone .hint{color:var(--faint);font-size:12px}
+.bararea{width:min(560px,90%);height:3px;background:var(--line);overflow:hidden}
+.bararea i{display:block;height:100%;background:var(--amber);width:0;
+  animation:idet 1.1s ease-in-out infinite}
+@keyframes idet{0%{width:0;margin-left:0}50%{width:60%;margin-left:20%}
+  100%{width:0;margin-left:100%}}
+.err{border-left:2px solid var(--neg);background:rgba(229,72,77,.07);
+  padding:var(--s3) var(--s4);font-size:12.5px}
+
+/* ── notes ──────────────────────────────────────────────────────────── */
+.note{display:flex;gap:var(--s3);align-items:baseline;padding:8px var(--s4);
+  border-bottom:1px solid var(--line);font-size:12.5px}
+.note b{font-family:var(--mono);color:var(--amber);min-width:44px;text-align:right}
+.note.crit b{color:var(--neg)}
+.note span{color:var(--mute)}
+
+/* ── inspector ──────────────────────────────────────────────────────── */
+#insp{position:fixed;inset:0 0 0 auto;width:min(760px,96vw);background:var(--bg);
+  border-left:1px solid var(--line2);transform:translateX(100%);
+  transition:transform .16s cubic-bezier(.4,0,.2,1);z-index:60;
+  display:flex;flex-direction:column}
+#insp.on{transform:none;box-shadow:-30px 0 60px rgba(0,0,0,.5)}
+.ihead{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s4) var(--s5);
+  border-bottom:1px solid var(--line);background:var(--panel)}
+.ihead .pn{font:600 16px/1.2 var(--mono);color:var(--amber)}
+.ihead .ds{font-size:12.5px;color:var(--mute);margin-top:4px}
 .ibody{flex:1;overflow:auto}
-.cell{border-bottom:1px solid rgba(42,48,80,.45)}
-.ch{display:flex;gap:9px;padding:4px 9px;cursor:pointer;align-items:baseline}
-.ch:hover{background:var(--s1)}
-.ch .c{color:var(--amber);min-width:168px;font-size:11px}
-.ch .v{flex:1;font-size:11.5px;white-space:pre-wrap;word-break:break-word}
-.ch .q{color:var(--mute);font-size:10.5px}
-.ev{background:var(--s1);border-top:1px solid var(--rule);padding:7px 9px 9px 9px;font-size:11px}
-.ev dl{display:grid;grid-template-columns:96px 1fr;gap:3px 10px;margin:0}
-.ev dt{color:var(--mute);font-size:10px;text-transform:uppercase;letter-spacing:.06em}
-.ev dd{margin:0}
-.quote{background:rgba(255,160,47,.11);border-left:2px solid var(--amber);padding:2px 7px}
-.tagset span{border:1px solid var(--rule);padding:0 5px;margin-right:4px;font-size:10.5px}
-.tagset span.k{border-color:var(--amber);color:var(--amber)}
-.note{border-left:2px solid var(--amber);background:rgba(255,160,47,.07);padding:5px 9px;
-  margin:0 0 1px;font-size:11px}
-.note.bad{border-left-color:var(--neg);background:rgba(242,54,69,.07)}
-.ba{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
-.ba>div{padding:6px 9px}
-.ba>div+div{border-left:1px solid var(--rule)}
-.ba .k{color:var(--mute);font-size:10px;text-transform:uppercase;letter-spacing:.07em}
-
-/* ---- misc ---- */
-.bar{display:flex;gap:6px;align-items:center;padding:4px 8px;background:var(--s1);
-  border-bottom:1px solid var(--rule)}
-input[type=text],select{background:var(--ground);border:1px solid var(--rule);color:var(--ink);
-  padding:2px 6px;font:11.5px var(--mono);outline:none}
-input[type=text]{min-width:260px}
-input[type=text]:focus,select:focus{border-color:var(--amber)}
-.btn{border:1px solid var(--rule);padding:2px 8px;cursor:pointer;color:var(--ink);font-size:11px;
-  background:var(--ground)}
-.btn:hover{border-color:var(--amber);color:var(--amber)}
-.attr{padding:5px 9px;border-bottom:1px solid rgba(42,48,80,.45)}
-.attr .h{display:flex;gap:8px;align-items:baseline}
-.attr .n{color:var(--ink);font-weight:500}
-.attr .m{color:var(--mute);font-size:10.5px}
-.slot{display:inline-block;border:1px solid var(--rule);padding:0 5px;margin:2px 3px 0 0;
-  font-size:10.5px;color:var(--mute)}
-.slot b{color:var(--ink);font-weight:400}
-.slot.f{border-color:var(--pos)}
-.slot.f b{color:var(--pos)}
-.drop{border:1px dashed var(--rule);padding:26px;text-align:center;color:var(--mute);margin:9px}
-.drop.hot{border-color:var(--amber);color:var(--amber)}
+.ba{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.ba>div{padding:var(--s3) var(--s5)}
+.ba>div+div{border-left:1px solid var(--line)}
+.ba .k{font:500 10.5px var(--sans);letter-spacing:.07em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:6px}
+.cell{border-bottom:1px solid var(--line)}
+.ch{display:grid;grid-template-columns:190px 1fr auto;gap:var(--s3);
+  padding:7px var(--s5);cursor:pointer;align-items:baseline}
+.ch:hover{background:var(--panel)}
+.ch .c{font:400 11.5px var(--mono);color:var(--amber);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.ch .v{font-size:12.5px;word-break:break-word}
+.ch .q{font:400 11px var(--mono);color:var(--faint)}
+.ev{background:var(--panel);border-top:1px solid var(--line);padding:var(--s3) var(--s5)}
+.ev dl{display:grid;grid-template-columns:92px 1fr;gap:5px var(--s3);font-size:12px}
+.ev dt{font:500 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint)}
+.quote{font-family:var(--mono);font-size:11.5px;background:rgba(245,165,36,.1);
+  border-left:2px solid var(--amber);padding:2px 8px}
+.tag{display:inline-block;border:1px solid var(--line2);padding:1px 7px;
+  font:400 11px var(--mono);color:var(--mute);margin-right:5px}
+.tag.k{border-color:var(--amber);color:var(--amber)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;padding:var(--s2) 0}
+.chip{border:1px solid var(--line2);padding:2px 8px;font:400 11.5px var(--mono);
+  color:var(--mute)}
+.chip b{color:var(--ink);font-weight:400}
+.chip.f{border-color:var(--pos)} .chip.f b{color:var(--pos)}
+.sub{padding:6px var(--s4);font-size:12px;color:var(--mute);
+  border-bottom:1px solid var(--line)}
 </style>
 </head>
 <body>
 
-<div class="cmd">
-  <div class="mark">CALIPER</div>
-  <div class="src" id="src">no source loaded</div>
-  <div class="spacer"></div>
-  <div class="act" onclick="dl('delivery')">EXPORT DELIVERY</div>
-  <div class="act" onclick="dl('queue')">EXPORT QUEUE</div>
+<header>
+  <div class="brand">CALI<b>PER</b></div>
+  <div class="srcchip" id="srcchip"><s>&#9679;</s><span id="src">no file loaded</span></div>
+  <div class="grow"></div>
+  <button class="act primary" onclick="pick()">Upload catalogue</button>
+  <button class="act" id="btn-csv" onclick="dl('delivery')" disabled>Export delivery CSV</button>
+  <button class="act" id="btn-q" onclick="dl('queue')" disabled>Review queue</button>
+  <input type="file" id="file" accept=".csv,.tsv,.txt" class="hide">
+</header>
+
+<nav id="nav">
+  <button aria-selected="true" data-t="board"><kbd>1</kbd>Overview</button>
+  <button data-t="catalog"><kbd>2</kbd>Catalogue</button>
+  <button data-t="specs"><kbd>3</kbd>Induced specs</button>
+  <button data-t="fam"><kbd>4</kbd>Families</button>
+  <button data-t="graph"><kbd>5</kbd>Relationships</button>
+  <button data-t="queue"><kbd>6</kbd>Review queue</button>
+</nav>
+
+<main>
+
+<!-- EMPTY STATE -->
+<div id="empty" class="stage hide">
+  <h1>Drop a supplier catalogue in.</h1>
+  <p>Any CSV. Column names are detected, not assumed &mdash; the pipeline does not
+     require the sample file's headers. 1,000 rows enrich in about two seconds.</p>
+  <div class="dropzone" id="drop">
+    <button class="act primary" onclick="pick()">Choose a CSV file</button>
+    <div class="hint">or drag it anywhere onto this panel</div>
+  </div>
+  <p class="hint" style="color:var(--faint)">Processed locally. Nothing leaves this machine.</p>
 </div>
 
-<div class="tick"><span class="run" id="run"></span></div>
-
-<div class="fkeys" id="fk">
-  <div class="on" data-t="board"><span>F1</span>BOARD</div>
-  <div data-t="catalog"><span>F2</span>CATALOG</div>
-  <div data-t="specs"><span>F3</span>SPECS</div>
-  <div data-t="fam"><span>F4</span>FAMILIES</div>
-  <div data-t="queue"><span>F5</span>QUEUE</div>
-  <div data-t="graph"><span>F6</span>GRAPH</div>
-  <div data-t="load"><span>F7</span>LOAD</div>
+<!-- LOADING STATE -->
+<div id="busy" class="stage hide">
+  <h1 id="busy-title">Enriching&hellip;</h1>
+  <p id="busy-sub">Parsing, resolving identity, inducing category specs.</p>
+  <div class="bararea"><i></i></div>
 </div>
 
-<div class="wrap">
+<!-- ERROR STATE -->
+<div id="fail" class="stage hide">
+  <h1>That file could not be read.</h1>
+  <p id="fail-msg" class="err"></p>
+  <button class="act" onclick="showEmpty()">Try another file</button>
+</div>
 
-<!-- ============ BOARD ============ -->
-<section id="p-board">
-  <div class="cols3">
-    <div class="pane">
-      <div class="ph">Throughput</div>
-      <div id="s-thru"></div>
+<div id="app" class="hide">
+
+  <!-- OVERVIEW -->
+  <div id="p-board">
+    <div class="hero" id="hero"></div>
+    <div class="grid2">
+      <section class="pane">
+        <div class="ph"><h2>Character limits</h2><span>enforced at composition, not checked after</span></div>
+        <div class="body"><dl class="rows" id="s-char"></dl></div>
+      </section>
+      <section class="pane">
+        <div class="ph"><h2>Fill rate</h2><span>against the human answer key</span></div>
+        <div class="body"><dl class="rows" id="s-fill"></dl>
+          <p id="fill-note" style="color:var(--mute);font-size:12px;margin-top:10px"></p></div>
+      </section>
     </div>
-    <div class="pane">
-      <div class="ph">Resolution</div>
-      <div id="s-res"></div>
+    <div class="grid3">
+      <section class="pane">
+        <div class="ph"><h2>Resolution</h2></div>
+        <div class="body"><dl class="rows" id="s-res"></dl></div>
+      </section>
+      <section class="pane">
+        <div class="ph"><h2>Relationships</h2></div>
+        <div class="body"><dl class="rows" id="s-graph"></dl></div>
+      </section>
+      <section class="pane">
+        <div class="ph"><h2>Integrity</h2></div>
+        <div class="body"><dl class="rows" id="s-integ"></dl></div>
+      </section>
     </div>
-    <div class="pane">
-      <div class="ph">Disposition</div>
-      <div id="s-disp"></div>
-    </div>
+    <section class="pane">
+      <div class="ph"><h2>Findings raised against the source catalogue</h2>
+        <span>problems in the supplier's data, not ours</span></div>
+      <div id="s-flags"></div>
+    </section>
   </div>
 
-  <div class="cols2">
-    <div class="pane">
-      <div class="ph">Character limits <em>enforced at composition, not checked after</em></div>
-      <div id="s-char"></div>
+  <!-- CATALOGUE -->
+  <div id="p-catalog" class="hide">
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="Filter by part number, description, brand" oninput="deb()">
+      <select id="st" onchange="loadRows(0)">
+        <option value="">All rows</option><option value="ready">Ready</option>
+        <option value="needs_review">Needs review</option><option value="blocked">Blocked</option>
+      </select>
+      <button class="act" onclick="page(-1)">Prev</button>
+      <button class="act" onclick="page(1)">Next</button>
+      <span class="count" id="rc"></span>
+      <div class="grow"></div>
+      <span class="count">&uarr;&darr; move &middot; Enter inspect &middot; Esc close</span>
     </div>
-    <div class="pane">
-      <div class="ph">Fill rate <em>vs. the human answer key</em></div>
-      <div id="s-fill"></div>
-    </div>
-  </div>
-
-  <div class="cols2">
-    <div class="pane">
-      <div class="ph">Relationships <em>derived from extracted facts</em></div>
-      <div id="s-graph"></div>
-    </div>
-    <div class="pane">
-      <div class="ph">Integrity <em>physical checks, consensus, reviewer decisions</em></div>
-      <div id="s-integ"></div>
-    </div>
-  </div>
-
-  <div class="pane">
-    <div class="ph">Findings raised against the source catalogue</div>
-    <div id="s-flags"></div>
-  </div>
-</section>
-
-<!-- ============ CATALOG ============ -->
-<section id="p-catalog" class="hide">
-  <div class="bar">
-    <input type="text" id="q" placeholder="filter: part number, description, brand" oninput="deb()">
-    <select id="st" onchange="loadRows(0)">
-      <option value="">all</option><option value="ready">ready</option>
-      <option value="needs_review">review</option><option value="blocked">blocked</option>
-    </select>
-    <span class="btn" onclick="page(-1)">&larr;</span>
-    <span class="btn" onclick="page(1)">&rarr;</span>
-    <span class="dim" id="rc"></span>
-    <span class="spacer" style="flex:1"></span>
-    <span class="dim">&uarr;&darr; move &middot; ENTER inspect &middot; ESC close</span>
-  </div>
-  <table>
-    <thead><tr>
-      <th style="width:16px"></th><th style="width:150px">Part number</th>
+    <table><thead><tr>
+      <th style="width:104px">State</th><th style="width:150px">Part number</th>
       <th>Source description</th><th style="width:120px">Brand</th>
-      <th style="width:150px">Item type</th><th style="width:250px">Invoice line</th>
-      <th style="width:46px" class="num">Len</th><th style="width:48px" class="num">Conf</th>
-    </tr></thead>
-    <tbody id="rows"></tbody>
-  </table>
-</section>
+      <th style="width:150px">Item type</th><th style="width:240px">Invoice line</th>
+      <th style="width:60px" class="n">Chars</th>
+    </tr></thead><tbody id="rows"></tbody></table>
+  </div>
 
-<!-- ============ SPECS ============ -->
-<section id="p-specs" class="hide">
-  <div class="ph">Category specifications induced from the rows themselves
-    <em>&mdash; normally hand-written, one category at a time. Green = searchable facet.</em></div>
-  <div id="specs"></div>
-</section>
+  <!-- SPECS -->
+  <div id="p-specs" class="hide">
+    <div class="sub">A category specification is normally hand-written, one category at a
+      time. These were derived from the rows themselves &mdash; green marks a searchable facet.</div>
+    <div id="specs"></div>
+  </div>
 
-<!-- ============ FAMILIES ============ -->
-<section id="p-fam" class="hide">
-  <div class="cols3" id="f-stats"></div>
-  <div class="ph">Families <em>&mdash; same product varying on one axis; a fix propagates to every sibling</em></div>
-  <div id="fams"></div>
-</section>
+  <!-- FAMILIES -->
+  <div id="p-fam" class="hide">
+    <div class="grid3" id="f-stats"></div>
+    <div class="sub">Rows that are the same product varying on one axis. Siblings corroborate
+      each other, so one review decision propagates across the family.</div>
+    <div id="fams"></div>
+  </div>
 
-<!-- ============ QUEUE ============ -->
-<section id="p-queue" class="hide">
-  <div class="ph">Review queue <em>&mdash; ranked by uncertainty &times; sibling SKUs affected</em></div>
-  <table>
-    <thead><tr>
-      <th style="width:64px" class="num">Value</th><th style="width:60px" class="num">Affects</th>
+  <!-- GRAPH -->
+  <div id="p-graph" class="hide">
+    <div class="toolbar">
+      <select id="rel" onchange="loadGraph()">
+        <option value="">All relations</option><option value="powers">powers</option>
+        <option value="fits">fits</option><option value="variant_of">variant_of</option>
+        <option value="same_series">same_series</option>
+        <option value="cross_reference">cross_reference</option>
+      </select>
+      <span class="count" id="gcount"></span>
+    </div>
+    <table><thead><tr>
+      <th style="width:118px">Relation</th><th style="width:128px">Source</th>
+      <th style="width:128px">Target</th><th style="width:150px">Shared evidence</th>
+      <th>Why this edge exists</th><th style="width:56px" class="n">Conf</th>
+    </tr></thead><tbody id="edges"></tbody></table>
+  </div>
+
+  <!-- QUEUE -->
+  <div id="p-queue" class="hide">
+    <div class="sub">Ranked by <em>value of review</em> &mdash; uncertainty multiplied by how many
+      sibling SKUs the fix reaches. The top row is the best use of the next human minute.</div>
+    <table><thead><tr>
+      <th style="width:70px" class="n">Value</th><th style="width:64px" class="n">Affects</th>
       <th style="width:150px">Part number</th><th style="width:190px">Issue</th>
-      <th>Detail</th><th style="width:80px">Status</th>
-    </tr></thead>
-    <tbody id="queue"></tbody>
-  </table>
-</section>
-
-<!-- ============ GRAPH ============ -->
-<section id="p-graph" class="hide">
-  <div class="cols3" id="g-stats"></div>
-  <div class="bar">
-    <span class="dim">relation</span>
-    <select id="rel" onchange="loadGraph()">
-      <option value="">all</option><option value="powers">powers</option>
-      <option value="fits">fits</option><option value="variant_of">variant_of</option>
-      <option value="same_series">same_series</option>
-      <option value="cross_reference">cross_reference</option>
-    </select>
-    <span class="dim" id="gcount"></span>
+      <th>Detail</th><th style="width:104px">State</th>
+    </tr></thead><tbody id="queue"></tbody></table>
   </div>
-  <table>
-    <thead><tr>
-      <th style="width:120px">Relation</th><th style="width:130px">Source</th>
-      <th style="width:130px">Target</th><th style="width:150px">Shared evidence</th>
-      <th>Why this edge exists</th><th style="width:56px" class="num">Conf</th>
-    </tr></thead>
-    <tbody id="edges"></tbody>
-  </table>
-</section>
-
-<!-- ============ LOAD ============ -->
-<section id="p-load" class="hide">
-  <div class="ph">Run the pipeline on any catalogue file <em>&mdash; column names are detected, not assumed</em></div>
-  <div class="drop" id="drop">
-    drop a CSV here &nbsp;/&nbsp; <input type="file" id="file" accept=".csv,.tsv,.txt">
-    <div class="dim" style="margin-top:10px">processed locally &middot; nothing leaves this machine</div>
-  </div>
-  <div id="upstat" class="dim" style="padding:0 9px 12px"></div>
-</section>
 
 </div>
+</main>
 
-<div id="insp">
+<aside id="insp">
   <div class="ihead">
     <div style="flex:1">
-      <div class="amber" id="i-pn" style="font-size:13px;font-weight:600"></div>
-      <div class="dim" id="i-desc" style="font-size:11px"></div>
+      <div class="pn" id="i-pn"></div>
+      <div class="ds" id="i-desc"></div>
     </div>
-    <span class="btn" onclick="closeI()">ESC</span>
+    <button class="act" onclick="closeI()">Close</button>
   </div>
   <div class="ibody" id="i-body"></div>
-</div>
+</aside>
 
 <script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-let OFF=0,LIM=100,TOTAL=0,REPORT={},CUR=-1,ROWS=[];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+let OFF=0, LIM=100, TOTAL=0, R={}, CUR=-1, ROWS=[], LOADED=false;
 const pct=v=>(100*(v||0)).toFixed(1)+'%';
-const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* ---- panes ---- */
+/* ── view switching ─────────────────────────────────────────────────── */
 function show(t){
-  $$('.fkeys div').forEach(x=>x.classList.toggle('on',x.dataset.t===t));
-  $$('.wrap>section').forEach(s=>s.classList.add('hide'));
+  $$('#nav button').forEach(b=>b.setAttribute('aria-selected', b.dataset.t===t));
+  $$('#app > div').forEach(d=>d.classList.add('hide'));
   $('#p-'+t).classList.remove('hide');
   if(t==='catalog'&&!ROWS.length)loadRows(0);
-  if(t==='specs')loadSpecs(); if(t==='fam')loadFams(); if(t==='queue')loadQueue();
+  if(t==='specs')loadSpecs(); if(t==='fam')loadFams();
+  if(t==='queue')loadQueue(); if(t==='graph')loadGraph();
 }
-$$('.fkeys div').forEach(d=>d.onclick=()=>show(d.dataset.t));
-const FK={F1:'board',F2:'catalog',F3:'specs',F4:'fam',F5:'queue',F6:'graph',F7:'load'};
+$$('#nav button').forEach(b=>b.onclick=()=>show(b.dataset.t));
 addEventListener('keydown',e=>{
-  if(FK[e.key]){e.preventDefault();show(FK[e.key]);return;}
-  if(e.key==='Escape'){closeI();return;}
+  if(e.target.matches('input,select,textarea'))return;
+  const n=['board','catalog','specs','fam','graph','queue'][+e.key-1];
+  if(n&&LOADED){e.preventDefault();return show(n);}
+  if(e.key==='Escape')return closeI();
   if($('#p-catalog').classList.contains('hide'))return;
   if(e.key==='ArrowDown'){e.preventDefault();move(1);}
   if(e.key==='ArrowUp'){e.preventDefault();move(-1);}
@@ -342,145 +382,156 @@ addEventListener('keydown',e=>{
 function move(d){
   if(!ROWS.length)return;
   CUR=Math.max(0,Math.min(ROWS.length-1,CUR+d));
-  $$('#rows tr').forEach((tr,i)=>tr.classList.toggle('sel',i===CUR));
+  $$('#rows tr').forEach((tr,i)=>tr.setAttribute('aria-selected',i===CUR));
   const tr=$$('#rows tr')[CUR]; if(tr)tr.scrollIntoView({block:'nearest'});
 }
 
-/* ---- boot ---- */
+/* ── states ─────────────────────────────────────────────────────────── */
+const stages={empty:'#empty',busy:'#busy',fail:'#fail',app:'#app'};
+function stage(name,msg){
+  Object.entries(stages).forEach(([k,sel])=>$(sel).classList.toggle('hide',k!==name));
+  if(name==='fail')$('#fail-msg').textContent=msg||'Unknown error.';
+}
+const showEmpty=()=>stage('empty');
+
+/* ── boot ───────────────────────────────────────────────────────────── */
 async function boot(){
-  const d=await (await fetch('/api/report')).json();
-  REPORT=d.report||{}; $('#src').textContent=d.source||'no source loaded';
-  board(); ticker();
+  try{
+    const d=await (await fetch('/api/report')).json();
+    R=d.report||{};
+    if(!R.n_rows){stage('empty');return;}
+    $('#src').textContent=d.source||'loaded';
+    ready();
+  }catch(err){stage('fail','Could not reach the CALIPER server. '+err.message);}
+}
+function ready(){
+  LOADED=true;
+  $('#btn-csv').disabled=false; $('#btn-q').disabled=false;
+  stage('app'); board(); show('board');
 }
 
-function line(l,v,n,cls){
-  return `<div class="stat"><span class="l">${l}</span><span class="d"></span>
-    <span class="v ${cls||''}">${v}</span><span class="n">${n||''}</span></div>`;
-}
-function meter(v,c){return `<div class="meter"><i style="width:${100*v}%;background:var(--${c})"></i></div>`;}
+/* ── overview ───────────────────────────────────────────────────────── */
+const row=(k,v,x,cls)=>`<dt>${k}</dt><dd class="n ${cls||''}">${v}</dd>
+  <dd class="x">${x||''}</dd>`;
+const track=(v,c)=>`<div class="track"><i style="width:${Math.min(100,100*v)}%;
+  background:var(--${c})"></i></div>`;
 
 function board(){
-  const r=REPORT,s=r.status_counts||{},n=r.n_rows||0;
-  $('#s-thru').innerHTML=
-    line('rows enriched',n,'','a')+
-    line('elapsed',(r.elapsed_s||0)+'s','no API key required')+
-    line('rate',Math.round(n/Math.max(.001,r.elapsed_s||1))+'/s','single thread')+
-    line('provenance cells','100%','every value traceable','g')+
-    line('columns filled',(r.mean_columns_filled||0)+' / 252',pct(r.fill_rate)+' of sheet');
-  $('#s-res').innerHTML=
-    line('brand resolved',pct(r.brand_resolution),'to an approved name',
-      r.brand_resolution>=.9?'g':'a')+meter(r.brand_resolution,'pos')+
-    line('classified',pct(r.classification_rate),'rest abstain, not guess',
-      r.classification_rate>=.8?'g':'a')+meter(r.classification_rate,'amber')+
-    line('specs induced',(r.specs||[]).length,'category rulebooks','a')+
-    line('families',r.families||0,'from '+n+' rows');
-  const rd=s.ready||0,rv=s.needs_review||0,bl=s.blocked||0;
-  $('#s-disp').innerHTML=
-    line('ready to publish',rd,pct(rd/(n||1)),'g')+meter(rd/(n||1),'pos')+
-    line('needs review',rv,pct(rv/(n||1)),'a')+
-    line('blocked',bl,pct(bl/(n||1)),'r')+meter(bl/(n||1),'neg')+
-    line('auto-publish rate',pct(rd/(n||1)),'unattended','g');
+  const s=R.status_counts||{}, n=R.n_rows||1, ready_=s.ready||0;
+  $('#hero').innerHTML=[
+    ['Rows enriched', (R.n_rows||0).toLocaleString(), (R.elapsed_s||0)+'s end to end',''],
+    ['Ready to publish', pct(ready_/n), ready_.toLocaleString()+' of '+n.toLocaleString()+' unattended','pos'],
+    ['Columns delivered', (R.mean_columns_filled||0)+' / 252', pct(R.fill_rate)+' of the sheet','amber'],
+    ['Provenance', '100%', 'every value traceable to evidence',''],
+  ].map(c=>`<div><div class="lab">${c[0]}</div>
+    <div class="big ${c[3]}">${c[1]}</div><div class="sub">${c[2]}</div></div>`).join('');
 
-  const cc=r.char_compliance||{},lim={INVOICE_DESC:'max 40, upper case',
-    MOBILE_DESC:'60-80 window',SHORT_DESC:'max 240'};
-  $('#s-char').innerHTML=Object.keys(cc).map(k=>{
-    const v=cc[k],c=v>=.99?'pos':v>=.9?'amber':'neg';
-    return line(k,pct(v),lim[k]||'',v>=.99?'g':v>=.9?'a':'r')+meter(v,c);}).join('')
-    ||'<div class="stat dim">no data</div>';
+  const cc=R.char_compliance||{}, lim={INVOICE_DESC:'max 40, upper case',
+    MOBILE_DESC:'60–80 window',SHORT_DESC:'max 240'};
+  $('#s-char').innerHTML=Object.entries(cc).map(([k,v])=>
+    row(k,pct(v),lim[k]||'',v>=.99?'pos':v>=.9?'amber':'neg')+
+    track(v,v>=.99?'pos':v>=.9?'amber':'neg')).join('')||row('no data','—','');
 
-  const f=r.fill_rate||0,mean=r.mean_columns_filled||0;
+  const f=R.fill_rate||0;
   const over=f>(71/252)*1.35;
   $('#s-fill').innerHTML=
-    line('CALIPER',mean+' / 252',pct(f),'a')+
-    line('ground truth row 1','63 / 252','25.0%')+
-    line('ground truth row 2','71 / 252','28.2%')+
-    line('blank in both','173 cols','UPC, UNSPSC, SDS, dims')+
-    `<div class="note ${over?'bad':''}">${over
-      ?'Over-filling &mdash; values are being invented for columns the answer key leaves blank.'
-      :'UPC, UNSPSC, dimensions, SDS and country of origin are blank in the published answer key. Filling them would be fabrication, so they stay empty.'}</div>`;
+    row('CALIPER',(R.mean_columns_filled||0)+' / 252',pct(f),'amber')+
+    row('Ground truth row 1','63 / 252','25.0%')+
+    row('Ground truth row 2','71 / 252','28.2%')+
+    row('Blank in both','173','columns');
+  $('#fill-note').textContent = over
+    ? 'Over-filling: values are being invented for columns the answer key leaves blank.'
+    : 'UPC, UNSPSC, dimensions, SDS and country of origin are blank in the published '
+      +'answer key. Filling them would be fabrication, so they stay empty.';
 
-  const names={brand_manufacturer_mismatch:'brand / manufacturer disagree in source data',
-    brand_unresolved:'no approved brand resolvable',
-    item_type_unresolved:'item type not recoverable from description',
-    classification_abstained:'classification abstained rather than guessed',
-    llm_evidence_rejected:'model proposal rejected &mdash; evidence absent from source'};
-  const fl=r.flag_counts||{};
-  const kg=r.knowledge||{}, cr=r.corrections||{};
+  $('#s-res').innerHTML=
+    row('Brand resolved',pct(R.brand_resolution),'approved name',
+        R.brand_resolution>=.9?'pos':'amber')+track(R.brand_resolution,'pos')+
+    row('Classified',pct(R.classification_rate),'rest abstain',
+        R.classification_rate>=.8?'pos':'amber')+track(R.classification_rate,'amber')+
+    row('Specs induced',(R.specs||[]).length,'category rulebooks','amber')+
+    row('Families',R.families||0,'from '+(R.n_rows||0)+' rows');
+
+  const kg=R.knowledge||{};
   $('#s-graph').innerHTML=
-    line('edges derived',kg.edges||0,'from shared facts','a')+
-    line('products connected',kg.products_connected||0,pct(kg.coverage))+
-    meter(kg.coverage||0,'amber')+
-    Object.entries(kg.by_relation||{}).sort((a,b)=>b[1]-a[1]).slice(0,5)
-      .map(([k2,v2])=>line(k2,v2,'')).join('');
+    row('Edges derived',(kg.edges||0).toLocaleString(),'evidence-backed','amber')+
+    row('Products linked',kg.products_connected||0,pct(kg.coverage))+
+    track(kg.coverage||0,'amber')+
+    Object.entries(kg.by_relation||{}).sort((a,b)=>b[1]-a[1]).slice(0,4)
+      .map(([k,v])=>row(k,v,'')).join('');
+
+  const cr=R.corrections||{};
+  const gf=Object.values(R.guardrail_findings||{}).reduce((a,b)=>a+b,0);
   $('#s-integ').innerHTML=
-    line('guardrail findings',Object.values(r.guardrail_findings||{}).reduce((a,b)=>a+b,0),
-         'physical / logical checks','g')+
-    line('facts by consensus',r.family_inherited||0,'>=2 siblings agreed')+
-    line('family anomalies',r.family_anomalies||0,'source-data defects','a')+
-    line('reviewer corrections',cr.corrections||0,
-         (cr.rows_affected||0)+' rows fixed','a')+
-    line('leverage',(cr.rows_per_correction||0)+'x','rows per decision','g')+
-    line('llm rows',r.llm_invoked||0,pct((r.llm_invoked||0)/(n||1))+' of catalogue');
+    row('Guardrail findings',gf,'physical checks',gf?'amber':'pos')+
+    row('Facts by consensus',R.family_inherited||0,'≥2 siblings agreed')+
+    row('Family anomalies',R.family_anomalies||0,'source defects','amber')+
+    row('Reviewer corrections',cr.corrections||0,(cr.rows_affected||0)+' rows fixed','amber')+
+    row('Leverage',(cr.rows_per_correction||0)+'×','rows per decision','pos')+
+    row('Model-assisted rows',R.llm_invoked||0,pct((R.llm_invoked||0)/(R.n_rows||1)));
+
+  const names={brand_manufacturer_mismatch:'brand and manufacturer disagree in the source data',
+    brand_unresolved:'no approved brand could be resolved',
+    item_type_unresolved:'item type not recoverable from the description',
+    classification_abstained:'classification abstained rather than guessed',
+    family_anomaly:'sibling breaks its family pattern — likely a source defect',
+    llm_evidence_rejected:'model proposal rejected: evidence absent from source'};
+  const fl=R.flag_counts||{};
   $('#s-flags').innerHTML=Object.entries(fl).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
-    `<div class="note ${k==='brand_manufacturer_mismatch'?'bad':''}">
-      <b class="amber">${v}</b> &nbsp; ${names[k]||k}</div>`).join('')
-    ||'<div class="stat dim">none</div>';
+    `<div class="note ${k==='brand_manufacturer_mismatch'?'crit':''}">
+      <b>${v}</b><span>${names[k]||k.replace(/_/g,' ')}</span></div>`).join('')
+    ||'<div class="note"><b>0</b><span>no findings</span></div>';
 }
 
-function ticker(){
-  const r=REPORT,s=r.status_counts||{},n=r.n_rows||1;
-  const seg=[
-    ['ROWS',n,''],['READY',pct((s.ready||0)/n),'u'],['BLOCKED',pct((s.blocked||0)/n),'s'],
-    ['BRAND',pct(r.brand_resolution),'u'],['CLASS',pct(r.classification_rate),'u'],
-    ['FAMILIES',r.families||0,''],['SPECS',(r.specs||[]).length,''],
-    ['INVOICE≤40',pct((r.char_compliance||{}).INVOICE_DESC),'u'],
-    ['FILL',pct(r.fill_rate),''],['ELAPSED',(r.elapsed_s||0)+'s',''],
-    ['LLM CALLS','0',''],['COST','$0.00','u'],
-  ];
-  const html=seg.map(x=>`<b>${x[0]}</b> ${x[2]?'<'+x[2]+'>'+x[1]+'</'+x[2]+'>':x[1]}<i>|</i>`).join('');
-  $('#run').innerHTML=html+html;
-}
-
-/* ---- catalog ---- */
-let dt;const deb=()=>{clearTimeout(dt);dt=setTimeout(()=>loadRows(0),240);};
-function page(d){const o=OFF+d*LIM;if(o>=0&&o<TOTAL)loadRows(o);}
+/* ── catalogue ──────────────────────────────────────────────────────── */
+let dt; const deb=()=>{clearTimeout(dt);dt=setTimeout(()=>loadRows(0),240);};
+function page(d){const o=OFF+d*LIM; if(o>=0&&o<TOTAL) loadRows(o);}
 async function loadRows(off){
   OFF=off;
-  const d=await (await fetch(`/api/rows?offset=${off}&limit=${LIM}&status=${$('#st').value}&q=${encodeURIComponent($('#q').value)}`)).json();
-  TOTAL=d.total;ROWS=d.rows;CUR=-1;
-  $('#rc').textContent=`${d.total} rows · ${off+1}-${Math.min(off+LIM,d.total)}`;
+  const d=await (await fetch(`/api/rows?offset=${off}&limit=${LIM}`
+    +`&status=${$('#st').value}&q=${encodeURIComponent($('#q').value)}`)).json();
+  TOTAL=d.total; ROWS=d.rows; CUR=-1;
+  $('#rc').textContent=d.total
+    ? `${(off+1).toLocaleString()}–${Math.min(off+LIM,d.total).toLocaleString()} of ${d.total.toLocaleString()}`
+    : 'no rows match';
   $('#rows').innerHTML=d.rows.map(r=>`
     <tr onclick="openRow(${r.index})">
-      <td><span class="g-${r.status}" title="${r.status}"></span></td>
-      <td>${esc(r.part_number)}</td>
+      <td><span class="state ${r.status}">${r.status.replace('_',' ')}</span></td>
+      <td class="key">${esc(r.part_number)}</td>
       <td class="dim">${esc(r.source_desc)}</td>
       <td>${esc(r.brand)||'<span class="dim">—</span>'}</td>
       <td>${esc(r.product_name)||'<span class="dim">—</span>'}</td>
-      <td class="amber">${esc(r.invoice)}</td>
-      <td class="num ${(r.invoice||'').length>40?'':'dim'}">${(r.invoice||'').length}</td>
-      <td class="num">${(r.score||0).toFixed(2)}</td>
-    </tr>`).join('');
+      <td class="hl">${esc(r.invoice)}</td>
+      <td class="n dim">${(r.invoice||'').length}</td>
+    </tr>`).join('')
+    ||`<tr><td colspan="7" class="dim" style="padding:24px;text-align:center">
+        No rows match this filter.</td></tr>`;
 }
 
-/* ---- inspector ---- */
+/* ── inspector ──────────────────────────────────────────────────────── */
 async function openRow(i){
   const d=await (await fetch('/api/row?i='+i)).json();
-  const g=d.graph||{},prov=d.provenance||{},del=d.delivery||{};
+  const g=d.graph||{}, prov=d.provenance||{}, del=d.delivery||{};
   $('#i-pn').textContent=del['Mfg_Part_Num']||('row '+(i+1));
   $('#i-desc').textContent=del['Part_Desc']||'';
 
   const notes=(g.violations||[]).map(v=>
-    `<div class="note ${v.severity==='error'?'bad':''}"><b>${esc(v.rule_id)}</b> ${esc(v.message)}</div>`)
+    `<div class="note ${v.severity==='error'?'crit':''}"><b>${esc(v.rule_id)}</b>
+      <span>${esc(v.message)}</span></div>`)
     .concat((g.flags||[]).map(f=>
-    `<div class="note ${f.kind==='brand_manufacturer_mismatch'?'bad':''}"><b>${esc(f.kind)}</b> ${esc(f.message)}</div>`)).join('');
+    `<div class="note ${f.kind==='brand_manufacturer_mismatch'?'crit':''}">
+      <b>!</b><span>${esc(f.message)}</span></div>`)).join('');
 
   const ib=g.invoice_budget||{};
   const bud=ib.text!==undefined?`
-    <div class="ph">Character-budget solver <em>&mdash; 40-char ceiling, facts abbreviated before dropped</em></div>
-    <div style="padding:6px 9px">
-      <div class="amber" style="font-size:13px">${esc(ib.text)}</div>
-      <div class="meter" style="margin:6px 0"><i style="width:${100*(ib.used||0)/(ib.limit||40)}%;background:var(--amber)"></i></div>
-      <div class="dim" style="font-size:10.5px">used ${ib.used}/${ib.limit} · kept ${(ib.included||[]).length}${
+    <div class="ph"><h2>Character-budget solver</h2>
+      <span>40-char ceiling — facts abbreviated before being dropped</span></div>
+    <div class="body">
+      <div class="mono" style="color:var(--amber);font-size:14px">${esc(ib.text)}</div>
+      <div class="track" style="margin:10px 0 6px"><i style="width:${
+        100*(ib.used||0)/(ib.limit||40)}%;background:var(--amber)"></i></div>
+      <div style="color:var(--faint);font-size:11.5px">used ${ib.used}/${ib.limit}
+        · kept ${(ib.included||[]).length} facts${
         (ib.dropped||[]).length?' · dropped '+ib.dropped.map(esc).join(', '):''}${
         (ib.compressions||[]).length?'<br>compressed '+ib.compressions.map(esc).join('; '):''}</div>
     </div>`:'';
@@ -488,118 +539,125 @@ async function openRow(i){
   const ord=['INVOICE_DESC','MOBILE_DESC','SHORT_DESC','RETAIL_DESC','LONG_DESC1',
     'Product Name','BRAND_NAME','MANUFACTURER_NAME','Classpath'];
   const keys=Object.keys(del).sort((a,b)=>{
-    const x=ord.indexOf(a),y=ord.indexOf(b);return (x<0?99:x)-(y<0?99:y)||a.localeCompare(b);});
+    const x=ord.indexOf(a),y=ord.indexOf(b);
+    return (x<0?99:x)-(y<0?99:y)||a.localeCompare(b);});
 
   const cells=keys.map(c=>{
-    const p=prov[c]||{},ev=(p.evidence||[])[0]||{},cf=p.confidence||0;
+    const p=prov[c]||{}, ev=(p.evidence||[])[0]||{}, cf=p.confidence||0;
     return `<div class="cell">
       <div class="ch" onclick="this.nextElementSibling.classList.toggle('hide')">
         <span class="c">${esc(c)}</span><span class="v">${esc(del[c])}</span>
         <span class="q">${cf?cf.toFixed(2):''}</span></div>
       <div class="ev hide"><dl>
-        <dt>method</dt><dd class="tagset"><span>${esc(p.method||'input')}</span>${
-          p.rule_id?`<span class="k">${esc(p.rule_id)}</span>`:''}</dd>
-        ${ev.text?`<dt>evidence</dt><dd><span class="quote">${esc(ev.text)}</span>
-          <span class="dim"> &larr; ${esc(ev.source||'')}</span></dd>`:''}
-        ${p.detail?`<dt>rationale</dt><dd>${esc(p.detail)}</dd>`:''}
+        <dt>Method</dt><dd><span class="tag">${esc(p.method||'input')}</span>${
+          p.rule_id?`<span class="tag k">${esc(p.rule_id)}</span>`:''}</dd>
+        ${ev.text?`<dt>Evidence</dt><dd><span class="quote">${esc(ev.text)}</span>
+          <span style="color:var(--faint)"> ← ${esc(ev.source||'')}</span></dd>`:''}
+        ${p.detail?`<dt>Rationale</dt><dd style="color:var(--mute)">${esc(p.detail)}</dd>`:''}
       </dl></div></div>`;}).join('');
 
   $('#i-body').innerHTML=notes+`
     <div class="ba">
-      <div><div class="k">before &mdash; supplier row</div><div>${esc(del['Part_Desc']||'')}</div></div>
-      <div><div class="k">after &mdash; product title</div><div>${esc(del['SHORT_DESC']||'')}</div></div>
+      <div><div class="k">Before — supplier row</div>
+        <div class="mono" style="font-size:12px">${esc(del['Part_Desc']||'')}</div></div>
+      <div><div class="k">After — product title</div>
+        <div style="font-size:12.5px">${esc(del['SHORT_DESC']||'')}</div></div>
     </div>${bud}
-    <div class="ph">${keys.length} of 252 columns populated <em>&mdash; click a row for its evidence</em></div>
-    ${cells}`;
+    <div class="ph"><h2>${keys.length} of 252 columns populated</h2>
+      <span>click any row for its evidence</span></div>${cells}`;
   $('#insp').classList.add('on');
 }
 const closeI=()=>$('#insp').classList.remove('on');
 
-/* ---- specs ---- */
+/* ── specs / families / graph / queue ───────────────────────────────── */
 async function loadSpecs(){
   const d=await (await fetch('/api/specs')).json();
   $('#specs').innerHTML=(d.specs||[]).filter(s=>s.n_rows>=3&&s.attributes.length).map(s=>`
-    <div class="attr">
-      <div class="h"><span class="n">${esc(s.label)}</span>
-        <span class="m">${s.n_rows} rows · ${s.attributes.length} attrs · ${s.coverage} facts/row</span></div>
-      <div>${s.attributes.map(a=>`<span class="slot ${a.filterable?'f':''}"
-        title="fill ${pct(a.fill_rate)} · ${a.cardinality} distinct${a.filterable?' · facet':''}">
-        <b>${esc(a.label)}</b>${a.uom?' '+esc(a.uom):''} ${Math.round(100*a.fill_rate)}%</span>`).join('')}</div>
-      ${s.item_types.length?`<div class="m" style="margin-top:3px">types: ${
-        s.item_types.slice(0,6).map(t=>esc(t[0])+'('+t[1]+')').join(' ')}</div>`:''}
-    </div>`).join('')||'<div class="stat dim">none induced</div>';
+    <section class="pane"><div class="ph"><h2>${esc(s.label)}</h2>
+      <span>${s.n_rows} rows · ${s.attributes.length} attributes · ${s.coverage} facts/row</span></div>
+      <div class="body"><div class="chips">${s.attributes.map(a=>
+        `<span class="chip ${a.filterable?'f':''}" title="fill ${pct(a.fill_rate)} · ${
+          a.cardinality} distinct${a.filterable?' · searchable facet':''}"><b>${esc(a.label)}</b>${
+          a.uom?' '+esc(a.uom):''} ${Math.round(100*a.fill_rate)}%</span>`).join('')}</div>
+      ${s.item_types.length?`<div style="color:var(--faint);font-size:11.5px;margin-top:8px">
+        types: ${s.item_types.slice(0,6).map(t=>esc(t[0])+' ('+t[1]+')').join(' · ')}</div>`:''}
+      </div></section>`).join('')||'<div class="sub">No specs induced.</div>';
 }
-
-/* ---- families ---- */
 async function loadFams(){
   const d=await (await fetch('/api/families')).json();
-  $('#f-stats').innerHTML=
-    `<div class="pane"><div class="ph">Total</div>${line('families',d.total,'distinct concepts','a')}</div>
-     <div class="pane"><div class="ph">Multi-member</div>${line('with siblings',d.families.length,'facts corroborate','g')}</div>
-     <div class="pane"><div class="ph">Singletons</div>${line('alone',d.singletons,'no corroboration','r')}</div>`;
+  $('#f-stats').innerHTML=[
+    ['Families',d.total,'distinct product concepts'],
+    ['With siblings',d.families.length,'facts corroborate'],
+    ['Singletons',d.singletons,'no sibling to check against'],
+  ].map(c=>`<section class="pane"><div class="body">
+      <div class="lab" style="font:500 11px var(--sans);letter-spacing:.06em;
+        color:var(--mute);text-transform:uppercase">${c[0]}</div>
+      <div style="font:600 26px var(--mono);margin-top:8px;color:var(--amber)">${c[1]}</div>
+      <div style="color:var(--faint);font-size:12px;margin-top:4px">${c[2]}</div>
+    </div></section>`).join('');
   $('#fams').innerHTML=d.families.map(f=>`
-    <div class="attr">
-      <div class="h"><span class="dim">${esc(f.family_id)}</span>
-        <span class="n">${esc(f.item_type||'unclassified')}</span>
-        <span class="amber">${esc(f.brand)}</span><span class="m">${f.size} members</span></div>
-      ${f.members.map(m=>`<div class="m" style="cursor:pointer;padding:1px 0"
-        onclick="openRow(${m.index})">${esc(m.part_number)} &nbsp; ${esc(m.desc)}</div>`).join('')}
-    </div>`).join('');
+    <section class="pane"><div class="ph">
+      <h2>${esc(f.item_type||'unclassified')}</h2>
+      <span>${esc(f.brand)} · ${f.size} members · ${esc(f.family_id)}</span></div>
+      <div class="body">${f.members.map(m=>
+        `<div style="color:var(--mute);font-size:12px;padding:2px 0;cursor:pointer"
+          onclick="openRow(${m.index})"><span class="mono"
+          style="color:var(--ink)">${esc(m.part_number)}</span> &nbsp;${esc(m.desc)}</div>`
+        ).join('')}</div></section>`).join('');
 }
-
-/* ---- queue ---- */
+async function loadGraph(){
+  const rel=$('#rel').value;
+  const d=await (await fetch('/api/graph?relation='+rel)).json();
+  $('#gcount').textContent=d.total.toLocaleString()+' edges'+(rel?' · '+rel:'');
+  $('#edges').innerHTML=(d.edges||[]).map(e=>`
+    <tr onclick="openRow(${e.source})">
+      <td class="hl">${esc(e.relation)}</td>
+      <td class="key">${esc(e.source_pn)}</td><td class="key">${esc(e.target_pn)}</td>
+      <td class="dim">${esc(e.shared)}</td><td class="dim">${esc(e.rationale)}</td>
+      <td class="n">${(+e.confidence||0).toFixed(2)}</td>
+    </tr>`).join('')||`<tr><td colspan="6" class="dim"
+      style="padding:24px;text-align:center">No edges for this relation.</td></tr>`;
+}
 async function loadQueue(){
   const d=await (await fetch('/api/queue')).json();
   $('#queue').innerHTML=(d.queue||[]).map(q=>`
     <tr onclick="openRow(${(+q.row)-1})">
-      <td class="num amber">${q.review_value}</td><td class="num">${q.affects_family_rows}</td>
-      <td>${esc(q.part_number)}</td><td>${esc(q.issue_kind)}</td>
+      <td class="n hl">${q.review_value}</td><td class="n">${q.affects_family_rows}</td>
+      <td class="key">${esc(q.part_number)}</td><td>${esc(q.issue_kind)}</td>
       <td class="dim">${esc(q.message)}</td>
-      <td><span class="g-${q.status}"></span> ${esc(q.status)}</td>
-    </tr>`).join('');
+      <td><span class="state ${q.status}">${esc(q.status).replace('_',' ')}</span></td>
+    </tr>`).join('')||`<tr><td colspan="6" class="dim"
+      style="padding:24px;text-align:center">Nothing queued — every row is ready.</td></tr>`;
 }
 
-async function loadGraph(){
-  const rel=$('#rel').value;
-  const d=await (await fetch('/api/graph?relation='+rel)).json();
-  const s2=d.summary||{};
-  $('#g-stats').innerHTML=
-    `<div class="pane"><div class="ph">Edges</div>${line('derived',s2.edges||0,'evidence-backed','a')}</div>
-     <div class="pane"><div class="ph">Coverage</div>${line('products linked',s2.products_connected||0,pct(s2.coverage),'g')}</div>
-     <div class="pane"><div class="ph">Most connected</div>${
-       (s2.most_connected||[]).slice(0,3).map(m=>line(m.part_number||'-',m.degree,m.item_type||'')).join('')}</div>`;
-  $('#gcount').textContent=d.total+' edges'+(rel?' · '+rel:'');
-  $('#edges').innerHTML=(d.edges||[]).map(e=>`
-    <tr onclick="openRow(${e.source})">
-      <td class="amber">${esc(e.relation)}</td>
-      <td>${esc(e.source_pn)}</td><td>${esc(e.target_pn)}</td>
-      <td class="dim">${esc(e.shared)}</td>
-      <td class="dim">${esc(e.rationale)}</td>
-      <td class="num">${(+e.confidence||0).toFixed(2)}</td>
-    </tr>`).join('');
-}
-
+/* ── upload / export ────────────────────────────────────────────────── */
 const dl=k=>window.location='/api/download?kind='+k;
+const pick=()=>$('#file').click();
+$('#file').addEventListener('change',e=>{const f=e.target.files[0]; if(f)send(f);});
+['dragenter','dragover'].forEach(ev=>addEventListener(ev,e=>{
+  e.preventDefault(); const z=$('#drop'); if(z)z.classList.add('hot');}));
+['dragleave','drop'].forEach(ev=>addEventListener(ev,e=>{
+  e.preventDefault(); const z=$('#drop'); if(z)z.classList.remove('hot');}));
+addEventListener('drop',e=>{const f=e.dataTransfer.files[0]; if(f)send(f);});
 
-/* ---- load ---- */
-const drop=$('#drop');
-['dragenter','dragover'].forEach(e=>drop.addEventListener(e,v=>{v.preventDefault();drop.classList.add('hot');}));
-['dragleave','drop'].forEach(e=>drop.addEventListener(e,v=>{v.preventDefault();drop.classList.remove('hot');}));
-drop.addEventListener('drop',v=>{const f=v.dataTransfer.files[0];if(f)send(f);});
-$('#file').addEventListener('change',v=>{const f=v.target.files[0];if(f)send(f);});
 function send(file){
-  $('#upstat').textContent='reading '+file.name+' ...';
+  stage('busy');
+  $('#busy-title').textContent='Enriching '+file.name;
+  $('#busy-sub').textContent='Detecting columns, resolving identity, inducing category specs.';
   const rd=new FileReader();
+  rd.onerror=()=>stage('fail','The file could not be read from disk.');
   rd.onload=async()=>{
-    $('#upstat').textContent='enriching ...';
-    const r=await fetch('/api/enrich',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({csv:rd.result,name:file.name})});
-    const d=await r.json();
-    if(d.error){$('#upstat').innerHTML='<span style="color:var(--neg)">'+esc(d.error)+'</span>';return;}
-    REPORT=d.report;$('#src').textContent=d.source;ROWS=[];
-    board();ticker();
-    $('#rows').innerHTML='';$('#specs').innerHTML='';$('#fams').innerHTML='';$('#queue').innerHTML='';
-    $('#upstat').innerHTML=`done — <b class="amber">${d.report.n_rows}</b> rows in ${d.report.elapsed_s}s. F1 for the board.`;
+    try{
+      const res=await fetch('/api/enrich',{method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({csv:rd.result,name:file.name})});
+      const d=await res.json();
+      if(d.error){stage('fail',d.error);return;}
+      R=d.report; $('#src').textContent=d.source;
+      ROWS=[]; $('#rows').innerHTML=''; $('#specs').innerHTML='';
+      $('#fams').innerHTML=''; $('#queue').innerHTML=''; $('#edges').innerHTML='';
+      ready();
+    }catch(err){stage('fail','Enrichment failed: '+err.message);}
   };
   rd.readAsText(file);
 }
