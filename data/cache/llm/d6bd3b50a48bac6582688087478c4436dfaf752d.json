@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Collated",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "Collated"
+  }
+ ]
+}

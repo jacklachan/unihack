@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "12V",
+   "key": "voltage",
+   "label": "Voltage",
+   "uom": "V",
+   "value": "12"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "12AH",
+   "key": "amperage",
+   "label": "Amperage",
+   "uom": "AH",
+   "value": "12"
+  }
+ ]
+}

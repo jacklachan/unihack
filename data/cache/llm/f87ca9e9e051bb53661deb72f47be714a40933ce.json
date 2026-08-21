@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "CAT5E",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "CAT5E"
+  }
+ ]
+}

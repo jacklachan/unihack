@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "D10CNK",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "D10CNK"
+  }
+ ]
+}

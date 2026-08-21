@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "8'",
+   "key": "length",
+   "label": "Length",
+   "uom": "ft",
+   "value": "8"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "Alum",
+   "key": "material",
+   "label": "Material",
+   "uom": "",
+   "value": "Alum"
+  }
+ ]
+}

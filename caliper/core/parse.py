@@ -95,27 +95,35 @@ ABBREVIATIONS: Dict[str, str] = {
     "pnl": "Panel", "encl": "Enclosure",
 }
 
-#: Reverse ladder used by the invoice-line char budget: long form -> shorter
-#: approved forms, best first.
+#: Invoice-line abbreviation ladder, **canonical trade form first**.
+#:
+#: The published answer key writes ``DISHWASHER BLTLN SST SST 120V 10A 41DBA``
+#: -- it uses ``SST`` even though ``STAINLESS STEEL`` would have fitted in the
+#: 40 characters. Invoice lines are abbreviated by convention, not only under
+#: pressure, so the ladder leads with the trade abbreviation and falls back to
+#: longer forms rather than the other way round.
 ABBREV_LADDER: Dict[str, List[str]] = {
-    "stainless steel": ["STAINLESS", "SST", "SS"],
-    "black stainless steel": ["BLK STAINLESS", "BSST", "BSS"],
-    "built-in": ["BLT-IN", "BLTLN", "BLTN"],
+    "stainless steel": ["SST", "SS", "STAINLESS"],
+    "black stainless steel": ["BSS", "BSST", "BLK STAINLESS"],
+    "built-in": ["BLTLN", "BLT-IN", "BLTN"],
     "refrigerator": ["REFRIG", "FRIDGE", "REF"],
-    "dishwasher": ["DISHWSHR", "DISHW", "DW"],
-    "underground": ["UNDRGRND", "UGND", "UD"],
-    "adjustable": ["ADJUST", "ADJ"],
+    "dishwasher": ["DISHWASHER", "DISHWSHR", "DW"],
+    "underground": ["UD", "UGND", "UNDRGRND"],
+    "adjustable": ["ADJ", "ADJUST"],
     "horsepower": ["HP"],
-    "medium base": ["MED BASE", "MED"],
-    "candelabra base": ["CAND BASE", "CAND"],
-    "square edge": ["SQ EDGE", "SQ EDG", "SQE"],
+    "medium base": ["MED", "MED BASE"],
+    "candelabra base": ["CAND", "CAND BASE"],
+    "square edge": ["SQ EDG", "SQ EDGE", "SQE"],
     "aluminum": ["ALUM", "AL"],
     "galvanized": ["GALV", "GV"],
-    "white": ["WHT", "WH"],
-    "black": ["BLK", "BK"],
+    "white": ["WH", "WHT"],
+    "black": ["BK", "BLK"],
     "bronze": ["BRZ"],
     "nickel": ["NKL"],
     "grooved": ["GRVD", "GRV"],
+    "brushed nickel": ["BN", "BRSH NKL"],
+    "battery charger": ["CHARGER", "CHRGR"],
+    "light bulb": ["BULB", "LAMP"],
 }
 
 
@@ -136,7 +144,7 @@ def expand_abbreviations(text: str) -> str:
 _DIM_TOKEN = r"(?:\d+\s*-\s*\d+\s*/\s*\d+|\d+\s*/\s*\d+|\d+\.\d+|\.\d+|\d+)"
 # The mark is captured, not skipped: a chain can mix units ("1.5x1.5x13'" is
 # two inch dimensions and a foot length) and the tick is the only signal.
-_DIM_MARK = r"(\"|''|in\.?|inch(?:es)?|'|ft\.?)?"
+_DIM_MARK = r"(\"|''|in\.?|inch(?:es)?|'|ft\.?|mm|cm|m{2}\.?)?"
 
 RE_DIM_CHAIN = re.compile(
     r"(?<![\w/.])(" + _DIM_TOKEN + r")\s*" + _DIM_MARK + r"[nN]?\s*[xX]\s*"
@@ -153,11 +161,21 @@ RE_ABRASIVE_CTX = re.compile(
 
 
 def _mark_to_uom(mark: Optional[str]) -> str:
+    """Map a dimension tick to its approved unit abbreviation.
+
+    Metric marks matter: ``12"x1/8"x20mm`` is an inch wheel with a 20 mm arbor,
+    and reading that arbor as 20 in produces a hole bigger than the disc. The
+    physical guardrail catches it, but the parser should not create it.
+    """
     if not mark:
         return ""
-    m = mark.strip().lower()
-    if m in ("'", "ft", "ft."):
+    m = mark.strip().lower().rstrip(".")
+    if m in ("'", "ft"):
         return "ft"
+    if m == "mm":
+        return "mm"
+    if m == "cm":
+        return "cm"
     return "in"
 RE_NOMINAL_LEN = re.compile(r"(?<![\w.])(\d+(?:/\d+)?)[nN]?\s*[xX]\s*(\d+)\s*-\s*(\d+)\s*'")
 # "12V/20V" (unit repeated) and "12/20V" (unit once) are both common.
@@ -267,8 +285,11 @@ def parse_description(desc: str, source: str = "input:Part_Desc") -> List[Fact]:
                         "Size", "", "DIM-CHN-01", 20, source, m.group(0), m.span(),
                         "Dimension chain; decimals converted to trade fractions, "
                         "unit taken per token from the tick mark."))
+                # Diameter and thickness are quoted in inches; the arbor may
+                # legitimately be metric (12"x1/8"x20mm), so only the first two
+                # positions have to agree on unit.
                 if len(pairs) == 3 and RE_ABRASIVE_CTX.search(desc) \
-                        and all(u == "in" for _, u in pairs):
+                        and pairs[0][1] == "in" and pairs[1][1] == "in":
                     for key, disp, (val, uom) in zip(
                             ("diameter", "thickness", "arbor_size"),
                             ("Diameter", "Thickness", "Arbor Size"), pairs):

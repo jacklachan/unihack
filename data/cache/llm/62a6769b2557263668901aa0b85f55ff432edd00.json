@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "3'",
+   "key": "length",
+   "label": "Length",
+   "uom": "ft",
+   "value": "3"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "65'",
+   "key": "width",
+   "label": "Width",
+   "uom": "ft",
+   "value": "65"
+  }
+ ]
+}

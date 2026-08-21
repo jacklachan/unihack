@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "R62CBR1500W",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "R62CBR1500W"
+  }
+ ]
+}

@@ -38,6 +38,7 @@ class State:
         self.report: Dict[str, Any] = {}
         self.source_name: str = ""
         self.queue: List[Dict[str, Any]] = []
+        self.edges: List[Dict[str, Any]] = []
 
     def load_from_disk(self, data_dir: str) -> None:
         rep = os.path.join(data_dir, "report.json")
@@ -60,6 +61,9 @@ class State:
         q = os.path.join(data_dir, "review_queue.csv")
         if os.path.exists(q):
             self.queue, _ = read_table(q)
+        g = os.path.join(data_dir, "relationships.csv")
+        if os.path.exists(g):
+            self.edges, _ = read_table(g)
 
     def set_results(self, results: List[RowResult], report: Dict[str, Any],
                     name: str) -> None:
@@ -71,6 +75,7 @@ class State:
             self._cached_delivery = [r.delivery for r in results]
             from ..cli import export_review_queue
             self.queue = export_review_queue(results)
+            self.edges = [e.to_dict() for e in getattr(self, "_last_edges", [])]
 
     # -- views -------------------------------------------------------------
     def rows_page(self, offset: int, limit: int, status: str = "",
@@ -183,6 +188,15 @@ class Handler(BaseHTTPRequestHandler):
             return self._json({"queue": STATE.queue[:400], "total": len(STATE.queue)})
         if route == "/api/families":
             return self._json(self._families())
+        if route == "/api/graph":
+            rel = q.get("relation", "")
+            rows = [e for e in STATE.edges
+                    if not rel or e.get("relation") == rel]
+            return self._json({
+                "summary": STATE.report.get("knowledge", {}),
+                "edges": rows[:400], "total": len(rows)})
+        if route == "/api/corrections":
+            return self._json(STATE.report.get("corrections", {}))
         if route == "/api/download":
             kind = q.get("kind", "delivery")
             return self._download(kind)
@@ -246,6 +260,22 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         route = urllib.parse.urlparse(self.path).path
+        if route == "/api/correct":
+            length = int(self.headers.get("Content-Length", 0))
+            try:
+                body = json.loads(self.rfile.read(length).decode("utf-8"))
+            except Exception:
+                return self._json({"error": "invalid payload"}, 400)
+            from ..core.corrections import Correction, CorrectionStore
+            store = CorrectionStore.load()
+            store.add(Correction(
+                scope=body.get("scope", "part"), target=body.get("target", ""),
+                key=body.get("key", ""), value=body.get("value", ""),
+                uom=body.get("uom", ""), note=body.get("note", ""),
+                by=body.get("by", "dashboard")))
+            store.save()
+            return self._json({"ok": True, "stored": len(store.corrections),
+                               "note": "Applies on the next run."})
         if route != "/api/enrich":
             self.send_error(404)
             return
@@ -280,6 +310,7 @@ class Handler(BaseHTTPRequestHandler):
         schema = detect_schema(header, rows)
         pipe = Pipeline()
         results, report = pipe.run(rows, schema)
+        STATE._last_edges = getattr(pipe, "edges", [])
         STATE.set_results(results, report.to_dict(), name)
         return self._json({"ok": True, "report": report.to_dict(),
                            "source": name})

@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "1x",
+   "key": "pack_quantity",
+   "label": "Pack Quantity",
+   "uom": "",
+   "value": "1"
+  }
+ ]
+}

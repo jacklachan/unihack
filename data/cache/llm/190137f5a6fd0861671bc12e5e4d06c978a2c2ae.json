@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "2ah",
+   "key": "capacity",
+   "label": "Capacity",
+   "uom": "ah",
+   "value": "2"
+  }
+ ]
+}

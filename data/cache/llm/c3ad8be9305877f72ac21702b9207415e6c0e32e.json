@@ -1,0 +1,28 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Smooth",
+   "key": "finish",
+   "label": "Finish",
+   "uom": "",
+   "value": "Smooth"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "4'",
+   "key": "length",
+   "label": "Length",
+   "uom": "ft",
+   "value": "4"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "10'",
+   "key": "width",
+   "label": "Width",
+   "uom": "ft",
+   "value": "10"
+  }
+ ]
+}

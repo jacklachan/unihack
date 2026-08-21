@@ -1,0 +1,44 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Box",
+   "key": "item_type",
+   "label": "Item Type",
+   "uom": "",
+   "value": "Box"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "2G",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "2G"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "4-1/2",
+   "key": "length",
+   "label": "Length",
+   "uom": "",
+   "value": "4-1/2"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "4-1/2",
+   "key": "width",
+   "label": "Width",
+   "uom": "",
+   "value": "4-1/2"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "2",
+   "key": "height",
+   "label": "Height",
+   "uom": "",
+   "value": "2"
+  }
+ ]
+}

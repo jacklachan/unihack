@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "60/100/150",
+   "key": "wattage",
+   "label": "Wattage",
+   "uom": "",
+   "value": "60/100/150"
+  }
+ ]
+}

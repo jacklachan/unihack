@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Round",
+   "key": "bulb_shape",
+   "label": "Bulb Shape",
+   "uom": "",
+   "value": "Round"
+  }
+ ]
+}

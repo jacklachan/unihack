@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "ST19",
+   "key": "base_type",
+   "label": "Base Type",
+   "uom": "",
+   "value": "ST19"
+  }
+ ]
+}

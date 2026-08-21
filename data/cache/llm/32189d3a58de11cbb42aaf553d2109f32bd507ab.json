@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "30\"",
+   "key": "length",
+   "label": "Length",
+   "uom": "in",
+   "value": "30"
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "500'",
+   "key": "length",
+   "label": "Length",
+   "uom": "ft",
+   "value": "500"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "CL3",
+   "key": "application",
+   "label": "Application",
+   "uom": "",
+   "value": "CL3"
+  }
+ ]
+}

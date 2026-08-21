@@ -33,6 +33,9 @@ from .core.induce import (CategorySpec, ItemTypeLexicon, build_lexicon,
                           induce_spec, infer_item_type, strip_terms)
 from .core.parse import (expand_abbreviations, parse_description, residual_text,
                          strip_mpn_echo)
+from .core.corrections import CorrectionStore
+from .core.guardrails import apply as apply_guardrails
+from .core import knowledge
 from .core.packs import PackLibrary, resolve_slot_key
 from .core.taxonomy import classify, taxonomy_facts
 
@@ -147,6 +150,9 @@ class PipelineReport:
     family_inherited: int = 0
     family_anomalies: int = 0
     llm_invoked: int = 0
+    guardrail_findings: Dict[str, int] = field(default_factory=dict)
+    knowledge: Dict[str, Any] = field(default_factory=dict)
+    corrections: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return dict(self.__dict__)
@@ -170,7 +176,30 @@ class Pipeline:
         self.specs: Dict[str, CategorySpec] = {}
         self.series_vocab: Dict[str, int] = {}
         self.llm_invoked = 0
+        self.edges = []
         self.packs = PackLibrary.load()
+        self.corrections = CorrectionStore.load()
+        self._teach_registry_aliases()
+
+    def _teach_registry_aliases(self) -> None:
+        """Fold reviewer-taught supplier aliases into the brand registry.
+
+        One reviewer decision -- "this supplier string means this brand" --
+        fixes every row from that supplier on every future run.
+        """
+        aliases = self.corrections.brand_aliases()
+        if not aliases:
+            return
+        taught = 0
+        for supplier, brand in aliases.items():
+            entry = self.registry.by_alias(brand)
+            if entry is None:
+                continue
+            if supplier not in entry.aliases:
+                entry.aliases = tuple(entry.aliases) + (supplier,)
+                taught += 1
+        if taught:
+            self.registry._reindex()
 
     # -- corpus passes -----------------------------------------------------
     def fit(self, rows: Sequence[Dict[str, str]], schema: InputSchema) -> None:
@@ -351,6 +380,33 @@ class Pipeline:
         if self.llm is not None and self._needs_model(graph, item_type, c):
             self.llm_invoked += 1
             self._llm_fill(graph, residual, desc)
+            # The model is the last extractor to run, so anything it recovers
+            # arrives after classification. Re-classify when it supplied the
+            # item type the rules could not find -- otherwise the model's best
+            # contribution never reaches the taxonomy.
+            recovered = graph.raw_value("item_type")
+            if recovered and not graph.has("classpath"):
+                c_llm = classify(str(recovered), desc)
+                if c_llm.node:
+                    for f in taxonomy_facts(c_llm, "llm:item_type", str(recovered)):
+                        graph.add(f)
+                    c = c_llm
+
+        # 7. reviewer corrections -- highest authority in the system -------
+        if self.corrections.apply(graph, mpn):
+            # A corrected item type has to be re-classified, otherwise the
+            # reviewer fixes the name and the row still has no classpath.
+            corrected_type = graph.raw_value("item_type")
+            if corrected_type and not graph.has("classpath"):
+                c2 = classify(str(corrected_type), desc)
+                if c2.node:
+                    for f in taxonomy_facts(c2, "correction:item_type",
+                                            str(corrected_type)):
+                        graph.add(f)
+                    c = c2
+
+        # 8. physical and logical guardrails --------------------------------
+        apply_guardrails(graph)
 
         return self._finalise(graph, row, schema, index, c)
 
@@ -731,6 +787,8 @@ class Pipeline:
             ) -> Tuple[List[RowResult], PipelineReport]:
         t0 = time.time()
         schema = schema or detect_schema(list(rows[0].keys()) if rows else [], rows)
+        self.corrections.reset_counts()
+        self.edges = []
         self.fit(rows, schema)
 
         results: List[RowResult] = []
@@ -752,7 +810,18 @@ class Pipeline:
                 r.filled, r.status = rebuilt.filled, rebuilt.status
                 r.invoice_budget = rebuilt.invoice_budget
 
+        # Relationship graph: derived from facts, so it runs once everything
+        # has been extracted and corroborated.
+        nodes = [knowledge.Node(r.index, r.delivery.get("Mfg_Part_Num", ""),
+                                r.graph) for r in results]
+        self.edges = knowledge.build_graph(nodes)
+
         rep = PipelineReport(n_rows=len(rows), elapsed_s=round(time.time() - t0, 3))
+        rep.knowledge = knowledge.summarise(self.edges, nodes)
+        rep.corrections = self.corrections.summary()
+        rep.guardrail_findings = dict(Counter(
+            f.get("kind_id", f.get("kind", "")) for r in results
+            for f in r.flags if f.get("guardrail")))
         rep.family_inherited = inherited
         rep.family_anomalies = anomalies
         rep.llm_invoked = self.llm_invoked

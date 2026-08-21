@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Clay",
+   "key": "material",
+   "label": "Material",
+   "uom": "",
+   "value": "Clay"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "108",
+   "key": "length",
+   "label": "Length",
+   "uom": "",
+   "value": "108"
+  }
+ ]
+}

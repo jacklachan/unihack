@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Charcoal",
+   "key": "finish",
+   "label": "Finish",
+   "uom": "",
+   "value": "Charcoal"
+  }
+ ]
+}

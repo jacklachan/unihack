@@ -1,0 +1,36 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "37\"",
+   "key": "length",
+   "label": "Length",
+   "uom": "in",
+   "value": "37"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "43\"",
+   "key": "length",
+   "label": "Length",
+   "uom": "in",
+   "value": "43"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "4\"",
+   "key": "width",
+   "label": "Width",
+   "uom": "in",
+   "value": "4"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "4\"",
+   "key": "height",
+   "label": "Height",
+   "uom": "in",
+   "value": "4"
+  }
+ ]
+}

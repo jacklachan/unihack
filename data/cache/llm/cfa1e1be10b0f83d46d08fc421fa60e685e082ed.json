@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "6-1/2\"",
+   "key": "diameter",
+   "label": "Diameter",
+   "uom": "in",
+   "value": "6-1/2"
+  }
+ ]
+}

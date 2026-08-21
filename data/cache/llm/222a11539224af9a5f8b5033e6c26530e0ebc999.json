@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "12'",
+   "key": "length",
+   "label": "Length",
+   "uom": "ft",
+   "value": "12"
+  }
+ ]
+}

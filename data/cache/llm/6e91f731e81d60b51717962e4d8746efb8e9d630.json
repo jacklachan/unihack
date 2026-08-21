@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "100/150/200",
+   "key": "wattage",
+   "label": "Wattage",
+   "uom": "",
+   "value": "100/150/200"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "50k",
+   "key": "lumens",
+   "label": "Lumens",
+   "uom": "",
+   "value": "50k"
+  }
+ ]
+}

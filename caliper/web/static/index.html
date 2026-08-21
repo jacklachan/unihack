@@ -166,7 +166,8 @@ input[type=text]:focus,select:focus{border-color:var(--amber)}
   <div data-t="specs"><span>F3</span>SPECS</div>
   <div data-t="fam"><span>F4</span>FAMILIES</div>
   <div data-t="queue"><span>F5</span>QUEUE</div>
-  <div data-t="load"><span>F6</span>LOAD</div>
+  <div data-t="graph"><span>F6</span>GRAPH</div>
+  <div data-t="load"><span>F7</span>LOAD</div>
 </div>
 
 <div class="wrap">
@@ -196,6 +197,17 @@ input[type=text]:focus,select:focus{border-color:var(--amber)}
     <div class="pane">
       <div class="ph">Fill rate <em>vs. the human answer key</em></div>
       <div id="s-fill"></div>
+    </div>
+  </div>
+
+  <div class="cols2">
+    <div class="pane">
+      <div class="ph">Relationships <em>derived from extracted facts</em></div>
+      <div id="s-graph"></div>
+    </div>
+    <div class="pane">
+      <div class="ph">Integrity <em>physical checks, consensus, reviewer decisions</em></div>
+      <div id="s-integ"></div>
     </div>
   </div>
 
@@ -257,6 +269,29 @@ input[type=text]:focus,select:focus{border-color:var(--amber)}
   </table>
 </section>
 
+<!-- ============ GRAPH ============ -->
+<section id="p-graph" class="hide">
+  <div class="cols3" id="g-stats"></div>
+  <div class="bar">
+    <span class="dim">relation</span>
+    <select id="rel" onchange="loadGraph()">
+      <option value="">all</option><option value="powers">powers</option>
+      <option value="fits">fits</option><option value="variant_of">variant_of</option>
+      <option value="same_series">same_series</option>
+      <option value="cross_reference">cross_reference</option>
+    </select>
+    <span class="dim" id="gcount"></span>
+  </div>
+  <table>
+    <thead><tr>
+      <th style="width:120px">Relation</th><th style="width:130px">Source</th>
+      <th style="width:130px">Target</th><th style="width:150px">Shared evidence</th>
+      <th>Why this edge exists</th><th style="width:56px" class="num">Conf</th>
+    </tr></thead>
+    <tbody id="edges"></tbody>
+  </table>
+</section>
+
 <!-- ============ LOAD ============ -->
 <section id="p-load" class="hide">
   <div class="ph">Run the pipeline on any catalogue file <em>&mdash; column names are detected, not assumed</em></div>
@@ -295,7 +330,7 @@ function show(t){
   if(t==='specs')loadSpecs(); if(t==='fam')loadFams(); if(t==='queue')loadQueue();
 }
 $$('.fkeys div').forEach(d=>d.onclick=()=>show(d.dataset.t));
-const FK={F1:'board',F2:'catalog',F3:'specs',F4:'fam',F5:'queue',F6:'load'};
+const FK={F1:'board',F2:'catalog',F3:'specs',F4:'fam',F5:'queue',F6:'graph',F7:'load'};
 addEventListener('keydown',e=>{
   if(FK[e.key]){e.preventDefault();show(FK[e.key]);return;}
   if(e.key==='Escape'){closeI();return;}
@@ -370,6 +405,22 @@ function board(){
     classification_abstained:'classification abstained rather than guessed',
     llm_evidence_rejected:'model proposal rejected &mdash; evidence absent from source'};
   const fl=r.flag_counts||{};
+  const kg=r.knowledge||{}, cr=r.corrections||{};
+  $('#s-graph').innerHTML=
+    line('edges derived',kg.edges||0,'from shared facts','a')+
+    line('products connected',kg.products_connected||0,pct(kg.coverage))+
+    meter(kg.coverage||0,'amber')+
+    Object.entries(kg.by_relation||{}).sort((a,b)=>b[1]-a[1]).slice(0,5)
+      .map(([k2,v2])=>line(k2,v2,'')).join('');
+  $('#s-integ').innerHTML=
+    line('guardrail findings',Object.values(r.guardrail_findings||{}).reduce((a,b)=>a+b,0),
+         'physical / logical checks','g')+
+    line('facts by consensus',r.family_inherited||0,'>=2 siblings agreed')+
+    line('family anomalies',r.family_anomalies||0,'source-data defects','a')+
+    line('reviewer corrections',cr.corrections||0,
+         (cr.rows_affected||0)+' rows fixed','a')+
+    line('leverage',(cr.rows_per_correction||0)+'x','rows per decision','g')+
+    line('llm rows',r.llm_invoked||0,pct((r.llm_invoked||0)/(n||1))+' of catalogue');
   $('#s-flags').innerHTML=Object.entries(fl).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
     `<div class="note ${k==='brand_manufacturer_mismatch'?'bad':''}">
       <b class="amber">${v}</b> &nbsp; ${names[k]||k}</div>`).join('')
@@ -505,6 +556,26 @@ async function loadQueue(){
       <td>${esc(q.part_number)}</td><td>${esc(q.issue_kind)}</td>
       <td class="dim">${esc(q.message)}</td>
       <td><span class="g-${q.status}"></span> ${esc(q.status)}</td>
+    </tr>`).join('');
+}
+
+async function loadGraph(){
+  const rel=$('#rel').value;
+  const d=await (await fetch('/api/graph?relation='+rel)).json();
+  const s2=d.summary||{};
+  $('#g-stats').innerHTML=
+    `<div class="pane"><div class="ph">Edges</div>${line('derived',s2.edges||0,'evidence-backed','a')}</div>
+     <div class="pane"><div class="ph">Coverage</div>${line('products linked',s2.products_connected||0,pct(s2.coverage),'g')}</div>
+     <div class="pane"><div class="ph">Most connected</div>${
+       (s2.most_connected||[]).slice(0,3).map(m=>line(m.part_number||'-',m.degree,m.item_type||'')).join('')}</div>`;
+  $('#gcount').textContent=d.total+' edges'+(rel?' · '+rel:'');
+  $('#edges').innerHTML=(d.edges||[]).map(e=>`
+    <tr onclick="openRow(${e.source})">
+      <td class="amber">${esc(e.relation)}</td>
+      <td>${esc(e.source_pn)}</td><td>${esc(e.target_pn)}</td>
+      <td class="dim">${esc(e.shared)}</td>
+      <td class="dim">${esc(e.rationale)}</td>
+      <td class="num">${(+e.confidence||0).toFixed(2)}</td>
     </tr>`).join('');
 }
 

@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Elite",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "Elite"
+  }
+ ]
+}

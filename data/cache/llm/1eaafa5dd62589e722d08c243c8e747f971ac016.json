@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "1610472000C",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "1610472000C"
+  }
+ ]
+}

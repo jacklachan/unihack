@@ -1,0 +1,28 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Steel",
+   "key": "material",
+   "label": "Material",
+   "uom": "",
+   "value": "Steel"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "14\\\"",
+   "key": "diameter",
+   "label": "Diameter",
+   "uom": "in",
+   "value": "14"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "20mm",
+   "key": "arbor_size",
+   "label": "Arbor Size",
+   "uom": "mm",
+   "value": "20"
+  }
+ ]
+}

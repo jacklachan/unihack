@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "2-Speed",
+   "key": "speed",
+   "label": "Speed",
+   "uom": "",
+   "value": "2-Speed"
+  }
+ ]
+}

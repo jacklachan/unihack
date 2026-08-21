@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "OTR",
+   "key": "mounting",
+   "label": "Mounting",
+   "uom": "",
+   "value": "OTR"
+  }
+ ]
+}

@@ -42,13 +42,12 @@ def _ladder(text: str) -> List[str]:
     t = str(text or "").strip()
     if not t:
         return []
-    out = [t.upper()]
     low = t.lower()
-    for full, shorts in ABBREV_LADDER.items():
-        if low == full:
-            out.extend(shorts)
-            break
+    if low in ABBREV_LADDER:
+        # Trade abbreviation leads; the spelled-out form is the last resort.
+        out = list(ABBREV_LADDER[low]) + [t.upper()]
     else:
+        out = [t.upper()]
         # Multi-word tokens can shrink by abbreviating any component.
         parts = low.split()
         if len(parts) > 1:
@@ -69,15 +68,19 @@ def _ladder(text: str) -> List[str]:
 
 
 def _invoice_token(f: Fact) -> List[str]:
-    """Ladder for one fact, unit tightened (``50-1/4 IN`` -> ``50-1/4IN``)."""
+    """Ladder for one fact, tightest form first.
+
+    The published answer key writes the invoice line as
+    ``DISHWASHER LEG 5 SST 120V 15A 50-1/4IN`` -- number and unit closed up,
+    unlike every other field, where the house style mandates a space. So the
+    tightened form leads the ladder here and the spaced form is the fallback.
+    """
     base = f.display if f.uom else str(f.value)
     variants = _ladder(base)
-    tight = []
-    for v in variants:
-        tight.append(_UNIT_TIGHTEN.sub(r"\1\2", v))
+    tight = [_UNIT_TIGHTEN.sub(r"\1\2", v) for v in variants]
     seen, out = set(), []
-    for v in variants + tight:
-        if v not in seen:
+    for v in tight + variants:
+        if v and v not in seen:
             seen.add(v)
             out.append(v)
     return out
