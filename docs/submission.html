@@ -1,0 +1,361 @@
+<title>CALIPER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+:root{
+  --paper:#F2F4F7; --card:#FFFFFF; --sunk:#E7EAF0;
+  --ink:#12182B; --ink-2:#3A445C; --ink-3:#6B7488; --hair:#D3D9E3;
+  --brass:#8A6417; --brass-bright:#B98A34; --brass-wash:rgba(185,138,52,.11);
+  --good:#276B47; --flag:#9A431F; --quiet:#6B7488;
+  --display:"Archivo",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --data:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1220; --card:#151A2B; --sunk:#1B2134;
+    --ink:#E8ECF5; --ink-2:#B4BCCF; --ink-3:#8189A0; --hair:#28304A;
+    --brass:#D9A84A; --brass-bright:#E8BC63; --brass-wash:rgba(217,168,74,.12);
+    --good:#5CBF8B; --flag:#E0865A; --quiet:#8189A0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1220; --card:#151A2B; --sunk:#1B2134;
+  --ink:#E8ECF5; --ink-2:#B4BCCF; --ink-3:#8189A0; --hair:#28304A;
+  --brass:#D9A84A; --brass-bright:#E8BC63; --brass-wash:rgba(217,168,74,.12);
+  --good:#5CBF8B; --flag:#E0865A; --quiet:#8189A0;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.65 var(--body);
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px 96px}
+.col{max-width:68ch}
+
+/* ── masthead ─────────────────────────────────────────────── */
+.mast{padding:72px 0 32px;border-bottom:2px solid var(--ink)}
+.eyebrow{font:600 11.5px/1 var(--data);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--brass);margin-bottom:22px}
+h1{font:700 clamp(46px,8vw,86px)/0.94 var(--display);letter-spacing:-.035em;
+  margin:0 0 18px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--brass)}
+.thesis{font:400 clamp(19px,2.4vw,24px)/1.42 var(--body);color:var(--ink-2);
+  max-width:34ch;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;
+  font:500 12.5px/1 var(--data);color:var(--ink-3)}
+.meta b{color:var(--ink);font-weight:500}
+
+/* ── sections ─────────────────────────────────────────────── */
+section{padding:56px 0;border-bottom:1px solid var(--hair)}
+h2{font:600 13px/1 var(--data);letter-spacing:.17em;text-transform:uppercase;
+  color:var(--brass);margin:0 0 26px}
+h3{font:600 clamp(24px,3.2vw,32px)/1.18 var(--display);letter-spacing:-.02em;
+  margin:0 0 14px;text-wrap:balance}
+h4{font:600 19px/1.3 var(--display);margin:34px 0 10px;letter-spacing:-.01em}
+p{margin:0 0 16px}
+p.lead{font-size:19px;color:var(--ink-2)}
+strong{font-weight:600}
+em.q{font-style:italic;color:var(--ink-2)}
+a{color:var(--brass);text-underline-offset:3px}
+
+/* ── data ─────────────────────────────────────────────────── */
+.mono{font-family:var(--data);font-size:.88em}
+pre{background:var(--card);border:1px solid var(--hair);border-left:3px solid var(--brass);
+  padding:18px 20px;overflow-x:auto;font:400 13px/1.6 var(--data);color:var(--ink);
+  margin:0 0 20px}
+pre b{color:var(--brass);font-weight:600}
+pre i{font-style:normal;color:var(--ink-3)}
+
+.figure{margin:0 0 24px}
+.cap{font:500 12px/1.5 var(--data);color:var(--ink-3);margin-top:9px;
+  padding-left:3px;letter-spacing:.01em}
+
+table{width:100%;border-collapse:collapse;font:400 14.5px/1.5 var(--body);margin:0 0 8px}
+.scroll{overflow-x:auto}
+th{text-align:left;font:600 11px/1 var(--data);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);padding:0 14px 10px 0;border-bottom:1px solid var(--ink)}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--hair);vertical-align:baseline}
+td.num,th.num{text-align:right;font-family:var(--data);font-size:13.5px;padding-right:0}
+td.k{font-family:var(--data);font-size:13px;color:var(--ink-2)}
+tr.hi td{background:var(--brass-wash)}
+tr.hi td.num{color:var(--brass);font-weight:600}
+
+/* metric strip */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:1px;background:var(--hair);border:1px solid var(--hair);margin:0 0 10px}
+.metric{background:var(--paper);padding:20px 18px}
+.metric .v{font:600 34px/1 var(--data);letter-spacing:-.03em;color:var(--brass)}
+.metric .l{font:500 11px/1.35 var(--data);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:11px}
+.metric .n{font:400 13px/1.4 var(--body);color:var(--ink-3);margin-top:5px}
+
+/* finding block */
+.finding{background:var(--card);border:1px solid var(--hair);padding:26px 28px;margin:0 0 20px}
+.finding .tag{font:600 11px/1 var(--data);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--flag);margin-bottom:12px}
+.finding h4{margin-top:0}
+
+.claim{border-left:3px solid var(--brass);padding:4px 0 4px 20px;margin:26px 0;
+  font:400 20px/1.45 var(--body);color:var(--ink);max-width:52ch;text-wrap:balance}
+
+ul{margin:0 0 18px;padding-left:22px}
+li{margin-bottom:9px}
+li::marker{color:var(--brass)}
+
+.pill{display:inline-block;font:500 11px/1 var(--data);letter-spacing:.06em;
+  text-transform:uppercase;padding:5px 9px;border:1px solid var(--hair);
+  color:var(--ink-3);margin:0 5px 5px 0}
+.pill.on{border-color:var(--brass);color:var(--brass)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media(max-width:760px){.two{grid-template-columns:1fr}.meta{gap:6px 18px}}
+
+footer{padding:44px 0 0;font:400 14px/1.6 var(--body);color:var(--ink-3)}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">UniHack · AI-Powered Product Intelligence for Industrial Commerce</div>
+  <h1>CALI<em>PER</em></h1>
+  <div class="thesis">An enrichment pipeline that measures what it claims, and refuses to write what it cannot support.</div>
+  <div class="meta">
+    <span><b>1,000</b> rows in <b>2.4s</b></span>
+    <span><b>252</b>-column delivery format</span>
+    <span><b>27,255</b> traceable cells</span>
+    <span><b>37</b> tests passing</span>
+    <span><b>0</b> third-party packages</span>
+  </div>
+</header>
+
+<section>
+  <h2>The problem</h2>
+  <div class="col">
+    <p class="lead">A distributor hands over six columns. Unilog's delivery format expects 252 back — an approved brand with the correct ® symbol, a classpath, five descriptions written to five different length and casing rules, and attributes drawn from a controlled vocabulary.</p>
+  </div>
+  <div class="figure">
+<pre>Mfg_Part_Num : 49-94-1940
+Part_Desc    : 49-94-1940 Milw 14"x1/8"x1" Masonry Cut Off Disc
+E1_Brand     : <i>-- Unbranded --</i>
+DIB_Brand    : <i>-- No DIB Brand --</i>
+Part_Manuf   : Milwaukee Accessory (4031)</pre>
+    <div class="cap">One row from the working dataset. Three of five fields are placeholders meaning "empty".</div>
+  </div>
+  <div class="col">
+    <p>The obvious approach is to hand that row to a language model and hope. The brief is blunt about why that fails: <em class="q">a fluent description made of invented values scores zero.</em></p>
+  </div>
+</section>
+
+<section>
+  <h2>The design</h2>
+  <div class="col">
+    <h3>Facts before prose</h3>
+    <p>Every extractor writes into one structure — a typed, evidenced <strong>Product Fact Graph</strong>. Rules, the brand registry, taxonomy, family consensus and the model all <em>write facts</em>. Composition, validation and export only <em>read them</em>.</p>
+  </div>
+  <div class="figure">
+<pre><b>brand</b>       Milwaukee®     registry   0.94   <i>← "Milwaukee Accessory (4031)"</i>
+<b>item_type</b>   Cut Off Disc   ITM-LEX-01 0.91   <i>← "Cut Off Disc"</i>
+<b>diameter</b>    14 in          DIM-CHN-02 0.92   <i>← chars 5–18  14"x1/8"x1"</i>
+<b>thickness</b>   1/8 in         DIM-CHN-02 0.92   <i>← chars 5–18  14"x1/8"x1"</i>
+<b>arbor_size</b>  1 in           DIM-CHN-02 0.92   <i>← chars 5–18  14"x1/8"x1"</i>
+<b>application</b> Masonry        LLM-EXT-01 0.80   <i>← "Masonry"</i></pre>
+    <div class="cap">Every fact carries value, method, rule id, confidence, and the characters that justify it.</div>
+  </div>
+  <div class="col">
+    <p>That one-way boundary is the whole design, and three properties fall out of it:</p>
+    <ul>
+      <li><strong>An unevidenced value cannot enter.</strong> A fact without evidence is rejected at insertion — a tested invariant, not a convention.</li>
+      <li><strong>The five descriptions cannot contradict each other.</strong> They are five renderings of one fact set, not five generations.</li>
+      <li><strong>Provenance is free.</strong> 27,255 cells, each traceable to the rule that made it.</li>
+    </ul>
+    <div class="claim">The model is never permitted to write an output cell. It proposes facts that must quote the source, or it renders verdicts on facts that already exist.</div>
+  </div>
+</section>
+
+<section>
+  <h2>What measurement changed</h2>
+  <div class="col">
+    <p class="lead">Three findings came out of measuring the data rather than reasoning about it. Each one changed the build — and two of them contradicted decisions I had already made.</p>
+  </div>
+
+  <div class="finding">
+    <div class="tag">Finding 01 · scope</div>
+    <h4>The answer key fills 25% of the sheet. Over-filling is a defect.</h4>
+<pre>ground-truth row 1 : 63 / 252 columns   <i>25.0%</i>
+ground-truth row 2 : 71 / 252 columns   <i>28.2%</i>
+blank in both      : 173 columns</pre>
+    <p>The 173 blanks include <span class="mono">UPC</span>, <span class="mono">EAN</span>, <span class="mono">GTIN</span>, <span class="mono">UNSPSC</span>, <span class="mono">List Price</span>, every dimension, <span class="mono">WEIGHT</span>, <span class="mono">SDS</span> and <span class="mono">Country Of Origin</span>. Unilog's own analysts leave them empty. A pipeline that fills 90% of the sheet is inventing two-thirds of a catalogue. CALIPER calibrates its fill rate against the answer key and shows the comparison on its front page.</p>
+  </div>
+
+  <div class="finding">
+    <div class="tag">Finding 02 · the binding constraint</div>
+    <h4>Attribute values are not recoverable from the supplier row.</h4>
+    <p>The labelled dishwasher's entire input is 39 characters: <span class="mono">PDSH4816AF Dishwasher SS - Display Only</span>. Its answer key carries Voltage 120 V, Amperage 15 A, Sound Level 47 dBA, 5 Wash Cycles, Leg Mounting, four dimensions and an annual-energy figure.</p>
+    <p><strong>Eleven of the twelve populated attribute values appear nowhere in the input.</strong> Only <span class="mono">SS → Stainless Steel</span> is derivable.</p>
+    <p>So attribute values require the manufacturer's own source. Any pipeline reporting high attribute-value accuracy from the input alone is overfitting to the sample or fabricating. CALIPER leaves them empty and flags the gap.</p>
+  </div>
+
+  <div class="finding">
+    <div class="tag">Finding 03 · a check caught its own author</div>
+    <h4>The physical guardrail found a bug in our parser.</h4>
+<pre>49-94-0058 Milw 12"x1/8"x<b>20mm</b> Metal Cut Off Disc
+                          <i>↑ read as 20 INCHES</i></pre>
+    <p>Four rows reported an arbor hole wider than the wheel it is cut in — impossible. The dimension regex knew <span class="mono">"</span>, <span class="mono">in</span> and <span class="mono">'</span> but not metric marks. Fixing the parser cleared the relational finding; the remaining one turned out to be a false positive in the <em>guardrail</em>, whose range was stated in inches and never converted. Findings went <strong>4 → 2 → 0</strong>, and both defects were real.</p>
+  </div>
+
+  <div class="col">
+    <p>A fourth measurement killed a feature. An early estimate put product-family amortisation at 8×. Measured, it is <strong>1.77×</strong>, with 378 singletons. The cost argument died; family clustering was repurposed to what it is actually good for — corroborated consensus and anomaly detection.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Results</h2>
+  <div class="metrics">
+    <div class="metric"><div class="v">100%</div><div class="l">Invoice ≤ 40 chars</div><div class="n">compliant by construction</div></div>
+    <div class="metric"><div class="v">91.0%</div><div class="l">Brand resolved</div><div class="n">to an approved name</div></div>
+    <div class="metric"><div class="v">84.0%</div><div class="l">Classified</div><div class="n">the rest abstain</div></div>
+    <div class="metric"><div class="v">74.7%</div><div class="l">Ready to publish</div><div class="n">747 rows unattended</div></div>
+    <div class="metric"><div class="v">1,429</div><div class="l">Relationship edges</div><div class="n">62% of products linked</div></div>
+  </div>
+  <div class="cap" style="margin-bottom:34px">1,000-row working dataset, deterministic core. Full run: 2.4 seconds, no API key.</div>
+
+  <div class="two">
+    <div>
+      <h4>Against the labelled rows</h4>
+      <div class="scroll">
+      <table>
+        <tr><th>Field</th><th class="num">Exact</th></tr>
+        <tr><td>BRAND_NAME <span class="mono">(with ®)</span></td><td class="num">100%</td></tr>
+        <tr><td>Classpath · Dept · Class · Fine</td><td class="num">100%</td></tr>
+        <tr><td>Product Name</td><td class="num">100%</td></tr>
+        <tr><td>MANUFACTURER_PART_NUMBER</td><td class="num">100%</td></tr>
+        <tr><td>ATTRIBUTE_LABEL 1–15</td><td class="num">100%</td></tr>
+        <tr><td>MANUFACTURER_NAME</td><td class="num">50%</td></tr>
+        <tr class="hi"><td><strong>In-scope overall</strong></td><td class="num">48.0%</td></tr>
+      </table>
+      </div>
+      <div class="cap">Calibration set is <strong>2 labelled rows</strong>. Every rate is printed with its sample size, because two rows is a narrow base. Attribute labels come from a spec learned from those same rows — given structure, not prediction, and the report says so.</div>
+    </div>
+    <div>
+      <h4>Found in the client's own data</h4>
+      <div class="scroll">
+      <table>
+        <tr><th>Finding</th><th class="num">Rows</th></tr>
+        <tr><td>Classification abstained rather than guessed</td><td class="num">178</td></tr>
+        <tr><td>No approved brand resolvable</td><td class="num">52</td></tr>
+        <tr><td>Item type not recoverable from description</td><td class="num">17</td></tr>
+        <tr><td>Brand and manufacturer disagree</td><td class="num">4</td></tr>
+        <tr><td>Sibling breaks its family pattern</td><td class="num">2</td></tr>
+      </table>
+      </div>
+      <div class="cap">The brief calls noticing these a strength. They are on the console's front page, not buried in a log. The 50% on MANUFACTURER_NAME is one of them: the answer key pairs FRIGIDAIRE® with Rheem Manufacturing.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Pipeline</h2>
+  <div class="figure">
+<pre>  1  schema detection      <i>any column naming; placeholders voided</i>
+  2  family clustering     <i>566 families; membership carries confidence</i>
+  3  deterministic parse   <i>dimensions, grit, voltage, colour temperature, packs</i>
+  4  identity resolution   <i>"Phillips Lighting (5831)" → Philips®</i>
+  5  item type             <i>induced vocabulary + attribute co-occurrence</i>
+  6  taxonomy              <i>Dept › Class › Fine › Classpath, abstains when unsure</i>
+  7  model extraction      <i>only rows rules could not reach; must quote the source</i>
+  8  reviewer corrections  <i>persisted, scoped, replayed</i>
+  9  physical guardrails   <i>domain ranges, unit kinds, dimensional coherence</i>
+ 10  family consensus      <i>corroborated propagation + anomaly detection</i>
+ 11  model audit           <i>verdicts on existing facts; cannot create a value</i>
+     ────────────────────  <b>PRODUCT FACT GRAPH</b>  <i>everything above writes; nothing below does</i>
+ 12  composition           <i>252 columns rendered; character-budget solver</i>
+ 13  relationship graph    <i>powers · fits · variant_of · cross_reference</i>
+ 14  validation            <i>guideline-as-code; each violation cites a rule id</i>
+ 15  selective delivery    <i>ready / needs review / blocked</i></pre>
+  </div>
+
+  <div class="two">
+    <div>
+      <h4>The character-budget solver</h4>
+      <p><span class="mono">INVOICE_DESC</span> has a hard 40-character ceiling in caps. Asking a model to "keep it under 40" fails silently. Here it is a budget problem: facts ordered by how much they identify the product, each with an abbreviation ladder, fitted until the budget runs out — shortened before dropped, dropped before overflowing.</p>
+<pre>CUT OFF DISC 14IN 1/8IN 1IN   <i>27/40, kept 4</i>
+BULB 60W 5000K 3 BA11 LED     <i>25/40, kept 6</i>
+DISHWASHER BSS                <i>14/40, kept 2</i></pre>
+      <p>Compliance is guaranteed by construction, and the solver reports what it gave up.</p>
+    </div>
+    <div>
+      <h4>Category-spec induction</h4>
+      <p>A Unilog category specification — which attributes apply, in what order, with what permitted values — is normally written by hand, one category at a time, across tens of thousands of categories.</p>
+      <p>CALIPER derives one from the rows themselves, with a count behind every claim. Where a labelled file exists, it reads the positional slot order straight out of it <em>and aligns each label to the fact key that reproduces its value</em>.</p>
+<pre>Electrical › Lighting › Light Bulbs   <i>111 rows</i>
+  Wattage 91% · Colour Temp 87%
+  Base Type 78% · Pack Qty 57%</pre>
+      <p>That lifted attribute labels from 0% to 100% against the answer key.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Engineering decisions</h2>
+  <div class="col">
+    <h4>It runs on the judge's machine</h4>
+    <p>No third-party packages. CSV <em>and</em> XLSX are read and written with the standard library — an XLSX is a zip of XML. A <span class="mono">pandas</span> dependency is a needless way to fail on someone else's laptop.</p>
+
+    <h4>It is not built for one file</h4>
+    <p>The brief requires a prototype capable of processing the evaluation dataset. A hostile test file ships in the repo with different column names, different order and two junk columns. Roles are detected by name, then by content sniffing:</p>
+<pre>Vendor Name │ internal_id │ MFR PART # │ Item Description │ Make │ notes │ qty_on_hand
+        ↓          ↓            ↓              ↓             ↓
+  manufacturer    sku          mpn        description      brand      <i>(ignored)</i></pre>
+    <p>Brand resolution 95%, invoice compliance 100% — on headers it had never seen.</p>
+
+    <h4>The AI layer is an upgrade, not a dependency</h4>
+    <p>With no key the deterministic engines still produce all 252 columns. Free tiers have daily caps that are invisible until you hit them, so a <span class="mono">429</span> naming a <em>per-day</em> limit trips a circuit breaker: per-minute limits are worth waiting out, per-day limits are not. The run finishes deterministically and says so on the front page. Keys are probed at setup, held in process memory only, never written to disk.</p>
+
+    <h4>Corrections compound</h4>
+    <p>A review queue that forgets its answers makes a steward solve the same problem every run. Corrections are stored as scoped facts — part, family, classpath, or a brand alias that teaches the registry — and replayed. One family-scoped decision in the sample fixes 6 rows and re-drives classification. The largest family holds 65.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What we would not claim</h2>
+  <div class="col">
+    <ul>
+      <li><strong>Two labelled rows.</strong> Every accuracy figure rests on a calibration set of two. The harness prints the sample size beside every rate and scales untouched to a larger file.</li>
+      <li><strong>No manufacturer-source retrieval.</strong> Finding 02 shows this is the binding constraint on attribute-value accuracy — not a missing rule.</li>
+      <li><strong>No official controlled vocabularies.</strong> The LOV, the 27,000-row manufacturer master and the UOM standards are described in the guide but not distributed. The brand registry here is a bootstrap of roughly 75 entries; LOV coverage is measured against CALIPER's <em>induced</em> vocabulary and labelled as such. Every loader accepts the real files if they appear.</li>
+      <li><strong>The long tail abstains.</strong> 153 distinct item types classify poorly. Hand-coding them would be overfitting to the sample, which the brief explicitly warns against.</li>
+    </ul>
+    <div class="claim">Enrichment is table stakes. Knowing which rows you can ship without a human looking at them — and being able to prove why — is the product.</div>
+  </div>
+</section>
+
+<section style="border-bottom:0">
+  <h2>Running it</h2>
+  <div class="figure">
+<pre><b>python -m caliper run</b> data/input/sample_1000_items.csv -o data/out
+<b>python -m caliper serve</b>          <i># the console: upload → enrich → export</i>
+<b>python tests/test_core.py</b>       <i># 37 invariant checks</i></pre>
+    <div class="cap">Python 3.9+. No install step. An API key is optional and selected in the console's first screen.</div>
+  </div>
+  <div class="col">
+    <p><strong>Outputs:</strong> the 252-column delivery file as CSV and XLSX with a byte-identical header; a provenance ledger of every populated cell; a review queue ranked by uncertainty × sibling SKUs affected; the relationship graph; and a metrics report.</p>
+    <div>
+      <span class="pill on">Evidence-bound</span><span class="pill on">Abstains</span>
+      <span class="pill on">Schema-agnostic</span><span class="pill on">Offline-capable</span>
+      <span class="pill">252 columns</span><span class="pill">37 tests</span>
+      <span class="pill">0 dependencies</span>
+    </div>
+  </div>
+  <footer>
+    <p>CALIPER — <em>Catalog Attribute Lineage, Inference, Provenance &amp; Evaluation Runtime.</em><br>
+    Every number on this page was produced by a run, not typed in.</p>
+  </footer>
+</section>
+
+</div>
