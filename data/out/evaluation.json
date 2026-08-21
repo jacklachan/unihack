@@ -1,0 +1,969 @@
+{
+  "rows_in_truth": 2,
+  "rows_matched": 2,
+  "overall": {
+    "scored": 141,
+    "exact": 0.4255,
+    "normalised": 0.4255,
+    "token_f1": 0.4551
+  },
+  "in_scope": {
+    "scored": 125,
+    "exact": 0.48,
+    "normalised": 0.48,
+    "token_f1": 0.5133
+  },
+  "retrieval_dependent": {
+    "scored": 16,
+    "exact": 0.0,
+    "normalised": 0.0,
+    "token_f1": 0.0
+  },
+  "per_field": [
+    {
+      "column": "ATTRIBUTE_LABEL 1",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 10",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 11",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 12",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 13",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 14",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 15",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 16",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 0,
+      "over_filled": 2,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 2",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 3",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 4",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 5",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 6",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 7",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 8",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_LABEL 9",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_UOM 12",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_UOM 4",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_UOM 5",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_UOM 9",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 1",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 10",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 12",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 13",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 14",
+      "scored": 2,
+      "exact": 0.5,
+      "normalised": 0.5,
+      "token_f1": 0.5,
+      "missed_blank": 0,
+      "over_filled": 1,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 15",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 16",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 0,
+      "over_filled": 2,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 4",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 5",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 6",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 8",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 9",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Actual Image (Yes/No)",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "BRAND_NAME",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Class",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Classpath",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "DIB_Brand",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Dept",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "E1_Brand",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Fine",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "INVOICE_DESC",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.4,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "LONG_DESC1",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.1312,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "MANUFACTURER_NAME",
+      "scored": 2,
+      "exact": 0.5,
+      "normalised": 0.5,
+      "token_f1": 0.5,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "MANUFACTURER_PART_NUMBER",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "MFR URL",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "MOBILE_DESC",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.4615,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Mfg_Part_Num",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "PART_NUMBER",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Part_Desc",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Part_Manuf",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Product Image",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Product Name",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "RETAIL_DESC",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.5,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "SHORT_DESC",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.5903,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "SKU - MY_PART_NUMBER",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "Specification Sheet",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "UNSPSC",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 0,
+      "over_filled": 2,
+      "both_blank": 0
+    },
+    {
+      "column": "Unilog_Brand",
+      "scored": 2,
+      "exact": 1.0,
+      "normalised": 1.0,
+      "token_f1": 1.0,
+      "missed_blank": 0,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "With",
+      "scored": 2,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 2,
+      "over_filled": 0,
+      "both_blank": 0
+    },
+    {
+      "column": "ATTRIBUTE_UOM 10",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 11",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ATTRIBUTE_VALUE 3",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Alternate Image 1",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Alternate Image 2",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Alternate Image 3",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Alternate Image 4",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_1",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_10",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_11",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_2",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_3",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_4",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_5",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_6",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_7",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_8",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "ITEM_FEATURES_9",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "MARKETING_DESCRIPTION",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Ref URL 1",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Ref URL 2",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Standard/Approvals",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    },
+    {
+      "column": "Warranty",
+      "scored": 1,
+      "exact": 0.0,
+      "normalised": 0.0,
+      "token_f1": 0.0,
+      "missed_blank": 1,
+      "over_filled": 0,
+      "both_blank": 1
+    }
+  ],
+  "per_row": [
+    {
+      "key": "PDSH4816AF",
+      "scored_fields": 67,
+      "exact": 29,
+      "normalised": 29,
+      "exact_rate": 0.4328
+    },
+    {
+      "key": "WDTS7024RZ",
+      "scored_fields": 74,
+      "exact": 31,
+      "normalised": 31,
+      "exact_rate": 0.4189
+    }
+  ],
+  "caveat": "Calibration set is 2 labelled row(s). Treat every rate as an indication, not a guarantee -- the confidence interval on 2 samples is wide.",
+  "char_limits": {
+    "INVOICE_DESC": {
+      "rule_id": "CG-INV-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-40",
+      "casing": "upper",
+      "mean_len": 18.0
+    },
+    "MOBILE_DESC": {
+      "rule_id": "CG-MOB-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "60-80",
+      "casing": "free",
+      "mean_len": 64.0
+    },
+    "SHORT_DESC": {
+      "rule_id": "CG-SHT-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-240",
+      "casing": "free",
+      "mean_len": 49.5
+    },
+    "Product Name": {
+      "rule_id": "CG-PNM-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-120",
+      "casing": "free",
+      "mean_len": 10.0
+    },
+    "LONG_DESC1": {
+      "rule_id": "CG-LNG-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-4000",
+      "casing": "free",
+      "mean_len": 43.5
+    },
+    "RETAIL_DESC": {
+      "rule_id": "CG-RET-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-240",
+      "casing": "free",
+      "mean_len": 27.0
+    },
+    "ATTRIBUTE_VALUE 13": {
+      "rule_id": "CG-ATT-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-200",
+      "casing": "free",
+      "mean_len": 15.0
+    },
+    "ATTRIBUTE_VALUE 14": {
+      "rule_id": "CG-ATT-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-200",
+      "casing": "free",
+      "mean_len": 15.0
+    },
+    "ATTRIBUTE_VALUE 16": {
+      "rule_id": "CG-ATT-01",
+      "populated": 2,
+      "compliant": 1.0,
+      "limit": "0-200",
+      "casing": "free",
+      "mean_len": 3.0
+    }
+  },
+  "lov": {
+    "attribute_values_emitted": 6,
+    "distinct_labels": 3,
+    "closed_set_rate": 1.0,
+    "singleton_values": 0,
+    "in_official_lov": null,
+    "source": "induced vocabulary (no official LOV shipped)",
+    "top_labels": [
+      {
+        "label": "Material",
+        "distinct": 1,
+        "emitted": 2,
+        "examples": [
+          "Stainless Steel"
+        ]
+      },
+      {
+        "label": "Color",
+        "distinct": 1,
+        "emitted": 2,
+        "examples": [
+          "Stainless Steel"
+        ]
+      },
+      {
+        "label": "Display Only",
+        "distinct": 1,
+        "emitted": 2,
+        "examples": [
+          "Yes"
+        ]
+      }
+    ]
+  }
+}

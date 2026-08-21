@@ -1,6 +1,17 @@
 .env
 __pycache__/
 *.pyc
-data/out/
+data/full_run*.log
 caliper/web/_upload.csv
-data/full_run.log
+data/out_probe/
+data/out_audit/
+
+# Generated outputs: ship the deliverables so the results can be read without
+# running anything, but not the 3.5 MB provenance ledger or the raw fact dumps.
+data/out/*
+!data/out/delivery.csv
+!data/out/delivery.xlsx
+!data/out/report.json
+!data/out/review_queue.csv
+!data/out/relationships.csv
+!data/out/evaluation.json
