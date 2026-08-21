@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 data/out/
 caliper/web/_upload.csv
+data/full_run.log

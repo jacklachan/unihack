@@ -1,0 +1,28 @@
+{
+ "facts": [
+  {
+   "confidence": 0.0,
+   "evidence": "PVC",
+   "key": "material",
+   "label": "Material",
+   "uom": "",
+   "value": "PVC"
+  },
+  {
+   "confidence": 0.0,
+   "evidence": "Decking",
+   "key": "application",
+   "label": "Application",
+   "uom": "",
+   "value": "Decking"
+  },
+  {
+   "confidence": 0.0,
+   "evidence": "Brownstone Grooved",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "Brownstone Grooved"
+  }
+ ]
+}

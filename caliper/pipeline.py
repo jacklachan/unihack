@@ -31,7 +31,9 @@ from .core.identity import (BrandRegistry, detect_mismatch, identity_facts,
                             resolve_identity)
 from .core.induce import (CategorySpec, ItemTypeLexicon, build_lexicon,
                           induce_spec, infer_item_type, strip_terms)
-from .core.parse import parse_description, residual_text, strip_mpn_echo
+from .core.parse import (expand_abbreviations, parse_description, residual_text,
+                         strip_mpn_echo)
+from .core.packs import PackLibrary, resolve_slot_key
 from .core.taxonomy import classify, taxonomy_facts
 
 # ---------------------------------------------------------------------------
@@ -142,6 +144,9 @@ class PipelineReport:
     brand_resolution: float = 0.0
     classification_rate: float = 0.0
     char_compliance: Dict[str, float] = field(default_factory=dict)
+    family_inherited: int = 0
+    family_anomalies: int = 0
+    llm_invoked: int = 0
 
     def to_dict(self) -> Dict[str, Any]:
         return dict(self.__dict__)
@@ -164,6 +169,8 @@ class Pipeline:
         self.vocab: Dict[str, int] = {}
         self.specs: Dict[str, CategorySpec] = {}
         self.series_vocab: Dict[str, int] = {}
+        self.llm_invoked = 0
+        self.packs = PackLibrary.load()
 
     # -- corpus passes -----------------------------------------------------
     def fit(self, rows: Sequence[Dict[str, str]], schema: InputSchema) -> None:
@@ -338,10 +345,29 @@ class Pipeline:
             graph.note("classification_abstained", c.reason, severity="review")
 
         # 6. optional model fill -------------------------------------------
-        if self.llm is not None:
+        # Deterministic-first routing: the model is only paid for on rows the
+        # rules could not resolve. On this catalogue that is roughly a third of
+        # them, so cost scales with difficulty rather than with catalogue size.
+        if self.llm is not None and self._needs_model(graph, item_type, c):
+            self.llm_invoked += 1
             self._llm_fill(graph, residual, desc)
 
         return self._finalise(graph, row, schema, index, c)
+
+    @staticmethod
+    def _needs_model(graph: ProductFactGraph, item_type: str, c) -> bool:
+        """True when the deterministic layer left a gap worth spending a call on."""
+        if not item_type:
+            return True
+        if c is None or c.node is None:
+            return True
+        if not graph.has("brand"):
+            return True
+        substantive = [f for f in graph.facts()
+                       if f.key not in ("mpn", "brand", "manufacturer", "dept",
+                                        "class", "fine", "classpath", "unspsc",
+                                        "item_type")]
+        return len(substantive) < 3
 
     def _llm_fill(self, graph: ProductFactGraph, residual: str, desc: str) -> None:
         """Hand the model only what the rules could not reach.
@@ -359,20 +385,33 @@ class Pipeline:
             graph.note("llm_error", "Model call failed: {}".format(exc),
                        severity="info")
             return
+        expanded = expand_abbreviations(desc)
         for item in (proposal or {}).get("facts", []):
             key = str(item.get("key") or "").strip()
             value = item.get("value")
             quote = str(item.get("evidence") or "")
             if not key or value in (None, ""):
                 continue
-            if quote and quote.lower() not in desc.lower():
+
+            # The firewall accepts a quote that matches the source either
+            # literally, or after the documented trade-abbreviation expansion
+            # ("Kichler Wall Lt" -> "Kichler Wall Light"). Expanding a known
+            # abbreviation is a rule we already own, not a model invention.
+            # Anything else is discarded rather than stored.
+            grounded, via = False, ""
+            if quote:
+                if quote.lower() in desc.lower():
+                    grounded, via = True, "literal"
+                elif quote.lower() in expanded.lower():
+                    grounded, via = True, "abbreviation-expanded"
+            if quote and not grounded:
                 graph.note("llm_evidence_rejected",
                            "Discarded {}={!r}: quoted evidence {!r} is not present "
                            "in the source text.".format(key, value, quote),
                            severity="info")
                 continue
             span = None
-            if quote:
+            if quote and via == "literal":
                 i = desc.lower().find(quote.lower())
                 span = (i, i + len(quote)) if i >= 0 else None
             graph.add(Fact(
@@ -381,8 +420,8 @@ class Pipeline:
                 rule_id="LLM-EXT-01", raw=quote,
                 confidence=float(item.get("confidence") or 0.7), priority=45,
                 evidence=[Evidence(source="input:Part_Desc", text=quote, span=span,
-                                   detail="Model proposal, verified to be quoted "
-                                          "from the source text.")]))
+                                   detail="Model proposal, verified {} against the "
+                                          "source text.".format(via or "literal"))]))
 
     # -- rendering ---------------------------------------------------------
     def _finalise(self, graph: ProductFactGraph, row: Dict[str, str],
@@ -421,7 +460,10 @@ class Pipeline:
                     detail="Preserved verbatim from the source file.")
 
         # -- identity -------------------------------------------------------
-        for key, col in (("mpn", "PART_NUMBER"), ("mpn", "MANUFACTURER_PART_NUMBER"),
+        # PART_NUMBER is the distributor's internal identifier (the labelled
+        # rows carry values like 20887830), not the manufacturer part number.
+        # Nothing in a supplier row derives it, so it stays empty.
+        for key, col in (("mpn", "MANUFACTURER_PART_NUMBER"),
                          ("brand", "BRAND_NAME"), ("manufacturer", "MANUFACTURER_NAME"),
                          ("classpath", "Classpath")):
             f = graph.get(key)
@@ -470,7 +512,29 @@ class Pipeline:
         # attribute is not the same as claiming a value for it.
         slot = 0
         emitted: set = set()
-        if spec is not None:
+        pack = self.packs.get(graph.value("classpath"))
+        if pack is not None and pack.slots:
+            # A learned pack states the category's slot order outright, so it
+            # takes precedence over the statistically induced spec.
+            for ps in sorted(pack.slots, key=lambda x: x.position):
+                if slot >= MAX_ATTRIBUTES:
+                    break
+                slot += 1
+                fkey = resolve_slot_key(ps)
+                if fkey:
+                    emitted.add(fkey)
+                put("ATTRIBUTE_LABEL {}".format(slot), ps.label,
+                    method="pack", conf=0.95,
+                    detail="Slot {} of the '{}' specification learned from {} "
+                           "labelled row(s) in {}.".format(
+                               ps.position, pack.classpath, pack.rows,
+                               pack.source or "the labelled file"))
+                f = graph.get(fkey) if fkey else None
+                if f and f.display:
+                    put("ATTRIBUTE_VALUE {}".format(slot), str(f.value), f)
+                    if f.uom or ps.uom:
+                        put("ATTRIBUTE_UOM {}".format(slot), f.uom or ps.uom, f)
+        elif spec is not None:
             for a in spec.attributes:
                 if a.key in skip or slot >= MAX_ATTRIBUTES:
                     continue
@@ -568,6 +632,98 @@ class Pipeline:
         else:
             r.status = "ready"
 
+    # -- family consensus --------------------------------------------------
+    #: Facts that are properties of the *product concept*, so a sibling may
+    #: legitimately inherit them. Dimensional facts are excluded on purpose --
+    #: those are exactly what varies inside a family.
+    FAMILY_INVARIANT = ("item_type", "classpath", "dept", "class", "fine",
+                        "unspsc", "brand", "manufacturer", "series", "material",
+                        "application", "lamp_type", "platform")
+
+    def propagate_families(self, results: Sequence[RowResult],
+                           min_support: int = 2) -> int:
+        """Fill gaps from corroborated family consensus.
+
+        A value propagates only when at least ``min_support`` siblings
+        independently produced it and no sibling contradicts it. Copying one
+        row's guess onto twenty others would manufacture correlated errors that
+        then look like agreement -- so this is consensus, not copying, and the
+        provenance records the vote.
+        """
+        groups: Dict[str, List[RowResult]] = defaultdict(list)
+        for r in results:
+            groups[r.graph.family_id].append(r)
+
+        filled = 0
+        for fid, members in groups.items():
+            if len(members) < 2:
+                continue
+            for key in self.FAMILY_INVARIANT:
+                votes: Counter = Counter()
+                for m in members:
+                    f = m.graph.get(key)
+                    if f and f.display:
+                        votes[f.display] += 1
+                if not votes:
+                    continue
+                value, n = votes.most_common(1)[0]
+                if n < min_support:
+                    continue
+                if len(votes) > 1:
+                    continue           # siblings disagree -- do not propagate
+                for m in members:
+                    if m.graph.has(key):
+                        continue
+                    m.graph.add(Fact(
+                        key=key, value=value,
+                        label=key.replace("_", " ").title(),
+                        method="family", rule_id="FAM-CON-01", raw=value,
+                        confidence=min(0.88, 0.60 + 0.05 * n), priority=12,
+                        evidence=[Evidence(
+                            source="family:{}".format(fid), text=value,
+                            detail="Inherited from family consensus: {} of {} "
+                                   "siblings independently produced this value "
+                                   "and none contradicted it."
+                                   .format(n, len(members)))]))
+                    filled += 1
+        return filled
+
+    def detect_family_anomalies(self, results: Sequence[RowResult]) -> int:
+        """Flag siblings that break their family's pattern.
+
+        A row whose invariant disagrees with a strong family majority is
+        usually an error in the *source* catalogue, not in the extraction.
+        """
+        groups: Dict[str, List[RowResult]] = defaultdict(list)
+        for r in results:
+            groups[r.graph.family_id].append(r)
+        found = 0
+        for fid, members in groups.items():
+            if len(members) < 4:
+                continue
+            for key in ("brand", "item_type", "classpath"):
+                votes: Counter = Counter()
+                for m in members:
+                    f = m.graph.get(key)
+                    if f and f.display:
+                        votes[f.display] += 1
+                if len(votes) < 2:
+                    continue
+                (top, n), = votes.most_common(1)
+                if n / max(1, sum(votes.values())) < 0.75:
+                    continue
+                for m in members:
+                    f = m.graph.get(key)
+                    if f and f.display and f.display != top:
+                        m.graph.note(
+                            "family_anomaly",
+                            "{} is {!r} but {} of {} siblings in family {} say "
+                            "{!r}. Likely a defect in the source catalogue."
+                            .format(key, f.display, n, len(members), fid, top),
+                            severity="review")
+                        found += 1
+        return found
+
     # -- run ---------------------------------------------------------------
     def run(self, rows: Sequence[Dict[str, str]],
             schema: Optional[InputSchema] = None,
@@ -583,7 +739,23 @@ class Pipeline:
             if progress and (i % 25 == 0 or i == len(rows) - 1):
                 progress(i + 1, len(rows))
 
+        # Cross-row pass: consensus fills gaps, disagreement raises flags.
+        # Both need the whole catalogue, so they cannot run row-at-a-time.
+        inherited = self.propagate_families(results)
+        anomalies = self.detect_family_anomalies(results)
+        if inherited or anomalies:
+            for r in results:
+                rebuilt = self._finalise(r.graph, r.graph.source_row, schema,
+                                         r.index, None)
+                r.delivery, r.provenance = rebuilt.delivery, rebuilt.provenance
+                r.violations, r.flags = rebuilt.violations, rebuilt.flags
+                r.filled, r.status = rebuilt.filled, rebuilt.status
+                r.invoice_budget = rebuilt.invoice_budget
+
         rep = PipelineReport(n_rows=len(rows), elapsed_s=round(time.time() - t0, 3))
+        rep.family_inherited = inherited
+        rep.family_anomalies = anomalies
+        rep.llm_invoked = self.llm_invoked
         rep.schema = schema.to_dict()
         rep.families = len({r.graph.family_id for r in results})
         rep.specs = [s.to_dict() for s in sorted(

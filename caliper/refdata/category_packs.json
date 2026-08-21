@@ -1,0 +1,181 @@
+{
+  "packs": [
+    {
+      "classpath": "Appliances & Consumer Electronics>Kitchen Appliances>Built-In Dishwashers",
+      "rows": 2,
+      "source": "delivery_format_sample.csv",
+      "description_formulas": {},
+      "slots": [
+        {
+          "position": 1,
+          "label": "Series",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "Eco Series",
+            "Professional Series"
+          ]
+        },
+        {
+          "position": 2,
+          "label": "Model",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": []
+        },
+        {
+          "position": 3,
+          "label": "Number of Wash Cycles",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "5"
+          ]
+        },
+        {
+          "position": 4,
+          "label": "Voltage Rating",
+          "uom": "V",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "120"
+          ]
+        },
+        {
+          "position": 5,
+          "label": "Amperage Rating",
+          "uom": "A",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "10",
+            "15"
+          ]
+        },
+        {
+          "position": 6,
+          "label": "Mounting Type",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "Built-in",
+            "Leg"
+          ]
+        },
+        {
+          "position": 7,
+          "label": "Plug Type",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": []
+        },
+        {
+          "position": 8,
+          "label": "Size",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "24 in W x 24-1/4 in D",
+            "33-7/16 in H x 23-7/8 in W x 22-5/8 in D"
+          ]
+        },
+        {
+          "position": 9,
+          "label": "Depth With Door Open",
+          "uom": "in",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "50-1/4",
+            "50-3/16"
+          ]
+        },
+        {
+          "position": 10,
+          "label": "Minimum Height",
+          "uom": "in",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "33-7/16",
+            "8-1/2 in Upper Rack, 11-1/4 in Lower Rack"
+          ]
+        },
+        {
+          "position": 11,
+          "label": "Maximum Height",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "10-3/8 in Upper Rack, 13-1/4 in Lower Rack"
+          ]
+        },
+        {
+          "position": 12,
+          "label": "Sound Level",
+          "uom": "dBA",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "41",
+            "47"
+          ]
+        },
+        {
+          "position": 13,
+          "label": "Material",
+          "uom": "",
+          "key": "finish",
+          "support": 2,
+          "value_support": 2,
+          "values": [
+            "Stainless Steel"
+          ]
+        },
+        {
+          "position": 14,
+          "label": "Color",
+          "uom": "",
+          "key": "finish",
+          "support": 2,
+          "value_support": 1,
+          "values": [
+            "Stainless Steel"
+          ]
+        },
+        {
+          "position": 15,
+          "label": "Additional Information",
+          "uom": "",
+          "key": "",
+          "support": 2,
+          "value_support": 0,
+          "values": [
+            "240 kW-hr Annual Energy, 1 to 12 hr Delay Start Hours",
+            "Folding Tines, Leak Detection System, Moisture Repellent Silverware Basket, Normal Cycle, Quick Wash Cycle, Sani Rinse Option, Sensor Cycle, Triple Wash Spray"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Bandsaw",
+   "key": "item_type",
+   "label": "Item Type",
+   "uom": "",
+   "value": "Bandsaw"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "JWBS18SFX",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "JWBS18SFX"
+  }
+ ]
+}

@@ -174,6 +174,46 @@ def cmd_serve(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_learn_spec(args: argparse.Namespace) -> int:
+    """Learn positional category specifications from labelled delivery rows."""
+    from .core.packs import learn_packs, DEFAULT_PACK_PATH
+    from .eval.harness import extract_input_rows
+
+    truth_rows, _ = read_table(args.truth, sheet=args.sheet)
+    if not truth_rows:
+        print("no rows in {}".format(args.truth), file=sys.stderr)
+        return 1
+
+    # Run the pipeline on the input recovered from the labelled file so each
+    # labelled slot can be aligned to the fact key that actually produces it.
+    inputs = extract_input_rows(truth_rows)
+    schema = detect_schema(list(inputs[0].keys()), inputs)
+    pipe = Pipeline()
+    results, _ = pipe.run(inputs, schema)
+    lookup = {}
+    for r in results:
+        pn = str(r.delivery.get("Mfg_Part_Num", "")).strip()
+        if pn:
+            lookup[pn] = {f.key: f.display for f in r.graph.facts()}
+
+    lib = learn_packs(truth_rows, lookup, source=os.path.basename(args.truth))
+    out = args.out or DEFAULT_PACK_PATH
+    lib.save(out)
+
+    print("learned {} category pack(s) from {} labelled row(s)".format(
+        len(lib), len(truth_rows)))
+    for cp, pack in lib.packs.items():
+        aligned = sum(1 for s2 in pack.slots if s2.key)
+        print("  {}".format(cp))
+        print("    {} slots · {} aligned to a fact key by value match".format(
+            len(pack.slots), aligned))
+        for s2 in sorted(pack.slots, key=lambda x: x.position)[:20]:
+            print("      {:>2}. {:<28} -> {}".format(
+                s2.position, s2.label, s2.key or "(unaligned)"))
+    print("saved -> {}".format(out))
+    return 0
+
+
 def cmd_eval(args: argparse.Namespace) -> int:
     from .eval.harness import run_evaluation
     return run_evaluation(args.predicted, args.truth, args.out)
@@ -202,6 +242,13 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--port", type=int, default=8765)
     s.add_argument("-o", "--out", default="data/out")
     s.set_defaults(func=cmd_serve)
+
+    ls = sub.add_parser("learn-spec",
+                        help="learn category specs from labelled delivery rows")
+    ls.add_argument("truth", help="labelled delivery-format CSV/XLSX")
+    ls.add_argument("--sheet", default=None)
+    ls.add_argument("-o", "--out", default="", help="pack file to write")
+    ls.set_defaults(func=cmd_learn_spec)
 
     e = sub.add_parser("eval", help="score output against labelled ground truth")
     e.add_argument("predicted", help="delivery-format CSV produced by `run`")

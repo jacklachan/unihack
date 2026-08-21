@@ -1,0 +1,20 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "SQ",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "SQ"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "Gas Dryer",
+   "key": "application",
+   "label": "Application",
+   "uom": "",
+   "value": "Gas Dryer"
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Legacy",
+   "key": "series",
+   "label": "Series",
+   "uom": "",
+   "value": "Legacy"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "1.5",
+   "key": "width",
+   "label": "Width",
+   "uom": "in",
+   "value": "1.5"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "1.5",
+   "key": "height",
+   "label": "Height",
+   "uom": "in",
+   "value": "1.5"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "13'",
+   "key": "length",
+   "label": "Length",
+   "uom": "ft",
+   "value": "13"
+  }
+ ]
+}

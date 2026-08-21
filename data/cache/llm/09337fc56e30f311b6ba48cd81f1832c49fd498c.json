@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Laundry",
+   "key": "application",
+   "label": "Application",
+   "uom": "",
+   "value": "Laundry"
+  }
+ ]
+}

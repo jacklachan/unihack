@@ -1,0 +1,12 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Wall Light",
+   "key": "item_type",
+   "label": "Item Type",
+   "uom": "",
+   "value": "Wall Light"
+  }
+ ]
+}

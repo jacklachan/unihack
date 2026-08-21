@@ -1,0 +1,28 @@
+{
+ "facts": [
+  {
+   "confidence": 1.0,
+   "evidence": "Steel",
+   "key": "material",
+   "label": "Material",
+   "uom": "",
+   "value": "Steel"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "14\"",
+   "key": "diameter",
+   "label": "Diameter",
+   "uom": "in",
+   "value": "14"
+  },
+  {
+   "confidence": 1.0,
+   "evidence": "1\"",
+   "key": "thickness",
+   "label": "Thickness",
+   "uom": "in",
+   "value": "1"
+  }
+ ]
+}
