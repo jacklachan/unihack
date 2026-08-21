@@ -146,6 +146,17 @@ def build_invoice_desc(graph: ProductFactGraph, limit: int = 40) -> BudgetResult
         if not placed:
             dropped.append(f.key)
 
+    # A very short line identifies nothing. When facts ran out but budget did
+    # not, the part number is the most identifying thing left -- a till line
+    # reading "DRILL" tells a picker less than "DRILL DCD799B".
+    if len(" ".join(chosen)) < 18:
+        mpn = graph.get("mpn")
+        if mpn and str(mpn.value):
+            cand = chosen + [str(mpn.value).upper()]
+            if len(" ".join(cand)) <= limit:
+                chosen = cand
+                included.append("mpn")
+
     text = " ".join(chosen)[:limit].strip()
     return BudgetResult(text=text, included=included, dropped=dropped,
                         used=len(text), limit=limit, compressions=compressions)

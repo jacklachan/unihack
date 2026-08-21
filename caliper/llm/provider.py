@@ -354,7 +354,7 @@ def probe(provider: str, api_key: str = "") -> Dict[str, Any]:
         if exc.code in (401, 403):
             return {"ok": False, "error": "That key was rejected by {}.".format(provider)}
         if exc.code == 429:
-            daily = bool(re.search(r"per\s*day|TPD|RPD", detail, re.I))
+            daily = bool(re.search(r"per\s*day|\bTPD\b|\bRPD\b", detail, re.I))
             return {
                 "ok": False, "quota": True, "daily": daily, "model": model,
                 "resets_in_s": Limits.reset_tokens_s or Limits.reset_requests_s,
@@ -474,7 +474,7 @@ def get_provider(name: str = "", use_cache: bool = True, offline: bool = False,
                         # A per-minute limit is worth waiting out. A per-day
                         # limit is not -- nothing that happens in this run will
                         # clear it, so trip the breaker and degrade gracefully.
-                        if re.search(r"per\s*day|TPD|RPD", detail, re.I):
+                        if re.search(r"per\s*day|\bTPD\b|\bRPD\b", detail, re.I):
                             Stats.exhausted = True
                             Stats.exhausted_reason = (
                                 "Provider daily quota exhausted; continuing "

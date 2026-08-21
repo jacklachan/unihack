@@ -464,5 +464,11 @@ def residual_text(desc: str, facts: List[Fact]) -> str:
             cursor = e
     out.append(desc[cursor:])
     txt = " ".join(out)
-    txt = re.sub(r"\s*[-|,/]\s*", " ", txt)
+    # A spaced dash separates the product from a trailing qualifier
+    # ("Phone Holster - Clip-on"), and "w/" introduces an accessory. Both are
+    # boundaries the item-type resolver needs, so they survive; only the
+    # punctuation that carries no structure is flattened.
+    txt = re.sub(r"\s*\bw/\s*", " - ", txt)
+    txt = re.sub(r"\s*[|,/]\s*", " ", txt)
+    txt = re.sub(r"(?<!\s)-(?!\s)", " ", txt)
     return re.sub(r"\s+", " ", txt).strip()

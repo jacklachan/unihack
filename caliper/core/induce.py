@@ -106,6 +106,34 @@ def infer_item_type(fact_keys: Iterable[str]) -> Optional[Tuple[str, str, List[s
     return None
 
 
+#: Trailing tokens that are packaging suffixes, unit abbreviations or truncated
+#: codes -- never the name of a thing. Without this guard the fallback returns
+#: the last token of "Cafe Drip Coffee Maker MW" as the item type, and the
+#: invoice line for that product reads "MW".
+_NOT_ITEM_TYPE = {
+    "l", "s", "m", "xl", "xxl", "mw", "on", "off", "sq", "ea", "pk", "pc",
+    "bx", "cs", "ct", "in", "ft", "mm", "cm", "oz", "lb", "kg", "gal", "qt",
+    "v", "a", "w", "hp", "ga", "lm", "k", "ph", "rh", "lh", "od", "id",
+    "no", "nc", "na", "pr", "st", "gr", "wh", "bk", "clr", "ss", "sst",
+}
+
+
+def is_plausible_item_type(token: str) -> bool:
+    """Could this token name a product?
+
+    A one- or two-letter fragment, a unit abbreviation or a packaging suffix
+    cannot. Rejecting them is what stops an invoice line reading "L".
+    """
+    t = str(token or "").strip().lower()
+    if len(t) < 3:
+        return False
+    if t in _NOT_ITEM_TYPE or t in MODIFIER_ONLY or t in STOPWORDS:
+        return False
+    if not re.search(r"[aeiouy]", t):        # no vowel: a code, not a word
+        return False
+    return True
+
+
 #: Words that mark a brand/series rather than an item type.
 _BRANDISH = re.compile(r"^[A-Z0-9][A-Z0-9\-+.]*$")
 
@@ -166,9 +194,17 @@ class ItemTypeLexicon:
             self.counts[gram] += 1
 
     def finalise(self, min_count: int = 3) -> Dict[str, int]:
-        """Keep grams that either recur or were seeded."""
-        return {g: c for g, c in self.counts.items()
-                if c >= min_count or g in self.seed}
+        """Keep grams that either recur or were seeded.
+
+        Compound head nouns ("coffee maker", "wall tap") are rarer than bare
+        ones but more informative, so they clear a lower bar.
+        """
+        out = {}
+        for g, c in self.counts.items():
+            threshold = min_count if " " not in g else max(2, min_count - 1)
+            if c >= threshold or g in self.seed:
+                out[g] = c
+        return out
 
     # -- resolution --------------------------------------------------------
     def resolve(self, residual: str,
@@ -198,6 +234,8 @@ class ItemTypeLexicon:
                     continue
                 if gram in MODIFIER_ONLY:
                     continue
+                if not is_plausible_item_type(low[i + n - 1]):
+                    continue        # the head noun must be a real word
                 cand = (1 if gram in self.seed else 0, n, vocab.get(gram, 0), gram)
                 if best is None or cand[:3] > best[:3]:
                     best = cand
@@ -208,13 +246,38 @@ class ItemTypeLexicon:
                 conf += 0.05
             return _titlecase(gram), gram, min(0.95, conf)
 
-        tail = [t for t in low if t not in STOPWORDS and t not in MODIFIER_ONLY]
-        if not tail:
-            return None
-        head = tail[-1]
-        if _BRANDISH.match(toks[low.index(head)]) and len(head) <= 4:
-            return None
-        return _titlecase(head), head, 0.55
+        return self._fallback(residual, expanded, toks, low)
+
+    def _fallback(self, residual: str, expanded: str,
+                  toks: List[str], low: List[str]
+                  ) -> Optional[Tuple[str, str, float]]:
+        """No vocabulary hit: recover a head noun from the text itself.
+
+        Two things make the naive "last token" answer wrong on industrial
+        descriptions. Trailing qualifiers sit after a dash -- "Leather Phone
+        Holster - Clip-on" is a holster, not a clip. And head nouns are often
+        compounds: "Coffee Maker", "Wall Tap", "Phone Holster". So the segment
+        before a dash is preferred, and the token before the head is absorbed
+        when the two read as one noun.
+        """
+        segments = [seg for seg in re.split(r"\s[-–]\s|\(", expanded) if seg.strip()]
+        for seg in segments:                       # earliest segment first
+            st = [t.lower() for t in _tokens(seg)]
+            keep = [t for t in st if t not in STOPWORDS and t not in MODIFIER_ONLY
+                    and is_plausible_item_type(t)]
+            if not keep:
+                continue
+            head = keep[-1]
+            gram, matched = head, head
+            i = st.index(head) if head in st else -1
+            if i > 0:
+                prev = st[i - 1]
+                if (is_plausible_item_type(prev) and prev not in MODIFIER_ONLY
+                        and len(prev) >= 3):
+                    gram = "{} {}".format(prev, head)
+                    matched = gram
+            return _titlecase(gram), matched, 0.55
+        return None
 
 
 _ACRONYMS = {"led", "gfci", "pvc", "usb", "hvac", "nm", "so", "ud", "mc", "thhn"}

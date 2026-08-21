@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 8.201,
+  "elapsed_s": 5.282,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -25,56 +25,56 @@
     {
       "category_id": "UNCLASSIFIED",
       "label": "UNCLASSIFIED",
-      "n_rows": 271,
-      "coverage": 2.21,
+      "n_rows": 270,
+      "coverage": 2.215,
       "item_types": [
         [
           "Lineage",
           14
         ],
         [
-          "Premier Rib Xl",
-          8
+          "Festool",
+          7
         ],
         [
           "Abranet",
           5
         ],
         [
-          "LED St",
+          "Premier Rib",
           5
         ],
         [
-          "Starter Kit",
-          5
-        ],
-        [
-          "Gr Pro",
-          5
-        ],
-        [
-          "Arg W J",
+          "Lowe Arg",
           4
         ],
         [
-          "Smooth S E",
+          "Smooth",
           4
         ],
         [
-          "L",
-          4
-        ],
-        [
-          "Solar Shade Ro",
+          "Skylt Gry",
           3
         ],
         [
-          "LED Multi Cct",
+          "Rib Xl Charcoal",
+          3
+        ],
+        [
+          "Multi",
           3
         ],
         [
           "Tool",
           3
+        ],
+        [
+          "Hiolit",
+          2
+        ],
+        [
+          "Hopper Dla Screen",
+          2
         ]
       ],
       "title_order": [
@@ -97,7 +97,7 @@
           "key": "wattage",
           "label": "Wattage",
           "uom": "W",
-          "fill_rate": 0.4354,
+          "fill_rate": 0.437,
           "support": 118,
           "cardinality": 24,
           "filterable": true,
@@ -209,7 +209,7 @@
           "key": "color_temperature",
           "label": "Color Temperature",
           "uom": "K",
-          "fill_rate": 0.4096,
+          "fill_rate": 0.4111,
           "support": 111,
           "cardinality": 9,
           "filterable": true,
@@ -261,7 +261,7 @@
           "key": "base_type",
           "label": "Base Type",
           "uom": "",
-          "fill_rate": 0.3616,
+          "fill_rate": 0.363,
           "support": 98,
           "cardinality": 2,
           "filterable": true,
@@ -285,7 +285,7 @@
           "key": "pack_quantity",
           "label": "Pack Quantity",
           "uom": "",
-          "fill_rate": 0.2657,
+          "fill_rate": 0.2667,
           "support": 72,
           "cardinality": 7,
           "filterable": false,
@@ -967,27 +967,27 @@
       "coverage": 2.0,
       "item_types": [
         [
-          "Rail Kit",
-          6
+          "Speed Queen",
+          5
         ],
         [
-          "W Aluminum Balusters",
+          "Rd Aluminum Balusters",
           5
+        ],
+        [
+          "Composite Balusters",
+          4
         ],
         [
           "Black Aluminum Baluster",
           4
         ],
         [
-          "Fl Rail Kit",
-          3
-        ],
-        [
           "Railing",
           2
         ],
         [
-          "Trex",
+          "Rail Trex",
           1
         ]
       ],
@@ -1064,41 +1064,45 @@
     {
       "category_id": "Electrical>Lighting & Bulbs>Light Fixtures",
       "label": "Electrical>Lighting & Bulbs>Light Fixtures",
-      "n_rows": 17,
-      "coverage": 1.059,
+      "n_rows": 18,
+      "coverage": 1.056,
       "item_types": [
         [
           "Light",
-          11
+          10
         ],
         [
           "Down Light",
           6
+        ],
+        [
+          "LED Wrap Light",
+          2
         ]
       ],
       "title_order": [
         "size"
       ],
       "induced_from": [
+        "65-1222",
         "65-1224",
         "43671BKCLR",
         "65-771R3",
         "603571",
         "S11606",
         "S11828",
-        "S11848",
-        "S11849"
+        "S11848"
       ],
       "attributes": [
         {
           "key": "size",
           "label": "Size",
-          "uom": "in",
-          "fill_rate": 0.6471,
-          "support": 11,
-          "cardinality": 7,
+          "uom": "ft",
+          "fill_rate": 0.6667,
+          "support": 12,
+          "cardinality": 8,
           "filterable": false,
-          "discriminative": 0.9084,
+          "discriminative": 0.9172,
           "values": [
             [
               "4",
@@ -1107,6 +1111,10 @@
             [
               "8",
               2
+            ],
+            [
+              "1",
+              1
             ],
             [
               "3",
@@ -1147,7 +1155,7 @@
           16
         ],
         [
-          "Sconce",
+          "Wall Sconce",
           1
         ]
       ],
@@ -1171,28 +1179,36 @@
       "coverage": 0.5,
       "item_types": [
         [
+          "Coffee Maker",
+          5
+        ],
+        [
           "Beverage Center",
           3
         ],
         [
-          "Maker",
-          3
-        ],
-        [
-          "Mw",
-          3
-        ],
-        [
-          "Machine",
-          3
-        ],
-        [
-          "Espresso",
+          "Auto Espresso Machine",
           2
         ],
         [
-          "Toaster",
+          "Caf Toaster",
           2
+        ],
+        [
+          "Caf Espresso",
+          1
+        ],
+        [
+          "Espresso Machine",
+          1
+        ],
+        [
+          "Cafe Espresso",
+          1
+        ],
+        [
+          "Cafe Toaster",
+          1
         ]
       ],
       "title_order": [
@@ -1258,7 +1274,7 @@
           1
         ],
         [
-          "Oven",
+          "Toast Oven",
           1
         ]
       ],
@@ -1447,8 +1463,12 @@
           3
         ],
         [
+          "Bare Tool",
+          1
+        ],
+        [
           "Impact",
-          2
+          1
         ]
       ],
       "title_order": [
@@ -1848,11 +1868,11 @@
           9
         ],
         [
-          "Guard",
+          "Henry Eaveguard",
           1
         ],
         [
-          "Sq",
+          "Mat",
           1
         ]
       ],
@@ -1919,11 +1939,11 @@
           3
         ],
         [
-          "Orange",
+          "Line Brd Orange",
           3
         ],
         [
-          "Brd",
+          "Mason Line",
           3
         ],
         [
@@ -2061,12 +2081,16 @@
       "coverage": 1.727,
       "item_types": [
         [
-          "Circ Saw",
-          4
+          "Saw",
+          3
         ],
         [
-          "Saw",
-          4
+          "Circ Saw",
+          2
+        ],
+        [
+          "Ionic Circ Saw",
+          2
         ],
         [
           "Circular Saw",
@@ -2077,7 +2101,11 @@
           1
         ],
         [
-          "Jigsaw",
+          "Grip Jigsaw",
+          1
+        ],
+        [
+          "Bare Tool",
           1
         ]
       ],
@@ -2185,7 +2213,7 @@
       "coverage": 4.0,
       "item_types": [
         [
-          "Film Cubitron Ii",
+          "Stikit Film",
           6
         ],
         [
@@ -2499,27 +2527,23 @@
       "coverage": 0.5,
       "item_types": [
         [
+          "Cross Line",
+          5
+        ],
+        [
           "Square",
           2
         ],
         [
-          "Spot",
-          2
-        ],
-        [
-          "Laser",
-          2
-        ],
-        [
-          "Line",
-          2
-        ],
-        [
-          "Leveling",
+          "Dewalt Laser",
           1
         ],
         [
-          "Metric",
+          "Line Laser",
+          1
+        ],
+        [
+          "Rafter",
           1
         ]
       ],
@@ -2668,7 +2692,7 @@
           9
         ],
         [
-          "Protector",
+          "Hearing Protector",
           1
         ]
       ],
@@ -2882,8 +2906,12 @@
           5
         ],
         [
+          "Mb Anisten Fan",
+          2
+        ],
+        [
           "Anisten Fan",
-          4
+          2
         ]
       ],
       "title_order": [
@@ -3051,7 +3079,7 @@
           7
         ],
         [
-          "Spindle",
+          "Shaper Spindle",
           1
         ],
         [
@@ -3276,15 +3304,15 @@
       "coverage": 1.375,
       "item_types": [
         [
-          "Powerpack",
+          "Battery Max Powerpack",
           2
         ],
         [
-          "Ah",
+          "Kreg",
           2
         ],
         [
-          "Mounts",
+          "Dewalt",
           1
         ],
         [
@@ -3519,15 +3547,23 @@
       "coverage": 0.875,
       "item_types": [
         [
-          "Dust Extractor Ct",
-          5
+          "Dust Extractor",
+          3
         ],
         [
-          "Blower",
+          "Hepa",
           2
         ],
         [
           "Vacuum",
+          1
+        ],
+        [
+          "Precision Blower",
+          1
+        ],
+        [
+          "Blower",
           1
         ]
       ],
@@ -3626,15 +3662,15 @@
       "coverage": 1.625,
       "item_types": [
         [
-          "Hoodie Kit L",
+          "Milwaukee",
           3
         ],
         [
-          "Hoodie Kit M",
+          "Milwaukee Gray",
           3
         ],
         [
-          "Hoodie",
+          "Milwaukee Womens",
           2
         ]
       ],
@@ -3822,11 +3858,11 @@
           3
         ],
         [
-          "Wrench Set",
+          "Milwaukee Packout",
           3
         ],
         [
-          "Mechanics",
+          "Dewalt Drive",
           2
         ]
       ],
@@ -4063,8 +4099,12 @@
           4
         ],
         [
-          "Dimmer",
+          "Lutron Dimmer",
           2
+        ],
+        [
+          "Dimmer",
+          1
         ]
       ],
       "title_order": [
@@ -4130,7 +4170,11 @@
       "item_types": [
         [
           "Outlet",
-          7
+          5
+        ],
+        [
+          "Kw GFCI Outlet",
+          2
         ]
       ],
       "title_order": [
@@ -4196,12 +4240,16 @@
       "coverage": 1.833,
       "item_types": [
         [
-          "Trimmer",
-          4
+          "Hedge Trimmer",
+          3
         ],
         [
           "String Trimmer",
           2
+        ],
+        [
+          "Trimmer",
+          1
         ]
       ],
       "title_order": [
@@ -4299,12 +4347,16 @@
       "coverage": 2.333,
       "item_types": [
         [
-          "Grinder",
+          "Die Grinder",
           3
         ],
         [
-          "Die Grinder",
-          3
+          "Angle Grinder",
+          2
+        ],
+        [
+          "Grinder",
+          1
         ]
       ],
       "title_order": [
@@ -4679,11 +4731,15 @@
           2
         ],
         [
-          "Rachet",
-          2
+          "Dewalt Rachet",
+          1
         ],
         [
-          "Anvil",
+          "Fuel Rachet",
+          1
+        ],
+        [
+          "Head Rachet",
           1
         ]
       ],
@@ -5108,16 +5164,12 @@
       "coverage": 0.0,
       "item_types": [
         [
-          "Alarm",
+          "Smoke Co Alarm",
           2
         ],
         [
-          "Detector",
-          1
-        ],
-        [
-          "W",
-          1
+          "Voltage Detector",
+          2
         ]
       ],
       "title_order": [],
@@ -5232,11 +5284,11 @@
       "coverage": 0.667,
       "item_types": [
         [
-          "Hanger",
+          "Oct",
           2
         ],
         [
-          "Bracket",
+          "Adjust Hanger",
           1
         ]
       ],
@@ -5356,6 +5408,10 @@
         [
           "Bandsaw",
           2
+        ],
+        [
+          "Jet Bandsaw",
+          1
         ]
       ],
       "title_order": [
@@ -5520,33 +5576,33 @@
       ]
     }
   ],
-  "fill_rate": 0.103,
-  "mean_columns_filled": 25.95,
+  "fill_rate": 0.1018,
+  "mean_columns_filled": 25.66,
   "status_counts": {
-    "ready": 747,
-    "blocked": 222,
-    "needs_review": 31
+    "ready": 751,
+    "blocked": 220,
+    "needs_review": 29
   },
   "flag_counts": {
-    "classification_abstained": 178,
+    "classification_abstained": 171,
     "brand_unresolved": 52,
     "family_anomaly": 2,
-    "item_type_unresolved": 17,
+    "item_type_unresolved": 19,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 336,
-    "CG-TAX-01": 160,
+    "CG-MOB-01": 343,
+    "CG-TAX-01": 158,
     "CG-BRD-01": 90
   },
   "brand_resolution": 0.91,
-  "classification_rate": 0.84,
+  "classification_rate": 0.842,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.664,
+    "MOBILE_DESC": 0.657,
     "SHORT_DESC": 1.0
   },
-  "family_inherited": 77,
+  "family_inherited": 50,
   "family_anomalies": 2,
   "llm_invoked": 0,
   "llm_served": 0,
@@ -5561,27 +5617,33 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 589,
+    "edges": 571,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
       "variant_of": 370,
-      "same_series": 195
+      "same_series": 177
     },
-    "products_connected": 611,
-    "coverage": 0.611,
+    "products_connected": 606,
+    "coverage": 0.606,
     "most_connected": [
       {
-        "index": 431,
-        "part_number": "801274",
-        "item_type": "retro",
-        "degree": 24
+        "index": 160,
+        "part_number": "543140016",
+        "item_type": "decking",
+        "degree": 25
       },
       {
         "index": 370,
         "part_number": "45297BK",
         "item_type": "wall light",
         "degree": 18
+      },
+      {
+        "index": 123,
+        "part_number": "AGB15512CS",
+        "item_type": "decking",
+        "degree": 16
       },
       {
         "index": 29,
@@ -5605,12 +5667,6 @@
         "index": 490,
         "part_number": "588533",
         "item_type": "light bulb",
-        "degree": 12
-      },
-      {
-        "index": 452,
-        "part_number": "391227",
-        "item_type": "light bulb",
         "degree": 11
       },
       {
@@ -5620,16 +5676,16 @@
         "degree": 10
       },
       {
-        "index": 457,
-        "part_number": "S3709",
+        "index": 452,
+        "part_number": "391227",
         "item_type": "light bulb",
         "degree": 10
       },
       {
-        "index": 971,
-        "part_number": "48-59-1804",
-        "item_type": "charger",
-        "degree": 9
+        "index": 1,
+        "part_number": "3MABR-7100075678",
+        "item_type": "stikit film",
+        "degree": 10
       }
     ]
   },

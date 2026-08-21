@@ -29,8 +29,9 @@ from .core.compose import (build_invoice_desc, build_long_desc, build_mobile_des
 from .core.facts import Evidence, Fact, ProductFactGraph
 from .core.identity import (BrandRegistry, detect_mismatch, identity_facts,
                             resolve_identity)
-from .core.induce import (CategorySpec, ItemTypeLexicon, build_lexicon,
-                          induce_spec, infer_item_type, strip_terms)
+from .core.induce import (MODIFIER_ONLY, CategorySpec, ItemTypeLexicon,
+                          build_lexicon, induce_spec, infer_item_type,
+                          strip_terms)
 from .core.parse import (expand_abbreviations, parse_description, residual_text,
                          strip_mpn_echo)
 from .core.corrections import CorrectionStore
@@ -74,7 +75,15 @@ def detect_series(residual: str, item_type: str, brand: str,
         if not words:
             continue
         cand = " ".join(words)
-        if len(cand) < 3 or cand.lower() in _SERIES_STOP:
+        low = cand.lower()
+        if len(cand) < 3 or low in _SERIES_STOP or low in MODIFIER_ONLY:
+            continue
+        # A series is not the item type restated, nor the brand restated.
+        # "LG Fridge ... Refrigerator" and "Edge Eyewear Edge ..." both came
+        # from skipping this check.
+        if item_type and (low in item_type.lower() or item_type.lower() in low):
+            continue
+        if brand and (low in brand.lower() or brand.lower() in low):
             continue
         freq = known.get(cand.lower(), 0) if known else 0
         # A real collection name recurs across the catalogue or is multi-word.

@@ -52,6 +52,26 @@ def fact(key, value, uom="", method="rule", conf=0.9, evidence=True):
 
 
 # ---------------------------------------------------------------------------
+print("\nsource integrity")
+# A shell heredoc can turn \b inside a regex into a literal backspace byte.
+# The pattern then never matches, and no amount of reading the file reveals it
+# because a terminal does not draw the character. Two live regexes in this
+# project were broken exactly that way -- `residual_text` never split on "w/",
+# and the provider's daily-quota detector never matched \bTPD\b.
+import subprocess as _sp
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+_files = _sp.run(["git", "ls-files", "*.py"], capture_output=True, text=True,
+                 cwd=_root).stdout.split()
+_ctrl = []
+for _f in _files:
+    _p = os.path.join(_root, _f)
+    if os.path.exists(_p):
+        _ctrl += [_f for _b in open(_p, "rb").read()
+                  if _b < 0x20 and _b not in (9, 10, 13)]
+check_that("no control characters in any source file", not _ctrl,
+           "{} byte(s) in {}".format(len(_ctrl), sorted(set(_ctrl))))
+
+# ---------------------------------------------------------------------------
 print("\nschema")
 check_that("delivery header is exactly 252 columns", len(DELIVERY_COLUMNS) == 252,
            "got {}".format(len(DELIVERY_COLUMNS)))
@@ -91,6 +111,11 @@ check_that("contradiction lowers confidence", g3.get("finish").confidence < 0.9)
 print("\ndeterministic parsing")
 d, _ = strip_mpn_echo("49-94-1940 Milw 14\"x1/8\"x1\" Cut Off Disc", "49-94-1940")
 check_that("the part-number echo is stripped", not d.startswith("49-94-1940"))
+
+from caliper.core.parse import residual_text
+_r = residual_text(*(lambda x: (x, parse_description(x)))(
+    strip_mpn_echo("PBUC013 15A Wall Tap w/USB", "PBUC013")[0]))
+check_that("'w/' survives as a qualifier boundary", " - " in _r, repr(_r))
 
 f = {x.key: x.display for x in parse_description(d)}
 check_that("three-part abrasive chain splits correctly",
