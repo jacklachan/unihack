@@ -9,8 +9,6 @@
 483,576389,needs_review,0.9076,F-25f1ce9c,classification_abstained,review,"No taxonomy rule matched item type '576389 100/200/300 Led Med 27k'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",65,6.007
 574,571513,needs_review,0.9076,F-25f1ce9c,item_type_unresolved,review,No item type could be resolved from '40 60 100 Led'.,65,6.007
 574,571513,needs_review,0.9076,F-25f1ce9c,classification_abstained,review,"No taxonomy rule matched item type '571513 40/60/100 Led Med 27k'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",65,6.007
-530,576009,needs_review,0.8332,F-01a2dd70,classification_abstained,review,"No taxonomy rule matched item type 'Par'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",5,0.834
-536,576017,needs_review,0.8332,F-01a2dd70,classification_abstained,review,"No taxonomy rule matched item type 'Par'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",5,0.834
 315,1513577,blocked,0.82,F-a4a9d932,CG-MOB-01,info,MOBILE_DESC is 49 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,4,0.72
 315,1513577,blocked,0.82,F-a4a9d932,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,4,0.72
 315,1513577,blocked,0.82,F-a4a9d932,CG-BRD-01,error,No approved brand resolved.,4,0.72
@@ -58,30 +56,30 @@
 731,MWUG36010625,blocked,0.8664,F-cd28832f,CG-MOB-01,info,MOBILE_DESC is 46 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,4,0.534
 731,MWUG36010625,blocked,0.8664,F-cd28832f,CG-BRD-01,error,No approved brand resolved.,4,0.534
 731,MWUG36010625,blocked,0.8664,F-cd28832f,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,4,0.534
-898,578800,blocked,0.9131,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 44 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.521
-898,578800,blocked,0.9131,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.521
-898,578800,blocked,0.9131,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M GR PRO 10'.,6,0.521
-898,578800,blocked,0.9131,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578800 Festool 80x133 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.521
-899,578801,blocked,0.9131,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 44 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.521
-899,578801,blocked,0.9131,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.521
-899,578801,blocked,0.9131,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F GR PRO 10'.,6,0.521
-899,578801,blocked,0.9131,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578801 Festool 80x133 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.521
-900,578802,blocked,0.9131,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 44 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.521
-900,578802,blocked,0.9131,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.521
-900,578802,blocked,0.9131,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S GR PRO 10'.,6,0.521
-900,578802,blocked,0.9131,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578802 Festool 80x133 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.521
-901,578808,blocked,0.9131,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 41 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.521
-901,578808,blocked,0.9131,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.521
-901,578808,blocked,0.9131,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M GR PRO 10'.,6,0.521
-901,578808,blocked,0.9131,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578808 Festool 3x4 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.521
-902,578809,blocked,0.9131,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 41 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.521
-902,578809,blocked,0.9131,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.521
-902,578809,blocked,0.9131,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F GR PRO 10'.,6,0.521
-902,578809,blocked,0.9131,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578809 Festool 3x4 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.521
-903,578810,blocked,0.9131,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 41 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.521
-903,578810,blocked,0.9131,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.521
-903,578810,blocked,0.9131,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S GR PRO 10'.,6,0.521
-903,578810,blocked,0.9131,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578810 Festool 3x4 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.521
+898,578800,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
+898,578800,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
+898,578800,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M PRO 10'.,6,0.513
+898,578800,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578800 Festool 80x133 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
+899,578801,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
+899,578801,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
+899,578801,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F PRO 10'.,6,0.513
+899,578801,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578801 Festool 80x133 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
+900,578802,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
+900,578802,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
+900,578802,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S PRO 10'.,6,0.513
+900,578802,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578802 Festool 80x133 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
+901,578808,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
+901,578808,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
+901,578808,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'M PRO 10'.,6,0.513
+901,578808,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578808 Festool 3x4 M GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
+902,578809,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
+902,578809,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
+902,578809,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'F PRO 10'.,6,0.513
+902,578809,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578809 Festool 3x4 F GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
+903,578810,blocked,0.9145,F-a3344513,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,6,0.513
+903,578810,blocked,0.9145,F-a3344513,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,6,0.513
+903,578810,blocked,0.9145,F-a3344513,item_type_unresolved,review,No item type could be resolved from 'S PRO 10'.,6,0.513
+903,578810,blocked,0.9145,F-a3344513,classification_abstained,review,"No taxonomy rule matched item type '578810 Festool 3x4 S GR PRO/10'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",6,0.513
 713,FE-EFX-6L,blocked,0.7456,F-d130fe67,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.509
 713,FE-EFX-6L,blocked,0.7456,F-d130fe67,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",2,0.509
 713,FE-EFX-6L,blocked,0.7456,F-d130fe67,classification_abstained,review,"No taxonomy rule matched item type 'Lith Fire Extinguisher'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.509
@@ -266,10 +264,6 @@
 97,38-E,needs_review,0.7948,F-fca69be4,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
 98,59-J,needs_review,0.7948,F-049a97e7,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
 99,44-A,needs_review,0.7948,F-fa78560f,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
-889,924422,blocked,0.795,F-ac356f65,CG-MOB-01,info,MOBILE_DESC is 51 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.205
-889,924422,blocked,0.795,F-ac356f65,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.205
-889,924422,blocked,0.795,F-ac356f65,CG-BRD-01,error,No approved brand resolved.,1,0.205
-889,924422,blocked,0.795,F-ac356f65,classification_abstained,review,"No taxonomy rule matched item type 'Mafell Carpentry'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.205
 984,4000-2/32,blocked,0.795,F-c90ed591,CG-MOB-01,info,MOBILE_DESC is 37 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.205
 984,4000-2/32,blocked,0.795,F-c90ed591,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.205
 984,4000-2/32,blocked,0.795,F-c90ed591,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.205
@@ -318,9 +312,6 @@
 700,48-22-3301,blocked,0.8206,F-b0700936,CG-MOB-01,info,MOBILE_DESC is 55 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.179
 700,48-22-3301,blocked,0.8206,F-b0700936,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.179
 700,48-22-3301,blocked,0.8206,F-b0700936,classification_abstained,review,"No taxonomy rule matched item type 'Mechanical Pencil'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.179
-906,578806,blocked,0.8206,F-1d664ce3,CG-MOB-01,info,MOBILE_DESC is 35 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.179
-906,578806,blocked,0.8206,F-1d664ce3,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.179
-906,578806,blocked,0.8206,F-1d664ce3,classification_abstained,review,"No taxonomy rule matched item type 'Delta'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.179
 587,NEB-FLT-0053,needs_review,0.8216,F-ae5eecc9,CG-MOB-01,info,MOBILE_DESC is 57 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.178
 587,NEB-FLT-0053,needs_review,0.8216,F-ae5eecc9,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.178
 961,BL1850BDC1,blocked,0.9131,F-c310ddb0,CG-MOB-01,info,MOBILE_DESC is 51 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.174
@@ -362,8 +353,8 @@
 985,3100-1/15,blocked,0.8367,F-4070b6c3,classification_abstained,review,"No taxonomy rule matched item type 'Rotary Tool'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.163
 299,27233,needs_review,0.8378,F-c7cf9669,CG-MOB-01,info,MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.162
 299,27233,needs_review,0.8378,F-c7cf9669,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.162
-414,603571,needs_review,0.8392,F-ad09cfec,CG-MOB-01,info,MOBILE_DESC is 39 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.161
-414,603571,needs_review,0.8392,F-ad09cfec,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.161
+414,603571,needs_review,0.8393,F-ad09cfec,CG-MOB-01,info,MOBILE_DESC is 39 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.161
+414,603571,needs_review,0.8393,F-ad09cfec,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.161
 484,564492,blocked,0.9193,F-8bd6e30c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.161
 484,564492,blocked,0.9193,F-8bd6e30c,classification_abstained,review,"No taxonomy rule matched item type 'Adjustable Base'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.161
 573,564500,blocked,0.9193,F-8bd6e30c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.161
@@ -385,9 +376,9 @@
 890,DCW620B,blocked,0.8405,F-8fd69a1f,CG-MOB-01,info,MOBILE_DESC is 52 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
 890,DCW620B,blocked,0.8405,F-8fd69a1f,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
 890,DCW620B,blocked,0.8405,F-8fd69a1f,classification_abstained,review,"No taxonomy rule matched item type 'Plunge'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
-905,578192,blocked,0.8405,F-ab9945b8,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
-905,578192,blocked,0.8405,F-ab9945b8,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
-905,578192,blocked,0.8405,F-ab9945b8,classification_abstained,review,"No taxonomy rule matched item type 'Sys'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
+906,578806,blocked,0.8405,F-1d664ce3,CG-MOB-01,info,MOBILE_DESC is 41 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
+906,578806,blocked,0.8405,F-1d664ce3,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
+906,578806,blocked,0.8405,F-1d664ce3,classification_abstained,review,"No taxonomy rule matched item type 'Delta'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
 912,230.312.08,blocked,0.8405,F-9a2774a2,CG-MOB-01,info,MOBILE_DESC is 53 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
 912,230.312.08,blocked,0.8405,F-9a2774a2,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
 912,230.312.08,blocked,0.8405,F-9a2774a2,classification_abstained,review,"No taxonomy rule matched item type 'Locked Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
@@ -422,6 +413,10 @@
 350,A410RCAR,needs_review,0.8504,F-1666145d,CG-MOB-01,info,MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.15
 350,A410RCAR,needs_review,0.8504,F-1666145d,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.15
 694,156436WHT,needs_review,0.8509,F-24cbf986,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",1,0.149
+889,924422,blocked,0.8514,F-ac356f65,CG-MOB-01,info,MOBILE_DESC is 40 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.149
+889,924422,blocked,0.8514,F-ac356f65,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.149
+889,924422,blocked,0.8514,F-ac356f65,CG-BRD-01,error,No approved brand resolved.,1,0.149
+889,924422,blocked,0.8514,F-ac356f65,classification_abstained,review,"No taxonomy rule matched item type 'Machine'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.149
 618,R50-0SL13-000,blocked,0.9258,F-e7c4721f,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,2,0.148
 618,R50-0SL13-000,blocked,0.9258,F-e7c4721f,classification_abstained,review,"No taxonomy rule matched item type 'G Wallplate Blank'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",2,0.148
 95,LNL65301,blocked,0.8535,F-6bf2d236,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.147
@@ -431,6 +426,9 @@
 864,2761-22,blocked,0.8537,F-d18c9bf9,CG-MOB-01,info,MOBILE_DESC is 50 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.146
 864,2761-22,blocked,0.8537,F-d18c9bf9,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.146
 864,2761-22,blocked,0.8537,F-d18c9bf9,classification_abstained,review,"No taxonomy rule matched item type 'Surge'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.146
+905,578192,blocked,0.8537,F-ab9945b8,CG-MOB-01,info,MOBILE_DESC is 44 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.146
+905,578192,blocked,0.8537,F-ab9945b8,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.146
+905,578192,blocked,0.8537,F-ab9945b8,classification_abstained,review,"No taxonomy rule matched item type 'Sys'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.146
 612,R20-05378-P00,blocked,0.8552,F-97ae6b5a,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.145
 612,R20-05378-P00,blocked,0.8552,F-97ae6b5a,classification_abstained,review,"No taxonomy rule matched item type 'Welder Outet'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.145
 773,DCF6202,blocked,0.8552,F-32463f8f,CG-MOB-01,info,MOBILE_DESC is 55 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.145
@@ -445,8 +443,6 @@
 298,925219,blocked,0.8627,F-514a7588,CG-MOB-01,info,MOBILE_DESC is 41 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.137
 298,925219,blocked,0.8627,F-514a7588,CG-BRD-01,error,No approved brand resolved.,1,0.137
 298,925219,blocked,0.8627,F-514a7588,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.137
-471,S21363,blocked,0.866,F-c59d7f88,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.134
-471,S21363,blocked,0.866,F-c59d7f88,classification_abstained,review,"No taxonomy rule matched item type 'Edison'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.134
 297,SPB-44BPL,blocked,0.8671,F-656e4289,CG-BRD-01,error,No approved brand resolved.,1,0.133
 512,586859,blocked,0.8668,F-9ca2841c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.133
 512,586859,blocked,0.8668,F-9ca2841c,classification_abstained,review,"No taxonomy rule matched item type 'Back'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.133
@@ -468,6 +464,8 @@
 703,TSDKAP218-G2,blocked,0.8712,F-d6859dd9,classification_abstained,review,"No taxonomy rule matched item type 'Frame Polarized'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.129
 279,73018066,blocked,0.8734,F-dfcd439c,CG-MOB-01,info,MOBILE_DESC is 51 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.127
 279,73018066,blocked,0.8734,F-dfcd439c,CG-BRD-01,error,No approved brand resolved.,1,0.127
+471,S21363,blocked,0.8728,F-c59d7f88,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.127
+471,S21363,blocked,0.8728,F-c59d7f88,classification_abstained,review,"No taxonomy rule matched item type 'Edison'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.127
 472,S11445,blocked,0.8728,F-65f3f8ce,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.127
 472,S11445,blocked,0.8728,F-65f3f8ce,classification_abstained,review,"No taxonomy rule matched item type 'Motion'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.127
 606,R12-AGTR1-0KW,blocked,0.8768,F-508f752d,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.123
@@ -479,22 +477,22 @@
 796,IWHT48441RC,blocked,0.8768,F-6b268216,classification_abstained,review,"No taxonomy rule matched item type 'Chalk Reel'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.123
 1000,T27417,needs_review,0.8767,F-6ff0b102,CG-MOB-01,info,MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.123
 1000,T27417,needs_review,0.8767,F-6ff0b102,brand_manufacturer_mismatch,review,"Supplied manufacturer 'Woodstock Intl (3658)' does not correspond to the approved manufacturer 'Grizzly Industrial, Inc.' for brand Grizzly®.",1,0.123
-625,C7CDABS2RS3,blocked,0.8782,F-fe451cbe,CG-MOB-01,info,MOBILE_DESC is 25 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.122
-625,C7CDABS2RS3,blocked,0.8782,F-fe451cbe,CG-BRD-01,error,No approved brand resolved.,1,0.122
-625,C7CDABS2RS3,blocked,0.8782,F-fe451cbe,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.122
-658,C9TMA2SP2PS3,blocked,0.8785,F-03d4a70a,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.122
-658,C9TMA2SP2PS3,blocked,0.8785,F-03d4a70a,CG-BRD-01,error,No approved brand resolved.,1,0.122
-658,C9TMA2SP2PS3,blocked,0.8785,F-03d4a70a,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.122
 455,S3539,blocked,0.8801,F-dbed7040,CG-MOB-01,info,MOBILE_DESC is 57 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.12
 455,S3539,blocked,0.8801,F-dbed7040,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.12
 455,S3539,blocked,0.8801,F-dbed7040,classification_abstained,review,"No taxonomy rule matched item type 'Pin'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.12
 594,12-4 SO,blocked,0.8805,F-d97a03e3,CG-MOB-01,info,MOBILE_DESC is 17 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.12
 594,12-4 SO,blocked,0.8805,F-d97a03e3,CG-BRD-01,error,No approved brand resolved.,1,0.12
+658,C9TMA2SP2PS3,blocked,0.8805,F-03d4a70a,CG-MOB-01,info,MOBILE_DESC is 38 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.12
+658,C9TMA2SP2PS3,blocked,0.8805,F-03d4a70a,CG-BRD-01,error,No approved brand resolved.,1,0.12
+658,C9TMA2SP2PS3,blocked,0.8805,F-03d4a70a,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.12
 620,XOU2470BCGS,blocked,0.8807,F-44e4e63e,CG-MOB-01,info,MOBILE_DESC is 45 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.119
 620,XOU2470BCGS,blocked,0.8807,F-44e4e63e,CG-BRD-01,error,No approved brand resolved.,1,0.119
 620,XOU2470BCGS,blocked,0.8807,F-44e4e63e,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.119
 948,G0771Z,needs_review,0.881,F-0f3008c0,CG-MOB-01,info,MOBILE_DESC is 58 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.119
 948,G0771Z,needs_review,0.881,F-0f3008c0,brand_manufacturer_mismatch,review,"Supplied manufacturer 'Woodstock Intl (3658)' does not correspond to the approved manufacturer 'Grizzly Industrial, Inc.' for brand Grizzly®.",1,0.119
+625,C7CDABS2RS3,blocked,0.8822,F-fe451cbe,CG-MOB-01,info,MOBILE_DESC is 25 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.118
+625,C7CDABS2RS3,blocked,0.8822,F-fe451cbe,CG-BRD-01,error,No approved brand resolved.,1,0.118
+625,C7CDABS2RS3,blocked,0.8822,F-fe451cbe,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.118
 673,K527APBXR,blocked,0.8821,F-64763435,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.118
 673,K527APBXR,blocked,0.8821,F-64763435,item_type_unresolved,review,No item type could be resolved from 'SM BB -'.,1,0.118
 673,K527APBXR,blocked,0.8821,F-64763435,classification_abstained,review,"No taxonomy rule matched item type 'K527APBXR Senco .131x3"" SM BB - 500CT'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.118
@@ -553,13 +551,13 @@
 897,9A-129-120,blocked,0.9034,F-c6817998,CG-MOB-01,info,MOBILE_DESC is 59 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.097
 897,9A-129-120,blocked,0.9034,F-c6817998,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.097
 897,9A-129-120,blocked,0.9034,F-c6817998,classification_abstained,review,"No taxonomy rule matched item type 'Abranet'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.097
-904,578811,blocked,0.9145,F-65afe07c,CG-MOB-01,info,MOBILE_DESC is 46 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.086
-904,578811,blocked,0.9145,F-65afe07c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.086
-904,578811,blocked,0.9145,F-65afe07c,item_type_unresolved,review,No item type could be resolved from 'GR PRO 10-'.,1,0.086
-904,578811,blocked,0.9145,F-65afe07c,classification_abstained,review,"No taxonomy rule matched item type '578811 Festool 3x4 GR PRO/10-Set'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.086
 960,DCB606C,blocked,0.9145,F-05a5616d,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.086
 960,DCB606C,blocked,0.9145,F-05a5616d,item_type_unresolved,review,No item type could be resolved from ''.,1,0.086
 960,DCB606C,blocked,0.9145,F-05a5616d,classification_abstained,review,"No taxonomy rule matched item type 'DCB606C Dewalt Flexvolt Starter Kit'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.086
+904,578811,blocked,0.9154,F-65afe07c,CG-MOB-01,info,MOBILE_DESC is 52 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.085
+904,578811,blocked,0.9154,F-65afe07c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.085
+904,578811,blocked,0.9154,F-65afe07c,item_type_unresolved,review,No item type could be resolved from 'PRO 10-'.,1,0.085
+904,578811,blocked,0.9154,F-65afe07c,classification_abstained,review,"No taxonomy rule matched item type '578811 Festool 3x4 GR PRO/10-Set'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.085
 983,DCK2101QQ2,blocked,0.9154,F-9597072c,CG-MOB-01,info,MOBILE_DESC is 55 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.085
 983,DCK2101QQ2,blocked,0.9154,F-9597072c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.085
 983,DCK2101QQ2,blocked,0.9154,F-9597072c,item_type_unresolved,review,No item type could be resolved from ''.,1,0.085

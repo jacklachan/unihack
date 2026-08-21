@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 8.592,
+  "elapsed_s": 8.02,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -26,7 +26,7 @@
       "category_id": "UNCLASSIFIED",
       "label": "UNCLASSIFIED",
       "n_rows": 239,
-      "coverage": 2.402,
+      "coverage": 2.481,
       "item_types": [
         [
           "Lineage",
@@ -256,6 +256,102 @@
           "synonyms": {},
           "rule_ids": [
             "LMP-K-01"
+          ]
+        },
+        {
+          "key": "bulb_shape",
+          "label": "Bulb Shape",
+          "uom": "",
+          "fill_rate": 0.2092,
+          "support": 50,
+          "cardinality": 20,
+          "filterable": false,
+          "discriminative": 0.8587,
+          "values": [
+            [
+              "A19",
+              13
+            ],
+            [
+              "ST19",
+              6
+            ],
+            [
+              "BR30",
+              6
+            ],
+            [
+              "T9",
+              3
+            ],
+            [
+              "PAR38",
+              3
+            ],
+            [
+              "A15",
+              2
+            ],
+            [
+              "R20",
+              2
+            ],
+            [
+              "BR40",
+              2
+            ],
+            [
+              "PAR30",
+              2
+            ],
+            [
+              "T12",
+              1
+            ],
+            [
+              "T4",
+              1
+            ],
+            [
+              "MR16",
+              1
+            ],
+            [
+              "A23",
+              1
+            ],
+            [
+              "PAR16",
+              1
+            ],
+            [
+              "A21",
+              1
+            ],
+            [
+              "BA11",
+              1
+            ],
+            [
+              "G25",
+              1
+            ],
+            [
+              "T8",
+              1
+            ],
+            [
+              "PAR20",
+              1
+            ],
+            [
+              "T50",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-SHP-01"
           ]
         },
         {
@@ -1376,7 +1472,7 @@
       "category_id": "Appliances & Consumer Electronics>Small Appliances>Countertop Appliances",
       "label": "Appliances & Consumer Electronics>Small Appliances>Countertop Appliances",
       "n_rows": 16,
-      "coverage": 0.5,
+      "coverage": 0.75,
       "item_types": [
         [
           "Coffee Maker",
@@ -1425,15 +1521,19 @@
           "key": "finish",
           "label": "Color",
           "uom": "",
-          "fill_rate": 0.5,
-          "support": 8,
-          "cardinality": 3,
+          "fill_rate": 0.75,
+          "support": 12,
+          "cardinality": 4,
           "filterable": true,
-          "discriminative": 0.8194,
+          "discriminative": 0.8921,
           "values": [
             [
               "Stainless Steel",
               5
+            ],
+            [
+              "Matte Black",
+              4
             ],
             [
               "White",
@@ -1918,7 +2018,7 @@
       "category_id": "Electrical>Lighting & Bulbs>Ceiling Lighting",
       "label": "Electrical>Lighting & Bulbs>Ceiling Lighting",
       "n_rows": 13,
-      "coverage": 1.0,
+      "coverage": 1.154,
       "item_types": [
         [
           "Ceiling Light",
@@ -1984,12 +2084,16 @@
           "key": "finish",
           "label": "Color",
           "uom": "",
-          "fill_rate": 0.3077,
-          "support": 4,
-          "cardinality": 2,
-          "filterable": false,
+          "fill_rate": 0.4615,
+          "support": 6,
+          "cardinality": 3,
+          "filterable": true,
           "discriminative": 1.0,
           "values": [
+            [
+              "Brushed Nickel",
+              2
+            ],
             [
               "White",
               2
@@ -3152,19 +3256,15 @@
       "category_id": "Electrical>Fans & Ventilation>Ceiling Fans",
       "label": "Electrical>Fans & Ventilation>Ceiling Fans",
       "n_rows": 9,
-      "coverage": 1.333,
+      "coverage": 1.778,
       "item_types": [
         [
           "Fan",
           5
         ],
         [
-          "Mb Anisten Fan",
-          2
-        ],
-        [
           "Anisten Fan",
-          2
+          4
         ]
       ],
       "title_order": [
@@ -3210,12 +3310,16 @@
           "key": "finish",
           "label": "Color",
           "uom": "",
-          "fill_rate": 0.3333,
-          "support": 3,
-          "cardinality": 1,
-          "filterable": false,
-          "discriminative": 0.0,
+          "fill_rate": 0.7778,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9852,
           "values": [
+            [
+              "Matte Black",
+              4
+            ],
             [
               "White",
               3
@@ -5873,7 +5977,7 @@
           "discriminative": 0.0,
           "values": [
             [
-              "White",
+              "Gray",
               3
             ]
           ],
@@ -6292,22 +6396,22 @@
       ]
     }
   ],
-  "fill_rate": 0.105,
-  "mean_columns_filled": 26.47,
+  "fill_rate": 0.1056,
+  "mean_columns_filled": 26.62,
   "status_counts": {
-    "ready": 772,
+    "ready": 774,
     "blocked": 182,
-    "needs_review": 46
+    "needs_review": 44
   },
   "flag_counts": {
-    "classification_abstained": 125,
+    "classification_abstained": 123,
     "brand_unresolved": 51,
     "brand_not_in_approved_list": 41,
     "item_type_unresolved": 24,
     "brand_manufacturer_mismatch": 4
   },
   "violation_counts": {
-    "CG-MOB-01": 329,
+    "CG-MOB-01": 324,
     "CG-TAX-01": 118,
     "CG-BRD-01": 75
   },
@@ -6315,16 +6419,16 @@
   "classification_rate": 0.882,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.671,
+    "MOBILE_DESC": 0.676,
     "SHORT_DESC": 1.0
   },
   "consistency": {
     "families_checked": 185,
-    "attribute_comparisons": 1511,
-    "agreement": 0.9921,
+    "attribute_comparisons": 1510,
+    "agreement": 0.9947,
     "per_attribute": {
       "item_type": {
-        "agreement": 0.9835,
+        "agreement": 0.9945,
         "families": 182
       },
       "classpath": {
@@ -6356,8 +6460,8 @@
         "families": 170
       },
       "series": {
-        "agreement": 0.9417,
-        "families": 103
+        "agreement": 0.9608,
+        "families": 102
       },
       "application": {
         "agreement": 1.0,
@@ -6373,9 +6477,9 @@
       }
     }
   },
-  "mobile_data_limited": 0.329,
+  "mobile_data_limited": 0.324,
   "mobile_composition_short": 0.0,
-  "family_inherited": 47,
+  "family_inherited": 37,
   "family_anomalies": 0,
   "llm_invoked": 0,
   "llm_served": 0,
@@ -6390,15 +6494,15 @@
   },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 613,
+    "edges": 614,
     "by_relation": {
       "powers": 18,
       "cross_reference": 6,
       "variant_of": 358,
-      "same_series": 231
+      "same_series": 232
     },
-    "products_connected": 598,
-    "coverage": 0.598,
+    "products_connected": 597,
+    "coverage": 0.597,
     "most_connected": [
       {
         "index": 387,

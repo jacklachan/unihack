@@ -198,7 +198,12 @@ RE_GRIT = re.compile(r"\b[pP](\d{2,4})\b(?!\w)")
 RE_GRIT_WORD = re.compile(r"(?<![\w.])(\d{2,4})\s*(?:grit|grt)\b", re.I)
 RE_HP = re.compile(r"(?<![\w.])(\d+(?:\.\d+)?)\s*(?:HP|H\.P\.)\b", re.I)
 RE_PHASE = re.compile(r"(?<![\w.])(\d)\s*(?:PH|PHASE)\b", re.I)
-RE_BULB_SHAPE = re.compile(r"\b(A\d{2}|BA\d{2}|PAR\d{2}|BR\d{2}|MR\d{2}|T\d{1,2}|G\d{2}|CA\d{2})\b", re.I)
+# ANSI lamp shape codes. A trailing letter belongs to the designation -- PAR30L
+# is a long-neck PAR30 -- and without it the code half-matched, leaving "Par"
+# in the residual to be read as the product's name.
+RE_BULB_SHAPE = re.compile(
+    r"\b(A\d{2}|BA\d{2}|PAR\d{2}|BR\d{2}|MR\d{2}|ST\d{2}|BT\d{2}|PS\d{2}|"
+    r"T\d{1,2}|G\d{2}|R\d{2}|CA\d{2})([A-Z]{1,2})?\b", re.I)
 RE_BASE_TYPE = re.compile(r"\b(Med|Medium|Cand|Candelabra|GU10|GU24|E26|E12|E39)\b", re.I)
 RE_GAUGE = re.compile(r"(?<![\w.])(\d{1,2})\s*[/-]\s*(\d)\s+(SO|SOOW|SJ|UD|THHN|MC|NM|SER|SEU)\b", re.I)
 RE_TRIPLEX = re.compile(r"(?<![\w.])(\d{1,2}(?:/\d{1,2}){2})\s+(UD|SE|SER|SEU|MC)\b", re.I)
@@ -235,6 +240,11 @@ FINISH_CODES: Dict[str, str] = {
     "bo": "Black", "clr": "Clear", "chr": "Chrome", "brz": "Bronze",
     "nkl": "Brushed Nickel", "cu": "Copper", "gld": "Gold",
     "bsl": "Brushed Silver", "bkclr": "Black/Clear",
+    # Lighting finish codes. Left out, "MB" became part of the product name and
+    # a fan family split into "Mb Anisten Fan" and "Anisten Fan".
+    "mb": "Matte Black", "orb": "Oil Rubbed Bronze", "bn": "Brushed Nickel",
+    "sn": "Satin Nickel", "pn": "Polished Nickel", "ni": "Nickel",
+    "gry": "Gray", "gr": "Gray",
 }
 RE_FINISH = re.compile(
     r"\b(" + "|".join(sorted(FINISH_CODES, key=len, reverse=True)) + r")\b", re.I)
