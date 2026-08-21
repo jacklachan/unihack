@@ -107,6 +107,31 @@ python -m caliper correct --scope family --target F-8ecfff1c     --key item_type
 python -m caliper correct --list
 ```
 
+### It is not built for one file
+
+The brief requires a prototype *"capable of processing the evaluation test
+dataset"* — so the pipeline must not be wired to the sample's headers. A
+deliberately hostile test file ships in `data/input/foreign_schema_test.csv`:
+different column names, different order, and two junk columns.
+
+```
+Vendor Name | internal_id | MFR PART # | Item Description | Make | notes | qty_on_hand
+```
+
+```bash
+python -m caliper run data/input/foreign_schema_test.csv -o data/out_foreign
+```
+
+```
+schema : mpn=MFR PART #, description=Item Description, brand=Make,
+         manufacturer=Vendor Name, sku=internal_id
+brand resolved 95.0% · classified 95.0% · INVOICE_DESC 100%
+```
+
+Roles are detected by name, then by content sniffing for anything still
+unclaimed; `notes` and `qty_on_hand` are correctly ignored. The same detection
+runs on files dropped into the console.
+
 ---
 
 ## Results on the published sample

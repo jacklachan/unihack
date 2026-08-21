@@ -1,0 +1,381 @@
+{
+  "n_rows": 40,
+  "elapsed_s": 0.138,
+  "schema": {
+    "roles": {
+      "mpn": "MFR PART #",
+      "description": "Item Description",
+      "brand": "Make",
+      "manufacturer": "Vendor Name",
+      "sku": "internal_id"
+    },
+    "unmapped": [
+      "notes",
+      "qty_on_hand"
+    ],
+    "confidence": {
+      "mpn": 0.98,
+      "description": 0.98,
+      "brand": 0.98,
+      "manufacturer": 0.98,
+      "sku": 0.98
+    }
+  },
+  "families": 36,
+  "specs": [
+    {
+      "category_id": "UNCLASSIFIED",
+      "label": "UNCLASSIFIED",
+      "n_rows": 11,
+      "coverage": 2.909,
+      "item_types": [
+        [
+          "Firelite",
+          1
+        ],
+        [
+          "Dado",
+          1
+        ]
+      ],
+      "title_order": [
+        "wattage",
+        "color_temperature",
+        "base_type",
+        "pack_quantity"
+      ],
+      "induced_from": [
+        "S4724",
+        "571513",
+        "565374",
+        "S3797",
+        "565622",
+        "566687",
+        "576397",
+        "S3709"
+      ],
+      "attributes": [
+        {
+          "key": "wattage",
+          "label": "Wattage",
+          "uom": "W",
+          "fill_rate": 0.6364,
+          "support": 7,
+          "cardinality": 4,
+          "filterable": true,
+          "discriminative": 0.9212,
+          "values": [
+            [
+              "60",
+              3
+            ],
+            [
+              "4",
+              2
+            ],
+            [
+              "75",
+              1
+            ],
+            [
+              "25",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "ELE-W-01"
+          ]
+        },
+        {
+          "key": "color_temperature",
+          "label": "Color Temperature",
+          "uom": "K",
+          "fill_rate": 0.8182,
+          "support": 9,
+          "cardinality": 3,
+          "filterable": true,
+          "discriminative": 0.7725,
+          "values": [
+            [
+              "2700",
+              6
+            ],
+            [
+              "5000",
+              2
+            ],
+            [
+              "2000",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-K-01"
+          ]
+        },
+        {
+          "key": "bulb_shape",
+          "label": "Bulb Shape",
+          "uom": "",
+          "fill_rate": 0.2727,
+          "support": 3,
+          "cardinality": 2,
+          "filterable": false,
+          "discriminative": 0.9183,
+          "values": [
+            [
+              "A19",
+              2
+            ],
+            [
+              "A23",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-SHP-01"
+          ]
+        },
+        {
+          "key": "base_type",
+          "label": "Base Type",
+          "uom": "",
+          "fill_rate": 0.6364,
+          "support": 7,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.9852,
+          "values": [
+            [
+              "Medium Base",
+              4
+            ],
+            [
+              "Candelabra Base",
+              3
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "LMP-BAS-01"
+          ]
+        },
+        {
+          "key": "pack_quantity",
+          "label": "Pack Quantity",
+          "uom": "",
+          "fill_rate": 0.4545,
+          "support": 5,
+          "cardinality": 3,
+          "filterable": false,
+          "discriminative": 0.9602,
+          "values": [
+            [
+              "4",
+              2
+            ],
+            [
+              "2",
+              2
+            ],
+            [
+              "3",
+              1
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "PKG-PK-01"
+          ]
+        }
+      ]
+    },
+    {
+      "category_id": "Building Materials>Decking>Composite & PVC Decking",
+      "label": "Building Materials>Decking>Composite & PVC Decking",
+      "n_rows": 5,
+      "coverage": 2.0,
+      "item_types": [
+        [
+          "Decking",
+          5
+        ]
+      ],
+      "title_order": [
+        "nominal_size",
+        "length"
+      ],
+      "induced_from": [
+        "1513712",
+        "1513707",
+        "1513708",
+        "AGB15516CG",
+        "543140020"
+      ],
+      "attributes": [
+        {
+          "key": "nominal_size",
+          "label": "Nominal Size",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 1,
+          "filterable": false,
+          "discriminative": 0.0,
+          "values": [
+            [
+              "1 in x 6 in",
+              5
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-NOM-01"
+          ]
+        },
+        {
+          "key": "length",
+          "label": "Length",
+          "uom": "ft",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.971,
+          "values": [
+            [
+              "20",
+              3
+            ],
+            [
+              "16",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DIM-LEN-01"
+          ]
+        }
+      ]
+    }
+  ],
+  "fill_rate": 0.0969,
+  "mean_columns_filled": 24.43,
+  "status_counts": {
+    "ready": 33,
+    "needs_review": 3,
+    "blocked": 4
+  },
+  "flag_counts": {
+    "item_type_unresolved": 1,
+    "classification_abstained": 3,
+    "brand_unresolved": 1
+  },
+  "violation_counts": {
+    "CG-BRD-01": 2,
+    "CG-MOB-01": 3,
+    "CG-TAX-01": 2
+  },
+  "brand_resolution": 0.95,
+  "classification_rate": 0.95,
+  "char_compliance": {
+    "INVOICE_DESC": 1.0,
+    "MOBILE_DESC": 0.925,
+    "SHORT_DESC": 1.0
+  },
+  "family_inherited": 6,
+  "family_anomalies": 0,
+  "llm_invoked": 0,
+  "guardrail_findings": {},
+  "knowledge": {
+    "edges": 29,
+    "by_relation": {
+      "fits": 18,
+      "variant_of": 4,
+      "same_series": 7
+    },
+    "products_connected": 9,
+    "coverage": 0.225,
+    "most_connected": [
+      {
+        "index": 2,
+        "part_number": "571513",
+        "item_type": "light bulb",
+        "degree": 14
+      },
+      {
+        "index": 6,
+        "part_number": "565374",
+        "item_type": "light bulb",
+        "degree": 8
+      },
+      {
+        "index": 8,
+        "part_number": "565622",
+        "item_type": "light bulb",
+        "degree": 8
+      },
+      {
+        "index": 25,
+        "part_number": "573485",
+        "item_type": "light bulb",
+        "degree": 8
+      },
+      {
+        "index": 0,
+        "part_number": "S4724",
+        "item_type": "light bulb",
+        "degree": 7
+      },
+      {
+        "index": 7,
+        "part_number": "S3797",
+        "item_type": "light bulb",
+        "degree": 6
+      },
+      {
+        "index": 14,
+        "part_number": "566687",
+        "item_type": "light bulb",
+        "degree": 5
+      },
+      {
+        "index": 21,
+        "part_number": "S3709",
+        "item_type": "light bulb",
+        "degree": 1
+      },
+      {
+        "index": 15,
+        "part_number": "576397",
+        "item_type": "light bulb",
+        "degree": 1
+      }
+    ]
+  },
+  "corrections": {
+    "corrections": 1,
+    "by_scope": {
+      "family": 1
+    },
+    "rows_affected": 0,
+    "rows_per_correction": 0.0,
+    "items": [
+      {
+        "scope": "family",
+        "target": "F-8ecfff1c",
+        "key": "item_type",
+        "value": "Sanding Sheet",
+        "uom": "",
+        "note": "Festool Granat 80x133mm RTS sander sheets, 10-pack",
+        "by": "mohit",
+        "at": "2026-08-21T23:06:01",
+        "applied": 0
+      }
+    ]
+  }
+}
