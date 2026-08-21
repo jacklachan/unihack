@@ -259,6 +259,26 @@ in bytes  : re.sub(r"\s*<b>&#92;x08</b>w/\s*", " - ", txt)   <i>← never matche
     <p>Two other defects were found in the same review: a boolean merchandising flag rendering as a bare <span class="mono">"YES"</span> on invoice lines, and <span class="mono">MOBILE_DESC</span> padding itself to the 60-character floor with taxonomy nodes — <span class="mono">"Drill, DCD799B, Tools, Power Tools"</span>. Removing the padding dropped that field's compliance from a flattering <strong>92.3%</strong> to an honest <strong>66.4%</strong>.</p>
   </div>
 
+  <div class="finding" style="margin-bottom:34px">
+    <div class="tag">Answering the obvious objection</div>
+    <h4>Two labelled rows is a narrow base. Consistency is not.</h4>
+    <p>No amount of care widens a calibration set of two. But self-consistency
+       is a different question, and it can be asked of all 1,000 rows: products
+       in the same family must agree about the facts they share.</p>
+<pre>families with 2+ members  : 188
+attribute comparisons     : 1,540
+siblings agree            : <b>98.2%</b>
+
+item_type  98.4%     classpath  99.4%     dept / class  100%
+brand      95.3%     series     94.2%     application   100%</pre>
+    <p>This is deliberately not called accuracy — a pipeline can be uniformly
+       wrong and perfectly consistent. But an extractor that disagrees with
+       <em>itself</em> across products differing only by size is certainly wrong
+       somewhere, and the per-attribute split shows which ones are unstable
+       instead of averaging them away. Brand and series are weakest, which is
+       exactly where the review queue concentrates.</p>
+  </div>
+
   <div class="two">
     <div>
       <h4>Against the labelled rows</h4>
