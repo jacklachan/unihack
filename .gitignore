@@ -24,3 +24,8 @@ docs/deck/render/
 data/out_ai/*
 !data/out_ai/report.json
 !data/out_ai/corrections.csv
+
+# Generated from app.py to capture deck screenshots; regenerate, don't edit.
+app_shot.py
+# Slide renders are QA output; the .pptx and .pdf are the deliverables.
+docs/deck/render/

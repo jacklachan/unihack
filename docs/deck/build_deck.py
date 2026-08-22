@@ -1,4 +1,9 @@
-"""Build the CALIPER prototype deck.
+"""
+SUPERSEDED. The UniHack submission must use the organisers' mandatory
+template; that deck is built by build_template_deck.py and is the one to submit.
+This script is kept because its writing is the source for that content, and it
+now writes CALIPER_standalone.pptx so it cannot overwrite the submission.
+Build the CALIPER prototype deck.
 
     python docs/deck/build_deck.py
 
@@ -482,6 +487,6 @@ notes(s, "Close on the thesis: the differentiator is not that we enrich, it is "
          "the evidence for each one.")
 
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   "CALIPER_UniHack.pptx")
+                   "CALIPER_standalone.pptx")
 prs.save(out)
 print("wrote {} ({} slides)".format(out, len(prs.slides.__iter__.__self__._sldIdLst)))

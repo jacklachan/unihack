@@ -71,9 +71,11 @@ CSS = """
 #hero .strip .l {color:#8592A6; font-size:10.5px; letter-spacing:.08em;
                  text-transform:uppercase; margin-top:2px}
 
-.metric-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
+/* Exactly eight metrics: a fixed 4x2 grid, because auto-fit left a dead cell. */
+.metric-grid {display:grid; grid-template-columns:repeat(4,1fr);
               gap:1px; background:var(--border-color-primary);
               border:1px solid var(--border-color-primary)}
+@media (max-width:820px) {.metric-grid {grid-template-columns:repeat(2,1fr)}}
 .metric-grid .m {background:var(--background-fill-primary); padding:13px 15px}
 .metric-grid .m .v {font-family:ui-monospace,Consolas,monospace; font-size:22px;
                     font-weight:600; color:var(--cal-brass)}
