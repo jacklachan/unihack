@@ -4,18 +4,27 @@ Fields as they appear on the Hack2Skill form.
 
 ---
 
-## Upload your Prototype deck/presentation *(PDF, max 5 MB)*
+## Upload your Prototype deck/presentation
 
-**File:** `docs/deck/CALIPER_UniHack.pdf` — 0.40 MB, 10 slides.
+**File:** `docs/deck/CALIPER_UniHack.pdf` — 0.78 MB, 15 slides.
 
-The form takes PDF only, so upload the `.pdf`, not the `.pptx`. Both are in the
-repo; regenerate either with:
+Built on the organisers' **mandatory template**, used as supplied: every slide
+keeps its background artwork, header bar and heading. Only the empty body area
+was filled, plus screenshots of the running prototype.
+
+Upload the **PDF** if the form takes PDF; upload `CALIPER_UniHack.pptx` if it
+wants the editable deck. Both are in `docs/deck/`. Rebuild either with:
 
 ```bash
-python docs/deck/build_deck.py     # rebuilds the .pptx
+python docs/deck/build_template_deck.py
 ```
 
----
+### Two things you must fill in before uploading
+
+Both are marked in **red** on the slides so you cannot miss them:
+
+- **Slide 2** — Team name and Team leader name.
+- **Slide 14** — the demo video link.
 
 ## Provide a brief overview of your solution and how it solves the problem *(2056 chars)*
 
@@ -41,9 +50,9 @@ Accuracy against the published ground truth is 48.0% exact, on two labelled rows
 https://huggingface.co/spaces/jacklachan/unihack
 ```
 
-Put it up with `bash deploy/push_space.sh` (see `deploy/DEPLOY.md`; it asks for a
-Hugging Face **access token**, not your password). **Open the URL in a private
-window before you submit** — it must load without a login.
+**This is live and verified.** It loads without a login and enriches 1,000 SKUs
+on open. Check it in a private window on the morning of judging — a free Space
+sleeps after ~48 hours idle and takes 20–30 seconds to wake.
 
 Append this if there is room, because it tells the judge where to click:
 
@@ -79,9 +88,12 @@ Select **AI-Powered Product Intelligence for Industrial Commerce**.
 
 ## Final check before you press Submit
 
-- [ ] PDF uploads and previews correctly *(not the .pptx)*
+- [ ] **Slide 2: team name and team leader filled in** *(red on the slide)*
+- [ ] **Slide 14: demo video link pasted** *(red on the slide)*
+- [ ] Deck uploads and previews correctly
 - [ ] Overview text pasted whole, under the 2056 limit
-- [ ] Live prototype link opens in a **private window**, no login
+- [ ] Live prototype opens in a **private window**, no login, and the
+      catalogue fills on its own
 - [ ] GitHub link opens and the README renders
 - [ ] Demo video link plays in a **private window**
 - [ ] Challenge dropdown selected

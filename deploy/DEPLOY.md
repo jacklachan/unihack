@@ -1,90 +1,100 @@
-# Putting CALIPER on a public URL
+# The live prototype
 
-The submission form asks for a **live prototype link**. The Space is already
-created at:
+**It is up:** <https://huggingface.co/spaces/jacklachan/unihack>
+(direct: <https://jacklachan-unihack.hf.space>)
 
-```
-https://huggingface.co/spaces/jacklachan/unihack
-```
-
-This is the Gradio SDK, not Docker. That matters: Hugging Face now puts *CPU
-basic* behind a PRO subscription, and the only free hardware left — **ZeroGPU** —
-is offered on the Gradio SDK. So the front end for the Space is `app.py`, a
-Gradio wrapper around the same `caliper.pipeline.Pipeline` the CLI calls. The
-pipeline itself is untouched and still imports nothing outside the standard
-library; `gradio` is the one dependency, and it only exists to put a URL in front
-of it.
+This is a **Gradio** Space, not Docker. That is forced, not chosen — see below.
 
 ---
 
-## 1 · Push it
+## What the free tier actually allows
 
-Hugging Face reads its configuration from the frontmatter of `README.md` **at the
-repository root**. The GitHub README is a different document and should stay as
-it is, so the Space gets its own branch:
+Worth writing down, because two reasonable-looking plans fail:
+
+| Option | Result |
+|---|---|
+| Gradio/Docker Space on **cpu-basic** | **402 Payment Required.** *"hosting Gradio and Docker Spaces on free cpu-basic requires a PRO subscription."* Applies to creating a new Space and to downgrading an existing one. |
+| **Static** Space | Free, but HTML/JS only — no Python backend. |
+| **ZeroGPU** (`zero-a10g`) | Free, runs Python. **The only workable free option here.** |
+
+ZeroGPU comes with a catch that is easy to miss: it refuses to start unless it
+finds a `@spaces.GPU` function at import time. Without one the Space builds
+cleanly, starts, and then dies with:
+
+```
+"errorMessage": "No @spaces.GPU function detected during startup"
+```
+
+CALIPER is pure CPU and never calls a GPU, so `app.py` declares one small
+function purely to satisfy that check, commented as such. No GPU is ever
+allocated.
+
+## Deploying a change
+
+`app.py` and the pipeline are the same code the CLI runs, so a normal commit to
+`main` is the source of truth. To push it to the Space:
 
 ```bash
 bash deploy/push_space.sh
 ```
 
-That script creates (or resets) a local `space` branch, swaps in
-`deploy/README_SPACE.md` as the root `README.md`, commits, and pushes to the
-Space. It leaves you back on `main` with the GitHub README untouched.
+The script builds a `space` branch whose root `README.md` is
+`deploy/README_SPACE.md` (Hugging Face reads its configuration from that
+frontmatter, and the GitHub README is a different document), pushes it, and
+returns you to the branch you started on.
 
-**Git will ask for credentials.** Username is `jacklachan`; the password is a
-Hugging Face **access token with write permission**, from
-<https://huggingface.co/settings/tokens>. Paste the token into the password
-prompt — not your account password, which HF no longer accepts over git.
+Git will ask for credentials: the username is your Hugging Face username and the
+**password is an access token with write permission** from
+<https://huggingface.co/settings/tokens> — not your account password.
 
-## 2 · Watch the build
+If you have `huggingface_hub` installed and are already logged in, this also
+works and skips the branch dance for a single file:
 
-Open the Space and click **Logs**. The first build installs Gradio and takes
-2–4 minutes. When the status reads **Running**, the URL is live.
+```bash
+python -c "from huggingface_hub import HfApi; HfApi().upload_file(path_or_fileobj='app.py', path_in_repo='app.py', repo_id='jacklachan/unihack', repo_type='space', commit_message='update app')"
+```
 
-If the build fails, the two things worth checking first are the `sdk_version` in
-`deploy/README_SPACE.md` (it must be a version HF actually offers) and whether
-`requirements.txt` reached the root of the Space repo.
+## Watching a deploy
 
-**On ZeroGPU hardware.** ZeroGPU is the only free tier left, and it is fine here:
-CALIPER is pure CPU and never asks for a GPU, so no `@spaces.GPU` function is
-needed and none exists. If the logs ever complain about the missing `spaces`
-package, add `spaces` to `requirements.txt` — it does not change the pipeline.
+The Space goes `BUILDING` → `APP_STARTING` → `RUNNING`, usually inside 90
+seconds. Check it without opening a browser:
 
-## 3 · Check it before you paste the link into the form
+```bash
+python -c "from huggingface_hub import HfApi; r=HfApi().space_info('jacklachan/unihack').runtime; print(r.stage, r.raw.get('errorMessage',''))"
+```
 
-Open the URL **in a private window**, so you are testing what a judge sees rather
-than what your logged-in session sees.
+A `RUNTIME_ERROR` almost always has a one-line explanation in
+`raw['errorMessage']`, which is more useful than the run log — the log can look
+like a clean startup while the container is being torn down.
 
-- It loads with no login.
-- The catalogue fills on its own — 1,000 rows, no button pressed. *(The Space
-  runs the real pipeline on page load; it takes a few seconds.)*
-- Click a row. The evidence panel underneath shows a rule id and a quoted source
-  substring. **This is the thing being demonstrated — make sure it works.**
-- **Try a file with completely different column names** returns 40 rows and
-  reports the detected column roles.
-- **Download the delivery file** gives a CSV that opens with 252 columns.
+## Before submitting the link
 
-## 4 · Two things that will bite you on the day
+Open it **in a private window**, so you test what a judge sees:
 
-**It sleeps.** A free Space idles out after ~48 hours of no traffic and takes
-20–30 seconds to wake. Open your own link the evening before judging, and again
-on the morning of, so the judge does not meet a cold boot.
+- Loads with no login.
+- The catalogue fills on its own — 1,000 rows, no button pressed.
+- Clicking a row shows a rule id and a quoted source substring underneath.
+  **This is the thing being demonstrated; make sure it works.**
+- *Try a file with completely different column names* returns 40 rows.
+- *Download the delivery file* gives a CSV that opens with 252 columns.
+
+## Two things that will bite you on the day
+
+**It sleeps.** A free Space idles out after ~48 hours and takes 20–30 seconds to
+wake. Open your own link the evening before judging and again that morning.
 
 **No key ships in it.** `.env` is gitignored and never leaves your machine. A
-judge who wants the AI path pastes their own key into the form on the page; it
-lives in process memory for that request and is never written to disk, logged, or
+judge who wants the AI path pastes their own key into the page; it is held in
+process memory for that request only — never written to disk, logged, or
 returned to the browser.
-
-To ship a change, commit to `main` as usual and run `bash deploy/push_space.sh`
-again.
 
 ---
 
-## If you would rather not use Hugging Face
+## Hosting it somewhere else
 
-`deploy/Dockerfile` still builds the **stdlib** web console — `python -m caliper
-serve`, no Gradio, no third-party packages at all. Any host that runs a container
-works, because the app reads `HOST` and `PORT` from the environment.
+`deploy/Dockerfile` builds the **stdlib** web console — `python -m caliper
+serve`, no Gradio, no third-party packages at all. Any host that runs a
+container works, because the app reads `HOST` and `PORT` from the environment.
 
 | Host | Notes |
 |---|---|
