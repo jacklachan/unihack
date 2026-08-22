@@ -45,6 +45,11 @@ If the build fails, the two things worth checking first are the `sdk_version` in
 `deploy/README_SPACE.md` (it must be a version HF actually offers) and whether
 `requirements.txt` reached the root of the Space repo.
 
+**On ZeroGPU hardware.** ZeroGPU is the only free tier left, and it is fine here:
+CALIPER is pure CPU and never asks for a GPU, so no `@spaces.GPU` function is
+needed and none exists. If the logs ever complain about the missing `spaces`
+package, add `spaces` to `requirements.txt` — it does not change the pipeline.
+
 ## 3 · Check it before you paste the link into the form
 
 Open the URL **in a private window**, so you are testing what a judge sees rather

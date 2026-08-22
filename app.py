@@ -395,7 +395,16 @@ over 1,516 comparisons.
 [Source, 42 invariant tests, standard library only](https://github.com/jacklachan/unihack)
 """
 
-with gr.Blocks(title="CALIPER") as demo:
+# Gradio 6 moved `css` and `theme` off the Blocks constructor and onto launch().
+# The Space installs whatever version Hugging Face resolves, so accept both
+# rather than let a minor-version drift stop the app from booting.
+_GR_MAJOR = int(gr.__version__.split(".")[0])
+_THEME = gr.themes.Soft(primary_hue="amber", secondary_hue="slate")
+_BLOCKS_KW = {"title": "CALIPER"}
+if _GR_MAJOR < 6:
+    _BLOCKS_KW.update(css=CSS, theme=_THEME)
+
+with gr.Blocks(**_BLOCKS_KW) as demo:
     store = gr.State({})
     gr.HTML(HERO)
 
@@ -460,9 +469,10 @@ with gr.Blocks(title="CALIPER") as demo:
     demo.load(lambda: enrich(SAMPLE, False, "groq", ""), None, outputs)
 
 if __name__ == "__main__":
-    demo.launch(
-        server_name="0.0.0.0",
-        server_port=int(os.environ.get("PORT", 7860)),
-        css=CSS,
-        theme=gr.themes.Soft(primary_hue="amber", secondary_hue="slate"),
-    )
+    launch_kw = {
+        "server_name": "0.0.0.0",
+        "server_port": int(os.environ.get("PORT", 7860)),
+    }
+    if _GR_MAJOR >= 6:
+        launch_kw.update(css=CSS, theme=_THEME)
+    demo.launch(**launch_kw)
