@@ -1,6 +1,6 @@
 {
   "n_rows": 40,
-  "elapsed_s": 0.138,
+  "elapsed_s": 0.139,
   "schema": {
     "roles": {
       "mpn": "MFR PART #",
@@ -27,14 +27,14 @@
       "category_id": "UNCLASSIFIED",
       "label": "UNCLASSIFIED",
       "n_rows": 11,
-      "coverage": 2.909,
+      "coverage": 3.091,
       "item_types": [
         [
           "Firelite",
           1
         ],
         [
-          "Dado",
+          "Locked Dado",
           1
         ]
       ],
@@ -197,7 +197,7 @@
       "category_id": "Building Materials>Decking>Composite & PVC Decking",
       "label": "Building Materials>Decking>Composite & PVC Decking",
       "n_rows": 5,
-      "coverage": 2.0,
+      "coverage": 3.0,
       "item_types": [
         [
           "Decking",
@@ -206,7 +206,8 @@
       ],
       "title_order": [
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "induced_from": [
         "1513712",
@@ -259,100 +260,148 @@
           "rule_ids": [
             "DIM-LEN-01"
           ]
+        },
+        {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "uom": "",
+          "fill_rate": 1.0,
+          "support": 5,
+          "cardinality": 2,
+          "filterable": true,
+          "discriminative": 0.971,
+          "values": [
+            [
+              "Grooved",
+              3
+            ],
+            [
+              "Square Edge",
+              2
+            ]
+          ],
+          "synonyms": {},
+          "rule_ids": [
+            "DEC-EDG-01"
+          ]
         }
       ]
     }
   ],
-  "fill_rate": 0.0969,
-  "mean_columns_filled": 24.43,
+  "fill_rate": 0.0963,
+  "mean_columns_filled": 24.27,
   "status_counts": {
-    "ready": 33,
+    "ready": 34,
     "needs_review": 3,
-    "blocked": 4
+    "blocked": 3
   },
   "flag_counts": {
     "item_type_unresolved": 1,
     "classification_abstained": 3,
+    "brand_not_in_approved_list": 1,
     "brand_unresolved": 1
   },
   "violation_counts": {
-    "CG-BRD-01": 2,
-    "CG-MOB-01": 3,
-    "CG-TAX-01": 2
+    "CG-MOB-01": 12,
+    "CG-TAX-01": 2,
+    "CG-BRD-01": 1
   },
-  "brand_resolution": 0.95,
+  "brand_resolution": 0.975,
   "classification_rate": 0.95,
   "char_compliance": {
     "INVOICE_DESC": 1.0,
-    "MOBILE_DESC": 0.925,
+    "MOBILE_DESC": 0.7,
     "SHORT_DESC": 1.0
   },
+  "consistency": {
+    "families_checked": 2,
+    "attribute_comparisons": 17,
+    "agreement": 1.0,
+    "per_attribute": {}
+  },
+  "mobile_data_limited": 0.3,
+  "mobile_composition_short": 0.0,
   "family_inherited": 6,
   "family_anomalies": 0,
   "llm_invoked": 0,
+  "llm_served": 0,
+  "llm_cached": 0,
+  "ai_degraded": false,
+  "ai_notice": "",
+  "audited_rows": 0,
+  "audit_counts": {
+    "supported": 0,
+    "unsupported": 0,
+    "unknown": 0
+  },
   "guardrail_findings": {},
   "knowledge": {
-    "edges": 29,
+    "edges": 7,
     "by_relation": {
-      "fits": 18,
       "variant_of": 4,
-      "same_series": 7
+      "same_series": 3
     },
-    "products_connected": 9,
-    "coverage": 0.225,
+    "products_connected": 10,
+    "coverage": 0.25,
     "most_connected": [
       {
         "index": 2,
         "part_number": "571513",
         "item_type": "light bulb",
-        "degree": 14
+        "degree": 3
       },
       {
-        "index": 6,
-        "part_number": "565374",
-        "item_type": "light bulb",
-        "degree": 8
-      },
-      {
-        "index": 8,
-        "part_number": "565622",
-        "item_type": "light bulb",
-        "degree": 8
-      },
-      {
-        "index": 25,
-        "part_number": "573485",
-        "item_type": "light bulb",
-        "degree": 8
+        "index": 11,
+        "part_number": "1513712",
+        "item_type": "decking",
+        "degree": 3
       },
       {
         "index": 0,
         "part_number": "S4724",
         "item_type": "light bulb",
-        "degree": 7
+        "degree": 1
       },
       {
         "index": 7,
         "part_number": "S3797",
         "item_type": "light bulb",
-        "degree": 6
+        "degree": 1
       },
       {
-        "index": 14,
-        "part_number": "566687",
-        "item_type": "light bulb",
-        "degree": 5
-      },
-      {
-        "index": 21,
-        "part_number": "S3709",
+        "index": 6,
+        "part_number": "565374",
         "item_type": "light bulb",
         "degree": 1
       },
       {
-        "index": 15,
-        "part_number": "576397",
+        "index": 8,
+        "part_number": "565622",
         "item_type": "light bulb",
+        "degree": 1
+      },
+      {
+        "index": 25,
+        "part_number": "573485",
+        "item_type": "light bulb",
+        "degree": 1
+      },
+      {
+        "index": 12,
+        "part_number": "1513707",
+        "item_type": "decking",
+        "degree": 1
+      },
+      {
+        "index": 19,
+        "part_number": "1513708",
+        "item_type": "decking",
+        "degree": 1
+      },
+      {
+        "index": 38,
+        "part_number": "543140020",
+        "item_type": "decking",
         "degree": 1
       }
     ]
@@ -364,16 +413,26 @@
     },
     "rows_affected": 0,
     "rows_per_correction": 0.0,
+    "stale": 1,
+    "stale_items": [
+      {
+        "scope": "family",
+        "target": "F-a3344513",
+        "key": "item_type",
+        "value": "Sanding Sheet",
+        "by": "mohit"
+      }
+    ],
     "items": [
       {
         "scope": "family",
-        "target": "F-8ecfff1c",
+        "target": "F-a3344513",
         "key": "item_type",
         "value": "Sanding Sheet",
         "uom": "",
         "note": "Festool Granat 80x133mm RTS sander sheets, 10-pack",
         "by": "mohit",
-        "at": "2026-08-21T23:06:01",
+        "at": "2026-08-22T01:03:03",
         "applied": 0
       }
     ]

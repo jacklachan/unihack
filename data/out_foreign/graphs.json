@@ -2,14 +2,14 @@
   {
     "index": 0,
     "status": "ready",
-    "filled": 30,
-    "score": 0.8766,
-    "family_id": "F-ddbaff55",
+    "filled": 28,
+    "score": 0.8886,
+    "family_id": "F-4f834c52",
     "graph": {
       "product_id": "S4724",
-      "family_id": "F-ddbaff55",
-      "score": 0.8766,
-      "fingerprint": "a4a4905da306",
+      "family_id": "F-4f834c52",
+      "score": 0.8886,
+      "fingerprint": "caa455778e1c",
       "facts": {
         "brand": {
           "key": "brand",
@@ -223,31 +223,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Incan",
-          "uom": "",
-          "display": "Incan",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Incan",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Incan",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -399,10 +374,10 @@
     "status": "ready",
     "filled": 23,
     "score": 0.8846,
-    "family_id": "F-dac19a7f",
+    "family_id": "F-f807e775",
     "graph": {
       "product_id": "DCG420B",
-      "family_id": "F-dac19a7f",
+      "family_id": "F-f807e775",
       "score": 0.8846,
       "fingerprint": "a06447c48379",
       "facts": {
@@ -691,17 +666,24 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 57 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "DIE GRINDER 20V NO",
+      "text": "DIE GRINDER 20V",
       "included": [
         "item_type",
-        "voltage",
-        "includes_battery"
+        "voltage"
       ],
       "dropped": [],
-      "used": 18,
+      "used": 15,
       "limit": 40,
       "compressions": []
     }
@@ -709,14 +691,14 @@
   {
     "index": 2,
     "status": "needs_review",
-    "filled": 27,
-    "score": 0.8255,
-    "family_id": "F-0a98d661",
+    "filled": 25,
+    "score": 0.8343,
+    "family_id": "F-25f1ce9c",
     "graph": {
       "product_id": "571513",
-      "family_id": "F-0a98d661",
-      "score": 0.8255,
-      "fingerprint": "c372365d8c78",
+      "family_id": "F-25f1ce9c",
+      "score": 0.8343,
+      "fingerprint": "4c2ea8eb4770",
       "facts": {
         "brand": {
           "key": "brand",
@@ -877,31 +859,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -920,7 +877,7 @@
           "conflicts": [],
           "evidence": [
             {
-              "source": "family:F-0a98d661",
+              "source": "family:F-25f1ce9c",
               "text": "Light Bulb",
               "span": null,
               "detail": "Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it."
@@ -945,7 +902,7 @@
           "conflicts": [],
           "evidence": [
             {
-              "source": "family:F-0a98d661",
+              "source": "family:F-25f1ce9c",
               "text": "Electrical>Lighting & Bulbs>Light Bulbs",
               "span": null,
               "detail": "Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it."
@@ -970,7 +927,7 @@
           "conflicts": [],
           "evidence": [
             {
-              "source": "family:F-0a98d661",
+              "source": "family:F-25f1ce9c",
               "text": "Electrical",
               "span": null,
               "detail": "Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it."
@@ -995,7 +952,7 @@
           "conflicts": [],
           "evidence": [
             {
-              "source": "family:F-0a98d661",
+              "source": "family:F-25f1ce9c",
               "text": "Lighting",
               "span": null,
               "detail": "Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it."
@@ -1020,7 +977,7 @@
           "conflicts": [],
           "evidence": [
             {
-              "source": "family:F-0a98d661",
+              "source": "family:F-25f1ce9c",
               "text": "Light Bulbs",
               "span": null,
               "detail": "Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it."
@@ -1045,7 +1002,7 @@
           "conflicts": [],
           "evidence": [
             {
-              "source": "family:F-0a98d661",
+              "source": "family:F-25f1ce9c",
               "text": "39101600",
               "span": null,
               "detail": "Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it."
@@ -1099,12 +1056,12 @@
     "status": "ready",
     "filled": 23,
     "score": 0.8584,
-    "family_id": "F-6419c319",
+    "family_id": "F-95820c83",
     "graph": {
       "product_id": "3052-20",
-      "family_id": "F-6419c319",
+      "family_id": "F-95820c83",
       "score": 0.8584,
-      "fingerprint": "947ed91cdb71",
+      "fingerprint": "9cde7438dbe4",
       "facts": {
         "brand": {
           "key": "brand",
@@ -1240,12 +1197,12 @@
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Rachet",
+          "value": "Fuel Rachet",
           "uom": "",
-          "display": "Rachet",
+          "display": "Fuel Rachet",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "rachet",
+          "raw": "fuel rachet",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -1256,7 +1213,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "rachet",
+              "text": "fuel rachet",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
             }
@@ -1281,7 +1238,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Rachet",
+              "text": "Fuel Rachet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-065 on 'Rachet'."
             }
@@ -1306,7 +1263,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Rachet",
+              "text": "Fuel Rachet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-065 on 'Rachet'."
             }
@@ -1331,7 +1288,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Rachet",
+              "text": "Fuel Rachet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-065 on 'Rachet'."
             }
@@ -1356,7 +1313,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Rachet",
+              "text": "Fuel Rachet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-065 on 'Rachet'."
             }
@@ -1391,17 +1348,25 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 59 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "RACHET 1/4IN M12",
+      "text": "FUEL RACHET 1/4IN M12",
       "included": [
         "item_type",
         "size",
         "platform"
       ],
       "dropped": [],
-      "used": 16,
+      "used": 21,
       "limit": 40,
       "compressions": []
     }
@@ -1410,13 +1375,13 @@
     "index": 4,
     "status": "ready",
     "filled": 25,
-    "score": 0.7749,
-    "family_id": "F-b2d13b7b",
+    "score": 0.8635,
+    "family_id": "F-da1a9cc5",
     "graph": {
       "product_id": "XRJ08Z",
-      "family_id": "F-b2d13b7b",
-      "score": 0.7749,
-      "fingerprint": "4ceeb89669cb",
+      "family_id": "F-da1a9cc5",
+      "score": 0.8635,
+      "fingerprint": "fd22b9eea96e",
       "facts": {
         "brand": {
           "key": "brand",
@@ -1549,15 +1514,43 @@
             }
           ]
         },
+        "configuration": {
+          "key": "configuration",
+          "label": "Configuration",
+          "value": "Bare Tool",
+          "uom": "",
+          "display": "Bare Tool",
+          "method": "rule",
+          "rule_id": "PKG-CFG-01",
+          "raw": "Bare Tool",
+          "confidence": 0.92,
+          "priority": 44,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Bare Tool",
+              "span": [
+                23,
+                32
+              ],
+              "detail": "How the item is sold; a kit and a bare tool are different SKUs."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Tool",
+          "value": "Recip Saw",
           "uom": "",
-          "display": "Tool",
+          "display": "Recip Saw",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "tool",
+          "raw": "recip saw",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -1568,34 +1561,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "tool",
+              "text": "recip saw",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
-            }
-          ]
-        },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Recip Saw",
-          "uom": "",
-          "display": "Recip Saw",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Recip Saw",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Recip Saw",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
             }
           ]
         },
@@ -1606,9 +1574,9 @@
           "uom": "",
           "display": "Tools",
           "method": "rule",
-          "rule_id": "TAX-075",
+          "rule_id": "TAX-104",
           "raw": "Saw",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 6,
           "inferred": false,
           "agreed_by": [
@@ -1618,9 +1586,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Tool",
+              "text": "Recip Saw",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-075 on 'Saw'."
+              "detail": "Matched taxonomy rule TAX-104 on 'Saw'."
             }
           ]
         },
@@ -1631,9 +1599,9 @@
           "uom": "",
           "display": "Power Tools",
           "method": "rule",
-          "rule_id": "TAX-075",
+          "rule_id": "TAX-104",
           "raw": "Saw",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 7,
           "inferred": false,
           "agreed_by": [
@@ -1643,9 +1611,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Tool",
+              "text": "Recip Saw",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-075 on 'Saw'."
+              "detail": "Matched taxonomy rule TAX-104 on 'Saw'."
             }
           ]
         },
@@ -1656,9 +1624,9 @@
           "uom": "",
           "display": "Saws",
           "method": "rule",
-          "rule_id": "TAX-075",
+          "rule_id": "TAX-104",
           "raw": "Saw",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 8,
           "inferred": false,
           "agreed_by": [
@@ -1668,9 +1636,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Tool",
+              "text": "Recip Saw",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-075 on 'Saw'."
+              "detail": "Matched taxonomy rule TAX-104 on 'Saw'."
             }
           ]
         },
@@ -1681,9 +1649,9 @@
           "uom": "",
           "display": "Tools & Equipment>Power Tools>Saws",
           "method": "rule",
-          "rule_id": "TAX-075",
+          "rule_id": "TAX-104",
           "raw": "Saw",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 9,
           "inferred": false,
           "agreed_by": [
@@ -1693,9 +1661,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Tool",
+              "text": "Recip Saw",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-075 on 'Saw'."
+              "detail": "Matched taxonomy rule TAX-104 on 'Saw'."
             }
           ]
         },
@@ -1706,9 +1674,9 @@
           "uom": "",
           "display": "27112100",
           "method": "inferred",
-          "rule_id": "TAX-075",
+          "rule_id": "TAX-104",
           "raw": "Saw",
-          "confidence": 0.576,
+          "confidence": 0.72,
           "priority": 70,
           "inferred": true,
           "agreed_by": [
@@ -1731,14 +1699,15 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "TOOL 18V 18V",
+      "text": "RECIP SAW 18V 18V BARE TOOL",
       "included": [
         "item_type",
         "voltage",
-        "platform"
+        "platform",
+        "configuration"
       ],
       "dropped": [],
-      "used": 12,
+      "used": 27,
       "limit": 40,
       "compressions": []
     }
@@ -1746,14 +1715,14 @@
   {
     "index": 5,
     "status": "ready",
-    "filled": 22,
-    "score": 0.8402,
-    "family_id": "F-0ed81b8a",
+    "filled": 20,
+    "score": 0.8522,
+    "family_id": "F-7f1f7ac6",
     "graph": {
       "product_id": "0887-20",
-      "family_id": "F-0ed81b8a",
-      "score": 0.8402,
-      "fingerprint": "27a5e96aafb6",
+      "family_id": "F-7f1f7ac6",
+      "score": 0.8522,
+      "fingerprint": "dcd6adca6c11",
       "facts": {
         "brand": {
           "key": "brand",
@@ -1861,12 +1830,12 @@
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Blower",
+          "value": "Precision Blower",
           "uom": "",
-          "display": "Blower",
+          "display": "Precision Blower",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "blower",
+          "raw": "precision blower",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -1877,34 +1846,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "blower",
+              "text": "precision blower",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
-            }
-          ]
-        },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Brushless Precision",
-          "uom": "",
-          "display": "Brushless Precision",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Brushless Precision",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Brushless Precision",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
             }
           ]
         },
@@ -1927,7 +1871,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Blower",
+              "text": "Precision Blower",
               "span": null,
               "detail": "Matched taxonomy rule TAX-063 on 'Blower'."
             }
@@ -1952,7 +1896,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Blower",
+              "text": "Precision Blower",
               "span": null,
               "detail": "Matched taxonomy rule TAX-063 on 'Blower'."
             }
@@ -1977,7 +1921,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Blower",
+              "text": "Precision Blower",
               "span": null,
               "detail": "Matched taxonomy rule TAX-063 on 'Blower'."
             }
@@ -2002,7 +1946,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Blower",
+              "text": "Precision Blower",
               "span": null,
               "detail": "Matched taxonomy rule TAX-063 on 'Blower'."
             }
@@ -2037,16 +1981,24 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "BLOWER M18",
+      "text": "PRECISION BLOWER M18",
       "included": [
         "item_type",
         "platform"
       ],
       "dropped": [],
-      "used": 10,
+      "used": 20,
       "limit": 40,
       "compressions": []
     }
@@ -2054,14 +2006,14 @@
   {
     "index": 6,
     "status": "ready",
-    "filled": 34,
-    "score": 0.8808,
-    "family_id": "F-0a98d661",
+    "filled": 32,
+    "score": 0.8915,
+    "family_id": "F-25f1ce9c",
     "graph": {
       "product_id": "565374",
-      "family_id": "F-0a98d661",
-      "score": 0.8808,
-      "fingerprint": "8b6da5932587",
+      "family_id": "F-25f1ce9c",
+      "score": 0.8915,
+      "fingerprint": "2cf3f2126a6b",
       "facts": {
         "brand": {
           "key": "brand",
@@ -2331,31 +2283,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -2507,14 +2434,14 @@
   {
     "index": 7,
     "status": "ready",
-    "filled": 30,
-    "score": 0.8766,
-    "family_id": "F-ddbaff55",
+    "filled": 28,
+    "score": 0.8886,
+    "family_id": "F-4f834c52",
     "graph": {
       "product_id": "S3797",
-      "family_id": "F-ddbaff55",
-      "score": 0.8766,
-      "fingerprint": "f0818652f03b",
+      "family_id": "F-4f834c52",
+      "score": 0.8886,
+      "fingerprint": "8bd89cd0eb2c",
       "facts": {
         "brand": {
           "key": "brand",
@@ -2728,31 +2655,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Incan",
-          "uom": "",
-          "display": "Incan",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Incan",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Incan",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -2902,14 +2804,14 @@
   {
     "index": 8,
     "status": "ready",
-    "filled": 30,
-    "score": 0.8751,
-    "family_id": "F-0a98d661",
+    "filled": 28,
+    "score": 0.8871,
+    "family_id": "F-25f1ce9c",
     "graph": {
       "product_id": "565622",
-      "family_id": "F-0a98d661",
-      "score": 0.8751,
-      "fingerprint": "1f0ac7da6f56",
+      "family_id": "F-25f1ce9c",
+      "score": 0.8871,
+      "fingerprint": "ec61aa87ebfc",
       "facts": {
         "brand": {
           "key": "brand",
@@ -3123,31 +3025,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -3299,12 +3176,12 @@
     "status": "ready",
     "filled": 26,
     "score": 0.8635,
-    "family_id": "F-b9ee228b",
+    "family_id": "F-a4d25387",
     "graph": {
       "product_id": "XLT05Z",
-      "family_id": "F-b9ee228b",
+      "family_id": "F-a4d25387",
       "score": 0.8635,
-      "fingerprint": "6059ffb526be",
+      "fingerprint": "906b01484630",
       "facts": {
         "brand": {
           "key": "brand",
@@ -3468,12 +3345,12 @@
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Impact",
+          "value": "Angle Impact",
           "uom": "",
-          "display": "Impact",
+          "display": "Angle Impact",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "impact",
+          "raw": "angle impact",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -3484,7 +3361,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "impact",
+              "text": "angle impact",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
             }
@@ -3497,7 +3374,7 @@
           "uom": "",
           "display": "Tools",
           "method": "rule",
-          "rule_id": "TAX-076",
+          "rule_id": "TAX-105",
           "raw": "Impact",
           "confidence": 0.9,
           "priority": 6,
@@ -3509,9 +3386,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Impact",
+              "text": "Angle Impact",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-076 on 'Impact'."
+              "detail": "Matched taxonomy rule TAX-105 on 'Impact'."
             }
           ]
         },
@@ -3522,7 +3399,7 @@
           "uom": "",
           "display": "Power Tools",
           "method": "rule",
-          "rule_id": "TAX-076",
+          "rule_id": "TAX-105",
           "raw": "Impact",
           "confidence": 0.9,
           "priority": 7,
@@ -3534,9 +3411,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Impact",
+              "text": "Angle Impact",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-076 on 'Impact'."
+              "detail": "Matched taxonomy rule TAX-105 on 'Impact'."
             }
           ]
         },
@@ -3547,7 +3424,7 @@
           "uom": "",
           "display": "Impact Tools",
           "method": "rule",
-          "rule_id": "TAX-076",
+          "rule_id": "TAX-105",
           "raw": "Impact",
           "confidence": 0.9,
           "priority": 8,
@@ -3559,9 +3436,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Impact",
+              "text": "Angle Impact",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-076 on 'Impact'."
+              "detail": "Matched taxonomy rule TAX-105 on 'Impact'."
             }
           ]
         },
@@ -3572,7 +3449,7 @@
           "uom": "",
           "display": "Tools & Equipment>Power Tools>Impact Drivers & Wrenches",
           "method": "rule",
-          "rule_id": "TAX-076",
+          "rule_id": "TAX-105",
           "raw": "Impact",
           "confidence": 0.9,
           "priority": 9,
@@ -3584,9 +3461,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Impact",
+              "text": "Angle Impact",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-076 on 'Impact'."
+              "detail": "Matched taxonomy rule TAX-105 on 'Impact'."
             }
           ]
         },
@@ -3597,7 +3474,7 @@
           "uom": "",
           "display": "27112000",
           "method": "inferred",
-          "rule_id": "TAX-076",
+          "rule_id": "TAX-105",
           "raw": "Impact",
           "confidence": 0.72,
           "priority": 70,
@@ -3622,7 +3499,7 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "IMPACT 18V 1/2IN 18V",
+      "text": "ANGLE IMPACT 18V 1/2IN 18V",
       "included": [
         "item_type",
         "voltage",
@@ -3630,7 +3507,7 @@
         "platform"
       ],
       "dropped": [],
-      "used": 20,
+      "used": 26,
       "limit": 40,
       "compressions": []
     }
@@ -3640,12 +3517,12 @@
     "status": "ready",
     "filled": 23,
     "score": 0.862,
-    "family_id": "F-c6a87464",
+    "family_id": "F-c2dde0ed",
     "graph": {
       "product_id": "R02-D215P-1RW",
-      "family_id": "F-c6a87464",
+      "family_id": "F-c2dde0ed",
       "score": 0.862,
-      "fingerprint": "896e5288cd25",
+      "fingerprint": "75bbf2862955",
       "facts": {
         "brand": {
           "key": "brand",
@@ -3781,12 +3658,12 @@
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Outlet",
+          "value": "Mini Outlet",
           "uom": "",
-          "display": "Outlet",
+          "display": "Mini Outlet",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "outlet",
+          "raw": "mini outlet",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -3797,7 +3674,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "outlet",
+              "text": "mini outlet",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
             }
@@ -3822,7 +3699,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "Mini Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -3847,7 +3724,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "Mini Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -3872,7 +3749,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "Mini Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -3897,7 +3774,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "Mini Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -3935,14 +3812,14 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "OUTLET WH 15A",
+      "text": "MINI OUTLET WH 15A",
       "included": [
         "item_type",
         "finish",
         "amperage"
       ],
       "dropped": [],
-      "used": 13,
+      "used": 18,
       "limit": 40,
       "compressions": []
     }
@@ -3950,14 +3827,14 @@
   {
     "index": 11,
     "status": "ready",
-    "filled": 25,
-    "score": 0.8712,
-    "family_id": "F-f0f9eedf",
+    "filled": 27,
+    "score": 0.8749,
+    "family_id": "F-b264a96a",
     "graph": {
       "product_id": "1513712",
-      "family_id": "F-f0f9eedf",
-      "score": 0.8712,
-      "fingerprint": "f9e77e7b16e5",
+      "family_id": "F-b264a96a",
+      "score": 0.8749,
+      "fingerprint": "f112503286d9",
       "facts": {
         "brand": {
           "key": "brand",
@@ -4090,6 +3967,34 @@
             }
           ]
         },
+        "edge_profile": {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "value": "Grooved",
+          "uom": "",
+          "display": "Grooved",
+          "method": "rule",
+          "rule_id": "DEC-EDG-01",
+          "raw": "Grooved",
+          "confidence": 0.92,
+          "priority": 32,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Grooved",
+              "span": [
+                19,
+                26
+              ],
+              "detail": "Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -4118,12 +4023,12 @@
         "series": {
           "key": "series",
           "label": "Series",
-          "value": "Salt Transcend Lineage",
+          "value": "Transcend Lineage",
           "uom": "",
-          "display": "Salt Transcend Lineage",
+          "display": "Transcend Lineage",
           "method": "rule",
           "rule_id": "SER-CAP-01",
-          "raw": "Salt Transcend Lineage",
+          "raw": "Transcend Lineage",
           "confidence": 0.72,
           "priority": 10,
           "inferred": false,
@@ -4134,7 +4039,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Salt Transcend Lineage",
+              "text": "Transcend Lineage",
               "span": null,
               "detail": "Capitalised collection name left after brand and item type were removed."
             }
@@ -4272,14 +4177,15 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DECKING 1IN X 6IN 20FT",
+      "text": "DECKING 1IN X 6IN 20FT GRVD",
       "included": [
         "item_type",
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "dropped": [],
-      "used": 22,
+      "used": 27,
       "limit": 40,
       "compressions": []
     }
@@ -4287,14 +4193,14 @@
   {
     "index": 12,
     "status": "ready",
-    "filled": 25,
-    "score": 0.8712,
-    "family_id": "F-cf685675",
+    "filled": 27,
+    "score": 0.8749,
+    "family_id": "F-8d2ec509",
     "graph": {
       "product_id": "1513707",
-      "family_id": "F-cf685675",
-      "score": 0.8712,
-      "fingerprint": "9979176539e0",
+      "family_id": "F-8d2ec509",
+      "score": 0.8749,
+      "fingerprint": "08d329a26d82",
       "facts": {
         "brand": {
           "key": "brand",
@@ -4427,6 +4333,34 @@
             }
           ]
         },
+        "edge_profile": {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "value": "Grooved",
+          "uom": "",
+          "display": "Grooved",
+          "method": "rule",
+          "rule_id": "DEC-EDG-01",
+          "raw": "Grooved",
+          "confidence": 0.92,
+          "priority": 32,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Grooved",
+              "span": [
+                18,
+                25
+              ],
+              "detail": "Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -4455,12 +4389,12 @@
         "series": {
           "key": "series",
           "label": "Series",
-          "value": "Hatteras Transcend Lineage",
+          "value": "Transcend Lineage",
           "uom": "",
-          "display": "Hatteras Transcend Lineage",
+          "display": "Transcend Lineage",
           "method": "rule",
           "rule_id": "SER-CAP-01",
-          "raw": "Hatteras Transcend Lineage",
+          "raw": "Transcend Lineage",
           "confidence": 0.72,
           "priority": 10,
           "inferred": false,
@@ -4471,7 +4405,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Hatteras Transcend Lineage",
+              "text": "Transcend Lineage",
               "span": null,
               "detail": "Capitalised collection name left after brand and item type were removed."
             }
@@ -4609,14 +4543,15 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DECKING 1IN X 6IN 20FT",
+      "text": "DECKING 1IN X 6IN 20FT GRVD",
       "included": [
         "item_type",
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "dropped": [],
-      "used": 22,
+      "used": 27,
       "limit": 40,
       "compressions": []
     }
@@ -4626,10 +4561,10 @@
     "status": "ready",
     "filled": 29,
     "score": 0.89,
-    "family_id": "F-aaa45bb2",
+    "family_id": "F-f9e5724d",
     "graph": {
       "product_id": "XNB05Z",
-      "family_id": "F-aaa45bb2",
+      "family_id": "F-f9e5724d",
       "score": 0.89,
       "fingerprint": "b6708bf54d5a",
       "facts": {
@@ -4994,14 +4929,14 @@
   {
     "index": 14,
     "status": "ready",
-    "filled": 32,
-    "score": 0.8781,
-    "family_id": "F-2f926444",
+    "filled": 30,
+    "score": 0.8894,
+    "family_id": "F-151731b2",
     "graph": {
       "product_id": "566687",
-      "family_id": "F-2f926444",
-      "score": 0.8781,
-      "fingerprint": "6f9afb3b10b8",
+      "family_id": "F-151731b2",
+      "score": 0.8894,
+      "fingerprint": "39f84f53cd9d",
       "facts": {
         "brand": {
           "key": "brand",
@@ -5243,31 +5178,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -5418,14 +5328,14 @@
   {
     "index": 15,
     "status": "ready",
-    "filled": 27,
-    "score": 0.8717,
-    "family_id": "F-400fbb48",
+    "filled": 25,
+    "score": 0.8843,
+    "family_id": "F-69f6e829",
     "graph": {
       "product_id": "576397",
-      "family_id": "F-400fbb48",
-      "score": 0.8717,
-      "fingerprint": "b5437c49c872",
+      "family_id": "F-69f6e829",
+      "score": 0.8843,
+      "fingerprint": "37c8db88f9fd",
       "facts": {
         "brand": {
           "key": "brand",
@@ -5611,31 +5521,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -5786,10 +5671,10 @@
     "status": "ready",
     "filled": 25,
     "score": 0.8652,
-    "family_id": "F-d1285efe",
+    "family_id": "F-0ff35c76",
     "graph": {
       "product_id": "LSEL6333ZE",
-      "family_id": "F-d1285efe",
+      "family_id": "F-0ff35c76",
       "score": 0.8652,
       "fingerprint": "42e006a18a4f",
       "facts": {
@@ -6103,17 +5988,25 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 52 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "RANGE 30IN YES",
+      "text": "RANGE 30IN LSEL6333ZE",
       "included": [
         "item_type",
         "size",
-        "display_only"
+        "mpn"
       ],
       "dropped": [],
-      "used": 14,
+      "used": 21,
       "limit": 40,
       "compressions": []
     }
@@ -6121,14 +6014,14 @@
   {
     "index": 17,
     "status": "ready",
-    "filled": 22,
-    "score": 0.7617,
-    "family_id": "F-9a06722b",
+    "filled": 20,
+    "score": 0.8776,
+    "family_id": "F-396f1707",
     "graph": {
       "product_id": "C7CEBBS4RW3",
-      "family_id": "F-9a06722b",
-      "score": 0.7617,
-      "fingerprint": "f331a4632011",
+      "family_id": "F-396f1707",
+      "score": 0.8776,
+      "fingerprint": "06d2638e2edc",
       "facts": {
         "brand": {
           "key": "brand",
@@ -6236,13 +6129,13 @@
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Machine",
+          "value": "Espresso Machine",
           "uom": "",
-          "display": "Machine",
+          "display": "Espresso Machine",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "machine",
-          "confidence": 0.55,
+          "raw": "espresso machine",
+          "confidence": 0.8039,
           "priority": 5,
           "inferred": false,
           "agreed_by": [
@@ -6252,34 +6145,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "machine",
+              "text": "espresso machine",
               "span": null,
-              "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
-            }
-          ]
-        },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Auto Espresso",
-          "uom": "",
-          "display": "Auto Espresso",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Auto Espresso",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Auto Espresso",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
+              "detail": "Resolved against the item-type vocabulary induced from this catalogue (2 occurrences)."
             }
           ]
         },
@@ -6292,7 +6160,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 6,
           "inferred": false,
           "agreed_by": [
@@ -6302,7 +6170,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -6317,7 +6185,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 7,
           "inferred": false,
           "agreed_by": [
@@ -6327,7 +6195,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -6342,7 +6210,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 8,
           "inferred": false,
           "agreed_by": [
@@ -6352,7 +6220,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -6367,7 +6235,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 9,
           "inferred": false,
           "agreed_by": [
@@ -6377,7 +6245,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -6392,7 +6260,7 @@
           "method": "inferred",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.576,
+          "confidence": 0.72,
           "priority": 70,
           "inferred": true,
           "agreed_by": [
@@ -6412,16 +6280,24 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 56 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "MACHINE WH",
+      "text": "ESPRESSO MACHINE WH",
       "included": [
         "item_type",
         "finish"
       ],
       "dropped": [],
-      "used": 10,
+      "used": 19,
       "limit": 40,
       "compressions": []
     }
@@ -6431,10 +6307,10 @@
     "status": "ready",
     "filled": 23,
     "score": 0.8627,
-    "family_id": "F-73ab85d7",
+    "family_id": "F-165fd0c9",
     "graph": {
       "product_id": "KPTDR050A",
-      "family_id": "F-73ab85d7",
+      "family_id": "F-165fd0c9",
       "score": 0.8627,
       "fingerprint": "481cde9a23ba",
       "facts": {
@@ -6723,13 +6599,14 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DRILL 20V",
+      "text": "DRILL 20V KPTDR050A",
       "included": [
         "item_type",
-        "voltage"
+        "voltage",
+        "mpn"
       ],
       "dropped": [],
-      "used": 9,
+      "used": 19,
       "limit": 40,
       "compressions": []
     }
@@ -6737,14 +6614,14 @@
   {
     "index": 19,
     "status": "ready",
-    "filled": 25,
-    "score": 0.8712,
-    "family_id": "F-06b66aff",
+    "filled": 27,
+    "score": 0.8749,
+    "family_id": "F-42f04431",
     "graph": {
       "product_id": "1513708",
-      "family_id": "F-06b66aff",
-      "score": 0.8712,
-      "fingerprint": "71da7457ed84",
+      "family_id": "F-42f04431",
+      "score": 0.8749,
+      "fingerprint": "7af3c4e31f9b",
       "facts": {
         "brand": {
           "key": "brand",
@@ -6877,6 +6754,34 @@
             }
           ]
         },
+        "edge_profile": {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "value": "Square Edge",
+          "uom": "",
+          "display": "Square Edge",
+          "method": "rule",
+          "rule_id": "DEC-EDG-01",
+          "raw": "Sq Edge",
+          "confidence": 0.92,
+          "priority": 32,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Sq Edge",
+              "span": [
+                19,
+                26
+              ],
+              "detail": "Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -6905,12 +6810,12 @@
         "series": {
           "key": "series",
           "label": "Series",
-          "value": "Salt Sq Edge Transcend Lineage",
+          "value": "Transcend Lineage",
           "uom": "",
-          "display": "Salt Sq Edge Transcend Lineage",
+          "display": "Transcend Lineage",
           "method": "rule",
           "rule_id": "SER-CAP-01",
-          "raw": "Salt Sq Edge Transcend Lineage",
+          "raw": "Transcend Lineage",
           "confidence": 0.72,
           "priority": 10,
           "inferred": false,
@@ -6921,7 +6826,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Salt Sq Edge Transcend Lineage",
+              "text": "Transcend Lineage",
               "span": null,
               "detail": "Capitalised collection name left after brand and item type were removed."
             }
@@ -7059,30 +6964,81 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DECKING 1IN X 6IN 16FT",
+      "text": "DECKING 1IN X 6IN 16FT SQ EDG",
       "included": [
         "item_type",
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "dropped": [],
-      "used": 22,
+      "used": 29,
       "limit": 40,
       "compressions": []
     }
   },
   {
     "index": 20,
-    "status": "blocked",
-    "filled": 18,
-    "score": 0.85,
-    "family_id": "F-a3d88629",
+    "status": "needs_review",
+    "filled": 20,
+    "score": 0.7948,
+    "family_id": "F-fca69be4",
     "graph": {
       "product_id": "38-E",
-      "family_id": "F-a3d88629",
-      "score": 0.85,
-      "fingerprint": "9eb231c6e027",
+      "family_id": "F-fca69be4",
+      "score": 0.7948,
+      "fingerprint": "90e7c70b4c1f",
       "facts": {
+        "brand": {
+          "key": "brand",
+          "label": "Brand Name",
+          "value": "Rees Cast Stone Company",
+          "uom": "",
+          "display": "Rees Cast Stone Company",
+          "method": "input",
+          "rule_id": "IDN-BRD-01",
+          "raw": "Rees Cast Stone Company (REECA)",
+          "confidence": 0.58,
+          "priority": 1,
+          "inferred": false,
+          "agreed_by": [
+            "source"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Manuf",
+              "text": "Rees Cast Stone Company (REECA)",
+              "span": null,
+              "detail": "Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication."
+            }
+          ]
+        },
+        "manufacturer": {
+          "key": "manufacturer",
+          "label": "Manufacturer Name",
+          "value": "Rees Cast Stone Company",
+          "uom": "",
+          "display": "Rees Cast Stone Company",
+          "method": "input",
+          "rule_id": "IDN-MFR-01",
+          "raw": "Rees Cast Stone Company (REECA)",
+          "confidence": 0.5684,
+          "priority": 2,
+          "inferred": false,
+          "agreed_by": [
+            "source"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Manuf",
+              "text": "Rees Cast Stone Company (REECA)",
+              "span": null,
+              "detail": "Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication."
+            }
+          ]
+        },
         "mpn": {
           "key": "mpn",
           "label": "Manufacturer Part Number",
@@ -7284,25 +7240,31 @@
           ]
         }
       },
-      "notes": [],
+      "notes": [
+        {
+          "kind": "brand_not_in_approved_list",
+          "message": "Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",
+          "severity": "review"
+        }
+      ],
       "rejected": []
     },
-    "violations": [
+    "violations": [],
+    "flags": [
       {
-        "column": "BRAND_NAME",
-        "rule_id": "CG-BRD-01",
-        "severity": "error",
-        "message": "No approved brand resolved."
+        "kind": "brand_not_in_approved_list",
+        "message": "Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",
+        "severity": "review"
       }
     ],
-    "flags": [],
     "invoice_budget": {
-      "text": "MORTAR",
+      "text": "MORTAR 38-E",
       "included": [
-        "item_type"
+        "item_type",
+        "mpn"
       ],
       "dropped": [],
-      "used": 6,
+      "used": 11,
       "limit": 40,
       "compressions": []
     }
@@ -7310,14 +7272,14 @@
   {
     "index": 21,
     "status": "ready",
-    "filled": 26,
-    "score": 0.8693,
-    "family_id": "F-d729ac9c",
+    "filled": 24,
+    "score": 0.8829,
+    "family_id": "F-9115d5d2",
     "graph": {
       "product_id": "S3709",
-      "family_id": "F-d729ac9c",
-      "score": 0.8693,
-      "fingerprint": "b8d2a8f23f85",
+      "family_id": "F-9115d5d2",
+      "score": 0.8829,
+      "fingerprint": "7ad771ae3eb8",
       "facts": {
         "brand": {
           "key": "brand",
@@ -7475,31 +7437,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Incan",
-          "uom": "",
-          "display": "Incan",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Incan",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Incan",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -7629,7 +7566,15 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 59 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
       "text": "BULB 25W 2700K",
@@ -7647,14 +7592,14 @@
   {
     "index": 22,
     "status": "blocked",
-    "filled": 20,
-    "score": 0.8484,
-    "family_id": "F-0abfc16c",
+    "filled": 22,
+    "score": 0.8603,
+    "family_id": "F-553518e6",
     "graph": {
       "product_id": "653258",
-      "family_id": "F-0abfc16c",
-      "score": 0.8484,
-      "fingerprint": "49a30f9ef53f",
+      "family_id": "F-553518e6",
+      "score": 0.8603,
+      "fingerprint": "b0c9216570f2",
       "facts": {
         "brand": {
           "key": "brand",
@@ -7759,6 +7704,34 @@
             }
           ]
         },
+        "application": {
+          "key": "application",
+          "label": "Application",
+          "value": "Drywall",
+          "uom": "",
+          "display": "Drywall",
+          "method": "rule",
+          "rule_id": "APP-MAT-01",
+          "raw": "Drywall",
+          "confidence": 0.92,
+          "priority": 33,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Drywall",
+              "span": [
+                9,
+                16
+              ],
+              "detail": "The material this item is intended to work on."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -7796,12 +7769,6 @@
     },
     "violations": [
       {
-        "column": "MOBILE_DESC",
-        "rule_id": "CG-MOB-01",
-        "severity": "warning",
-        "message": "MOBILE_DESC is 59 characters, minimum 60."
-      },
-      {
         "column": "Classpath",
         "rule_id": "CG-TAX-01",
         "severity": "error",
@@ -7816,13 +7783,14 @@
       }
     ],
     "invoice_budget": {
-      "text": "FIRELITE 4IN X 9IN",
+      "text": "FIRELITE 4IN X 9IN DRYWALL",
       "included": [
         "item_type",
-        "dimensions"
+        "dimensions",
+        "application"
       ],
       "dropped": [],
-      "used": 18,
+      "used": 26,
       "limit": 40,
       "compressions": []
     }
@@ -7830,14 +7798,14 @@
   {
     "index": 23,
     "status": "ready",
-    "filled": 25,
-    "score": 0.8712,
-    "family_id": "F-7faa1d5d",
+    "filled": 27,
+    "score": 0.8749,
+    "family_id": "F-b0466af3",
     "graph": {
       "product_id": "AGB15516CG",
-      "family_id": "F-7faa1d5d",
-      "score": 0.8712,
-      "fingerprint": "a8de1873103e",
+      "family_id": "F-b0466af3",
+      "score": 0.8749,
+      "fingerprint": "0e4cdcba5e58",
       "facts": {
         "brand": {
           "key": "brand",
@@ -7970,6 +7938,34 @@
             }
           ]
         },
+        "edge_profile": {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "value": "Grooved",
+          "uom": "",
+          "display": "Grooved",
+          "method": "rule",
+          "rule_id": "DEC-EDG-01",
+          "raw": "Grooved",
+          "confidence": 0.92,
+          "priority": 32,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Grooved",
+              "span": [
+                20,
+                27
+              ],
+              "detail": "Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -7998,12 +7994,12 @@
         "series": {
           "key": "series",
           "label": "Series",
-          "value": "Castle Gate Landmark",
+          "value": "Castle Gate",
           "uom": "",
-          "display": "Castle Gate Landmark",
+          "display": "Castle Gate",
           "method": "rule",
           "rule_id": "SER-CAP-01",
-          "raw": "Castle Gate Landmark",
+          "raw": "Castle Gate",
           "confidence": 0.72,
           "priority": 10,
           "inferred": false,
@@ -8014,7 +8010,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Castle Gate Landmark",
+              "text": "Castle Gate",
               "span": null,
               "detail": "Capitalised collection name left after brand and item type were removed."
             }
@@ -8152,14 +8148,15 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DECKING 1IN X 6IN 16FT",
+      "text": "DECKING 1IN X 6IN 16FT GRVD",
       "included": [
         "item_type",
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "dropped": [],
-      "used": 22,
+      "used": 27,
       "limit": 40,
       "compressions": []
     }
@@ -8169,10 +8166,10 @@
     "status": "ready",
     "filled": 20,
     "score": 0.877,
-    "family_id": "F-c129039f",
+    "family_id": "F-ff07d7e7",
     "graph": {
       "product_id": "TR5006WN",
-      "family_id": "F-c129039f",
+      "family_id": "F-ff07d7e7",
       "score": 0.877,
       "fingerprint": "5e264d630975",
       "facts": {
@@ -8436,13 +8433,14 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "WASHER WH",
+      "text": "WASHER WH TR5006WN",
       "included": [
         "item_type",
-        "finish"
+        "finish",
+        "mpn"
       ],
       "dropped": [],
-      "used": 9,
+      "used": 18,
       "limit": 40,
       "compressions": []
     }
@@ -8450,14 +8448,14 @@
   {
     "index": 25,
     "status": "ready",
-    "filled": 34,
-    "score": 0.8808,
-    "family_id": "F-0a98d661",
+    "filled": 32,
+    "score": 0.8915,
+    "family_id": "F-25f1ce9c",
     "graph": {
       "product_id": "573485",
-      "family_id": "F-0a98d661",
-      "score": 0.8808,
-      "fingerprint": "0f62997be3a0",
+      "family_id": "F-25f1ce9c",
+      "score": 0.8915,
+      "fingerprint": "214f5a013e36",
       "facts": {
         "brand": {
           "key": "brand",
@@ -8727,31 +8725,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -8904,13 +8877,13 @@
     "index": 26,
     "status": "ready",
     "filled": 22,
-    "score": 0.8402,
-    "family_id": "F-559cfc59",
+    "score": 0.8784,
+    "family_id": "F-b8100a1b",
     "graph": {
       "product_id": "220USBP5U",
-      "family_id": "F-559cfc59",
-      "score": 0.8402,
-      "fingerprint": "1d5b16da9d4e",
+      "family_id": "F-b8100a1b",
+      "score": 0.8784,
+      "fingerprint": "fa87a7354487",
       "facts": {
         "brand": {
           "key": "brand",
@@ -9015,16 +8988,44 @@
             }
           ]
         },
+        "configuration": {
+          "key": "configuration",
+          "label": "Configuration",
+          "value": "Set",
+          "uom": "",
+          "display": "Set",
+          "method": "rule",
+          "rule_id": "PKG-CFG-01",
+          "raw": "Set",
+          "confidence": 0.92,
+          "priority": 44,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Set",
+              "span": [
+                34,
+                37
+              ],
+              "detail": "How the item is sold; a kit and a bare tool are different SKUs."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Bit",
+          "value": "Screwdriver",
           "uom": "",
-          "display": "Bit",
+          "display": "Screwdriver",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "bit",
-          "confidence": 0.55,
+          "raw": "screwdriver",
+          "confidence": 0.77,
           "priority": 5,
           "inferred": false,
           "agreed_by": [
@@ -9034,34 +9035,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "bit",
+              "text": "screwdriver",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
-            }
-          ]
-        },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Screwdriver Plus",
-          "uom": "",
-          "display": "Screwdriver Plus",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Screwdriver Plus",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Screwdriver Plus",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
             }
           ]
         },
@@ -9072,8 +9048,8 @@
           "uom": "",
           "display": "Tools",
           "method": "rule",
-          "rule_id": "TAX-022",
-          "raw": "Bit",
+          "rule_id": "TAX-075",
+          "raw": "Screwdriver",
           "confidence": 0.9,
           "priority": 6,
           "inferred": false,
@@ -9084,21 +9060,21 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Bit",
+              "text": "Screwdriver",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-022 on 'Bit'."
+              "detail": "Matched taxonomy rule TAX-075 on 'Screwdriver'."
             }
           ]
         },
         "class": {
           "key": "class",
           "label": "Class",
-          "value": "Power Tool Accessories",
+          "value": "Hand Tools",
           "uom": "",
-          "display": "Power Tool Accessories",
+          "display": "Hand Tools",
           "method": "rule",
-          "rule_id": "TAX-022",
-          "raw": "Bit",
+          "rule_id": "TAX-075",
+          "raw": "Screwdriver",
           "confidence": 0.9,
           "priority": 7,
           "inferred": false,
@@ -9109,21 +9085,21 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Bit",
+              "text": "Screwdriver",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-022 on 'Bit'."
+              "detail": "Matched taxonomy rule TAX-075 on 'Screwdriver'."
             }
           ]
         },
         "fine": {
           "key": "fine",
           "label": "Fine",
-          "value": "Driver Bits",
+          "value": "Screwdrivers",
           "uom": "",
-          "display": "Driver Bits",
+          "display": "Screwdrivers",
           "method": "rule",
-          "rule_id": "TAX-022",
-          "raw": "Bit",
+          "rule_id": "TAX-075",
+          "raw": "Screwdriver",
           "confidence": 0.9,
           "priority": 8,
           "inferred": false,
@@ -9134,21 +9110,21 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Bit",
+              "text": "Screwdriver",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-022 on 'Bit'."
+              "detail": "Matched taxonomy rule TAX-075 on 'Screwdriver'."
             }
           ]
         },
         "classpath": {
           "key": "classpath",
           "label": "Classpath",
-          "value": "Tools & Equipment>Power Tool Accessories>Driver Bits",
+          "value": "Tools & Equipment>Hand Tools>Screwdrivers",
           "uom": "",
-          "display": "Tools & Equipment>Power Tool Accessories>Driver Bits",
+          "display": "Tools & Equipment>Hand Tools>Screwdrivers",
           "method": "rule",
-          "rule_id": "TAX-022",
-          "raw": "Bit",
+          "rule_id": "TAX-075",
+          "raw": "Screwdriver",
           "confidence": 0.9,
           "priority": 9,
           "inferred": false,
@@ -9159,21 +9135,21 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Bit",
+              "text": "Screwdriver",
               "span": null,
-              "detail": "Matched taxonomy rule TAX-022 on 'Bit'."
+              "detail": "Matched taxonomy rule TAX-075 on 'Screwdriver'."
             }
           ]
         },
         "unspsc": {
           "key": "unspsc",
           "label": "UNSPSC",
-          "value": "27112800",
+          "value": "27111500",
           "uom": "",
-          "display": "27112800",
+          "display": "27111500",
           "method": "inferred",
-          "rule_id": "TAX-022",
-          "raw": "Bit",
+          "rule_id": "TAX-075",
+          "raw": "Screwdriver",
           "confidence": 0.72,
           "priority": 70,
           "inferred": true,
@@ -9184,9 +9160,9 @@
           "evidence": [
             {
               "source": "registry:taxonomy",
-              "text": "27112800",
+              "text": "27111500",
               "span": null,
-              "detail": "UNSPSC family for classpath Tools & Equipment>Power Tool Accessories>Driver Bits."
+              "detail": "UNSPSC family for classpath Tools & Equipment>Hand Tools>Screwdrivers."
             }
           ]
         }
@@ -9194,16 +9170,25 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 55 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "BIT 5",
+      "text": "SCREWDRIVER 5 SET",
       "included": [
         "item_type",
-        "pack_quantity"
+        "pack_quantity",
+        "configuration"
       ],
       "dropped": [],
-      "used": 5,
+      "used": 17,
       "limit": 40,
       "compressions": []
     }
@@ -9211,14 +9196,14 @@
   {
     "index": 27,
     "status": "blocked",
-    "filled": 18,
-    "score": 0.8206,
-    "family_id": "F-55e49ba5",
+    "filled": 20,
+    "score": 0.8405,
+    "family_id": "F-9a2774a2",
     "graph": {
       "product_id": "230.312.08",
-      "family_id": "F-55e49ba5",
-      "score": 0.8206,
-      "fingerprint": "fa582ff8ccda",
+      "family_id": "F-9a2774a2",
+      "score": 0.8405,
+      "fingerprint": "9976214b156e",
       "facts": {
         "brand": {
           "key": "brand",
@@ -9295,15 +9280,43 @@
             }
           ]
         },
+        "configuration": {
+          "key": "configuration",
+          "label": "Configuration",
+          "value": "Set",
+          "uom": "",
+          "display": "Set",
+          "method": "rule",
+          "rule_id": "PKG-CFG-01",
+          "raw": "Set",
+          "confidence": 0.92,
+          "priority": 44,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Set",
+              "span": [
+                20,
+                23
+              ],
+              "detail": "How the item is sold; a kit and a bare tool are different SKUs."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Dado",
+          "value": "Locked Dado",
           "uom": "",
-          "display": "Dado",
+          "display": "Locked Dado",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "dado",
+          "raw": "locked dado",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -9314,7 +9327,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "dado",
+              "text": "locked dado",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
             }
@@ -9324,7 +9337,7 @@
       "notes": [
         {
           "kind": "classification_abstained",
-          "message": "No taxonomy rule matched item type 'Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",
+          "message": "No taxonomy rule matched item type 'Locked Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",
           "severity": "review"
         }
       ],
@@ -9334,8 +9347,9 @@
       {
         "column": "MOBILE_DESC",
         "rule_id": "CG-MOB-01",
-        "severity": "warning",
-        "message": "MOBILE_DESC is 42 characters, minimum 60."
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 53 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
       },
       {
         "column": "Classpath",
@@ -9347,17 +9361,18 @@
     "flags": [
       {
         "kind": "classification_abstained",
-        "message": "No taxonomy rule matched item type 'Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",
+        "message": "No taxonomy rule matched item type 'Locked Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",
         "severity": "review"
       }
     ],
     "invoice_budget": {
-      "text": "DADO",
+      "text": "LOCKED DADO SET",
       "included": [
-        "item_type"
+        "item_type",
+        "configuration"
       ],
       "dropped": [],
-      "used": 4,
+      "used": 15,
       "limit": 40,
       "compressions": []
     }
@@ -9367,12 +9382,12 @@
     "status": "ready",
     "filled": 22,
     "score": 0.8675,
-    "family_id": "F-4f2e784f",
+    "family_id": "F-c9e779ca",
     "graph": {
       "product_id": "MK113MPAP",
-      "family_id": "F-4f2e784f",
+      "family_id": "F-c9e779ca",
       "score": 0.8675,
-      "fingerprint": "61a1ecbe8a04",
+      "fingerprint": "a54bf436eeba",
       "facts": {
         "brand": {
           "key": "brand",
@@ -9505,12 +9520,12 @@
         "series": {
           "key": "series",
           "label": "Series",
-          "value": "Edge Makalu Frame Polarized",
+          "value": "Makalu Frame Polarized",
           "uom": "",
-          "display": "Edge Makalu Frame Polarized",
+          "display": "Makalu Frame Polarized",
           "method": "rule",
           "rule_id": "SER-CAP-01",
-          "raw": "Edge Makalu Frame Polarized",
+          "raw": "Makalu Frame Polarized",
           "confidence": 0.72,
           "priority": 10,
           "inferred": false,
@@ -9521,7 +9536,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Edge Makalu Frame Polarized",
+              "text": "Makalu Frame Polarized",
               "span": null,
               "detail": "Capitalised collection name left after brand and item type were removed."
             }
@@ -9656,14 +9671,7 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [
-      {
-        "column": "MOBILE_DESC",
-        "rule_id": "CG-MOB-01",
-        "severity": "warning",
-        "message": "MOBILE_DESC is 53 characters, minimum 60."
-      }
-    ],
+    "violations": [],
     "flags": [],
     "invoice_budget": {
       "text": "SAFETY GLASSES BK",
@@ -9682,10 +9690,10 @@
     "status": "blocked",
     "filled": 18,
     "score": 0.875,
-    "family_id": "F-c24b7f72",
+    "family_id": "F-a71b4597",
     "graph": {
       "product_id": "CVM517P3RD1",
-      "family_id": "F-c24b7f72",
+      "family_id": "F-a71b4597",
       "score": 0.875,
       "fingerprint": "7543032f88e6",
       "facts": {
@@ -9904,6 +9912,13 @@
     },
     "violations": [
       {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 29 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      },
+      {
         "column": "BRAND_NAME",
         "rule_id": "CG-BRD-01",
         "severity": "error",
@@ -9918,13 +9933,14 @@
       }
     ],
     "invoice_budget": {
-      "text": "MICROWAVE BK",
+      "text": "MICROWAVE BK CVM517P3RD1",
       "included": [
         "item_type",
-        "finish"
+        "finish",
+        "mpn"
       ],
       "dropped": [],
-      "used": 12,
+      "used": 24,
       "limit": 40,
       "compressions": []
     }
@@ -9932,14 +9948,14 @@
   {
     "index": 30,
     "status": "ready",
-    "filled": 31,
-    "score": 0.8573,
-    "family_id": "F-8d9f22ef",
+    "filled": 33,
+    "score": 0.8615,
+    "family_id": "F-1de6b74c",
     "graph": {
       "product_id": "49-94-0923",
-      "family_id": "F-8d9f22ef",
-      "score": 0.8573,
-      "fingerprint": "a2d9ceb1cb90",
+      "family_id": "F-1de6b74c",
+      "score": 0.8615,
+      "fingerprint": "9b785c7a4d26",
       "facts": {
         "brand": {
           "key": "brand",
@@ -10128,15 +10144,43 @@
             }
           ]
         },
+        "application": {
+          "key": "application",
+          "label": "Application",
+          "value": "Metal",
+          "uom": "",
+          "display": "Metal",
+          "method": "rule",
+          "rule_id": "APP-MAT-01",
+          "raw": "Metal",
+          "confidence": 0.92,
+          "priority": 33,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Metal",
+              "span": [
+                31,
+                36
+              ],
+              "detail": "The material this item is intended to work on."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Disc",
+          "value": "Grind Disc",
           "uom": "",
-          "display": "Disc",
+          "display": "Grind Disc",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "disc",
+          "raw": "grind disc",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -10147,7 +10191,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "disc",
+              "text": "grind disc",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
             }
@@ -10197,7 +10241,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Disc",
+              "text": "Grind Disc",
               "span": null,
               "detail": "Matched taxonomy rule TAX-018 on 'Disc'."
             }
@@ -10222,7 +10266,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Disc",
+              "text": "Grind Disc",
               "span": null,
               "detail": "Matched taxonomy rule TAX-018 on 'Disc'."
             }
@@ -10247,7 +10291,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Disc",
+              "text": "Grind Disc",
               "span": null,
               "detail": "Matched taxonomy rule TAX-018 on 'Disc'."
             }
@@ -10272,7 +10316,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Disc",
+              "text": "Grind Disc",
               "span": null,
               "detail": "Matched taxonomy rule TAX-018 on 'Disc'."
             }
@@ -10310,16 +10354,18 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DISC 6IN 1/8IN 7/8IN 6IN X 1/8IN X 7/8IN",
+      "text": "GRIND DISC 6IN 1/8IN 7/8IN METAL",
       "included": [
         "item_type",
         "diameter",
         "thickness",
         "arbor_size",
+        "application"
+      ],
+      "dropped": [
         "dimensions"
       ],
-      "dropped": [],
-      "used": 40,
+      "used": 32,
       "limit": 40,
       "compressions": []
     }
@@ -10329,12 +10375,12 @@
     "status": "ready",
     "filled": 23,
     "score": 0.862,
-    "family_id": "F-c8140ebd",
+    "family_id": "F-f2c88910",
     "graph": {
       "product_id": "R02-GUAC1-0BW",
-      "family_id": "F-c8140ebd",
+      "family_id": "F-f2c88910",
       "score": 0.862,
-      "fingerprint": "63b19e366789",
+      "fingerprint": "cb58f2a508dd",
       "facts": {
         "brand": {
           "key": "brand",
@@ -10470,12 +10516,12 @@
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Outlet",
+          "value": "USB Outlet",
           "uom": "",
-          "display": "Outlet",
+          "display": "USB Outlet",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "outlet",
+          "raw": "usb outlet",
           "confidence": 0.55,
           "priority": 5,
           "inferred": false,
@@ -10486,7 +10532,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "outlet",
+              "text": "usb outlet",
               "span": null,
               "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
             }
@@ -10511,7 +10557,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "USB Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -10536,7 +10582,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "USB Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -10561,7 +10607,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "USB Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -10586,7 +10632,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Outlet",
+              "text": "USB Outlet",
               "span": null,
               "detail": "Matched taxonomy rule TAX-046 on 'Outlet'."
             }
@@ -10624,14 +10670,14 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "OUTLET WH 15A",
+      "text": "USB OUTLET WH 15A",
       "included": [
         "item_type",
         "finish",
         "amperage"
       ],
       "dropped": [],
-      "used": 13,
+      "used": 17,
       "limit": 40,
       "compressions": []
     }
@@ -10639,14 +10685,14 @@
   {
     "index": 32,
     "status": "ready",
-    "filled": 25,
-    "score": 0.8725,
-    "family_id": "F-efe220f1",
+    "filled": 23,
+    "score": 0.8863,
+    "family_id": "F-92292095",
     "graph": {
       "product_id": "62-1850",
-      "family_id": "F-efe220f1",
-      "score": 0.8725,
-      "fingerprint": "6f7479893c11",
+      "family_id": "F-92292095",
+      "score": 0.8863,
+      "fingerprint": "e9839facdce2",
       "facts": {
         "brand": {
           "key": "brand",
@@ -10804,31 +10850,6 @@
             }
           ]
         },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Led",
-          "uom": "",
-          "display": "Led",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Led",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Led",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
-            }
-          ]
-        },
         "dept": {
           "key": "dept",
           "label": "Dept",
@@ -10977,12 +10998,12 @@
     "index": 33,
     "status": "ready",
     "filled": 20,
-    "score": 0.8362,
-    "family_id": "F-9fd13cc1",
+    "score": 0.861,
+    "family_id": "F-f263140d",
     "graph": {
       "product_id": "T-90065",
-      "family_id": "F-9fd13cc1",
-      "score": 0.8362,
+      "family_id": "F-f263140d",
+      "score": 0.861,
       "fingerprint": "66a192300b72",
       "facts": {
         "brand": {
@@ -11069,7 +11090,7 @@
           "method": "rule",
           "rule_id": "ITM-LEX-01",
           "raw": "organizer",
-          "confidence": 0.55,
+          "confidence": 0.7977,
           "priority": 5,
           "inferred": false,
           "agreed_by": [
@@ -11081,7 +11102,7 @@
               "source": "input:Part_Desc",
               "text": "organizer",
               "span": null,
-              "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
+              "detail": "Resolved against the item-type vocabulary induced from this catalogue (1 occurrences)."
             }
           ]
         },
@@ -11242,12 +11263,13 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "ORGANIZER",
+      "text": "ORGANIZER T-90065",
       "included": [
-        "item_type"
+        "item_type",
+        "mpn"
       ],
       "dropped": [],
-      "used": 9,
+      "used": 17,
       "limit": 40,
       "compressions": []
     }
@@ -11257,10 +11279,10 @@
     "status": "ready",
     "filled": 18,
     "score": 0.8692,
-    "family_id": "F-65e1cfdf",
+    "family_id": "F-bb59848c",
     "graph": {
       "product_id": "EUF17CDBW",
-      "family_id": "F-65e1cfdf",
+      "family_id": "F-bb59848c",
       "score": 0.8692,
       "fingerprint": "2b29aae38d4a",
       "facts": {
@@ -11493,15 +11515,24 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 47 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "FREEZER",
+      "text": "FREEZER EUF17CDBW",
       "included": [
-        "item_type"
+        "item_type",
+        "mpn"
       ],
       "dropped": [],
-      "used": 7,
+      "used": 17,
       "limit": 40,
       "compressions": []
     }
@@ -11511,10 +11542,10 @@
     "status": "needs_review",
     "filled": 23,
     "score": 0.7473,
-    "family_id": "F-a27d1c28",
+    "family_id": "F-cd1f1c14",
     "graph": {
       "product_id": "25459",
-      "family_id": "F-a27d1c28",
+      "family_id": "F-cd1f1c14",
       "score": 0.7473,
       "fingerprint": "a492d75338bd",
       "facts": {
@@ -11803,28 +11834,29 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "ORANGE 500FT",
+      "text": "ORANGE 500FT 25459",
       "included": [
         "item_type",
-        "size"
+        "size",
+        "mpn"
       ],
       "dropped": [],
-      "used": 12,
+      "used": 18,
       "limit": 40,
       "compressions": []
     }
   },
   {
     "index": 36,
-    "status": "needs_review",
+    "status": "ready",
     "filled": 20,
-    "score": 0.7458,
-    "family_id": "F-918001ac",
+    "score": 0.8776,
+    "family_id": "F-18d1bd12",
     "graph": {
       "product_id": "C7CESAS3RD3",
-      "family_id": "F-918001ac",
-      "score": 0.7458,
-      "fingerprint": "0c78475b9b18",
+      "family_id": "F-18d1bd12",
+      "score": 0.8776,
+      "fingerprint": "d0198a3b5438",
       "facts": {
         "brand": {
           "key": "brand",
@@ -11901,16 +11933,44 @@
             }
           ]
         },
+        "finish": {
+          "key": "finish",
+          "label": "Color",
+          "value": "Matte Black",
+          "uom": "",
+          "display": "Matte Black",
+          "method": "rule",
+          "rule_id": "FIN-CDE-01",
+          "raw": "MB",
+          "confidence": 0.92,
+          "priority": 35,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "MB",
+              "span": [
+                22,
+                24
+              ],
+              "detail": "Trade finish code expanded via the approved abbreviation map."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
-          "value": "Machine",
+          "value": "Espresso Machine",
           "uom": "",
-          "display": "Machine",
+          "display": "Espresso Machine",
           "method": "rule",
           "rule_id": "ITM-LEX-01",
-          "raw": "machine",
-          "confidence": 0.55,
+          "raw": "espresso machine",
+          "confidence": 0.8039,
           "priority": 5,
           "inferred": false,
           "agreed_by": [
@@ -11920,34 +11980,9 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "machine",
+              "text": "espresso machine",
               "span": null,
-              "detail": "Resolved against the item-type vocabulary induced from this catalogue (0 occurrences)."
-            }
-          ]
-        },
-        "series": {
-          "key": "series",
-          "label": "Series",
-          "value": "Espresso MB",
-          "uom": "",
-          "display": "Espresso MB",
-          "method": "rule",
-          "rule_id": "SER-CAP-01",
-          "raw": "Espresso MB",
-          "confidence": 0.72,
-          "priority": 10,
-          "inferred": false,
-          "agreed_by": [
-            "pattern"
-          ],
-          "conflicts": [],
-          "evidence": [
-            {
-              "source": "input:Part_Desc",
-              "text": "Espresso MB",
-              "span": null,
-              "detail": "Capitalised collection name left after brand and item type were removed."
+              "detail": "Resolved against the item-type vocabulary induced from this catalogue (2 occurrences)."
             }
           ]
         },
@@ -11960,7 +11995,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 6,
           "inferred": false,
           "agreed_by": [
@@ -11970,7 +12005,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -11985,7 +12020,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 7,
           "inferred": false,
           "agreed_by": [
@@ -11995,7 +12030,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -12010,7 +12045,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 8,
           "inferred": false,
           "agreed_by": [
@@ -12020,7 +12055,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -12035,7 +12070,7 @@
           "method": "rule",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.72,
+          "confidence": 0.9,
           "priority": 9,
           "inferred": false,
           "agreed_by": [
@@ -12045,7 +12080,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Machine",
+              "text": "Espresso Machine",
               "span": null,
               "detail": "Matched taxonomy rule TAX-071 on 'Espresso'."
             }
@@ -12060,7 +12095,7 @@
           "method": "inferred",
           "rule_id": "TAX-071",
           "raw": "Espresso",
-          "confidence": 0.576,
+          "confidence": 0.72,
           "priority": 70,
           "inferred": true,
           "agreed_by": [
@@ -12083,12 +12118,13 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "MACHINE",
+      "text": "ESPRESSO MACHINE MATTE BLACK",
       "included": [
-        "item_type"
+        "item_type",
+        "finish"
       ],
       "dropped": [],
-      "used": 7,
+      "used": 28,
       "limit": 40,
       "compressions": []
     }
@@ -12098,10 +12134,10 @@
     "status": "ready",
     "filled": 20,
     "score": 0.877,
-    "family_id": "F-cd42c4fa",
+    "family_id": "F-119e340a",
     "graph": {
       "product_id": "PGE29BYTFS",
-      "family_id": "F-cd42c4fa",
+      "family_id": "F-119e340a",
       "score": 0.877,
       "fingerprint": "fa34248445e1",
       "facts": {
@@ -12362,16 +12398,25 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 59 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
-      "text": "REFRIG SST",
+      "text": "REFRIG SST PGE29BYTFS",
       "included": [
         "item_type",
-        "finish"
+        "finish",
+        "mpn"
       ],
       "dropped": [],
-      "used": 10,
+      "used": 21,
       "limit": 40,
       "compressions": []
     }
@@ -12379,14 +12424,14 @@
   {
     "index": 38,
     "status": "ready",
-    "filled": 25,
-    "score": 0.8712,
-    "family_id": "F-cc833be2",
+    "filled": 27,
+    "score": 0.8749,
+    "family_id": "F-62761b6d",
     "graph": {
       "product_id": "543140020",
-      "family_id": "F-cc833be2",
-      "score": 0.8712,
-      "fingerprint": "75db32533dbc",
+      "family_id": "F-62761b6d",
+      "score": 0.8749,
+      "fingerprint": "0972484ce4ed",
       "facts": {
         "brand": {
           "key": "brand",
@@ -12519,6 +12564,34 @@
             }
           ]
         },
+        "edge_profile": {
+          "key": "edge_profile",
+          "label": "Edge Profile",
+          "value": "Square Edge",
+          "uom": "",
+          "display": "Square Edge",
+          "method": "rule",
+          "rule_id": "DEC-EDG-01",
+          "raw": "Sq Edge",
+          "confidence": 0.92,
+          "priority": 32,
+          "inferred": false,
+          "agreed_by": [
+            "pattern"
+          ],
+          "conflicts": [],
+          "evidence": [
+            {
+              "source": "input:Part_Desc",
+              "text": "Sq Edge",
+              "span": [
+                18,
+                25
+              ],
+              "detail": "Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+            }
+          ]
+        },
         "item_type": {
           "key": "item_type",
           "label": "Item Type",
@@ -12547,12 +12620,12 @@
         "series": {
           "key": "series",
           "label": "Series",
-          "value": "Biscayne Sq Edge Transcend Lineage",
+          "value": "Transcend Lineage",
           "uom": "",
-          "display": "Biscayne Sq Edge Transcend Lineage",
+          "display": "Transcend Lineage",
           "method": "rule",
           "rule_id": "SER-CAP-01",
-          "raw": "Biscayne Sq Edge Transcend Lineage",
+          "raw": "Transcend Lineage",
           "confidence": 0.72,
           "priority": 10,
           "inferred": false,
@@ -12563,7 +12636,7 @@
           "evidence": [
             {
               "source": "input:Part_Desc",
-              "text": "Biscayne Sq Edge Transcend Lineage",
+              "text": "Transcend Lineage",
               "span": null,
               "detail": "Capitalised collection name left after brand and item type were removed."
             }
@@ -12701,14 +12774,15 @@
     "violations": [],
     "flags": [],
     "invoice_budget": {
-      "text": "DECKING 1IN X 6IN 20FT",
+      "text": "DECKING 1IN X 6IN 20FT SQ EDG",
       "included": [
         "item_type",
         "nominal_size",
-        "length"
+        "length",
+        "edge_profile"
       ],
       "dropped": [],
-      "used": 22,
+      "used": 29,
       "limit": 40,
       "compressions": []
     }
@@ -12718,10 +12792,10 @@
     "status": "ready",
     "filled": 23,
     "score": 0.8809,
-    "family_id": "F-0b4b7218",
+    "family_id": "F-d6586717",
     "graph": {
       "product_id": "PEP9030DTBB",
-      "family_id": "F-0b4b7218",
+      "family_id": "F-d6586717",
       "score": 0.8809,
       "fingerprint": "4a21a063ec76",
       "facts": {
@@ -13010,7 +13084,15 @@
       "notes": [],
       "rejected": []
     },
-    "violations": [],
+    "violations": [
+      {
+        "column": "MOBILE_DESC",
+        "rule_id": "CG-MOB-01",
+        "severity": "info",
+        "data_limited": true,
+        "message": "MOBILE_DESC is 52 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it."
+      }
+    ],
     "flags": [],
     "invoice_budget": {
       "text": "COOKTOP BK 30IN",

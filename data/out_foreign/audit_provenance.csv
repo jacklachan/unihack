@@ -11,23 +11,21 @@
 1,S4724,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 1,S4724,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 1,S4724,INVOICE_DESC,BULB 4W 2700K 4 CAND,compose,0.9,,,,Budget solver fitted 5 facts into 20/40 characters.
-1,S4724,MOBILE_DESC,"Satco Products, Inc. Satco®, Light Bulb, Incan, S4724, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-1,S4724,SHORT_DESC,"Satco® Incan S4724 Light Bulb, 4 W, 2700 K, Candelabra Base, 4",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-1,S4724,RETAIL_DESC,"Incan Light Bulb, 4 W, 2700 K, Candelabra Base, 4",compose,0.85,,,,Shelf line: series + item type + differentiators.
-1,S4724,LONG_DESC1,"Satco® Light Bulb, Incan, 4 W, 2700 K, Candelabra Base, 4",compose,0.85,,,,Every captured attribute rendered in specification order.
+1,S4724,MOBILE_DESC,"Satco Products, Inc. Satco, Light Bulb, S4724, 4 W, 2700 K, Candelabra Base",compose,0.88,,,,Identity line sized into the 60-80 character window.
+1,S4724,SHORT_DESC,"Satco® S4724 Light Bulb, 4 W, 2700 K, Candelabra Base, 4",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+1,S4724,RETAIL_DESC,"Light Bulb, 4 W, 2700 K, Candelabra Base, 4",compose,0.85,,,,Shelf line: series + item type + differentiators.
+1,S4724,LONG_DESC1,"Satco® Light Bulb, 4 W, 2700 K, Candelabra Base, 4",compose,0.85,,,,Every captured attribute rendered in specification order.
 1,S4724,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-1,S4724,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Incan,Capitalised collection name left after brand and item type were removed.
-1,S4724,ATTRIBUTE_VALUE 1,Incan,rule,0.72,SER-CAP-01,input:Part_Desc,Incan,Capitalised collection name left after brand and item type were removed.
-1,S4724,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
-1,S4724,ATTRIBUTE_VALUE 2,4,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
-1,S4724,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
-1,S4724,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-1,S4724,ATTRIBUTE_VALUE 3,2700,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-1,S4724,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-1,S4724,ATTRIBUTE_LABEL 4,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
-1,S4724,ATTRIBUTE_VALUE 4,Candelabra Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
-1,S4724,ATTRIBUTE_LABEL 5,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
-1,S4724,ATTRIBUTE_VALUE 5,4,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
+1,S4724,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
+1,S4724,ATTRIBUTE_VALUE 1,4,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
+1,S4724,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
+1,S4724,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+1,S4724,ATTRIBUTE_VALUE 2,2700,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+1,S4724,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+1,S4724,ATTRIBUTE_LABEL 3,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
+1,S4724,ATTRIBUTE_VALUE 3,Candelabra Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
+1,S4724,ATTRIBUTE_LABEL 4,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
+1,S4724,ATTRIBUTE_VALUE 4,4,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
 1,S4724,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 2,DCG420B,Mfg_Part_Num,DCG420B,input,0.99,,,,Preserved verbatim from the source file.
 2,DCG420B,Part_Desc,DCG420B Dewalt 20V Die Grinder (Bare),input,0.99,,,,Preserved verbatim from the source file.
@@ -40,11 +38,11 @@
 2,DCG420B,Dept,Tools,rule,0.9,TAX-030,input:Part_Desc,Die Grinder,Matched taxonomy rule TAX-030 on 'Die Grinder'.
 2,DCG420B,Class,Power Tools,rule,0.9,TAX-030,input:Part_Desc,Die Grinder,Matched taxonomy rule TAX-030 on 'Die Grinder'.
 2,DCG420B,Fine,Grinders,rule,0.9,TAX-030,input:Part_Desc,Die Grinder,Matched taxonomy rule TAX-030 on 'Die Grinder'.
-2,DCG420B,INVOICE_DESC,DIE GRINDER 20V NO,compose,0.9,,,,Budget solver fitted 3 facts into 18/40 characters.
-2,DCG420B,MOBILE_DESC,"Stanley Black & Decker DEWALT®, Die Grinder, DCG420B, Tools, Power Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
-2,DCG420B,SHORT_DESC,"DEWALT® DCG420B Die Grinder, 20 V, No",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-2,DCG420B,RETAIL_DESC,"Die Grinder, 20 V, No",compose,0.85,,,,Shelf line: series + item type + differentiators.
-2,DCG420B,LONG_DESC1,"DEWALT® Die Grinder, 20 V, No",compose,0.85,,,,Every captured attribute rendered in specification order.
+2,DCG420B,INVOICE_DESC,DIE GRINDER 20V,compose,0.9,,,,Budget solver fitted 2 facts into 15/40 characters.
+2,DCG420B,MOBILE_DESC,"Stanley Black & Decker DEWALT, Die Grinder, DCG420B, 20 V",compose,0.88,,,,"Only 57 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+2,DCG420B,SHORT_DESC,"DEWALT® DCG420B Die Grinder, 20 V",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+2,DCG420B,RETAIL_DESC,"Die Grinder, 20 V",compose,0.85,,,,Shelf line: series + item type + differentiators.
+2,DCG420B,LONG_DESC1,"DEWALT® Die Grinder, 20 V",compose,0.85,,,,Every captured attribute rendered in specification order.
 2,DCG420B,Product Name,Die Grinder,rule,0.8377,ITM-LEX-01,input:Part_Desc,die grinder,Resolved against the item-type vocabulary induced from this catalogue (1 occurrences).
 2,DCG420B,ATTRIBUTE_LABEL 1,Voltage Rating,rule,0.92,ELE-V-01,input:Part_Desc,20V,Voltage token; dual ratings kept as '12/20'.
 2,DCG420B,ATTRIBUTE_VALUE 1,20,rule,0.92,ELE-V-01,input:Part_Desc,20V,Voltage token; dual ratings kept as '12/20'.
@@ -59,26 +57,24 @@
 3,571513,MANUFACTURER_PART_NUMBER,571513,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,571513,Supplied part number.
 3,571513,BRAND_NAME,Philips®,registry,0.9,IDN-BRD-01,input:Part_Manuf,Phillips Lighting (5831),Supplier string normalised to the approved manufacturer.
 3,571513,MANUFACTURER_NAME,Signify Holding,registry,0.882,IDN-MFR-01,input:Part_Manuf,Phillips Lighting (5831),Supplier string normalised to the approved manufacturer.
-3,571513,Classpath,Electrical>Lighting & Bulbs>Light Bulbs,family,0.75,FAM-CON-01,family:F-0a98d661,Electrical>Lighting & Bulbs>Light Bulbs,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
-3,571513,Dept,Electrical,family,0.75,FAM-CON-01,family:F-0a98d661,Electrical,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
-3,571513,Class,Lighting,family,0.75,FAM-CON-01,family:F-0a98d661,Lighting,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
-3,571513,Fine,Light Bulbs,family,0.75,FAM-CON-01,family:F-0a98d661,Light Bulbs,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
+3,571513,Classpath,Electrical>Lighting & Bulbs>Light Bulbs,family,0.75,FAM-CON-01,family:F-25f1ce9c,Electrical>Lighting & Bulbs>Light Bulbs,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
+3,571513,Dept,Electrical,family,0.75,FAM-CON-01,family:F-25f1ce9c,Electrical,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
+3,571513,Class,Lighting,family,0.75,FAM-CON-01,family:F-25f1ce9c,Lighting,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
+3,571513,Fine,Light Bulbs,family,0.75,FAM-CON-01,family:F-25f1ce9c,Light Bulbs,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
 3,571513,INVOICE_DESC,BULB 2700K MED LED,compose,0.9,,,,Budget solver fitted 4 facts into 18/40 characters.
-3,571513,MOBILE_DESC,"Signify Holding Philips®, Light Bulb, Led, 571513, Lighting, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-3,571513,SHORT_DESC,"Philips® Led 571513 Light Bulb, 2700 K, LED, Medium Base",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-3,571513,RETAIL_DESC,"Led Light Bulb, 2700 K, LED, Medium Base",compose,0.85,,,,Shelf line: series + item type + differentiators.
-3,571513,LONG_DESC1,"Philips® Light Bulb, Led, 2700 K, LED, Medium Base",compose,0.85,,,,Every captured attribute rendered in specification order.
-3,571513,Product Name,Light Bulb,family,0.75,FAM-CON-01,family:F-0a98d661,Light Bulb,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
-3,571513,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-3,571513,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-3,571513,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-3,571513,ATTRIBUTE_VALUE 2,2700,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-3,571513,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-3,571513,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-3,571513,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-3,571513,ATTRIBUTE_LABEL 4,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-3,571513,ATTRIBUTE_VALUE 4,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-3,571513,UNSPSC,39101600,family,0.75,FAM-CON-01,family:F-0a98d661,39101600,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
+3,571513,MOBILE_DESC,"Signify Holding Philips, Light Bulb, 571513, 2700 K, LED, Medium Base",compose,0.88,,,,Identity line sized into the 60-80 character window.
+3,571513,SHORT_DESC,"Philips® 571513 Light Bulb, 2700 K, LED, Medium Base",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+3,571513,RETAIL_DESC,"Light Bulb, 2700 K, LED, Medium Base",compose,0.85,,,,Shelf line: series + item type + differentiators.
+3,571513,LONG_DESC1,"Philips® Light Bulb, 2700 K, LED, Medium Base",compose,0.85,,,,Every captured attribute rendered in specification order.
+3,571513,Product Name,Light Bulb,family,0.75,FAM-CON-01,family:F-25f1ce9c,Light Bulb,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
+3,571513,ATTRIBUTE_LABEL 1,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+3,571513,ATTRIBUTE_VALUE 1,2700,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+3,571513,ATTRIBUTE_UOM 1,K,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+3,571513,ATTRIBUTE_LABEL 2,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+3,571513,ATTRIBUTE_VALUE 2,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+3,571513,ATTRIBUTE_LABEL 3,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+3,571513,ATTRIBUTE_VALUE 3,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+3,571513,UNSPSC,39101600,family,0.75,FAM-CON-01,family:F-25f1ce9c,39101600,Inherited from family consensus: 3 of 4 siblings independently produced this value and none contradicted it.
 4,3052-20,Mfg_Part_Num,3052-20,input,0.99,,,,Preserved verbatim from the source file.
 4,3052-20,Part_Desc,"3052-20 Milw M12 Fuel 1/4"" Rachet",input,0.99,,,,Preserved verbatim from the source file.
 4,3052-20,Part_Manuf,Milwaukee Accessory (4031),input,0.99,,,,Preserved verbatim from the source file.
@@ -86,16 +82,16 @@
 4,3052-20,MANUFACTURER_PART_NUMBER,3052-20,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,3052-20,Supplied part number.
 4,3052-20,BRAND_NAME,Milwaukee®,registry,0.88,IDN-BRD-01,input:Part_Desc,milw,Approved brand 'milw' found in the description.
 4,3052-20,MANUFACTURER_NAME,Milwaukee Tool,registry,0.8624,IDN-MFR-01,input:Part_Desc,milw,Approved brand 'milw' found in the description.
-4,3052-20,Classpath,Tools & Equipment>Hand Tools>Ratchets,rule,0.9,TAX-065,input:Part_Desc,Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
-4,3052-20,Dept,Tools,rule,0.9,TAX-065,input:Part_Desc,Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
-4,3052-20,Class,Hand Tools,rule,0.9,TAX-065,input:Part_Desc,Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
-4,3052-20,Fine,Ratchets,rule,0.9,TAX-065,input:Part_Desc,Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
-4,3052-20,INVOICE_DESC,RACHET 1/4IN M12,compose,0.9,,,,Budget solver fitted 3 facts into 16/40 characters.
-4,3052-20,MOBILE_DESC,"Milwaukee Tool Milwaukee®, Rachet, 3052-20, Tools, Hand Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
-4,3052-20,SHORT_DESC,"Milwaukee® 3052-20 Rachet, 1/4 in, M12",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-4,3052-20,RETAIL_DESC,"Rachet, 1/4 in, M12",compose,0.85,,,,Shelf line: series + item type + differentiators.
-4,3052-20,LONG_DESC1,"Milwaukee® Rachet, 1/4 in, M12",compose,0.85,,,,Every captured attribute rendered in specification order.
-4,3052-20,Product Name,Rachet,rule,0.55,ITM-LEX-01,input:Part_Desc,rachet,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+4,3052-20,Classpath,Tools & Equipment>Hand Tools>Ratchets,rule,0.9,TAX-065,input:Part_Desc,Fuel Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
+4,3052-20,Dept,Tools,rule,0.9,TAX-065,input:Part_Desc,Fuel Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
+4,3052-20,Class,Hand Tools,rule,0.9,TAX-065,input:Part_Desc,Fuel Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
+4,3052-20,Fine,Ratchets,rule,0.9,TAX-065,input:Part_Desc,Fuel Rachet,Matched taxonomy rule TAX-065 on 'Rachet'.
+4,3052-20,INVOICE_DESC,FUEL RACHET 1/4IN M12,compose,0.9,,,,Budget solver fitted 3 facts into 21/40 characters.
+4,3052-20,MOBILE_DESC,"Milwaukee Tool Milwaukee, Fuel Rachet, 3052-20, 1/4 in, M12",compose,0.88,,,,"Only 59 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+4,3052-20,SHORT_DESC,"Milwaukee® 3052-20 Fuel Rachet, 1/4 in, M12",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+4,3052-20,RETAIL_DESC,"Fuel Rachet, 1/4 in, M12",compose,0.85,,,,Shelf line: series + item type + differentiators.
+4,3052-20,LONG_DESC1,"Milwaukee® Fuel Rachet, 1/4 in, M12",compose,0.85,,,,Every captured attribute rendered in specification order.
+4,3052-20,Product Name,Fuel Rachet,rule,0.55,ITM-LEX-01,input:Part_Desc,fuel rachet,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 4,3052-20,ATTRIBUTE_LABEL 1,Size,rule,0.92,DIM-SGL-01,input:Part_Desc,"1/4""",Single stated dimension (nominal size of the item).
 4,3052-20,ATTRIBUTE_VALUE 1,1/4,rule,0.92,DIM-SGL-01,input:Part_Desc,"1/4""",Single stated dimension (nominal size of the item).
 4,3052-20,ATTRIBUTE_UOM 1,in,rule,0.92,DIM-SGL-01,input:Part_Desc,"1/4""",Single stated dimension (nominal size of the item).
@@ -109,24 +105,24 @@
 5,XRJ08Z,MANUFACTURER_PART_NUMBER,XRJ08Z,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,XRJ08Z,Supplied part number.
 5,XRJ08Z,BRAND_NAME,Makita®,registry,0.88,IDN-BRD-01,input:Part_Desc,Makita,Approved brand 'Makita' found in the description.
 5,XRJ08Z,MANUFACTURER_NAME,"Makita U.S.A., Inc.",registry,0.8624,IDN-MFR-01,input:Part_Desc,Makita,Approved brand 'Makita' found in the description.
-5,XRJ08Z,Classpath,Tools & Equipment>Power Tools>Saws,rule,0.72,TAX-075,input:Part_Desc,Tool,Matched taxonomy rule TAX-075 on 'Saw'.
-5,XRJ08Z,Dept,Tools,rule,0.72,TAX-075,input:Part_Desc,Tool,Matched taxonomy rule TAX-075 on 'Saw'.
-5,XRJ08Z,Class,Power Tools,rule,0.72,TAX-075,input:Part_Desc,Tool,Matched taxonomy rule TAX-075 on 'Saw'.
-5,XRJ08Z,Fine,Saws,rule,0.72,TAX-075,input:Part_Desc,Tool,Matched taxonomy rule TAX-075 on 'Saw'.
-5,XRJ08Z,INVOICE_DESC,TOOL 18V 18V,compose,0.9,,,,Budget solver fitted 3 facts into 12/40 characters.
-5,XRJ08Z,MOBILE_DESC,"Makita U.S.A., Inc. Makita®, Tool, Recip Saw, XRJ08Z, Tools, Power Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
-5,XRJ08Z,SHORT_DESC,"Makita® Recip Saw XRJ08Z Tool, 18 V, 18V",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-5,XRJ08Z,RETAIL_DESC,"Recip Saw Tool, 18 V, 18V",compose,0.85,,,,Shelf line: series + item type + differentiators.
-5,XRJ08Z,LONG_DESC1,"Makita® Tool, Recip Saw, 18 V, 18V",compose,0.85,,,,Every captured attribute rendered in specification order.
-5,XRJ08Z,Product Name,Tool,rule,0.55,ITM-LEX-01,input:Part_Desc,tool,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
-5,XRJ08Z,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Recip Saw,Capitalised collection name left after brand and item type were removed.
-5,XRJ08Z,ATTRIBUTE_VALUE 1,Recip Saw,rule,0.72,SER-CAP-01,input:Part_Desc,Recip Saw,Capitalised collection name left after brand and item type were removed.
-5,XRJ08Z,ATTRIBUTE_LABEL 2,Voltage Rating,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
-5,XRJ08Z,ATTRIBUTE_VALUE 2,18,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
-5,XRJ08Z,ATTRIBUTE_UOM 2,V,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
-5,XRJ08Z,ATTRIBUTE_LABEL 3,Battery Platform,rule,0.92,TOL-PLT-01,input:Part_Desc,18V,Cordless battery platform; drives accessory compatibility.
-5,XRJ08Z,ATTRIBUTE_VALUE 3,18V,rule,0.92,TOL-PLT-01,input:Part_Desc,18V,Cordless battery platform; drives accessory compatibility.
-5,XRJ08Z,UNSPSC,27112100,inferred,0.576,TAX-075,registry:taxonomy,27112100,UNSPSC family for classpath Tools & Equipment>Power Tools>Saws.
+5,XRJ08Z,Classpath,Tools & Equipment>Power Tools>Saws,rule,0.9,TAX-104,input:Part_Desc,Recip Saw,Matched taxonomy rule TAX-104 on 'Saw'.
+5,XRJ08Z,Dept,Tools,rule,0.9,TAX-104,input:Part_Desc,Recip Saw,Matched taxonomy rule TAX-104 on 'Saw'.
+5,XRJ08Z,Class,Power Tools,rule,0.9,TAX-104,input:Part_Desc,Recip Saw,Matched taxonomy rule TAX-104 on 'Saw'.
+5,XRJ08Z,Fine,Saws,rule,0.9,TAX-104,input:Part_Desc,Recip Saw,Matched taxonomy rule TAX-104 on 'Saw'.
+5,XRJ08Z,INVOICE_DESC,RECIP SAW 18V 18V BARE TOOL,compose,0.9,,,,Budget solver fitted 4 facts into 27/40 characters.
+5,XRJ08Z,MOBILE_DESC,"Makita U.S.A., Inc. Makita, Recip Saw, XRJ08Z, 18 V, 18V, Bare Tool",compose,0.88,,,,Identity line sized into the 60-80 character window.
+5,XRJ08Z,SHORT_DESC,"Makita® XRJ08Z Recip Saw, 18 V, 18V, Bare Tool",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+5,XRJ08Z,RETAIL_DESC,"Recip Saw, 18 V, 18V, Bare Tool",compose,0.85,,,,Shelf line: series + item type + differentiators.
+5,XRJ08Z,LONG_DESC1,"Makita® Recip Saw, 18 V, 18V, Bare Tool",compose,0.85,,,,Every captured attribute rendered in specification order.
+5,XRJ08Z,Product Name,Recip Saw,rule,0.55,ITM-LEX-01,input:Part_Desc,recip saw,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+5,XRJ08Z,ATTRIBUTE_LABEL 1,Voltage Rating,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
+5,XRJ08Z,ATTRIBUTE_VALUE 1,18,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
+5,XRJ08Z,ATTRIBUTE_UOM 1,V,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
+5,XRJ08Z,ATTRIBUTE_LABEL 2,Battery Platform,rule,0.92,TOL-PLT-01,input:Part_Desc,18V,Cordless battery platform; drives accessory compatibility.
+5,XRJ08Z,ATTRIBUTE_VALUE 2,18V,rule,0.92,TOL-PLT-01,input:Part_Desc,18V,Cordless battery platform; drives accessory compatibility.
+5,XRJ08Z,ATTRIBUTE_LABEL 3,Configuration,rule,0.92,PKG-CFG-01,input:Part_Desc,Bare Tool,How the item is sold; a kit and a bare tool are different SKUs.
+5,XRJ08Z,ATTRIBUTE_VALUE 3,Bare Tool,rule,0.92,PKG-CFG-01,input:Part_Desc,Bare Tool,How the item is sold; a kit and a bare tool are different SKUs.
+5,XRJ08Z,UNSPSC,27112100,inferred,0.72,TAX-104,registry:taxonomy,27112100,UNSPSC family for classpath Tools & Equipment>Power Tools>Saws.
 6,0887-20,Mfg_Part_Num,0887-20,input,0.99,,,,Preserved verbatim from the source file.
 6,0887-20,Part_Desc,0887-20 Milw M18 Brushless Precision Blower,input,0.99,,,,Preserved verbatim from the source file.
 6,0887-20,Part_Manuf,Milwaukee Accessory (4031),input,0.99,,,,Preserved verbatim from the source file.
@@ -134,20 +130,18 @@
 6,0887-20,MANUFACTURER_PART_NUMBER,0887-20,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,0887-20,Supplied part number.
 6,0887-20,BRAND_NAME,Milwaukee®,registry,0.88,IDN-BRD-01,input:Part_Desc,milw,Approved brand 'milw' found in the description.
 6,0887-20,MANUFACTURER_NAME,Milwaukee Tool,registry,0.8624,IDN-MFR-01,input:Part_Desc,milw,Approved brand 'milw' found in the description.
-6,0887-20,Classpath,Tools & Equipment>Dust Management>Vacuums & Extractors,rule,0.9,TAX-063,input:Part_Desc,Blower,Matched taxonomy rule TAX-063 on 'Blower'.
-6,0887-20,Dept,Tools,rule,0.9,TAX-063,input:Part_Desc,Blower,Matched taxonomy rule TAX-063 on 'Blower'.
-6,0887-20,Class,Power Tools,rule,0.9,TAX-063,input:Part_Desc,Blower,Matched taxonomy rule TAX-063 on 'Blower'.
-6,0887-20,Fine,Dust Extraction,rule,0.9,TAX-063,input:Part_Desc,Blower,Matched taxonomy rule TAX-063 on 'Blower'.
-6,0887-20,INVOICE_DESC,BLOWER M18,compose,0.9,,,,Budget solver fitted 2 facts into 10/40 characters.
-6,0887-20,MOBILE_DESC,"Milwaukee Tool Milwaukee®, Blower, Brushless Precision, 0887-20",compose,0.88,,,,Identity line sized into the 60-80 character window.
-6,0887-20,SHORT_DESC,"Milwaukee® Brushless Precision 0887-20 Blower, M18",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-6,0887-20,RETAIL_DESC,"Brushless Precision Blower, M18",compose,0.85,,,,Shelf line: series + item type + differentiators.
-6,0887-20,LONG_DESC1,"Milwaukee® Blower, Brushless Precision, M18",compose,0.85,,,,Every captured attribute rendered in specification order.
-6,0887-20,Product Name,Blower,rule,0.55,ITM-LEX-01,input:Part_Desc,blower,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
-6,0887-20,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Brushless Precision,Capitalised collection name left after brand and item type were removed.
-6,0887-20,ATTRIBUTE_VALUE 1,Brushless Precision,rule,0.72,SER-CAP-01,input:Part_Desc,Brushless Precision,Capitalised collection name left after brand and item type were removed.
-6,0887-20,ATTRIBUTE_LABEL 2,Battery Platform,rule,0.92,TOL-PLT-01,input:Part_Desc,M18,Cordless battery platform; drives accessory compatibility.
-6,0887-20,ATTRIBUTE_VALUE 2,M18,rule,0.92,TOL-PLT-01,input:Part_Desc,M18,Cordless battery platform; drives accessory compatibility.
+6,0887-20,Classpath,Tools & Equipment>Dust Management>Vacuums & Extractors,rule,0.9,TAX-063,input:Part_Desc,Precision Blower,Matched taxonomy rule TAX-063 on 'Blower'.
+6,0887-20,Dept,Tools,rule,0.9,TAX-063,input:Part_Desc,Precision Blower,Matched taxonomy rule TAX-063 on 'Blower'.
+6,0887-20,Class,Power Tools,rule,0.9,TAX-063,input:Part_Desc,Precision Blower,Matched taxonomy rule TAX-063 on 'Blower'.
+6,0887-20,Fine,Dust Extraction,rule,0.9,TAX-063,input:Part_Desc,Precision Blower,Matched taxonomy rule TAX-063 on 'Blower'.
+6,0887-20,INVOICE_DESC,PRECISION BLOWER M18,compose,0.9,,,,Budget solver fitted 2 facts into 20/40 characters.
+6,0887-20,MOBILE_DESC,"Milwaukee Tool Milwaukee, Precision Blower, 0887-20, M18",compose,0.88,,,,"Only 56 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+6,0887-20,SHORT_DESC,"Milwaukee® 0887-20 Precision Blower, M18",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+6,0887-20,RETAIL_DESC,"Precision Blower, M18",compose,0.85,,,,Shelf line: series + item type + differentiators.
+6,0887-20,LONG_DESC1,"Milwaukee® Precision Blower, M18",compose,0.85,,,,Every captured attribute rendered in specification order.
+6,0887-20,Product Name,Precision Blower,rule,0.55,ITM-LEX-01,input:Part_Desc,precision blower,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+6,0887-20,ATTRIBUTE_LABEL 1,Battery Platform,rule,0.92,TOL-PLT-01,input:Part_Desc,M18,Cordless battery platform; drives accessory compatibility.
+6,0887-20,ATTRIBUTE_VALUE 1,M18,rule,0.92,TOL-PLT-01,input:Part_Desc,M18,Cordless battery platform; drives accessory compatibility.
 6,0887-20,UNSPSC,47121701,inferred,0.72,TAX-063,registry:taxonomy,47121701,UNSPSC family for classpath Tools & Equipment>Dust Management>Vacuums & Extractors.
 7,565374,Mfg_Part_Num,565374,input,0.99,,,,Preserved verbatim from the source file.
 7,565374,Part_Desc,565374 75W Led A19 Med 27k 4pk,input,0.99,,,,Preserved verbatim from the source file.
@@ -161,27 +155,25 @@
 7,565374,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 7,565374,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 7,565374,INVOICE_DESC,BULB 75W 2700K 4 MED A19 LED,compose,0.9,,,,Budget solver fitted 7 facts into 28/40 characters.
-7,565374,MOBILE_DESC,"Signify Holding Philips®, Light Bulb, Led, 565374, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-7,565374,SHORT_DESC,"Philips® Led 565374 Light Bulb, 75 W, 2700 K, LED, A19",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-7,565374,RETAIL_DESC,"Led Light Bulb, 75 W, 2700 K, LED, A19",compose,0.85,,,,Shelf line: series + item type + differentiators.
-7,565374,LONG_DESC1,"Philips® Light Bulb, Led, 75 W, 2700 K, LED, A19, Medium Base, 4",compose,0.85,,,,Every captured attribute rendered in specification order.
+7,565374,MOBILE_DESC,"Signify Holding Philips, Light Bulb, 565374, 75 W, 2700 K, LED",compose,0.88,,,,Identity line sized into the 60-80 character window.
+7,565374,SHORT_DESC,"Philips® 565374 Light Bulb, 75 W, 2700 K, LED, A19",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+7,565374,RETAIL_DESC,"Light Bulb, 75 W, 2700 K, LED, A19",compose,0.85,,,,Shelf line: series + item type + differentiators.
+7,565374,LONG_DESC1,"Philips® Light Bulb, 75 W, 2700 K, LED, A19, Medium Base, 4",compose,0.85,,,,Every captured attribute rendered in specification order.
 7,565374,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-7,565374,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-7,565374,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-7,565374,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,75W,Wattage token.
-7,565374,ATTRIBUTE_VALUE 2,75,rule,0.92,ELE-W-01,input:Part_Desc,75W,Wattage token.
-7,565374,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,75W,Wattage token.
-7,565374,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-7,565374,ATTRIBUTE_VALUE 3,2700,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-7,565374,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-7,565374,ATTRIBUTE_LABEL 4,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-7,565374,ATTRIBUTE_VALUE 4,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-7,565374,ATTRIBUTE_LABEL 5,Bulb Shape,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
-7,565374,ATTRIBUTE_VALUE 5,A19,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
-7,565374,ATTRIBUTE_LABEL 6,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-7,565374,ATTRIBUTE_VALUE 6,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-7,565374,ATTRIBUTE_LABEL 7,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
-7,565374,ATTRIBUTE_VALUE 7,4,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
+7,565374,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,75W,Wattage token.
+7,565374,ATTRIBUTE_VALUE 1,75,rule,0.92,ELE-W-01,input:Part_Desc,75W,Wattage token.
+7,565374,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,75W,Wattage token.
+7,565374,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+7,565374,ATTRIBUTE_VALUE 2,2700,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+7,565374,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+7,565374,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+7,565374,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+7,565374,ATTRIBUTE_LABEL 4,Bulb Shape,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
+7,565374,ATTRIBUTE_VALUE 4,A19,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
+7,565374,ATTRIBUTE_LABEL 5,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+7,565374,ATTRIBUTE_VALUE 5,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+7,565374,ATTRIBUTE_LABEL 6,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
+7,565374,ATTRIBUTE_VALUE 6,4,rule,0.92,PKG-PK-01,input:Part_Desc,4pk,Multi-pack count.
 7,565374,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 8,S3797,Mfg_Part_Num,S3797,input,0.99,,,,Preserved verbatim from the source file.
 8,S3797,Part_Desc,S3797 4W Incan Cand 27K 2pk,input,0.99,,,,Preserved verbatim from the source file.
@@ -195,23 +187,21 @@
 8,S3797,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 8,S3797,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 8,S3797,INVOICE_DESC,BULB 4W 2700K 2 CAND,compose,0.9,,,,Budget solver fitted 5 facts into 20/40 characters.
-8,S3797,MOBILE_DESC,"Satco Products, Inc. Satco®, Light Bulb, Incan, S3797, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-8,S3797,SHORT_DESC,"Satco® Incan S3797 Light Bulb, 4 W, 2700 K, Candelabra Base, 2",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-8,S3797,RETAIL_DESC,"Incan Light Bulb, 4 W, 2700 K, Candelabra Base, 2",compose,0.85,,,,Shelf line: series + item type + differentiators.
-8,S3797,LONG_DESC1,"Satco® Light Bulb, Incan, 4 W, 2700 K, Candelabra Base, 2",compose,0.85,,,,Every captured attribute rendered in specification order.
+8,S3797,MOBILE_DESC,"Satco Products, Inc. Satco, Light Bulb, S3797, 4 W, 2700 K, Candelabra Base",compose,0.88,,,,Identity line sized into the 60-80 character window.
+8,S3797,SHORT_DESC,"Satco® S3797 Light Bulb, 4 W, 2700 K, Candelabra Base, 2",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+8,S3797,RETAIL_DESC,"Light Bulb, 4 W, 2700 K, Candelabra Base, 2",compose,0.85,,,,Shelf line: series + item type + differentiators.
+8,S3797,LONG_DESC1,"Satco® Light Bulb, 4 W, 2700 K, Candelabra Base, 2",compose,0.85,,,,Every captured attribute rendered in specification order.
 8,S3797,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-8,S3797,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Incan,Capitalised collection name left after brand and item type were removed.
-8,S3797,ATTRIBUTE_VALUE 1,Incan,rule,0.72,SER-CAP-01,input:Part_Desc,Incan,Capitalised collection name left after brand and item type were removed.
-8,S3797,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
-8,S3797,ATTRIBUTE_VALUE 2,4,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
-8,S3797,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
-8,S3797,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-8,S3797,ATTRIBUTE_VALUE 3,2700,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-8,S3797,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-8,S3797,ATTRIBUTE_LABEL 4,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
-8,S3797,ATTRIBUTE_VALUE 4,Candelabra Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
-8,S3797,ATTRIBUTE_LABEL 5,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
-8,S3797,ATTRIBUTE_VALUE 5,2,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
+8,S3797,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
+8,S3797,ATTRIBUTE_VALUE 1,4,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
+8,S3797,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,4W,Wattage token.
+8,S3797,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+8,S3797,ATTRIBUTE_VALUE 2,2700,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+8,S3797,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+8,S3797,ATTRIBUTE_LABEL 3,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
+8,S3797,ATTRIBUTE_VALUE 3,Candelabra Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
+8,S3797,ATTRIBUTE_LABEL 4,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
+8,S3797,ATTRIBUTE_VALUE 4,2,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
 8,S3797,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 9,565622,Mfg_Part_Num,565622,input,0.99,,,,Preserved verbatim from the source file.
 9,565622,Part_Desc,565622 60W Led Med 20k,input,0.99,,,,Preserved verbatim from the source file.
@@ -225,23 +215,21 @@
 9,565622,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 9,565622,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 9,565622,INVOICE_DESC,BULB 60W 2000K MED LED,compose,0.9,,,,Budget solver fitted 5 facts into 22/40 characters.
-9,565622,MOBILE_DESC,"Signify Holding Philips®, Light Bulb, Led, 565622, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-9,565622,SHORT_DESC,"Philips® Led 565622 Light Bulb, 60 W, 2000 K, LED, Medium Base",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-9,565622,RETAIL_DESC,"Led Light Bulb, 60 W, 2000 K, LED, Medium Base",compose,0.85,,,,Shelf line: series + item type + differentiators.
-9,565622,LONG_DESC1,"Philips® Light Bulb, Led, 60 W, 2000 K, LED, Medium Base",compose,0.85,,,,Every captured attribute rendered in specification order.
+9,565622,MOBILE_DESC,"Signify Holding Philips, Light Bulb, 565622, 60 W, 2000 K, LED",compose,0.88,,,,Identity line sized into the 60-80 character window.
+9,565622,SHORT_DESC,"Philips® 565622 Light Bulb, 60 W, 2000 K, LED, Medium Base",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+9,565622,RETAIL_DESC,"Light Bulb, 60 W, 2000 K, LED, Medium Base",compose,0.85,,,,Shelf line: series + item type + differentiators.
+9,565622,LONG_DESC1,"Philips® Light Bulb, 60 W, 2000 K, LED, Medium Base",compose,0.85,,,,Every captured attribute rendered in specification order.
 9,565622,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-9,565622,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-9,565622,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-9,565622,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-9,565622,ATTRIBUTE_VALUE 2,60,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-9,565622,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-9,565622,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,20k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-9,565622,ATTRIBUTE_VALUE 3,2000,rule,0.92,LMP-K-01,input:Part_Desc,20k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-9,565622,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,20k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-9,565622,ATTRIBUTE_LABEL 4,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-9,565622,ATTRIBUTE_VALUE 4,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-9,565622,ATTRIBUTE_LABEL 5,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-9,565622,ATTRIBUTE_VALUE 5,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+9,565622,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+9,565622,ATTRIBUTE_VALUE 1,60,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+9,565622,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+9,565622,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,20k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+9,565622,ATTRIBUTE_VALUE 2,2000,rule,0.92,LMP-K-01,input:Part_Desc,20k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+9,565622,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,20k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+9,565622,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+9,565622,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+9,565622,ATTRIBUTE_LABEL 4,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+9,565622,ATTRIBUTE_VALUE 4,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
 9,565622,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 10,XLT05Z,Mfg_Part_Num,XLT05Z,input,0.99,,,,Preserved verbatim from the source file.
 10,XLT05Z,Part_Desc,"XLT05Z Makita 1/2"" 18V Angle Impact",input,0.99,,,,Preserved verbatim from the source file.
@@ -250,16 +238,16 @@
 10,XLT05Z,MANUFACTURER_PART_NUMBER,XLT05Z,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,XLT05Z,Supplied part number.
 10,XLT05Z,BRAND_NAME,Makita®,registry,0.88,IDN-BRD-01,input:Part_Desc,Makita,Approved brand 'Makita' found in the description.
 10,XLT05Z,MANUFACTURER_NAME,"Makita U.S.A., Inc.",registry,0.8624,IDN-MFR-01,input:Part_Desc,Makita,Approved brand 'Makita' found in the description.
-10,XLT05Z,Classpath,Tools & Equipment>Power Tools>Impact Drivers & Wrenches,rule,0.9,TAX-076,input:Part_Desc,Impact,Matched taxonomy rule TAX-076 on 'Impact'.
-10,XLT05Z,Dept,Tools,rule,0.9,TAX-076,input:Part_Desc,Impact,Matched taxonomy rule TAX-076 on 'Impact'.
-10,XLT05Z,Class,Power Tools,rule,0.9,TAX-076,input:Part_Desc,Impact,Matched taxonomy rule TAX-076 on 'Impact'.
-10,XLT05Z,Fine,Impact Tools,rule,0.9,TAX-076,input:Part_Desc,Impact,Matched taxonomy rule TAX-076 on 'Impact'.
-10,XLT05Z,INVOICE_DESC,IMPACT 18V 1/2IN 18V,compose,0.9,,,,Budget solver fitted 4 facts into 20/40 characters.
-10,XLT05Z,MOBILE_DESC,"Makita U.S.A., Inc. Makita®, Impact, XLT05Z, Tools, Power Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
-10,XLT05Z,SHORT_DESC,"Makita® XLT05Z Impact, 1/2 in, 18 V, 18V",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-10,XLT05Z,RETAIL_DESC,"Impact, 1/2 in, 18 V, 18V",compose,0.85,,,,Shelf line: series + item type + differentiators.
-10,XLT05Z,LONG_DESC1,"Makita® Impact, 1/2 in, 18 V, 18V",compose,0.85,,,,Every captured attribute rendered in specification order.
-10,XLT05Z,Product Name,Impact,rule,0.55,ITM-LEX-01,input:Part_Desc,impact,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+10,XLT05Z,Classpath,Tools & Equipment>Power Tools>Impact Drivers & Wrenches,rule,0.9,TAX-105,input:Part_Desc,Angle Impact,Matched taxonomy rule TAX-105 on 'Impact'.
+10,XLT05Z,Dept,Tools,rule,0.9,TAX-105,input:Part_Desc,Angle Impact,Matched taxonomy rule TAX-105 on 'Impact'.
+10,XLT05Z,Class,Power Tools,rule,0.9,TAX-105,input:Part_Desc,Angle Impact,Matched taxonomy rule TAX-105 on 'Impact'.
+10,XLT05Z,Fine,Impact Tools,rule,0.9,TAX-105,input:Part_Desc,Angle Impact,Matched taxonomy rule TAX-105 on 'Impact'.
+10,XLT05Z,INVOICE_DESC,ANGLE IMPACT 18V 1/2IN 18V,compose,0.9,,,,Budget solver fitted 4 facts into 26/40 characters.
+10,XLT05Z,MOBILE_DESC,"Makita U.S.A., Inc. Makita, Angle Impact, XLT05Z, 1/2 in, 18 V",compose,0.88,,,,Identity line sized into the 60-80 character window.
+10,XLT05Z,SHORT_DESC,"Makita® XLT05Z Angle Impact, 1/2 in, 18 V, 18V",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+10,XLT05Z,RETAIL_DESC,"Angle Impact, 1/2 in, 18 V, 18V",compose,0.85,,,,Shelf line: series + item type + differentiators.
+10,XLT05Z,LONG_DESC1,"Makita® Angle Impact, 1/2 in, 18 V, 18V",compose,0.85,,,,Every captured attribute rendered in specification order.
+10,XLT05Z,Product Name,Angle Impact,rule,0.55,ITM-LEX-01,input:Part_Desc,angle impact,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 10,XLT05Z,ATTRIBUTE_LABEL 1,Size,rule,0.92,DIM-SGL-01,input:Part_Desc,"1/2""",Single stated dimension (nominal size of the item).
 10,XLT05Z,ATTRIBUTE_VALUE 1,1/2,rule,0.92,DIM-SGL-01,input:Part_Desc,"1/2""",Single stated dimension (nominal size of the item).
 10,XLT05Z,ATTRIBUTE_UOM 1,in,rule,0.92,DIM-SGL-01,input:Part_Desc,"1/2""",Single stated dimension (nominal size of the item).
@@ -268,7 +256,7 @@
 10,XLT05Z,ATTRIBUTE_UOM 2,V,rule,0.92,ELE-V-01,input:Part_Desc,18V,Voltage token; dual ratings kept as '12/20'.
 10,XLT05Z,ATTRIBUTE_LABEL 3,Battery Platform,rule,0.92,TOL-PLT-01,input:Part_Desc,18V,Cordless battery platform; drives accessory compatibility.
 10,XLT05Z,ATTRIBUTE_VALUE 3,18V,rule,0.92,TOL-PLT-01,input:Part_Desc,18V,Cordless battery platform; drives accessory compatibility.
-10,XLT05Z,UNSPSC,27112000,inferred,0.72,TAX-076,registry:taxonomy,27112000,UNSPSC family for classpath Tools & Equipment>Power Tools>Impact Drivers & Wrenches.
+10,XLT05Z,UNSPSC,27112000,inferred,0.72,TAX-105,registry:taxonomy,27112000,UNSPSC family for classpath Tools & Equipment>Power Tools>Impact Drivers & Wrenches.
 11,R02-D215P-1RW,Mfg_Part_Num,R02-D215P-1RW,input,0.99,,,,Preserved verbatim from the source file.
 11,R02-D215P-1RW,Part_Desc,R02D215P1RW 15A Mini Outlet Wh,input,0.99,,,,Preserved verbatim from the source file.
 11,R02-D215P-1RW,Part_Manuf,Leviton Mfg Co (4927),input,0.99,,,,Preserved verbatim from the source file.
@@ -276,16 +264,16 @@
 11,R02-D215P-1RW,MANUFACTURER_PART_NUMBER,R02-D215P-1RW,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,R02-D215P-1RW,Supplied part number.
 11,R02-D215P-1RW,BRAND_NAME,Leviton®,registry,0.9,IDN-BRD-01,input:Part_Manuf,Leviton Mfg Co (4927),Supplier string normalised to the approved manufacturer.
 11,R02-D215P-1RW,MANUFACTURER_NAME,"Leviton Manufacturing Co., Inc.",registry,0.882,IDN-MFR-01,input:Part_Manuf,Leviton Mfg Co (4927),Supplier string normalised to the approved manufacturer.
-11,R02-D215P-1RW,Classpath,Electrical>Wiring Devices>Receptacles,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-11,R02-D215P-1RW,Dept,Electrical,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-11,R02-D215P-1RW,Class,Wiring Devices,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-11,R02-D215P-1RW,Fine,Receptacles,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-11,R02-D215P-1RW,INVOICE_DESC,OUTLET WH 15A,compose,0.9,,,,Budget solver fitted 3 facts into 13/40 characters.
-11,R02-D215P-1RW,MOBILE_DESC,"Leviton Manufacturing Co., Inc. Leviton®, Outlet, R02-D215P-1RW",compose,0.88,,,,Identity line sized into the 60-80 character window.
-11,R02-D215P-1RW,SHORT_DESC,"Leviton® R02-D215P-1RW Outlet, 15 A, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-11,R02-D215P-1RW,RETAIL_DESC,"Outlet, 15 A, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
-11,R02-D215P-1RW,LONG_DESC1,"Leviton® Outlet, 15 A, White",compose,0.85,,,,Every captured attribute rendered in specification order.
-11,R02-D215P-1RW,Product Name,Outlet,rule,0.55,ITM-LEX-01,input:Part_Desc,outlet,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+11,R02-D215P-1RW,Classpath,Electrical>Wiring Devices>Receptacles,rule,0.9,TAX-046,input:Part_Desc,Mini Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+11,R02-D215P-1RW,Dept,Electrical,rule,0.9,TAX-046,input:Part_Desc,Mini Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+11,R02-D215P-1RW,Class,Wiring Devices,rule,0.9,TAX-046,input:Part_Desc,Mini Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+11,R02-D215P-1RW,Fine,Receptacles,rule,0.9,TAX-046,input:Part_Desc,Mini Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+11,R02-D215P-1RW,INVOICE_DESC,MINI OUTLET WH 15A,compose,0.9,,,,Budget solver fitted 3 facts into 18/40 characters.
+11,R02-D215P-1RW,MOBILE_DESC,"Leviton Manufacturing Co., Inc. Leviton, Mini Outlet, R02-D215P-1RW",compose,0.88,,,,Identity line sized into the 60-80 character window.
+11,R02-D215P-1RW,SHORT_DESC,"Leviton® R02-D215P-1RW Mini Outlet, 15 A, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+11,R02-D215P-1RW,RETAIL_DESC,"Mini Outlet, 15 A, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
+11,R02-D215P-1RW,LONG_DESC1,"Leviton® Mini Outlet, 15 A, White",compose,0.85,,,,Every captured attribute rendered in specification order.
+11,R02-D215P-1RW,Product Name,Mini Outlet,rule,0.55,ITM-LEX-01,input:Part_Desc,mini outlet,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 11,R02-D215P-1RW,ATTRIBUTE_LABEL 1,Amperage Rating,rule,0.92,ELE-A-01,input:Part_Desc,15A,Amperage token.
 11,R02-D215P-1RW,ATTRIBUTE_VALUE 1,15,rule,0.92,ELE-A-01,input:Part_Desc,15A,Amperage token.
 11,R02-D215P-1RW,ATTRIBUTE_UOM 1,A,rule,0.92,ELE-A-01,input:Part_Desc,15A,Amperage token.
@@ -303,19 +291,21 @@
 12,1513712,Dept,Building Materials,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 12,1513712,Class,Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 12,1513712,Fine,Composite Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
-12,1513712,INVOICE_DESC,DECKING 1IN X 6IN 20FT,compose,0.9,,,,Budget solver fitted 3 facts into 22/40 characters.
-12,1513712,MOBILE_DESC,"Trex Company, Inc. Trex®, Decking, Salt Transcend Lineage, 1513712",compose,0.88,,,,Identity line sized into the 60-80 character window.
-12,1513712,SHORT_DESC,"Trex® Salt Transcend Lineage 1513712 Decking, 1 in x 6 in, 20 ft",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-12,1513712,RETAIL_DESC,"Salt Transcend Lineage Decking, 1 in x 6 in, 20 ft",compose,0.85,,,,Shelf line: series + item type + differentiators.
-12,1513712,LONG_DESC1,"Trex® Decking, Salt Transcend Lineage, 1 in x 6 in, 20 ft",compose,0.85,,,,Every captured attribute rendered in specification order.
+12,1513712,INVOICE_DESC,DECKING 1IN X 6IN 20FT GRVD,compose,0.9,,,,Budget solver fitted 4 facts into 27/40 characters.
+12,1513712,MOBILE_DESC,"Trex Company, Inc. Trex, Decking, Transcend Lineage, 1513712",compose,0.88,,,,Identity line sized into the 60-80 character window.
+12,1513712,SHORT_DESC,"Trex® Transcend Lineage 1513712 Decking, 1 in x 6 in, 20 ft, Grooved",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+12,1513712,RETAIL_DESC,"Transcend Lineage Decking, 1 in x 6 in, 20 ft, Grooved",compose,0.85,,,,Shelf line: series + item type + differentiators.
+12,1513712,LONG_DESC1,"Trex® Decking, Transcend Lineage, 1 in x 6 in, 20 ft, Grooved",compose,0.85,,,,Every captured attribute rendered in specification order.
 12,1513712,Product Name,Decking,rule,0.8417,ITM-LEX-01,input:Part_Desc,decking,Resolved against the item-type vocabulary induced from this catalogue (5 occurrences).
 12,1513712,ATTRIBUTE_LABEL 1,Nominal Size,spec,0.9,,,,"Attribute slot 1 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 12,1513712,ATTRIBUTE_VALUE 1,1 in x 6 in,rule,0.92,DIM-NOM-01,input:Part_Desc,1nx6-20',"Decking nominal profile: thickness x width, length carried separately."
 12,1513712,ATTRIBUTE_LABEL 2,Length,spec,0.9,,,,"Attribute slot 2 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 12,1513712,ATTRIBUTE_VALUE 2,20,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-20',Board length in feet from the '-NN'' suffix.
 12,1513712,ATTRIBUTE_UOM 2,ft,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-20',Board length in feet from the '-NN'' suffix.
-12,1513712,ATTRIBUTE_LABEL 3,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Salt Transcend Lineage,Capitalised collection name left after brand and item type were removed.
-12,1513712,ATTRIBUTE_VALUE 3,Salt Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Salt Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+12,1513712,ATTRIBUTE_LABEL 3,Edge Profile,spec,0.9,,,,"Attribute slot 3 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
+12,1513712,ATTRIBUTE_VALUE 3,Grooved,rule,0.92,DEC-EDG-01,input:Part_Desc,Grooved,"Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+12,1513712,ATTRIBUTE_LABEL 4,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+12,1513712,ATTRIBUTE_VALUE 4,Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
 12,1513712,UNSPSC,30103600,inferred,0.72,TAX-050,registry:taxonomy,30103600,UNSPSC family for classpath Building Materials>Decking>Composite & PVC Decking.
 13,1513707,Mfg_Part_Num,1513707,input,0.99,,,,Preserved verbatim from the source file.
 13,1513707,Part_Desc,1nx6-20' Hatteras Grooved - Trex Transcend Lineage Decking,input,0.99,,,,Preserved verbatim from the source file.
@@ -328,19 +318,21 @@
 13,1513707,Dept,Building Materials,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 13,1513707,Class,Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 13,1513707,Fine,Composite Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
-13,1513707,INVOICE_DESC,DECKING 1IN X 6IN 20FT,compose,0.9,,,,Budget solver fitted 3 facts into 22/40 characters.
-13,1513707,MOBILE_DESC,"Trex Company, Inc. Trex®, Decking, Hatteras Transcend Lineage, 1513707",compose,0.88,,,,Identity line sized into the 60-80 character window.
-13,1513707,SHORT_DESC,"Trex® Hatteras Transcend Lineage 1513707 Decking, 1 in x 6 in, 20 ft",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-13,1513707,RETAIL_DESC,"Hatteras Transcend Lineage Decking, 1 in x 6 in, 20 ft",compose,0.85,,,,Shelf line: series + item type + differentiators.
-13,1513707,LONG_DESC1,"Trex® Decking, Hatteras Transcend Lineage, 1 in x 6 in, 20 ft",compose,0.85,,,,Every captured attribute rendered in specification order.
+13,1513707,INVOICE_DESC,DECKING 1IN X 6IN 20FT GRVD,compose,0.9,,,,Budget solver fitted 4 facts into 27/40 characters.
+13,1513707,MOBILE_DESC,"Trex Company, Inc. Trex, Decking, Transcend Lineage, 1513707",compose,0.88,,,,Identity line sized into the 60-80 character window.
+13,1513707,SHORT_DESC,"Trex® Transcend Lineage 1513707 Decking, 1 in x 6 in, 20 ft, Grooved",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+13,1513707,RETAIL_DESC,"Transcend Lineage Decking, 1 in x 6 in, 20 ft, Grooved",compose,0.85,,,,Shelf line: series + item type + differentiators.
+13,1513707,LONG_DESC1,"Trex® Decking, Transcend Lineage, 1 in x 6 in, 20 ft, Grooved",compose,0.85,,,,Every captured attribute rendered in specification order.
 13,1513707,Product Name,Decking,rule,0.8417,ITM-LEX-01,input:Part_Desc,decking,Resolved against the item-type vocabulary induced from this catalogue (5 occurrences).
 13,1513707,ATTRIBUTE_LABEL 1,Nominal Size,spec,0.9,,,,"Attribute slot 1 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 13,1513707,ATTRIBUTE_VALUE 1,1 in x 6 in,rule,0.92,DIM-NOM-01,input:Part_Desc,1nx6-20',"Decking nominal profile: thickness x width, length carried separately."
 13,1513707,ATTRIBUTE_LABEL 2,Length,spec,0.9,,,,"Attribute slot 2 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 13,1513707,ATTRIBUTE_VALUE 2,20,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-20',Board length in feet from the '-NN'' suffix.
 13,1513707,ATTRIBUTE_UOM 2,ft,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-20',Board length in feet from the '-NN'' suffix.
-13,1513707,ATTRIBUTE_LABEL 3,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Hatteras Transcend Lineage,Capitalised collection name left after brand and item type were removed.
-13,1513707,ATTRIBUTE_VALUE 3,Hatteras Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Hatteras Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+13,1513707,ATTRIBUTE_LABEL 3,Edge Profile,spec,0.9,,,,"Attribute slot 3 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
+13,1513707,ATTRIBUTE_VALUE 3,Grooved,rule,0.92,DEC-EDG-01,input:Part_Desc,Grooved,"Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+13,1513707,ATTRIBUTE_LABEL 4,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+13,1513707,ATTRIBUTE_VALUE 4,Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
 13,1513707,UNSPSC,30103600,inferred,0.72,TAX-050,registry:taxonomy,30103600,UNSPSC family for classpath Building Materials>Decking>Composite & PVC Decking.
 14,XNB05Z,Mfg_Part_Num,XNB05Z,input,0.99,,,,Preserved verbatim from the source file.
 14,XNB05Z,Part_Desc,"XNB05Z Makita 18V 2-1/2"" Straight Finish Nailer 16GA",input,0.99,,,,Preserved verbatim from the source file.
@@ -354,7 +346,7 @@
 14,XNB05Z,Class,Power Tools,rule,0.9,TAX-036,input:Part_Desc,Finish Nailer,Matched taxonomy rule TAX-036 on 'Finish Nailer'.
 14,XNB05Z,Fine,Nailers,rule,0.9,TAX-036,input:Part_Desc,Finish Nailer,Matched taxonomy rule TAX-036 on 'Finish Nailer'.
 14,XNB05Z,INVOICE_DESC,FINISH NAILER 18V 2-1/2IN 18V 16GA,compose,0.9,,,,Budget solver fitted 5 facts into 34/40 characters.
-14,XNB05Z,MOBILE_DESC,"Makita U.S.A., Inc. Makita®, Finish Nailer, XNB05Z, Tools, Power Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
+14,XNB05Z,MOBILE_DESC,"Makita U.S.A., Inc. Makita, Finish Nailer, XNB05Z, 2-1/2 in, 18 V",compose,0.88,,,,Identity line sized into the 60-80 character window.
 14,XNB05Z,SHORT_DESC,"Makita® XNB05Z Finish Nailer, 2-1/2 in, 18 V, 18V, 16 GA",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 14,XNB05Z,RETAIL_DESC,"Finish Nailer, 2-1/2 in, 18 V, 18V, 16 GA",compose,0.85,,,,Shelf line: series + item type + differentiators.
 14,XNB05Z,LONG_DESC1,"Makita® Finish Nailer, 2-1/2 in, 18 V, 18V, 16 GA",compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -383,25 +375,23 @@
 15,566687,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 15,566687,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 15,566687,INVOICE_DESC,BULB 60W 2700K 3 CAND LED,compose,0.9,,,,Budget solver fitted 6 facts into 25/40 characters.
-15,566687,MOBILE_DESC,"Signify Holding Philips®, Light Bulb, Led, 566687, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-15,566687,SHORT_DESC,"Philips® Led 566687 Light Bulb, 60 W, 2700 K, LED, Candelabra Base",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-15,566687,RETAIL_DESC,"Led Light Bulb, 60 W, 2700 K, LED, Candelabra Base",compose,0.85,,,,Shelf line: series + item type + differentiators.
-15,566687,LONG_DESC1,"Philips® Light Bulb, Led, 60 W, 2700 K, LED, Candelabra Base, 3",compose,0.85,,,,Every captured attribute rendered in specification order.
+15,566687,MOBILE_DESC,"Signify Holding Philips, Light Bulb, 566687, 60 W, 2700 K, LED",compose,0.88,,,,Identity line sized into the 60-80 character window.
+15,566687,SHORT_DESC,"Philips® 566687 Light Bulb, 60 W, 2700 K, LED, Candelabra Base",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+15,566687,RETAIL_DESC,"Light Bulb, 60 W, 2700 K, LED, Candelabra Base",compose,0.85,,,,Shelf line: series + item type + differentiators.
+15,566687,LONG_DESC1,"Philips® Light Bulb, 60 W, 2700 K, LED, Candelabra Base, 3",compose,0.85,,,,Every captured attribute rendered in specification order.
 15,566687,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-15,566687,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-15,566687,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-15,566687,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-15,566687,ATTRIBUTE_VALUE 2,60,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-15,566687,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-15,566687,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-15,566687,ATTRIBUTE_VALUE 3,2700,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-15,566687,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-15,566687,ATTRIBUTE_LABEL 4,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-15,566687,ATTRIBUTE_VALUE 4,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-15,566687,ATTRIBUTE_LABEL 5,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
-15,566687,ATTRIBUTE_VALUE 5,Candelabra Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
-15,566687,ATTRIBUTE_LABEL 6,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,3pk,Multi-pack count.
-15,566687,ATTRIBUTE_VALUE 6,3,rule,0.92,PKG-PK-01,input:Part_Desc,3pk,Multi-pack count.
+15,566687,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+15,566687,ATTRIBUTE_VALUE 1,60,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+15,566687,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+15,566687,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+15,566687,ATTRIBUTE_VALUE 2,2700,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+15,566687,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,27k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+15,566687,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+15,566687,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+15,566687,ATTRIBUTE_LABEL 4,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
+15,566687,ATTRIBUTE_VALUE 4,Candelabra Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Cand,Lamp base designation.
+15,566687,ATTRIBUTE_LABEL 5,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,3pk,Multi-pack count.
+15,566687,ATTRIBUTE_VALUE 5,3,rule,0.92,PKG-PK-01,input:Part_Desc,3pk,Multi-pack count.
 15,566687,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 16,576397,Mfg_Part_Num,576397,input,0.99,,,,Preserved verbatim from the source file.
 16,576397,Part_Desc,576394 100/200/300 Led A23 50k,input,0.99,,,,Preserved verbatim from the source file.
@@ -415,20 +405,18 @@
 16,576397,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 16,576397,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 16,576397,INVOICE_DESC,BULB 5000K A23 LED,compose,0.9,,,,Budget solver fitted 4 facts into 18/40 characters.
-16,576397,MOBILE_DESC,"Signify Holding Philips®, Light Bulb, Led, 576397, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-16,576397,SHORT_DESC,"Philips® Led 576397 Light Bulb, 5000 K, LED, A23",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-16,576397,RETAIL_DESC,"Led Light Bulb, 5000 K, LED, A23",compose,0.85,,,,Shelf line: series + item type + differentiators.
-16,576397,LONG_DESC1,"Philips® Light Bulb, Led, 5000 K, LED, A23",compose,0.85,,,,Every captured attribute rendered in specification order.
+16,576397,MOBILE_DESC,"Signify Holding Philips, Light Bulb, 576397, 5000 K, LED, A23",compose,0.88,,,,Identity line sized into the 60-80 character window.
+16,576397,SHORT_DESC,"Philips® 576397 Light Bulb, 5000 K, LED, A23",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+16,576397,RETAIL_DESC,"Light Bulb, 5000 K, LED, A23",compose,0.85,,,,Shelf line: series + item type + differentiators.
+16,576397,LONG_DESC1,"Philips® Light Bulb, 5000 K, LED, A23",compose,0.85,,,,Every captured attribute rendered in specification order.
 16,576397,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"bulb_shape, color_temperature","Item type inferred from co-occurring attributes (bulb_shape, color_temperature); the description never names the item."
-16,576397,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-16,576397,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-16,576397,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-16,576397,ATTRIBUTE_VALUE 2,5000,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-16,576397,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-16,576397,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-16,576397,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-16,576397,ATTRIBUTE_LABEL 4,Bulb Shape,rule,0.92,LMP-SHP-01,input:Part_Desc,A23,ANSI lamp shape designation.
-16,576397,ATTRIBUTE_VALUE 4,A23,rule,0.92,LMP-SHP-01,input:Part_Desc,A23,ANSI lamp shape designation.
+16,576397,ATTRIBUTE_LABEL 1,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+16,576397,ATTRIBUTE_VALUE 1,5000,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+16,576397,ATTRIBUTE_UOM 1,K,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+16,576397,ATTRIBUTE_LABEL 2,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+16,576397,ATTRIBUTE_VALUE 2,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+16,576397,ATTRIBUTE_LABEL 3,Bulb Shape,rule,0.92,LMP-SHP-01,input:Part_Desc,A23,ANSI lamp shape designation.
+16,576397,ATTRIBUTE_VALUE 3,A23,rule,0.92,LMP-SHP-01,input:Part_Desc,A23,ANSI lamp shape designation.
 16,576397,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 17,LSEL6333ZE,Mfg_Part_Num,LSEL6333ZE,input,0.99,,,,Preserved verbatim from the source file.
 17,LSEL6333ZE,Part_Desc,"LSEL6333ZE LG 30"" Elec Range BS-Display Only",input,0.99,,,,Preserved verbatim from the source file.
@@ -441,11 +429,11 @@
 17,LSEL6333ZE,Dept,Appliances,rule,0.9,TAX-039,input:Part_Desc,Range,Matched taxonomy rule TAX-039 on 'Range'.
 17,LSEL6333ZE,Class,Large Appliances,rule,0.9,TAX-039,input:Part_Desc,Range,Matched taxonomy rule TAX-039 on 'Range'.
 17,LSEL6333ZE,Fine,Ranges & Ovens,rule,0.9,TAX-039,input:Part_Desc,Range,Matched taxonomy rule TAX-039 on 'Range'.
-17,LSEL6333ZE,INVOICE_DESC,RANGE 30IN YES,compose,0.9,,,,Budget solver fitted 3 facts into 14/40 characters.
-17,LSEL6333ZE,MOBILE_DESC,"LG Electronics LG®, Range, Elec BS, LSEL6333ZE, Appliances, Large Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
+17,LSEL6333ZE,INVOICE_DESC,RANGE 30IN LSEL6333ZE,compose,0.9,,,,Budget solver fitted 3 facts into 21/40 characters.
+17,LSEL6333ZE,MOBILE_DESC,"LG Electronics LG, Range, Elec BS, LSEL6333ZE, 30 in",compose,0.88,,,,"Only 52 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
 17,LSEL6333ZE,SHORT_DESC,"LG® Elec BS LSEL6333ZE Range, 30 in",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 17,LSEL6333ZE,RETAIL_DESC,"Elec BS Range, 30 in",compose,0.85,,,,Shelf line: series + item type + differentiators.
-17,LSEL6333ZE,LONG_DESC1,"LG® Range, Elec BS, 30 in, Yes",compose,0.85,,,,Every captured attribute rendered in specification order.
+17,LSEL6333ZE,LONG_DESC1,"LG® Range, Elec BS, 30 in",compose,0.85,,,,Every captured attribute rendered in specification order.
 17,LSEL6333ZE,Product Name,Range,rule,0.77,ITM-LEX-01,input:Part_Desc,range,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 17,LSEL6333ZE,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Elec BS,Capitalised collection name left after brand and item type were removed.
 17,LSEL6333ZE,ATTRIBUTE_VALUE 1,Elec BS,rule,0.72,SER-CAP-01,input:Part_Desc,Elec BS,Capitalised collection name left after brand and item type were removed.
@@ -462,21 +450,19 @@
 18,C7CEBBS4RW3,MANUFACTURER_PART_NUMBER,C7CEBBS4RW3,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,C7CEBBS4RW3,Supplied part number.
 18,C7CEBBS4RW3,BRAND_NAME,Café®,registry,0.88,IDN-BRD-01,input:Part_Desc,Café,Approved brand 'Café' found in the description.
 18,C7CEBBS4RW3,MANUFACTURER_NAME,GE Appliances,registry,0.8624,IDN-MFR-01,input:Part_Desc,Café,Approved brand 'Café' found in the description.
-18,C7CEBBS4RW3,Classpath,Appliances & Consumer Electronics>Small Appliances>Countertop Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-18,C7CEBBS4RW3,Dept,Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-18,C7CEBBS4RW3,Class,Small Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-18,C7CEBBS4RW3,Fine,Countertop Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-18,C7CEBBS4RW3,INVOICE_DESC,MACHINE WH,compose,0.9,,,,Budget solver fitted 2 facts into 10/40 characters.
-18,C7CEBBS4RW3,MOBILE_DESC,"GE Appliances Café®, Machine, Auto Espresso, C7CEBBS4RW3, Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
-18,C7CEBBS4RW3,SHORT_DESC,"Café® Auto Espresso C7CEBBS4RW3 Machine, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-18,C7CEBBS4RW3,RETAIL_DESC,"Auto Espresso Machine, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
-18,C7CEBBS4RW3,LONG_DESC1,"Café® Machine, Auto Espresso, White",compose,0.85,,,,Every captured attribute rendered in specification order.
-18,C7CEBBS4RW3,Product Name,Machine,rule,0.55,ITM-LEX-01,input:Part_Desc,machine,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
-18,C7CEBBS4RW3,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Auto Espresso,Capitalised collection name left after brand and item type were removed.
-18,C7CEBBS4RW3,ATTRIBUTE_VALUE 1,Auto Espresso,rule,0.72,SER-CAP-01,input:Part_Desc,Auto Espresso,Capitalised collection name left after brand and item type were removed.
-18,C7CEBBS4RW3,ATTRIBUTE_LABEL 2,Color,rule,0.92,FIN-CDE-01,input:Part_Desc,Wh,Trade finish code expanded via the approved abbreviation map.
-18,C7CEBBS4RW3,ATTRIBUTE_VALUE 2,White,rule,0.92,FIN-CDE-01,input:Part_Desc,Wh,Trade finish code expanded via the approved abbreviation map.
-18,C7CEBBS4RW3,UNSPSC,52141700,inferred,0.576,TAX-071,registry:taxonomy,52141700,UNSPSC family for classpath Appliances & Consumer Electronics>Small Appliances>Countertop Appliances.
+18,C7CEBBS4RW3,Classpath,Appliances & Consumer Electronics>Small Appliances>Countertop Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+18,C7CEBBS4RW3,Dept,Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+18,C7CEBBS4RW3,Class,Small Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+18,C7CEBBS4RW3,Fine,Countertop Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+18,C7CEBBS4RW3,INVOICE_DESC,ESPRESSO MACHINE WH,compose,0.9,,,,Budget solver fitted 2 facts into 19/40 characters.
+18,C7CEBBS4RW3,MOBILE_DESC,"GE Appliances Café, Espresso Machine, C7CEBBS4RW3, White",compose,0.88,,,,"Only 56 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+18,C7CEBBS4RW3,SHORT_DESC,"Café® C7CEBBS4RW3 Espresso Machine, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+18,C7CEBBS4RW3,RETAIL_DESC,"Espresso Machine, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
+18,C7CEBBS4RW3,LONG_DESC1,"Café® Espresso Machine, White",compose,0.85,,,,Every captured attribute rendered in specification order.
+18,C7CEBBS4RW3,Product Name,Espresso Machine,rule,0.8039,ITM-LEX-01,input:Part_Desc,espresso machine,Resolved against the item-type vocabulary induced from this catalogue (2 occurrences).
+18,C7CEBBS4RW3,ATTRIBUTE_LABEL 1,Color,rule,0.92,FIN-CDE-01,input:Part_Desc,Wh,Trade finish code expanded via the approved abbreviation map.
+18,C7CEBBS4RW3,ATTRIBUTE_VALUE 1,White,rule,0.92,FIN-CDE-01,input:Part_Desc,Wh,Trade finish code expanded via the approved abbreviation map.
+18,C7CEBBS4RW3,UNSPSC,52141700,inferred,0.72,TAX-071,registry:taxonomy,52141700,UNSPSC family for classpath Appliances & Consumer Electronics>Small Appliances>Countertop Appliances.
 19,KPTDR050A,Mfg_Part_Num,KPTDR050A,input,0.99,,,,Preserved verbatim from the source file.
 19,KPTDR050A,Part_Desc,KPTDR050A Kreg 20V Ionic Compact Drill,input,0.99,,,,Preserved verbatim from the source file.
 19,KPTDR050A,Part_Manuf,Kreg Tool Company (KRETO),input,0.99,,,,Preserved verbatim from the source file.
@@ -488,8 +474,8 @@
 19,KPTDR050A,Dept,Tools,rule,0.9,TAX-029,input:Part_Desc,Drill,Matched taxonomy rule TAX-029 on 'Drill'.
 19,KPTDR050A,Class,Power Tools,rule,0.9,TAX-029,input:Part_Desc,Drill,Matched taxonomy rule TAX-029 on 'Drill'.
 19,KPTDR050A,Fine,Drills,rule,0.9,TAX-029,input:Part_Desc,Drill,Matched taxonomy rule TAX-029 on 'Drill'.
-19,KPTDR050A,INVOICE_DESC,DRILL 20V,compose,0.9,,,,Budget solver fitted 2 facts into 9/40 characters.
-19,KPTDR050A,MOBILE_DESC,"Kreg Tool Company Kreg®, Drill, Ionic Compact, KPTDR050A, Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
+19,KPTDR050A,INVOICE_DESC,DRILL 20V KPTDR050A,compose,0.9,,,,Budget solver fitted 3 facts into 19/40 characters.
+19,KPTDR050A,MOBILE_DESC,"Kreg Tool Company Kreg, Drill, Ionic Compact, KPTDR050A, 20 V",compose,0.88,,,,Identity line sized into the 60-80 character window.
 19,KPTDR050A,SHORT_DESC,"Kreg® Ionic Compact KPTDR050A Drill, 20 V",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 19,KPTDR050A,RETAIL_DESC,"Ionic Compact Drill, 20 V",compose,0.85,,,,Shelf line: series + item type + differentiators.
 19,KPTDR050A,LONG_DESC1,"Kreg® Drill, Ionic Compact, 20 V",compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -511,34 +497,38 @@
 20,1513708,Dept,Building Materials,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 20,1513708,Class,Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 20,1513708,Fine,Composite Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
-20,1513708,INVOICE_DESC,DECKING 1IN X 6IN 16FT,compose,0.9,,,,Budget solver fitted 3 facts into 22/40 characters.
-20,1513708,MOBILE_DESC,"Trex Company, Inc. Trex®, Decking, Salt Sq Edge Transcend Lineage, 1513708",compose,0.88,,,,Identity line sized into the 60-80 character window.
-20,1513708,SHORT_DESC,"Trex® Salt Sq Edge Transcend Lineage 1513708 Decking, 1 in x 6 in, 16 ft",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-20,1513708,RETAIL_DESC,"Salt Sq Edge Transcend Lineage Decking, 1 in x 6 in, 16 ft",compose,0.85,,,,Shelf line: series + item type + differentiators.
-20,1513708,LONG_DESC1,"Trex® Decking, Salt Sq Edge Transcend Lineage, 1 in x 6 in, 16 ft",compose,0.85,,,,Every captured attribute rendered in specification order.
+20,1513708,INVOICE_DESC,DECKING 1IN X 6IN 16FT SQ EDG,compose,0.9,,,,Budget solver fitted 4 facts into 29/40 characters.
+20,1513708,MOBILE_DESC,"Trex Company, Inc. Trex, Decking, Transcend Lineage, 1513708",compose,0.88,,,,Identity line sized into the 60-80 character window.
+20,1513708,SHORT_DESC,"Trex® Transcend Lineage 1513708 Decking, 1 in x 6 in, 16 ft, Square Edge",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+20,1513708,RETAIL_DESC,"Transcend Lineage Decking, 1 in x 6 in, 16 ft, Square Edge",compose,0.85,,,,Shelf line: series + item type + differentiators.
+20,1513708,LONG_DESC1,"Trex® Decking, Transcend Lineage, 1 in x 6 in, 16 ft, Square Edge",compose,0.85,,,,Every captured attribute rendered in specification order.
 20,1513708,Product Name,Decking,rule,0.8417,ITM-LEX-01,input:Part_Desc,decking,Resolved against the item-type vocabulary induced from this catalogue (5 occurrences).
 20,1513708,ATTRIBUTE_LABEL 1,Nominal Size,spec,0.9,,,,"Attribute slot 1 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 20,1513708,ATTRIBUTE_VALUE 1,1 in x 6 in,rule,0.92,DIM-NOM-01,input:Part_Desc,1nx6-16',"Decking nominal profile: thickness x width, length carried separately."
 20,1513708,ATTRIBUTE_LABEL 2,Length,spec,0.9,,,,"Attribute slot 2 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 20,1513708,ATTRIBUTE_VALUE 2,16,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-16',Board length in feet from the '-NN'' suffix.
 20,1513708,ATTRIBUTE_UOM 2,ft,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-16',Board length in feet from the '-NN'' suffix.
-20,1513708,ATTRIBUTE_LABEL 3,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Salt Sq Edge Transcend Lineage,Capitalised collection name left after brand and item type were removed.
-20,1513708,ATTRIBUTE_VALUE 3,Salt Sq Edge Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Salt Sq Edge Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+20,1513708,ATTRIBUTE_LABEL 3,Edge Profile,spec,0.9,,,,"Attribute slot 3 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
+20,1513708,ATTRIBUTE_VALUE 3,Square Edge,rule,0.92,DEC-EDG-01,input:Part_Desc,Sq Edge,"Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+20,1513708,ATTRIBUTE_LABEL 4,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+20,1513708,ATTRIBUTE_VALUE 4,Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
 20,1513708,UNSPSC,30103600,inferred,0.72,TAX-050,registry:taxonomy,30103600,UNSPSC family for classpath Building Materials>Decking>Composite & PVC Decking.
 21,38-E,Mfg_Part_Num,38-E,input,0.99,,,,Preserved verbatim from the source file.
 21,38-E,Part_Desc,Dark Chocolate 38-E Mortar - Type N,input,0.99,,,,Preserved verbatim from the source file.
 21,38-E,Part_Manuf,Rees Cast Stone Company (REECA),input,0.99,,,,Preserved verbatim from the source file.
 21,38-E,SKU - MY_PART_NUMBER,X24146,input,0.99,,,,Preserved verbatim from the source file.
 21,38-E,MANUFACTURER_PART_NUMBER,38-E,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,38-E,Supplied part number.
+21,38-E,BRAND_NAME,Rees Cast Stone Company,input,0.58,IDN-BRD-01,input:Part_Manuf,Rees Cast Stone Company (REECA),"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication."
+21,38-E,MANUFACTURER_NAME,Rees Cast Stone Company,input,0.5684,IDN-MFR-01,input:Part_Manuf,Rees Cast Stone Company (REECA),"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication."
 21,38-E,Classpath,Building Materials>Masonry>Mortar & Grout,rule,0.9,TAX-054,input:Part_Desc,Mortar,Matched taxonomy rule TAX-054 on 'Mortar'.
 21,38-E,Dept,Building Materials,rule,0.9,TAX-054,input:Part_Desc,Mortar,Matched taxonomy rule TAX-054 on 'Mortar'.
 21,38-E,Class,Masonry,rule,0.9,TAX-054,input:Part_Desc,Mortar,Matched taxonomy rule TAX-054 on 'Mortar'.
 21,38-E,Fine,Mortar,rule,0.9,TAX-054,input:Part_Desc,Mortar,Matched taxonomy rule TAX-054 on 'Mortar'.
-21,38-E,INVOICE_DESC,MORTAR,compose,0.9,,,,Budget solver fitted 1 facts into 6/40 characters.
-21,38-E,MOBILE_DESC,"Mortar, Dark Chocolate, 38-E, Building Materials, Masonry, Mortar",compose,0.88,,,,Identity line sized into the 60-80 character window.
-21,38-E,SHORT_DESC,Dark Chocolate 38-E Mortar,compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+21,38-E,INVOICE_DESC,MORTAR 38-E,compose,0.9,,,,Budget solver fitted 2 facts into 11/40 characters.
+21,38-E,MOBILE_DESC,"Rees Cast Stone Company Rees Cast Stone Company, Mortar, Dark Chocolate, 38-E",compose,0.88,,,,Identity line sized into the 60-80 character window.
+21,38-E,SHORT_DESC,Rees Cast Stone Company Dark Chocolate 38-E Mortar,compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 21,38-E,RETAIL_DESC,Dark Chocolate Mortar,compose,0.85,,,,Shelf line: series + item type + differentiators.
-21,38-E,LONG_DESC1,"Mortar, Dark Chocolate",compose,0.85,,,,Every captured attribute rendered in specification order.
+21,38-E,LONG_DESC1,"Rees Cast Stone Company Mortar, Dark Chocolate",compose,0.85,,,,Every captured attribute rendered in specification order.
 21,38-E,Product Name,Mortar,rule,0.77,ITM-LEX-01,input:Part_Desc,mortar,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 21,38-E,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Dark Chocolate,Capitalised collection name left after brand and item type were removed.
 21,38-E,ATTRIBUTE_VALUE 1,Dark Chocolate,rule,0.72,SER-CAP-01,input:Part_Desc,Dark Chocolate,Capitalised collection name left after brand and item type were removed.
@@ -555,19 +545,17 @@
 22,S3709,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 22,S3709,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 22,S3709,INVOICE_DESC,BULB 25W 2700K,compose,0.9,,,,Budget solver fitted 3 facts into 14/40 characters.
-22,S3709,MOBILE_DESC,"Satco Products, Inc. Satco®, Light Bulb, Incan, S3709, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-22,S3709,SHORT_DESC,"Satco® Incan S3709 Light Bulb, 25 W, 2700 K",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-22,S3709,RETAIL_DESC,"Incan Light Bulb, 25 W, 2700 K",compose,0.85,,,,Shelf line: series + item type + differentiators.
-22,S3709,LONG_DESC1,"Satco® Light Bulb, Incan, 25 W, 2700 K",compose,0.85,,,,Every captured attribute rendered in specification order.
+22,S3709,MOBILE_DESC,"Satco Products, Inc. Satco, Light Bulb, S3709, 25 W, 2700 K",compose,0.88,,,,"Only 59 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+22,S3709,SHORT_DESC,"Satco® S3709 Light Bulb, 25 W, 2700 K",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+22,S3709,RETAIL_DESC,"Light Bulb, 25 W, 2700 K",compose,0.85,,,,Shelf line: series + item type + differentiators.
+22,S3709,LONG_DESC1,"Satco® Light Bulb, 25 W, 2700 K",compose,0.85,,,,Every captured attribute rendered in specification order.
 22,S3709,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-22,S3709,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Incan,Capitalised collection name left after brand and item type were removed.
-22,S3709,ATTRIBUTE_VALUE 1,Incan,rule,0.72,SER-CAP-01,input:Part_Desc,Incan,Capitalised collection name left after brand and item type were removed.
-22,S3709,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,25W,Wattage token.
-22,S3709,ATTRIBUTE_VALUE 2,25,rule,0.92,ELE-W-01,input:Part_Desc,25W,Wattage token.
-22,S3709,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,25W,Wattage token.
-22,S3709,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-22,S3709,ATTRIBUTE_VALUE 3,2700,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-22,S3709,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+22,S3709,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,25W,Wattage token.
+22,S3709,ATTRIBUTE_VALUE 1,25,rule,0.92,ELE-W-01,input:Part_Desc,25W,Wattage token.
+22,S3709,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,25W,Wattage token.
+22,S3709,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+22,S3709,ATTRIBUTE_VALUE 2,2700,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+22,S3709,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,27K,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
 22,S3709,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 23,653258,Mfg_Part_Num,653258,input,0.99,,,,Preserved verbatim from the source file.
 23,653258,Part_Desc,"5/8"" 4x9 Drywall Firelite",input,0.99,,,,Preserved verbatim from the source file.
@@ -576,11 +564,11 @@
 23,653258,MANUFACTURER_PART_NUMBER,653258,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,653258,Supplied part number.
 23,653258,BRAND_NAME,CertainTeed®,registry,0.9,IDN-BRD-01,input:Part_Manuf,Certainteed Gypsum (2765),Supplier string normalised to the approved manufacturer.
 23,653258,MANUFACTURER_NAME,CertainTeed LLC,registry,0.882,IDN-MFR-01,input:Part_Manuf,Certainteed Gypsum (2765),Supplier string normalised to the approved manufacturer.
-23,653258,INVOICE_DESC,FIRELITE 4IN X 9IN,compose,0.9,,,,Budget solver fitted 2 facts into 18/40 characters.
-23,653258,MOBILE_DESC,"CertainTeed LLC CertainTeed®, Firelite, 653258, 4 in x 9 in",compose,0.88,,,,Identity line sized into the 60-80 character window.
-23,653258,SHORT_DESC,"CertainTeed® 653258 Firelite, 4 in x 9 in",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-23,653258,RETAIL_DESC,"Firelite, 4 in x 9 in",compose,0.85,,,,Shelf line: series + item type + differentiators.
-23,653258,LONG_DESC1,"CertainTeed® Firelite, 4 in x 9 in",compose,0.85,,,,Every captured attribute rendered in specification order.
+23,653258,INVOICE_DESC,FIRELITE 4IN X 9IN DRYWALL,compose,0.9,,,,Budget solver fitted 3 facts into 26/40 characters.
+23,653258,MOBILE_DESC,"CertainTeed LLC CertainTeed, Firelite, 653258, 4 in x 9 in, Drywall",compose,0.88,,,,Identity line sized into the 60-80 character window.
+23,653258,SHORT_DESC,"CertainTeed® 653258 Firelite, 4 in x 9 in, Drywall",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+23,653258,RETAIL_DESC,"Firelite, 4 in x 9 in, Drywall",compose,0.85,,,,Shelf line: series + item type + differentiators.
+23,653258,LONG_DESC1,"CertainTeed® Firelite, 4 in x 9 in, Drywall",compose,0.85,,,,Every captured attribute rendered in specification order.
 23,653258,Product Name,Firelite,rule,0.55,ITM-LEX-01,input:Part_Desc,firelite,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 23,653258,ATTRIBUTE_LABEL 1,Wattage,spec,0.9,,,,"Attribute slot 1 of the specification induced for UNCLASSIFIED (11 rows, populated in 64% of them)."
 23,653258,ATTRIBUTE_LABEL 2,Color Temperature,spec,0.9,,,,"Attribute slot 2 of the specification induced for UNCLASSIFIED (11 rows, populated in 82% of them)."
@@ -589,6 +577,8 @@
 23,653258,ATTRIBUTE_LABEL 5,Pack Quantity,spec,0.9,,,,"Attribute slot 5 of the specification induced for UNCLASSIFIED (11 rows, populated in 45% of them)."
 23,653258,ATTRIBUTE_LABEL 6,Size,rule,0.92,DIM-CHN-01,input:Part_Desc,4x9 ,"Dimension chain; decimals converted to trade fractions, unit taken per token from the tick mark."
 23,653258,ATTRIBUTE_VALUE 6,4 in x 9 in,rule,0.92,DIM-CHN-01,input:Part_Desc,4x9 ,"Dimension chain; decimals converted to trade fractions, unit taken per token from the tick mark."
+23,653258,ATTRIBUTE_LABEL 7,Application,rule,0.92,APP-MAT-01,input:Part_Desc,Drywall,The material this item is intended to work on.
+23,653258,ATTRIBUTE_VALUE 7,Drywall,rule,0.92,APP-MAT-01,input:Part_Desc,Drywall,The material this item is intended to work on.
 24,AGB15516CG,Mfg_Part_Num,AGB15516CG,input,0.99,,,,Preserved verbatim from the source file.
 24,AGB15516CG,Part_Desc,1x6-16' Castle Gate Grooved - Landmark Azek PVC Decking,input,0.99,,,,Preserved verbatim from the source file.
 24,AGB15516CG,Part_Manuf,Parksite (6151),input,0.99,,,,Preserved verbatim from the source file.
@@ -600,19 +590,21 @@
 24,AGB15516CG,Dept,Building Materials,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 24,AGB15516CG,Class,Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 24,AGB15516CG,Fine,Composite Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
-24,AGB15516CG,INVOICE_DESC,DECKING 1IN X 6IN 16FT,compose,0.9,,,,Budget solver fitted 3 facts into 22/40 characters.
-24,AGB15516CG,MOBILE_DESC,"The AZEK Company AZEK®, Decking, Castle Gate Landmark, AGB15516CG",compose,0.88,,,,Identity line sized into the 60-80 character window.
-24,AGB15516CG,SHORT_DESC,"AZEK® Castle Gate Landmark AGB15516CG Decking, 1 in x 6 in, 16 ft",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-24,AGB15516CG,RETAIL_DESC,"Castle Gate Landmark Decking, 1 in x 6 in, 16 ft",compose,0.85,,,,Shelf line: series + item type + differentiators.
-24,AGB15516CG,LONG_DESC1,"AZEK® Decking, Castle Gate Landmark, 1 in x 6 in, 16 ft",compose,0.85,,,,Every captured attribute rendered in specification order.
+24,AGB15516CG,INVOICE_DESC,DECKING 1IN X 6IN 16FT GRVD,compose,0.9,,,,Budget solver fitted 4 facts into 27/40 characters.
+24,AGB15516CG,MOBILE_DESC,"The AZEK Company AZEK, Decking, Castle Gate, AGB15516CG, 1 in x 6 in",compose,0.88,,,,Identity line sized into the 60-80 character window.
+24,AGB15516CG,SHORT_DESC,"AZEK® Castle Gate AGB15516CG Decking, 1 in x 6 in, 16 ft, Grooved",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+24,AGB15516CG,RETAIL_DESC,"Castle Gate Decking, 1 in x 6 in, 16 ft, Grooved",compose,0.85,,,,Shelf line: series + item type + differentiators.
+24,AGB15516CG,LONG_DESC1,"AZEK® Decking, Castle Gate, 1 in x 6 in, 16 ft, Grooved",compose,0.85,,,,Every captured attribute rendered in specification order.
 24,AGB15516CG,Product Name,Decking,rule,0.8417,ITM-LEX-01,input:Part_Desc,decking,Resolved against the item-type vocabulary induced from this catalogue (5 occurrences).
 24,AGB15516CG,ATTRIBUTE_LABEL 1,Nominal Size,spec,0.9,,,,"Attribute slot 1 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 24,AGB15516CG,ATTRIBUTE_VALUE 1,1 in x 6 in,rule,0.92,DIM-NOM-01,input:Part_Desc,1x6-16',"Decking nominal profile: thickness x width, length carried separately."
 24,AGB15516CG,ATTRIBUTE_LABEL 2,Length,spec,0.9,,,,"Attribute slot 2 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 24,AGB15516CG,ATTRIBUTE_VALUE 2,16,rule,0.92,DIM-LEN-01,input:Part_Desc,1x6-16',Board length in feet from the '-NN'' suffix.
 24,AGB15516CG,ATTRIBUTE_UOM 2,ft,rule,0.92,DIM-LEN-01,input:Part_Desc,1x6-16',Board length in feet from the '-NN'' suffix.
-24,AGB15516CG,ATTRIBUTE_LABEL 3,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Castle Gate Landmark,Capitalised collection name left after brand and item type were removed.
-24,AGB15516CG,ATTRIBUTE_VALUE 3,Castle Gate Landmark,rule,0.72,SER-CAP-01,input:Part_Desc,Castle Gate Landmark,Capitalised collection name left after brand and item type were removed.
+24,AGB15516CG,ATTRIBUTE_LABEL 3,Edge Profile,spec,0.9,,,,"Attribute slot 3 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
+24,AGB15516CG,ATTRIBUTE_VALUE 3,Grooved,rule,0.92,DEC-EDG-01,input:Part_Desc,Grooved,"Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+24,AGB15516CG,ATTRIBUTE_LABEL 4,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Castle Gate,Capitalised collection name left after brand and item type were removed.
+24,AGB15516CG,ATTRIBUTE_VALUE 4,Castle Gate,rule,0.72,SER-CAP-01,input:Part_Desc,Castle Gate,Capitalised collection name left after brand and item type were removed.
 24,AGB15516CG,UNSPSC,30103600,inferred,0.72,TAX-050,registry:taxonomy,30103600,UNSPSC family for classpath Building Materials>Decking>Composite & PVC Decking.
 25,TR5006WN,Mfg_Part_Num,TR5006WN,input,0.99,,,,Preserved verbatim from the source file.
 25,TR5006WN,Part_Desc,TR5006WN Speed Queen Washer Wh,input,0.99,,,,Preserved verbatim from the source file.
@@ -625,8 +617,8 @@
 25,TR5006WN,Dept,Appliances,rule,0.9,TAX-041,input:Part_Desc,Washer,Matched taxonomy rule TAX-041 on 'Washer'.
 25,TR5006WN,Class,Large Appliances,rule,0.9,TAX-041,input:Part_Desc,Washer,Matched taxonomy rule TAX-041 on 'Washer'.
 25,TR5006WN,Fine,Washers,rule,0.9,TAX-041,input:Part_Desc,Washer,Matched taxonomy rule TAX-041 on 'Washer'.
-25,TR5006WN,INVOICE_DESC,WASHER WH,compose,0.9,,,,Budget solver fitted 2 facts into 9/40 characters.
-25,TR5006WN,MOBILE_DESC,"Alliance Laundry Systems Speed Queen®, Washer, TR5006WN, Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
+25,TR5006WN,INVOICE_DESC,WASHER WH TR5006WN,compose,0.9,,,,Budget solver fitted 3 facts into 18/40 characters.
+25,TR5006WN,MOBILE_DESC,"Alliance Laundry Systems Speed Queen, Washer, TR5006WN, White",compose,0.88,,,,Identity line sized into the 60-80 character window.
 25,TR5006WN,SHORT_DESC,"Speed Queen® TR5006WN Washer, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 25,TR5006WN,RETAIL_DESC,"Washer, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
 25,TR5006WN,LONG_DESC1,"Speed Queen® Washer, White",compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -646,27 +638,25 @@
 26,573485,Class,Lighting,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 26,573485,Fine,Light Bulbs,rule,0.9,TAX-001,input:Part_Desc,Light Bulb,Matched taxonomy rule TAX-001 on 'Light Bulb'.
 26,573485,INVOICE_DESC,BULB 60W 5000K 2 MED A19 LED,compose,0.9,,,,Budget solver fitted 7 facts into 28/40 characters.
-26,573485,MOBILE_DESC,"Signify Holding Philips®, Light Bulb, Led, 573485, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-26,573485,SHORT_DESC,"Philips® Led 573485 Light Bulb, 60 W, 5000 K, LED, A19",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-26,573485,RETAIL_DESC,"Led Light Bulb, 60 W, 5000 K, LED, A19",compose,0.85,,,,Shelf line: series + item type + differentiators.
-26,573485,LONG_DESC1,"Philips® Light Bulb, Led, 60 W, 5000 K, LED, A19, Medium Base, 2",compose,0.85,,,,Every captured attribute rendered in specification order.
+26,573485,MOBILE_DESC,"Signify Holding Philips, Light Bulb, 573485, 60 W, 5000 K, LED",compose,0.88,,,,Identity line sized into the 60-80 character window.
+26,573485,SHORT_DESC,"Philips® 573485 Light Bulb, 60 W, 5000 K, LED, A19",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+26,573485,RETAIL_DESC,"Light Bulb, 60 W, 5000 K, LED, A19",compose,0.85,,,,Shelf line: series + item type + differentiators.
+26,573485,LONG_DESC1,"Philips® Light Bulb, 60 W, 5000 K, LED, A19, Medium Base, 2",compose,0.85,,,,Every captured attribute rendered in specification order.
 26,573485,Product Name,Light Bulb,inferred,0.78,ITM-INF-LAMP,rule:ITM-INF-LAMP,"wattage, color_temperature","Item type inferred from co-occurring attributes (wattage, color_temperature); the description never names the item."
-26,573485,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-26,573485,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-26,573485,ATTRIBUTE_LABEL 2,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-26,573485,ATTRIBUTE_VALUE 2,60,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-26,573485,ATTRIBUTE_UOM 2,W,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
-26,573485,ATTRIBUTE_LABEL 3,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-26,573485,ATTRIBUTE_VALUE 3,5000,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-26,573485,ATTRIBUTE_UOM 3,K,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
-26,573485,ATTRIBUTE_LABEL 4,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-26,573485,ATTRIBUTE_VALUE 4,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-26,573485,ATTRIBUTE_LABEL 5,Bulb Shape,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
-26,573485,ATTRIBUTE_VALUE 5,A19,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
-26,573485,ATTRIBUTE_LABEL 6,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-26,573485,ATTRIBUTE_VALUE 6,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
-26,573485,ATTRIBUTE_LABEL 7,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
-26,573485,ATTRIBUTE_VALUE 7,2,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
+26,573485,ATTRIBUTE_LABEL 1,Wattage,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+26,573485,ATTRIBUTE_VALUE 1,60,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+26,573485,ATTRIBUTE_UOM 1,W,rule,0.92,ELE-W-01,input:Part_Desc,60W,Wattage token.
+26,573485,ATTRIBUTE_LABEL 2,Color Temperature,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+26,573485,ATTRIBUTE_VALUE 2,5000,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+26,573485,ATTRIBUTE_UOM 2,K,rule,0.92,LMP-K-01,input:Part_Desc,50k,Lamp shorthand: two-digit K value means hundreds (50k = 5000 K).
+26,573485,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+26,573485,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+26,573485,ATTRIBUTE_LABEL 4,Bulb Shape,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
+26,573485,ATTRIBUTE_VALUE 4,A19,rule,0.92,LMP-SHP-01,input:Part_Desc,A19,ANSI lamp shape designation.
+26,573485,ATTRIBUTE_LABEL 5,Base Type,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+26,573485,ATTRIBUTE_VALUE 5,Medium Base,rule,0.92,LMP-BAS-01,input:Part_Desc,Med,Lamp base designation.
+26,573485,ATTRIBUTE_LABEL 6,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
+26,573485,ATTRIBUTE_VALUE 6,2,rule,0.92,PKG-PK-01,input:Part_Desc,2pk,Multi-pack count.
 26,573485,UNSPSC,39101600,inferred,0.72,TAX-001,registry:taxonomy,39101600,UNSPSC family for classpath Electrical>Lighting & Bulbs>Light Bulbs.
 27,220USBP5U,Mfg_Part_Num,220USBP5U,input,0.99,,,,Preserved verbatim from the source file.
 27,220USBP5U,Part_Desc,220USBP5U Vessel Screwdriver Plus w/5pc Bit Set,input,0.99,,,,Preserved verbatim from the source file.
@@ -675,21 +665,21 @@
 27,220USBP5U,MANUFACTURER_PART_NUMBER,220USBP5U,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,220USBP5U,Supplied part number.
 27,220USBP5U,BRAND_NAME,Vessel®,registry,0.88,IDN-BRD-01,input:Part_Desc,Vessel,Approved brand 'Vessel' found in the description.
 27,220USBP5U,MANUFACTURER_NAME,"Vessel Co., Inc.",registry,0.8624,IDN-MFR-01,input:Part_Desc,Vessel,Approved brand 'Vessel' found in the description.
-27,220USBP5U,Classpath,Tools & Equipment>Power Tool Accessories>Driver Bits,rule,0.9,TAX-022,input:Part_Desc,Bit,Matched taxonomy rule TAX-022 on 'Bit'.
-27,220USBP5U,Dept,Tools,rule,0.9,TAX-022,input:Part_Desc,Bit,Matched taxonomy rule TAX-022 on 'Bit'.
-27,220USBP5U,Class,Power Tool Accessories,rule,0.9,TAX-022,input:Part_Desc,Bit,Matched taxonomy rule TAX-022 on 'Bit'.
-27,220USBP5U,Fine,Driver Bits,rule,0.9,TAX-022,input:Part_Desc,Bit,Matched taxonomy rule TAX-022 on 'Bit'.
-27,220USBP5U,INVOICE_DESC,BIT 5,compose,0.9,,,,Budget solver fitted 2 facts into 5/40 characters.
-27,220USBP5U,MOBILE_DESC,"Vessel Co., Inc. Vessel®, Bit, Screwdriver Plus, 220USBP5U, Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
-27,220USBP5U,SHORT_DESC,"Vessel® Screwdriver Plus 220USBP5U Bit, 5",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-27,220USBP5U,RETAIL_DESC,"Screwdriver Plus Bit, 5",compose,0.85,,,,Shelf line: series + item type + differentiators.
-27,220USBP5U,LONG_DESC1,"Vessel® Bit, Screwdriver Plus, 5",compose,0.85,,,,Every captured attribute rendered in specification order.
-27,220USBP5U,Product Name,Bit,rule,0.55,ITM-LEX-01,input:Part_Desc,bit,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
-27,220USBP5U,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Screwdriver Plus,Capitalised collection name left after brand and item type were removed.
-27,220USBP5U,ATTRIBUTE_VALUE 1,Screwdriver Plus,rule,0.72,SER-CAP-01,input:Part_Desc,Screwdriver Plus,Capitalised collection name left after brand and item type were removed.
-27,220USBP5U,ATTRIBUTE_LABEL 2,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,5pc,Multi-pack count.
-27,220USBP5U,ATTRIBUTE_VALUE 2,5,rule,0.92,PKG-PK-01,input:Part_Desc,5pc,Multi-pack count.
-27,220USBP5U,UNSPSC,27112800,inferred,0.72,TAX-022,registry:taxonomy,27112800,UNSPSC family for classpath Tools & Equipment>Power Tool Accessories>Driver Bits.
+27,220USBP5U,Classpath,Tools & Equipment>Hand Tools>Screwdrivers,rule,0.9,TAX-075,input:Part_Desc,Screwdriver,Matched taxonomy rule TAX-075 on 'Screwdriver'.
+27,220USBP5U,Dept,Tools,rule,0.9,TAX-075,input:Part_Desc,Screwdriver,Matched taxonomy rule TAX-075 on 'Screwdriver'.
+27,220USBP5U,Class,Hand Tools,rule,0.9,TAX-075,input:Part_Desc,Screwdriver,Matched taxonomy rule TAX-075 on 'Screwdriver'.
+27,220USBP5U,Fine,Screwdrivers,rule,0.9,TAX-075,input:Part_Desc,Screwdriver,Matched taxonomy rule TAX-075 on 'Screwdriver'.
+27,220USBP5U,INVOICE_DESC,SCREWDRIVER 5 SET,compose,0.9,,,,Budget solver fitted 3 facts into 17/40 characters.
+27,220USBP5U,MOBILE_DESC,"Vessel Co., Inc. Vessel, Screwdriver, 220USBP5U, 5, Set",compose,0.88,,,,"Only 55 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+27,220USBP5U,SHORT_DESC,"Vessel® 220USBP5U Screwdriver, 5, Set",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+27,220USBP5U,RETAIL_DESC,"Screwdriver, 5, Set",compose,0.85,,,,Shelf line: series + item type + differentiators.
+27,220USBP5U,LONG_DESC1,"Vessel® Screwdriver, 5, Set",compose,0.85,,,,Every captured attribute rendered in specification order.
+27,220USBP5U,Product Name,Screwdriver,rule,0.77,ITM-LEX-01,input:Part_Desc,screwdriver,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+27,220USBP5U,ATTRIBUTE_LABEL 1,Pack Quantity,rule,0.92,PKG-PK-01,input:Part_Desc,5pc,Multi-pack count.
+27,220USBP5U,ATTRIBUTE_VALUE 1,5,rule,0.92,PKG-PK-01,input:Part_Desc,5pc,Multi-pack count.
+27,220USBP5U,ATTRIBUTE_LABEL 2,Configuration,rule,0.92,PKG-CFG-01,input:Part_Desc,Set,How the item is sold; a kit and a bare tool are different SKUs.
+27,220USBP5U,ATTRIBUTE_VALUE 2,Set,rule,0.92,PKG-CFG-01,input:Part_Desc,Set,How the item is sold; a kit and a bare tool are different SKUs.
+27,220USBP5U,UNSPSC,27111500,inferred,0.72,TAX-075,registry:taxonomy,27111500,UNSPSC family for classpath Tools & Equipment>Hand Tools>Screwdrivers.
 28,230.312.08,Mfg_Part_Num,230.312.08,input,0.99,,,,Preserved verbatim from the source file.
 28,230.312.08,Part_Desc,230.312.08 CMT Locked Dado Pro Set,input,0.99,,,,Preserved verbatim from the source file.
 28,230.312.08,Part_Manuf,CMT USA Inc (CMTUS),input,0.99,,,,Preserved verbatim from the source file.
@@ -697,17 +687,19 @@
 28,230.312.08,MANUFACTURER_PART_NUMBER,230.312.08,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,230.312.08,Supplied part number.
 28,230.312.08,BRAND_NAME,CMT®,registry,0.88,IDN-BRD-01,input:Part_Desc,CMT,Approved brand 'CMT' found in the description.
 28,230.312.08,MANUFACTURER_NAME,CMT Utensili S.p.A.,registry,0.8624,IDN-MFR-01,input:Part_Desc,CMT,Approved brand 'CMT' found in the description.
-28,230.312.08,INVOICE_DESC,DADO,compose,0.9,,,,Budget solver fitted 1 facts into 4/40 characters.
-28,230.312.08,MOBILE_DESC,"CMT Utensili S.p.A. CMT®, Dado, 230.312.08",compose,0.88,,,,Identity line sized into the 60-80 character window.
-28,230.312.08,SHORT_DESC,CMT® 230.312.08 Dado,compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-28,230.312.08,RETAIL_DESC,Dado,compose,0.85,,,,Shelf line: series + item type + differentiators.
-28,230.312.08,LONG_DESC1,CMT® Dado,compose,0.85,,,,Every captured attribute rendered in specification order.
-28,230.312.08,Product Name,Dado,rule,0.55,ITM-LEX-01,input:Part_Desc,dado,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+28,230.312.08,INVOICE_DESC,LOCKED DADO SET,compose,0.9,,,,Budget solver fitted 2 facts into 15/40 characters.
+28,230.312.08,MOBILE_DESC,"CMT Utensili S.p.A. CMT, Locked Dado, 230.312.08, Set",compose,0.88,,,,"Only 53 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
+28,230.312.08,SHORT_DESC,"CMT® 230.312.08 Locked Dado, Set",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+28,230.312.08,RETAIL_DESC,"Locked Dado, Set",compose,0.85,,,,Shelf line: series + item type + differentiators.
+28,230.312.08,LONG_DESC1,"CMT® Locked Dado, Set",compose,0.85,,,,Every captured attribute rendered in specification order.
+28,230.312.08,Product Name,Locked Dado,rule,0.55,ITM-LEX-01,input:Part_Desc,locked dado,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 28,230.312.08,ATTRIBUTE_LABEL 1,Wattage,spec,0.9,,,,"Attribute slot 1 of the specification induced for UNCLASSIFIED (11 rows, populated in 64% of them)."
 28,230.312.08,ATTRIBUTE_LABEL 2,Color Temperature,spec,0.9,,,,"Attribute slot 2 of the specification induced for UNCLASSIFIED (11 rows, populated in 82% of them)."
 28,230.312.08,ATTRIBUTE_LABEL 3,Bulb Shape,spec,0.9,,,,"Attribute slot 3 of the specification induced for UNCLASSIFIED (11 rows, populated in 27% of them)."
 28,230.312.08,ATTRIBUTE_LABEL 4,Base Type,spec,0.9,,,,"Attribute slot 4 of the specification induced for UNCLASSIFIED (11 rows, populated in 64% of them)."
 28,230.312.08,ATTRIBUTE_LABEL 5,Pack Quantity,spec,0.9,,,,"Attribute slot 5 of the specification induced for UNCLASSIFIED (11 rows, populated in 45% of them)."
+28,230.312.08,ATTRIBUTE_LABEL 6,Configuration,rule,0.92,PKG-CFG-01,input:Part_Desc,Set,How the item is sold; a kit and a bare tool are different SKUs.
+28,230.312.08,ATTRIBUTE_VALUE 6,Set,rule,0.92,PKG-CFG-01,input:Part_Desc,Set,How the item is sold; a kit and a bare tool are different SKUs.
 29,MK113MPAP,Mfg_Part_Num,MK113MPAP,input,0.99,,,,Preserved verbatim from the source file.
 29,MK113MPAP,Part_Desc,MK113MPAP Edge Safety Glasses - Makalu Black Frame Polarized,input,0.99,,,,Preserved verbatim from the source file.
 29,MK113MPAP,Part_Manuf,Edge Eyewear Inc (EDGSA),input,0.99,,,,Preserved verbatim from the source file.
@@ -720,13 +712,13 @@
 29,MK113MPAP,Class,PPE,rule,0.9,TAX-059,input:Part_Desc,Safety Glasses,Matched taxonomy rule TAX-059 on 'Safety Glasses'.
 29,MK113MPAP,Fine,Protective Equipment,rule,0.9,TAX-059,input:Part_Desc,Safety Glasses,Matched taxonomy rule TAX-059 on 'Safety Glasses'.
 29,MK113MPAP,INVOICE_DESC,SAFETY GLASSES BK,compose,0.9,,,,Budget solver fitted 2 facts into 17/40 characters.
-29,MK113MPAP,MOBILE_DESC,"Wolf Peak International Edge Eyewear®, Safety Glasses",compose,0.88,,,,Identity line sized into the 60-80 character window.
-29,MK113MPAP,SHORT_DESC,"Edge Eyewear® Edge Makalu Frame Polarized MK113MPAP Safety Glasses, Black",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-29,MK113MPAP,RETAIL_DESC,"Edge Makalu Frame Polarized Safety Glasses, Black",compose,0.85,,,,Shelf line: series + item type + differentiators.
-29,MK113MPAP,LONG_DESC1,"Edge Eyewear® Safety Glasses, Edge Makalu Frame Polarized, Black",compose,0.85,,,,Every captured attribute rendered in specification order.
+29,MK113MPAP,MOBILE_DESC,"Wolf Peak International Edge Eyewear, Safety Glasses, Makalu Frame Polarized",compose,0.88,,,,Identity line sized into the 60-80 character window.
+29,MK113MPAP,SHORT_DESC,"Edge Eyewear® Makalu Frame Polarized MK113MPAP Safety Glasses, Black",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+29,MK113MPAP,RETAIL_DESC,"Makalu Frame Polarized Safety Glasses, Black",compose,0.85,,,,Shelf line: series + item type + differentiators.
+29,MK113MPAP,LONG_DESC1,"Edge Eyewear® Safety Glasses, Makalu Frame Polarized, Black",compose,0.85,,,,Every captured attribute rendered in specification order.
 29,MK113MPAP,Product Name,Safety Glasses,rule,0.81,ITM-LEX-01,input:Part_Desc,safety glasses,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
-29,MK113MPAP,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Edge Makalu Frame Polarized,Capitalised collection name left after brand and item type were removed.
-29,MK113MPAP,ATTRIBUTE_VALUE 1,Edge Makalu Frame Polarized,rule,0.72,SER-CAP-01,input:Part_Desc,Edge Makalu Frame Polarized,Capitalised collection name left after brand and item type were removed.
+29,MK113MPAP,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Makalu Frame Polarized,Capitalised collection name left after brand and item type were removed.
+29,MK113MPAP,ATTRIBUTE_VALUE 1,Makalu Frame Polarized,rule,0.72,SER-CAP-01,input:Part_Desc,Makalu Frame Polarized,Capitalised collection name left after brand and item type were removed.
 29,MK113MPAP,ATTRIBUTE_LABEL 2,Color,rule,0.92,FIN-WRD-01,input:Part_Desc,Black,Finish stated in full words.
 29,MK113MPAP,ATTRIBUTE_VALUE 2,Black,rule,0.92,FIN-WRD-01,input:Part_Desc,Black,Finish stated in full words.
 29,MK113MPAP,UNSPSC,46181800,inferred,0.72,TAX-059,registry:taxonomy,46181800,UNSPSC family for classpath Safety>Personal Protective Equipment>Eye & Ear Protection.
@@ -739,8 +731,8 @@
 30,CVM517P3RD1,Dept,Appliances,rule,0.9,TAX-040,input:Part_Desc,Microwave,Matched taxonomy rule TAX-040 on 'Microwave'.
 30,CVM517P3RD1,Class,Large Appliances,rule,0.9,TAX-040,input:Part_Desc,Microwave,Matched taxonomy rule TAX-040 on 'Microwave'.
 30,CVM517P3RD1,Fine,Microwaves,rule,0.9,TAX-040,input:Part_Desc,Microwave,Matched taxonomy rule TAX-040 on 'Microwave'.
-30,CVM517P3RD1,INVOICE_DESC,MICROWAVE BK,compose,0.9,,,,Budget solver fitted 2 facts into 12/40 characters.
-30,CVM517P3RD1,MOBILE_DESC,"Microwave, CVM517P3RD1, Appliances, Large Appliances, Microwaves",compose,0.88,,,,Identity line sized into the 60-80 character window.
+30,CVM517P3RD1,INVOICE_DESC,MICROWAVE BK CVM517P3RD1,compose,0.9,,,,Budget solver fitted 3 facts into 24/40 characters.
+30,CVM517P3RD1,MOBILE_DESC,"Microwave, CVM517P3RD1, Black",compose,0.88,,,,"Only 29 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
 30,CVM517P3RD1,SHORT_DESC,"CVM517P3RD1 Microwave, Black",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 30,CVM517P3RD1,RETAIL_DESC,"Microwave, Black",compose,0.85,,,,Shelf line: series + item type + differentiators.
 30,CVM517P3RD1,LONG_DESC1,"Microwave, Black",compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -755,16 +747,16 @@
 31,49-94-0923,MANUFACTURER_PART_NUMBER,49-94-0923,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,49-94-0923,Supplied part number.
 31,49-94-0923,BRAND_NAME,Milwaukee®,registry,0.88,IDN-BRD-01,input:Part_Desc,milw,Approved brand 'milw' found in the description.
 31,49-94-0923,MANUFACTURER_NAME,Milwaukee Tool,registry,0.8624,IDN-MFR-01,input:Part_Desc,milw,Approved brand 'milw' found in the description.
-31,49-94-0923,Classpath,Tools & Equipment>Abrasives>Sanding Discs,rule,0.9,TAX-018,input:Part_Desc,Disc,Matched taxonomy rule TAX-018 on 'Disc'.
-31,49-94-0923,Dept,Tools,rule,0.9,TAX-018,input:Part_Desc,Disc,Matched taxonomy rule TAX-018 on 'Disc'.
-31,49-94-0923,Class,Power Tool Accessories,rule,0.9,TAX-018,input:Part_Desc,Disc,Matched taxonomy rule TAX-018 on 'Disc'.
-31,49-94-0923,Fine,Sanding Discs,rule,0.9,TAX-018,input:Part_Desc,Disc,Matched taxonomy rule TAX-018 on 'Disc'.
-31,49-94-0923,INVOICE_DESC,DISC 6IN 1/8IN 7/8IN 6IN X 1/8IN X 7/8IN,compose,0.9,,,,Budget solver fitted 5 facts into 40/40 characters.
-31,49-94-0923,MOBILE_DESC,"Milwaukee Tool Milwaukee®, Disc, Dual Cut, 49-94-0923, Tools",compose,0.88,,,,Identity line sized into the 60-80 character window.
-31,49-94-0923,SHORT_DESC,"Milwaukee® Dual Cut 49-94-0923 Disc, 6 in x 1/8 in x 7/8 in, 7/8 in, 6 in, 1/8 in",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-31,49-94-0923,RETAIL_DESC,"Dual Cut Disc, 6 in x 1/8 in x 7/8 in, 7/8 in, 6 in, 1/8 in",compose,0.85,,,,Shelf line: series + item type + differentiators.
-31,49-94-0923,LONG_DESC1,"Milwaukee® Disc, Dual Cut, 6 in x 1/8 in x 7/8 in, 7/8 in, 6 in, 1/8 in",compose,0.85,,,,Every captured attribute rendered in specification order.
-31,49-94-0923,Product Name,Disc,rule,0.55,ITM-LEX-01,input:Part_Desc,disc,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+31,49-94-0923,Classpath,Tools & Equipment>Abrasives>Sanding Discs,rule,0.9,TAX-018,input:Part_Desc,Grind Disc,Matched taxonomy rule TAX-018 on 'Disc'.
+31,49-94-0923,Dept,Tools,rule,0.9,TAX-018,input:Part_Desc,Grind Disc,Matched taxonomy rule TAX-018 on 'Disc'.
+31,49-94-0923,Class,Power Tool Accessories,rule,0.9,TAX-018,input:Part_Desc,Grind Disc,Matched taxonomy rule TAX-018 on 'Disc'.
+31,49-94-0923,Fine,Sanding Discs,rule,0.9,TAX-018,input:Part_Desc,Grind Disc,Matched taxonomy rule TAX-018 on 'Disc'.
+31,49-94-0923,INVOICE_DESC,GRIND DISC 6IN 1/8IN 7/8IN METAL,compose,0.9,,,,Budget solver fitted 5 facts into 32/40 characters.
+31,49-94-0923,MOBILE_DESC,"Milwaukee Tool Milwaukee, Grind Disc, Dual Cut, 49-94-0923, 7/8 in",compose,0.88,,,,Identity line sized into the 60-80 character window.
+31,49-94-0923,SHORT_DESC,"Milwaukee® Dual Cut 49-94-0923 Grind Disc, 6 in x 1/8 in x 7/8 in, Metal",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+31,49-94-0923,RETAIL_DESC,"Dual Cut Grind Disc, 6 in x 1/8 in x 7/8 in, Metal",compose,0.85,,,,Shelf line: series + item type + differentiators.
+31,49-94-0923,LONG_DESC1,"Milwaukee® Grind Disc, Dual Cut, 6 in x 1/8 in x 7/8 in, Metal",compose,0.85,,,,Every captured attribute rendered in specification order.
+31,49-94-0923,Product Name,Grind Disc,rule,0.55,ITM-LEX-01,input:Part_Desc,grind disc,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 31,49-94-0923,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Dual Cut,Capitalised collection name left after brand and item type were removed.
 31,49-94-0923,ATTRIBUTE_VALUE 1,Dual Cut,rule,0.72,SER-CAP-01,input:Part_Desc,Dual Cut,Capitalised collection name left after brand and item type were removed.
 31,49-94-0923,ATTRIBUTE_LABEL 2,Size,rule,0.92,DIM-CHN-01,input:Part_Desc,"6""x1/8""x7/8""","Dimension chain; decimals converted to trade fractions, unit taken per token from the tick mark."
@@ -778,6 +770,8 @@
 31,49-94-0923,ATTRIBUTE_LABEL 5,Thickness,rule,0.92,DIM-CHN-02,input:Part_Desc,"6""x1/8""x7/8""",Positional component of a bonded-abrasive diameter x thickness x arbor chain.
 31,49-94-0923,ATTRIBUTE_VALUE 5,1/8,rule,0.92,DIM-CHN-02,input:Part_Desc,"6""x1/8""x7/8""",Positional component of a bonded-abrasive diameter x thickness x arbor chain.
 31,49-94-0923,ATTRIBUTE_UOM 5,in,rule,0.92,DIM-CHN-02,input:Part_Desc,"6""x1/8""x7/8""",Positional component of a bonded-abrasive diameter x thickness x arbor chain.
+31,49-94-0923,ATTRIBUTE_LABEL 6,Application,rule,0.92,APP-MAT-01,input:Part_Desc,Metal,The material this item is intended to work on.
+31,49-94-0923,ATTRIBUTE_VALUE 6,Metal,rule,0.92,APP-MAT-01,input:Part_Desc,Metal,The material this item is intended to work on.
 31,49-94-0923,UNSPSC,31191500,inferred,0.72,TAX-018,registry:taxonomy,31191500,UNSPSC family for classpath Tools & Equipment>Abrasives>Sanding Discs.
 32,R02-GUAC1-0BW,Mfg_Part_Num,R02-GUAC1-0BW,input,0.99,,,,Preserved verbatim from the source file.
 32,R02-GUAC1-0BW,Part_Desc,R02GUAC10BW 15A/USB Outlet Wh,input,0.99,,,,Preserved verbatim from the source file.
@@ -786,16 +780,16 @@
 32,R02-GUAC1-0BW,MANUFACTURER_PART_NUMBER,R02-GUAC1-0BW,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,R02-GUAC1-0BW,Supplied part number.
 32,R02-GUAC1-0BW,BRAND_NAME,Leviton®,registry,0.9,IDN-BRD-01,input:Part_Manuf,Leviton Mfg Co (4927),Supplier string normalised to the approved manufacturer.
 32,R02-GUAC1-0BW,MANUFACTURER_NAME,"Leviton Manufacturing Co., Inc.",registry,0.882,IDN-MFR-01,input:Part_Manuf,Leviton Mfg Co (4927),Supplier string normalised to the approved manufacturer.
-32,R02-GUAC1-0BW,Classpath,Electrical>Wiring Devices>Receptacles,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-32,R02-GUAC1-0BW,Dept,Electrical,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-32,R02-GUAC1-0BW,Class,Wiring Devices,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-32,R02-GUAC1-0BW,Fine,Receptacles,rule,0.9,TAX-046,input:Part_Desc,Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
-32,R02-GUAC1-0BW,INVOICE_DESC,OUTLET WH 15A,compose,0.9,,,,Budget solver fitted 3 facts into 13/40 characters.
-32,R02-GUAC1-0BW,MOBILE_DESC,"Leviton Manufacturing Co., Inc. Leviton®, Outlet, R02-GUAC1-0BW",compose,0.88,,,,Identity line sized into the 60-80 character window.
-32,R02-GUAC1-0BW,SHORT_DESC,"Leviton® R02-GUAC1-0BW Outlet, 15 A, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-32,R02-GUAC1-0BW,RETAIL_DESC,"Outlet, 15 A, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
-32,R02-GUAC1-0BW,LONG_DESC1,"Leviton® Outlet, 15 A, White",compose,0.85,,,,Every captured attribute rendered in specification order.
-32,R02-GUAC1-0BW,Product Name,Outlet,rule,0.55,ITM-LEX-01,input:Part_Desc,outlet,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+32,R02-GUAC1-0BW,Classpath,Electrical>Wiring Devices>Receptacles,rule,0.9,TAX-046,input:Part_Desc,USB Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+32,R02-GUAC1-0BW,Dept,Electrical,rule,0.9,TAX-046,input:Part_Desc,USB Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+32,R02-GUAC1-0BW,Class,Wiring Devices,rule,0.9,TAX-046,input:Part_Desc,USB Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+32,R02-GUAC1-0BW,Fine,Receptacles,rule,0.9,TAX-046,input:Part_Desc,USB Outlet,Matched taxonomy rule TAX-046 on 'Outlet'.
+32,R02-GUAC1-0BW,INVOICE_DESC,USB OUTLET WH 15A,compose,0.9,,,,Budget solver fitted 3 facts into 17/40 characters.
+32,R02-GUAC1-0BW,MOBILE_DESC,"Leviton Manufacturing Co., Inc. Leviton, USB Outlet, R02-GUAC1-0BW",compose,0.88,,,,Identity line sized into the 60-80 character window.
+32,R02-GUAC1-0BW,SHORT_DESC,"Leviton® R02-GUAC1-0BW USB Outlet, 15 A, White",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+32,R02-GUAC1-0BW,RETAIL_DESC,"USB Outlet, 15 A, White",compose,0.85,,,,Shelf line: series + item type + differentiators.
+32,R02-GUAC1-0BW,LONG_DESC1,"Leviton® USB Outlet, 15 A, White",compose,0.85,,,,Every captured attribute rendered in specification order.
+32,R02-GUAC1-0BW,Product Name,USB Outlet,rule,0.55,ITM-LEX-01,input:Part_Desc,usb outlet,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
 32,R02-GUAC1-0BW,ATTRIBUTE_LABEL 1,Amperage Rating,rule,0.92,ELE-A-01,input:Part_Desc,15A,Amperage token.
 32,R02-GUAC1-0BW,ATTRIBUTE_VALUE 1,15,rule,0.92,ELE-A-01,input:Part_Desc,15A,Amperage token.
 32,R02-GUAC1-0BW,ATTRIBUTE_UOM 1,A,rule,0.92,ELE-A-01,input:Part_Desc,15A,Amperage token.
@@ -814,18 +808,16 @@
 33,62-1850,Class,Lighting,rule,0.9,TAX-008,input:Part_Desc,Ceiling Light,Matched taxonomy rule TAX-008 on 'Ceiling Light'.
 33,62-1850,Fine,Ceiling Lights,rule,0.9,TAX-008,input:Part_Desc,Ceiling Light,Matched taxonomy rule TAX-008 on 'Ceiling Light'.
 33,62-1850,INVOICE_DESC,CEILING LIGHT 11IN LED,compose,0.9,,,,Budget solver fitted 3 facts into 22/40 characters.
-33,62-1850,MOBILE_DESC,"Satco Products, Inc. Satco®, Ceiling Light, Led, 62-1850, Electrical",compose,0.88,,,,Identity line sized into the 60-80 character window.
-33,62-1850,SHORT_DESC,"Satco® Led 62-1850 Ceiling Light, 11 in, LED",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-33,62-1850,RETAIL_DESC,"Led Ceiling Light, 11 in, LED",compose,0.85,,,,Shelf line: series + item type + differentiators.
-33,62-1850,LONG_DESC1,"Satco® Ceiling Light, Led, 11 in, LED",compose,0.85,,,,Every captured attribute rendered in specification order.
+33,62-1850,MOBILE_DESC,"Satco Products, Inc. Satco, Ceiling Light, 62-1850, 11 in, LED",compose,0.88,,,,Identity line sized into the 60-80 character window.
+33,62-1850,SHORT_DESC,"Satco® 62-1850 Ceiling Light, 11 in, LED",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+33,62-1850,RETAIL_DESC,"Ceiling Light, 11 in, LED",compose,0.85,,,,Shelf line: series + item type + differentiators.
+33,62-1850,LONG_DESC1,"Satco® Ceiling Light, 11 in, LED",compose,0.85,,,,Every captured attribute rendered in specification order.
 33,62-1850,Product Name,Ceiling Light,rule,0.8377,ITM-LEX-01,input:Part_Desc,ceiling light,Resolved against the item-type vocabulary induced from this catalogue (1 occurrences).
-33,62-1850,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-33,62-1850,ATTRIBUTE_VALUE 1,Led,rule,0.72,SER-CAP-01,input:Part_Desc,Led,Capitalised collection name left after brand and item type were removed.
-33,62-1850,ATTRIBUTE_LABEL 2,Size,rule,0.92,DIM-SGL-01,input:Part_Desc,"11""",Single stated dimension (nominal size of the item).
-33,62-1850,ATTRIBUTE_VALUE 2,11,rule,0.92,DIM-SGL-01,input:Part_Desc,"11""",Single stated dimension (nominal size of the item).
-33,62-1850,ATTRIBUTE_UOM 2,in,rule,0.92,DIM-SGL-01,input:Part_Desc,"11""",Single stated dimension (nominal size of the item).
-33,62-1850,ATTRIBUTE_LABEL 3,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
-33,62-1850,ATTRIBUTE_VALUE 3,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+33,62-1850,ATTRIBUTE_LABEL 1,Size,rule,0.92,DIM-SGL-01,input:Part_Desc,"11""",Single stated dimension (nominal size of the item).
+33,62-1850,ATTRIBUTE_VALUE 1,11,rule,0.92,DIM-SGL-01,input:Part_Desc,"11""",Single stated dimension (nominal size of the item).
+33,62-1850,ATTRIBUTE_UOM 1,in,rule,0.92,DIM-SGL-01,input:Part_Desc,"11""",Single stated dimension (nominal size of the item).
+33,62-1850,ATTRIBUTE_LABEL 2,Lamp Type,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
+33,62-1850,ATTRIBUTE_VALUE 2,LED,rule,0.9,LMP-TEC-01,input:Part_Desc,Led,Lamp technology captured as an attribute rather than an item type.
 33,62-1850,UNSPSC,39111524,inferred,0.72,TAX-008,registry:taxonomy,39111524,UNSPSC family for classpath Electrical>Lighting & Bulbs>Ceiling Lighting.
 34,T-90065,Mfg_Part_Num,T-90065,input,0.99,,,,Preserved verbatim from the source file.
 34,T-90065,Part_Desc,T-90065 Deep Compact Organizer,input,0.99,,,,Preserved verbatim from the source file.
@@ -838,12 +830,12 @@
 34,T-90065,Dept,Tools,rule,0.9,TAX-068,input:Part_Desc,Organizer,Matched taxonomy rule TAX-068 on 'Organizer'.
 34,T-90065,Class,Storage,rule,0.9,TAX-068,input:Part_Desc,Organizer,Matched taxonomy rule TAX-068 on 'Organizer'.
 34,T-90065,Fine,Tool Storage,rule,0.9,TAX-068,input:Part_Desc,Organizer,Matched taxonomy rule TAX-068 on 'Organizer'.
-34,T-90065,INVOICE_DESC,ORGANIZER,compose,0.9,,,,Budget solver fitted 1 facts into 9/40 characters.
-34,T-90065,MOBILE_DESC,"Makita U.S.A., Inc. Makita®, Organizer, Deep Compact, T-90065",compose,0.88,,,,Identity line sized into the 60-80 character window.
+34,T-90065,INVOICE_DESC,ORGANIZER T-90065,compose,0.9,,,,Budget solver fitted 2 facts into 17/40 characters.
+34,T-90065,MOBILE_DESC,"Makita U.S.A., Inc. Makita, Organizer, Deep Compact, T-90065",compose,0.88,,,,Identity line sized into the 60-80 character window.
 34,T-90065,SHORT_DESC,Makita® Deep Compact T-90065 Organizer,compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 34,T-90065,RETAIL_DESC,Deep Compact Organizer,compose,0.85,,,,Shelf line: series + item type + differentiators.
 34,T-90065,LONG_DESC1,"Makita® Organizer, Deep Compact",compose,0.85,,,,Every captured attribute rendered in specification order.
-34,T-90065,Product Name,Organizer,rule,0.55,ITM-LEX-01,input:Part_Desc,organizer,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
+34,T-90065,Product Name,Organizer,rule,0.7977,ITM-LEX-01,input:Part_Desc,organizer,Resolved against the item-type vocabulary induced from this catalogue (1 occurrences).
 34,T-90065,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Deep Compact,Capitalised collection name left after brand and item type were removed.
 34,T-90065,ATTRIBUTE_VALUE 1,Deep Compact,rule,0.72,SER-CAP-01,input:Part_Desc,Deep Compact,Capitalised collection name left after brand and item type were removed.
 34,T-90065,UNSPSC,24101600,inferred,0.72,TAX-068,registry:taxonomy,24101600,UNSPSC family for classpath Tools & Equipment>Tool Storage>Organizers & Cases.
@@ -858,8 +850,8 @@
 35,EUF17CDBW,Dept,Appliances,rule,0.9,TAX-043,input:Part_Desc,Freezer,Matched taxonomy rule TAX-043 on 'Freezer'.
 35,EUF17CDBW,Class,Large Appliances,rule,0.9,TAX-043,input:Part_Desc,Freezer,Matched taxonomy rule TAX-043 on 'Freezer'.
 35,EUF17CDBW,Fine,Freezers,rule,0.9,TAX-043,input:Part_Desc,Freezer,Matched taxonomy rule TAX-043 on 'Freezer'.
-35,EUF17CDBW,INVOICE_DESC,FREEZER,compose,0.9,,,,Budget solver fitted 1 facts into 7/40 characters.
-35,EUF17CDBW,MOBILE_DESC,"Element Electronics Element, Freezer, EUF17CDBW, Appliances, Large Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
+35,EUF17CDBW,INVOICE_DESC,FREEZER EUF17CDBW,compose,0.9,,,,Budget solver fitted 2 facts into 17/40 characters.
+35,EUF17CDBW,MOBILE_DESC,"Element Electronics Element, Freezer, EUF17CDBW",compose,0.88,,,,"Only 47 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
 35,EUF17CDBW,SHORT_DESC,Element EUF17CDBW Freezer,compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 35,EUF17CDBW,RETAIL_DESC,Freezer,compose,0.85,,,,Shelf line: series + item type + differentiators.
 35,EUF17CDBW,LONG_DESC1,Element Freezer,compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -876,8 +868,8 @@
 36,25459,Dept,Building Materials,rule,0.72,TAX-073,input:Part_Desc,Orange,Matched taxonomy rule TAX-073 on 'Brd'.
 36,25459,Class,Structural Panels,rule,0.72,TAX-073,input:Part_Desc,Orange,Matched taxonomy rule TAX-073 on 'Brd'.
 36,25459,Fine,Sheathing,rule,0.72,TAX-073,input:Part_Desc,Orange,Matched taxonomy rule TAX-073 on 'Brd'.
-36,25459,INVOICE_DESC,ORANGE 500FT,compose,0.9,,,,Budget solver fitted 2 facts into 12/40 characters.
-36,25459,MOBILE_DESC,"Milwaukee Tool Milwaukee®, Orange, Mason Line Brd, 25459, Building Materials",compose,0.88,,,,Identity line sized into the 60-80 character window.
+36,25459,INVOICE_DESC,ORANGE 500FT 25459,compose,0.9,,,,Budget solver fitted 3 facts into 18/40 characters.
+36,25459,MOBILE_DESC,"Milwaukee Tool Milwaukee, Orange, Mason Line Brd, 25459, 500 ft",compose,0.88,,,,Identity line sized into the 60-80 character window.
 36,25459,SHORT_DESC,"Milwaukee® Mason Line Brd 25459 Orange, 500 ft",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 36,25459,RETAIL_DESC,"Mason Line Brd Orange, 500 ft",compose,0.85,,,,Shelf line: series + item type + differentiators.
 36,25459,LONG_DESC1,"Milwaukee® Orange, Mason Line Brd, 500 ft",compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -895,19 +887,19 @@
 37,C7CESAS3RD3,MANUFACTURER_PART_NUMBER,C7CESAS3RD3,input,0.99,IDN-MPN-01,input:Mfg_Part_Num,C7CESAS3RD3,Supplied part number.
 37,C7CESAS3RD3,BRAND_NAME,Café®,registry,0.88,IDN-BRD-01,input:Part_Desc,Café,Approved brand 'Café' found in the description.
 37,C7CESAS3RD3,MANUFACTURER_NAME,GE Appliances,registry,0.8624,IDN-MFR-01,input:Part_Desc,Café,Approved brand 'Café' found in the description.
-37,C7CESAS3RD3,Classpath,Appliances & Consumer Electronics>Small Appliances>Countertop Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-37,C7CESAS3RD3,Dept,Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-37,C7CESAS3RD3,Class,Small Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-37,C7CESAS3RD3,Fine,Countertop Appliances,rule,0.72,TAX-071,input:Part_Desc,Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
-37,C7CESAS3RD3,INVOICE_DESC,MACHINE,compose,0.9,,,,Budget solver fitted 1 facts into 7/40 characters.
-37,C7CESAS3RD3,MOBILE_DESC,"GE Appliances Café®, Machine, Espresso MB, C7CESAS3RD3, Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
-37,C7CESAS3RD3,SHORT_DESC,Café® Espresso MB C7CESAS3RD3 Machine,compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-37,C7CESAS3RD3,RETAIL_DESC,Espresso MB Machine,compose,0.85,,,,Shelf line: series + item type + differentiators.
-37,C7CESAS3RD3,LONG_DESC1,"Café® Machine, Espresso MB",compose,0.85,,,,Every captured attribute rendered in specification order.
-37,C7CESAS3RD3,Product Name,Machine,rule,0.55,ITM-LEX-01,input:Part_Desc,machine,Resolved against the item-type vocabulary induced from this catalogue (0 occurrences).
-37,C7CESAS3RD3,ATTRIBUTE_LABEL 1,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Espresso MB,Capitalised collection name left after brand and item type were removed.
-37,C7CESAS3RD3,ATTRIBUTE_VALUE 1,Espresso MB,rule,0.72,SER-CAP-01,input:Part_Desc,Espresso MB,Capitalised collection name left after brand and item type were removed.
-37,C7CESAS3RD3,UNSPSC,52141700,inferred,0.576,TAX-071,registry:taxonomy,52141700,UNSPSC family for classpath Appliances & Consumer Electronics>Small Appliances>Countertop Appliances.
+37,C7CESAS3RD3,Classpath,Appliances & Consumer Electronics>Small Appliances>Countertop Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+37,C7CESAS3RD3,Dept,Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+37,C7CESAS3RD3,Class,Small Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+37,C7CESAS3RD3,Fine,Countertop Appliances,rule,0.9,TAX-071,input:Part_Desc,Espresso Machine,Matched taxonomy rule TAX-071 on 'Espresso'.
+37,C7CESAS3RD3,INVOICE_DESC,ESPRESSO MACHINE MATTE BLACK,compose,0.9,,,,Budget solver fitted 2 facts into 28/40 characters.
+37,C7CESAS3RD3,MOBILE_DESC,"GE Appliances Café, Espresso Machine, C7CESAS3RD3, Matte Black",compose,0.88,,,,Identity line sized into the 60-80 character window.
+37,C7CESAS3RD3,SHORT_DESC,"Café® C7CESAS3RD3 Espresso Machine, Matte Black",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+37,C7CESAS3RD3,RETAIL_DESC,"Espresso Machine, Matte Black",compose,0.85,,,,Shelf line: series + item type + differentiators.
+37,C7CESAS3RD3,LONG_DESC1,"Café® Espresso Machine, Matte Black",compose,0.85,,,,Every captured attribute rendered in specification order.
+37,C7CESAS3RD3,Product Name,Espresso Machine,rule,0.8039,ITM-LEX-01,input:Part_Desc,espresso machine,Resolved against the item-type vocabulary induced from this catalogue (2 occurrences).
+37,C7CESAS3RD3,ATTRIBUTE_LABEL 1,Color,rule,0.92,FIN-CDE-01,input:Part_Desc,MB,Trade finish code expanded via the approved abbreviation map.
+37,C7CESAS3RD3,ATTRIBUTE_VALUE 1,Matte Black,rule,0.92,FIN-CDE-01,input:Part_Desc,MB,Trade finish code expanded via the approved abbreviation map.
+37,C7CESAS3RD3,UNSPSC,52141700,inferred,0.72,TAX-071,registry:taxonomy,52141700,UNSPSC family for classpath Appliances & Consumer Electronics>Small Appliances>Countertop Appliances.
 38,PGE29BYTFS,Mfg_Part_Num,PGE29BYTFS,input,0.99,,,,Preserved verbatim from the source file.
 38,PGE29BYTFS,Part_Desc,PGE29BYTFS GE Fridge SS,input,0.99,,,,Preserved verbatim from the source file.
 38,PGE29BYTFS,Part_Manuf,Appliance Dealers Cooperative (APPDE),input,0.99,,,,Preserved verbatim from the source file.
@@ -919,8 +911,8 @@
 38,PGE29BYTFS,Dept,Appliances,rule,0.9,TAX-038,input:Part_Desc,Refrigerator,Matched taxonomy rule TAX-038 on 'Refrigerator'.
 38,PGE29BYTFS,Class,Large Appliances,rule,0.9,TAX-038,input:Part_Desc,Refrigerator,Matched taxonomy rule TAX-038 on 'Refrigerator'.
 38,PGE29BYTFS,Fine,Refrigerators,rule,0.9,TAX-038,input:Part_Desc,Refrigerator,Matched taxonomy rule TAX-038 on 'Refrigerator'.
-38,PGE29BYTFS,INVOICE_DESC,REFRIG SST,compose,0.9,,,,Budget solver fitted 2 facts into 10/40 characters.
-38,PGE29BYTFS,MOBILE_DESC,"GE Appliances GE®, Refrigerator, PGE29BYTFS, Appliances, Large Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
+38,PGE29BYTFS,INVOICE_DESC,REFRIG SST PGE29BYTFS,compose,0.9,,,,Budget solver fitted 3 facts into 21/40 characters.
+38,PGE29BYTFS,MOBILE_DESC,"GE Appliances GE, Refrigerator, PGE29BYTFS, Stainless Steel",compose,0.88,,,,"Only 59 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
 38,PGE29BYTFS,SHORT_DESC,"GE® PGE29BYTFS Refrigerator, Stainless Steel",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 38,PGE29BYTFS,RETAIL_DESC,"Refrigerator, Stainless Steel",compose,0.85,,,,Shelf line: series + item type + differentiators.
 38,PGE29BYTFS,LONG_DESC1,"GE® Refrigerator, Stainless Steel",compose,0.85,,,,Every captured attribute rendered in specification order.
@@ -939,19 +931,21 @@
 39,543140020,Dept,Building Materials,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 39,543140020,Class,Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
 39,543140020,Fine,Composite Decking,rule,0.9,TAX-050,input:Part_Desc,Decking,Matched taxonomy rule TAX-050 on 'Decking'.
-39,543140020,INVOICE_DESC,DECKING 1IN X 6IN 20FT,compose,0.9,,,,Budget solver fitted 3 facts into 22/40 characters.
-39,543140020,MOBILE_DESC,"Trex Company, Inc. Trex®, Decking, Biscayne Sq Edge Transcend Lineage, 543140020",compose,0.88,,,,Identity line sized into the 60-80 character window.
-39,543140020,SHORT_DESC,"Trex® Biscayne Sq Edge Transcend Lineage 543140020 Decking, 1 in x 6 in, 20 ft",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
-39,543140020,RETAIL_DESC,"Biscayne Sq Edge Transcend Lineage Decking, 1 in x 6 in, 20 ft",compose,0.85,,,,Shelf line: series + item type + differentiators.
-39,543140020,LONG_DESC1,"Trex® Decking, Biscayne Sq Edge Transcend Lineage, 1 in x 6 in, 20 ft",compose,0.85,,,,Every captured attribute rendered in specification order.
+39,543140020,INVOICE_DESC,DECKING 1IN X 6IN 20FT SQ EDG,compose,0.9,,,,Budget solver fitted 4 facts into 29/40 characters.
+39,543140020,MOBILE_DESC,"Trex Company, Inc. Trex, Decking, Transcend Lineage, 543140020",compose,0.88,,,,Identity line sized into the 60-80 character window.
+39,543140020,SHORT_DESC,"Trex® Transcend Lineage 543140020 Decking, 1 in x 6 in, 20 ft, Square Edge",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
+39,543140020,RETAIL_DESC,"Transcend Lineage Decking, 1 in x 6 in, 20 ft, Square Edge",compose,0.85,,,,Shelf line: series + item type + differentiators.
+39,543140020,LONG_DESC1,"Trex® Decking, Transcend Lineage, 1 in x 6 in, 20 ft, Square Edge",compose,0.85,,,,Every captured attribute rendered in specification order.
 39,543140020,Product Name,Decking,rule,0.8417,ITM-LEX-01,input:Part_Desc,decking,Resolved against the item-type vocabulary induced from this catalogue (5 occurrences).
 39,543140020,ATTRIBUTE_LABEL 1,Nominal Size,spec,0.9,,,,"Attribute slot 1 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 39,543140020,ATTRIBUTE_VALUE 1,1 in x 6 in,rule,0.92,DIM-NOM-01,input:Part_Desc,1nx6-20',"Decking nominal profile: thickness x width, length carried separately."
 39,543140020,ATTRIBUTE_LABEL 2,Length,spec,0.9,,,,"Attribute slot 2 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
 39,543140020,ATTRIBUTE_VALUE 2,20,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-20',Board length in feet from the '-NN'' suffix.
 39,543140020,ATTRIBUTE_UOM 2,ft,rule,0.92,DIM-LEN-01,input:Part_Desc,1nx6-20',Board length in feet from the '-NN'' suffix.
-39,543140020,ATTRIBUTE_LABEL 3,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Biscayne Sq Edge Transcend Lineage,Capitalised collection name left after brand and item type were removed.
-39,543140020,ATTRIBUTE_VALUE 3,Biscayne Sq Edge Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Biscayne Sq Edge Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+39,543140020,ATTRIBUTE_LABEL 3,Edge Profile,spec,0.9,,,,"Attribute slot 3 of the specification induced for Building Materials>Decking>Composite & PVC Decking (5 rows, populated in 100% of them)."
+39,543140020,ATTRIBUTE_VALUE 3,Square Edge,rule,0.92,DEC-EDG-01,input:Part_Desc,Sq Edge,"Board edge profile; a grooved board takes hidden fasteners, a square edge does not."
+39,543140020,ATTRIBUTE_LABEL 4,Series,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
+39,543140020,ATTRIBUTE_VALUE 4,Transcend Lineage,rule,0.72,SER-CAP-01,input:Part_Desc,Transcend Lineage,Capitalised collection name left after brand and item type were removed.
 39,543140020,UNSPSC,30103600,inferred,0.72,TAX-050,registry:taxonomy,30103600,UNSPSC family for classpath Building Materials>Decking>Composite & PVC Decking.
 40,PEP9030DTBB,Mfg_Part_Num,PEP9030DTBB,input,0.99,,,,Preserved verbatim from the source file.
 40,PEP9030DTBB,Part_Desc,"PEP9030DTBB 30"" GE Cooktop Bk",input,0.99,,,,Preserved verbatim from the source file.
@@ -965,7 +959,7 @@
 40,PEP9030DTBB,Class,Large Appliances,rule,0.9,TAX-039,input:Part_Desc,Cooktop,Matched taxonomy rule TAX-039 on 'Cooktop'.
 40,PEP9030DTBB,Fine,Ranges & Ovens,rule,0.9,TAX-039,input:Part_Desc,Cooktop,Matched taxonomy rule TAX-039 on 'Cooktop'.
 40,PEP9030DTBB,INVOICE_DESC,COOKTOP BK 30IN,compose,0.9,,,,Budget solver fitted 3 facts into 15/40 characters.
-40,PEP9030DTBB,MOBILE_DESC,"GE Appliances GE®, Cooktop, PEP9030DTBB, Appliances, Large Appliances",compose,0.88,,,,Identity line sized into the 60-80 character window.
+40,PEP9030DTBB,MOBILE_DESC,"GE Appliances GE, Cooktop, PEP9030DTBB, 30 in, Black",compose,0.88,,,,"Only 52 characters: every available fact is already in the line, so the shortfall is a limit of the source data, not of composition."
 40,PEP9030DTBB,SHORT_DESC,"GE® PEP9030DTBB Cooktop, 30 in, Black",compose,0.88,,,,Title formula: brand + series + model + item type + differentiators.
 40,PEP9030DTBB,RETAIL_DESC,"Cooktop, 30 in, Black",compose,0.85,,,,Shelf line: series + item type + differentiators.
 40,PEP9030DTBB,LONG_DESC1,"GE® Cooktop, 30 in, Black",compose,0.85,,,,Every captured attribute rendered in specification order.

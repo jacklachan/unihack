@@ -1,14 +1,13 @@
 ﻿row,part_number,status,score,family_id,issue_kind,severity,message,affects_family_rows,review_value
-3,571513,needs_review,0.8255,F-0a98d661,item_type_unresolved,review,No item type could be resolved from '40 60 100 Led'.,4,0.698
-3,571513,needs_review,0.8255,F-0a98d661,classification_abstained,review,"No taxonomy rule matched item type '571513 40/60/100 Led Med 27k'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",4,0.698
-37,C7CESAS3RD3,needs_review,0.7458,F-918001ac,low_confidence,review,Row confidence below threshold.,1,0.254
-36,25459,needs_review,0.7473,F-a27d1c28,low_confidence,review,Row confidence below threshold.,1,0.253
-28,230.312.08,blocked,0.8206,F-55e49ba5,CG-MOB-01,warning,"MOBILE_DESC is 42 characters, minimum 60.",1,0.179
-28,230.312.08,blocked,0.8206,F-55e49ba5,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.179
-28,230.312.08,blocked,0.8206,F-55e49ba5,classification_abstained,review,"No taxonomy rule matched item type 'Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.179
-23,653258,blocked,0.8484,F-0abfc16c,CG-MOB-01,warning,"MOBILE_DESC is 59 characters, minimum 60.",1,0.152
-23,653258,blocked,0.8484,F-0abfc16c,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.152
-23,653258,blocked,0.8484,F-0abfc16c,classification_abstained,review,"No taxonomy rule matched item type 'Firelite'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.152
-21,38-E,blocked,0.85,F-a3d88629,CG-BRD-01,error,No approved brand resolved.,1,0.15
-30,CVM517P3RD1,blocked,0.875,F-c24b7f72,CG-BRD-01,error,No approved brand resolved.,1,0.125
-30,CVM517P3RD1,blocked,0.875,F-c24b7f72,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.125
+3,571513,needs_review,0.8343,F-25f1ce9c,item_type_unresolved,review,No item type could be resolved from '40 60 100 Led'.,4,0.663
+3,571513,needs_review,0.8343,F-25f1ce9c,classification_abstained,review,"No taxonomy rule matched item type '571513 40/60/100 Led Med 27k'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",4,0.663
+36,25459,needs_review,0.7473,F-cd1f1c14,low_confidence,review,Row confidence below threshold.,1,0.253
+21,38-E,needs_review,0.7948,F-fca69be4,brand_not_in_approved_list,review,"Supplier is not a known distributor, so it is treated as the manufacturer. This name is NOT on the approved list and needs verification before publication.",1,0.205
+28,230.312.08,blocked,0.8405,F-9a2774a2,CG-MOB-01,info,MOBILE_DESC is 53 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.16
+28,230.312.08,blocked,0.8405,F-9a2774a2,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.16
+28,230.312.08,blocked,0.8405,F-9a2774a2,classification_abstained,review,"No taxonomy rule matched item type 'Locked Dado'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.16
+23,653258,blocked,0.8603,F-553518e6,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.14
+23,653258,blocked,0.8603,F-553518e6,classification_abstained,review,"No taxonomy rule matched item type 'Firelite'. Classpath left empty rather than guessed, because attribute validation is keyed on it.",1,0.14
+30,CVM517P3RD1,blocked,0.875,F-a71b4597,CG-MOB-01,info,MOBILE_DESC is 29 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.125
+30,CVM517P3RD1,blocked,0.875,F-a71b4597,CG-BRD-01,error,No approved brand resolved.,1,0.125
+30,CVM517P3RD1,blocked,0.875,F-a71b4597,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,1,0.125
