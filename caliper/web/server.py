@@ -471,7 +471,13 @@ def serve(host: str = "127.0.0.1", port: int = 8765,
         len(getattr(STATE, "_cached_rows", [])), data_dir))
     print("  Ctrl-C to stop")
     if open_browser:
-        threading.Timer(0.6, lambda: webbrowser.open(url)).start()
+        # A container has no browser; never let that take the server down.
+        def _open():
+            try:
+                webbrowser.open(url)
+            except Exception:
+                pass
+        threading.Timer(0.6, _open).start()
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

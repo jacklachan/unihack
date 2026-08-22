@@ -251,7 +251,11 @@ def cmd_run(args: argparse.Namespace) -> int:
 
 def cmd_serve(args: argparse.Namespace) -> int:
     from .web.server import serve
-    serve(host=args.host, port=args.port, data_dir=args.out)
+    # Honour the platform's PORT when one is set (Hugging Face, Render, Fly).
+    port = int(os.environ.get("PORT") or args.port)
+    host = os.environ.get("HOST") or args.host
+    serve(host=host, port=port, data_dir=args.out,
+          open_browser=not args.no_browser)
     return 0
 
 
@@ -359,6 +363,8 @@ def build_parser() -> argparse.ArgumentParser:
     s = sub.add_parser("serve", help="run the dashboard")
     s.add_argument("--host", default="127.0.0.1")
     s.add_argument("--port", type=int, default=8765)
+    s.add_argument("--no-browser", action="store_true",
+                   help="do not try to open a browser (containers, servers)")
     s.add_argument("-o", "--out", default="data/out")
     s.set_defaults(func=cmd_serve)
 
