@@ -16,3 +16,5 @@ data/out/*
 !data/out/relationships.csv
 !data/out/evaluation.json
 !data/out/inspect.json
+data/deck/render/
+docs/deck/render/
