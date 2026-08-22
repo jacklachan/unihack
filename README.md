@@ -11,7 +11,7 @@ And every value traceable to the rule that produced it and the characters that j
 
 ![Python](https://img.shields.io/badge/Python-3.12-12182B?style=flat-square&logo=python&logoColor=white)
 ![Dependencies](https://img.shields.io/badge/third--party_packages-0-1F7A4C?style=flat-square)
-![Tests](https://img.shields.io/badge/invariant_tests-42_passing-1F7A4C?style=flat-square)
+![Tests](https://img.shields.io/badge/invariant_tests-46_passing-1F7A4C?style=flat-square)
 ![Columns](https://img.shields.io/badge/delivery_columns-252-B98A34?style=flat-square)
 ![Licence](https://img.shields.io/badge/licence-MIT-6B7488?style=flat-square)
 
@@ -40,7 +40,7 @@ justified the value, with the column it came from. `BRAND_NAME` became
 Milwaukee® because the four characters `milw` appear in `Part_Desc` and resolve
 against the approved brand registry. **Nothing here was generated.**
 
-Across the sample, **26,627 populated cells** carry provenance of this kind.
+Across the sample, **26,596 populated cells** carry provenance of this kind.
 
 | | |
 |---|---|
@@ -241,7 +241,7 @@ so losing it costs coverage on hard rows — not correctness on easy ones.
 ### Tests
 
 ```bash
-python tests/test_core.py     # 42 invariant checks, standard library only
+python tests/test_core.py     # 46 invariant checks, standard library only
 ```
 
 They test the promises the design makes — an unevidenced value cannot enter the

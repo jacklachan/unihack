@@ -121,6 +121,8 @@
 325,PP-12CH,blocked,0.8857,F-83fcfe12,CG-BRD-01,error,No approved brand resolved.,3,0.343
 325,PP-12CH,blocked,0.8857,F-83fcfe12,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,3,0.343
 300,1517602,needs_review,0.8303,F-b85abe0b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.339
+301,1517603,needs_review,0.8303,F-b85abe0b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.339
+302,1517604,needs_review,0.8303,F-9aa073ac,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.339
 303,1517605,needs_review,0.8303,F-9aa073ac,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.339
 586,NEB-FLT-1021,blocked,0.6721,F-b73a443f,CG-MOB-01,info,MOBILE_DESC is 49 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,1,0.328
 586,NEB-FLT-1021,blocked,0.6721,F-b73a443f,CG-TAX-01,error,Unclassified: attribute validation cannot be keyed.,1,0.328
@@ -133,8 +135,6 @@
 362,AYCL-153PH-LA,blocked,0.8371,F-2f938e10,CG-MOB-01,info,MOBILE_DESC is 28 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.326
 362,AYCL-153PH-LA,blocked,0.8371,F-2f938e10,CG-BRD-01,error,No approved brand resolved.,2,0.326
 362,AYCL-153PH-LA,blocked,0.8371,F-2f938e10,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,2,0.326
-301,1517603,needs_review,0.8378,F-b85abe0b,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.324
-302,1517604,needs_review,0.8378,F-9aa073ac,brand_not_in_approved_list,review,"Brand column value is not on the approved list; used as supplied and carried into the manufacturer field, flagged for verification.",2,0.324
 363,AYCL-153PH-WH,blocked,0.8475,F-2f938e10,CG-MOB-01,info,MOBILE_DESC is 35 characters against a 60-character minimum. Every fact available for this product is already in the line -- the source data does not contain enough to reach it.,2,0.305
 363,AYCL-153PH-WH,blocked,0.8475,F-2f938e10,CG-BRD-01,error,No approved brand resolved.,2,0.305
 363,AYCL-153PH-WH,blocked,0.8475,F-2f938e10,brand_unresolved,review,Supplier is a distributor or buying co-op and no brand could be recovered from the description or part number.,2,0.305

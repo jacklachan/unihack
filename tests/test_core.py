@@ -117,6 +117,23 @@ _r = residual_text(*(lambda x: (x, parse_description(x)))(
     strip_mpn_echo("PBUC013 15A Wall Tap w/USB", "PBUC013")[0]))
 check_that("'w/' survives as a qualifier boundary", " - " in _r, repr(_r))
 
+_lm = {x.key: x.display for x in parse_description("3M 775L Stikit Film P150")}
+check_that("a series code ending in L is not read as lumens",
+           "lumens" not in _lm, str(_lm))
+
+_lm = {x.key: x.display
+       for x in parse_description("6068L Gliding Patio Dr 4500 United")}
+check_that("a door size code ending in L is not read as lumens",
+           "lumens" not in _lm, str(_lm))
+
+_lm = {x.key: x.display for x in parse_description("4' Feit Shop Light 4500L 40k")}
+check_that("a bare L is read as lumens when the item emits light",
+           _lm.get("lumens") == "4500 lm", str(_lm))
+
+_lm = {x.key: x.display for x in parse_description("Widget 900lm Module")}
+check_that("an explicit lm suffix needs no lighting context",
+           _lm.get("lumens") == "900 lm", str(_lm))
+
 f = {x.key: x.display for x in parse_description(d)}
 check_that("three-part abrasive chain splits correctly",
            f.get("diameter") == "14 in" and f.get("thickness") == "1/8 in"

@@ -226,7 +226,17 @@ RE_LINEAR_FOOT = re.compile(r"\(?\s*linear\s*(?:foot|ft)\s*\)?", re.I)
 RE_SINGLE_DIM = re.compile(
     r"(?<![\w/.x])(" + _DIM_TOKEN + r")\s*(\"|''|in\.?|inch(?:es)?|'|ft\.?)(?![\w])", re.I)
 RE_GAUGE_WIRE = re.compile(r"(?<![\w.])(\d{1,2})\s*(?:GA|GAUGE)\b", re.I)
-RE_LUMENS = re.compile(r"(?<![\w.])(\d{2,6})\s*L(?:M|UMENS?)?\b(?![\w])")
+# Lumens appear two ways in this trade data. "4500lm" is unambiguous. A bare L
+# suffix -- "4500L Shop Light" -- is also used, but it collides with model and
+# series codes: 3M's "775L Stikit Film" is an abrasive and "6068L Gliding Patio
+# Dr" is a door size, and both were being recorded as light output. The bare
+# form is therefore only read as lumens when the description also says the
+# product emits light.
+RE_LUMENS = re.compile(r"(?<![\w.])(\d{2,6})\s*(?:LM|LUMENS?)\b(?![\w])", re.I)
+RE_LUMENS_BARE = re.compile(r"(?<![\w.])(\d{2,6})\s*L\b(?![\w])", re.I)
+RE_EMITS_LIGHT = re.compile(
+    r"\b(light|lights|lighting|lamp|bulb|led|luminaire|flashlight|headlight|"
+    r"headlamp|lantern|sconce|torch|fixture|floodlight)\b", re.I)
 RE_PLATFORM = re.compile(
     r"\b(M12|M18|MX\s?FUEL|FLEXVOLT|XR|ATOMIC|20V\s?MAX|18V|12V\s?MAX|"
     r"ONE\+|POWERSTACK|CXT|LXT|XGT)\b", re.I)
@@ -453,9 +463,15 @@ def parse_description(desc: str, source: str = "input:Part_Desc") -> List[Fact]:
                 mm.group(0), mm.span(), "Wire / fastener gauge."))
 
     mm = RE_LUMENS.search(desc)
+    lm_detail = "Rated light output."
+    if not mm and RE_EMITS_LIGHT.search(desc):
+        mm = RE_LUMENS_BARE.search(desc)
+        lm_detail = ("Rated light output. The bare 'L' suffix was read as "
+                     "lumens because the description identifies a lighting "
+                     "product.")
     if mm and int(mm.group(1)) >= 100:
         add(_mk("lumens", mm.group(1), "Light Output", "lm", "LMP-LM-01", 27,
-                source, mm.group(0), mm.span(), "Rated light output."))
+                source, mm.group(0), mm.span(), lm_detail))
 
     if not any(f.key in ("pack_quantity", "selling_qty") for f in facts):
         mm = RE_THOUSAND_CT.search(desc)

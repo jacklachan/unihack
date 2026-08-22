@@ -207,7 +207,7 @@ rich(tf, [("Most pipelines hand the row to a language model and validate what "
 for i, (v, l) in enumerate([("1,000 → 252", "rows to columns, in ~3 seconds"),
                             ("100%", "INVOICE_DESC within 40 characters"),
                             ("99.5%", "sibling agreement, 1,516 comparisons"),
-                            ("26,627", "cells carrying their own evidence")]):
+                            ("26,596", "cells carrying their own evidence")]):
     stat(sl, L + i * 2.24, 3.05, 2.2, v, l)
 
 _, tf = tb(sl, L, 3.95, W, 1.0)
@@ -272,7 +272,7 @@ for q, a in [
      "routed to a review queue ranked by how much that review is worth. It "
      "also reports defects it finds in the supplier's own catalogue."),
     ("USP of the proposed solution",
-     "Auditability as an architectural guarantee, not a report. 26,627 "
+     "Auditability as an architectural guarantee, not a report. 26,596 "
      "populated cells each carry a rule id, a confidence and the source "
      "characters behind them. Because two labelled rows cannot support a "
      "claim, we also publish a label-free measure — sibling agreement across "
@@ -444,7 +444,7 @@ tech = [
                              "Anthropic, OpenAI"),
     ("Model governance", "Evidence firewall, redundancy guard, verdict-only "
                          "auditing"),
-    ("Quality assurance", "42 invariant tests; evaluation against the "
+    ("Quality assurance", "46 invariant tests; evaluation against the "
                           "published answer key"),
 ]
 for i, (k, v) in enumerate(tech):
@@ -502,7 +502,7 @@ rich(tf, [("Three columns of one row, as the prototype explains them. ", True,
            "“milw” appear in Part_Desc and resolve against the approved "
            "brand registry; nothing here was generated.", False, INK)],
      size=10.5, first=True, space=6)
-rich(tf, [("26,627 populated cells across the catalogue carry provenance of "
+rich(tf, [("26,596 populated cells across the catalogue carry provenance of "
            "this kind, produced by the pipeline rather than written afterwards "
            "as a report. Reproduce this panel by clicking any row at "
            "huggingface.co/spaces/jacklachan/unihack.", False, MUTE)],
@@ -542,7 +542,7 @@ links = [
     ("Working prototype", "https://huggingface.co/spaces/jacklachan/unihack",
      "Opens already enriched. No login, no key, no setup."),
     ("GitHub repository", "https://github.com/jacklachan/unihack",
-     "Standard library only, 42 invariant tests, clone and run."),
+     "Standard library only, 46 invariant tests, clone and run."),
     ("Demo video (3 minutes)", "<<< PASTE YOUR VIDEO LINK >>>",
      "Set sharing to anyone-with-the-link and check it in a private window."),
 ]

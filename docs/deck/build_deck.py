@@ -201,7 +201,7 @@ text(s, "An enrichment pipeline that measures what it claims,\n"
         "and refuses to write what it cannot support.",
      M, 3.2, 8.6, 1.2, font=SANS, size=18, color=DARK_SUB, spacing=27)
 for i, (v, l) in enumerate([("1,000", "rows in 9s"), ("252", "columns out"),
-                            ("26,627", "traceable cells"), ("42", "tests passing")]):
+                            ("26,596", "traceable cells"), ("42", "tests passing")]):
     x = M + i * 3.02
     text(s, v, x, 5.15, 2.8, 0.6, font=MONO, size=28, bold=True, color=BRASS)
     text(s, l.upper(), x, 5.8, 2.8, 0.3, font=SANS, size=10, bold=True,
@@ -265,7 +265,7 @@ for i, (hd, body) in enumerate([
         ("The five descriptions agree",
          "They are five renderings of one fact set, not five separate generations."),
         ("Provenance is free",
-         "26,627 cells, each traceable to the rule that made it and the characters behind it.")]):
+         "26,596 cells, each traceable to the rule that made it and the characters behind it.")]):
     y = 2.42 + i * 1.0
     marker(s, 8.45, y + 0.02, i + 1)
     text(s, hd, 8.97, y - 0.02, 3.95, 0.3, size=13.5, bold=True)

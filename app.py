@@ -436,7 +436,7 @@ quoting the percentage alone. Because two rows cannot carry a claim, we also
 measure a label-free signal across all 1,000 rows: **sibling agreement**, 99.5%
 over 1,516 comparisons.
 
-[Source, 42 invariant tests, standard library only](https://github.com/jacklachan/unihack)
+[Source, 46 invariant tests, standard library only](https://github.com/jacklachan/unihack)
 """
 
 # Gradio 6 moved `css` and `theme` off the Blocks constructor and onto launch().

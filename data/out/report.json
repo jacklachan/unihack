@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 8.973,
+  "elapsed_s": 2.902,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
@@ -2604,7 +2604,7 @@
       "category_id": "Tools & Equipment>Abrasives>Sanding Discs",
       "label": "Tools & Equipment>Abrasives>Sanding Discs",
       "n_rows": 10,
-      "coverage": 4.4,
+      "coverage": 3.8,
       "item_types": [
         [
           "Stikit Film",
@@ -2620,14 +2620,14 @@
         ]
       ],
       "title_order": [
-        "lumens",
         "grit",
         "diameter",
         "thickness",
         "arbor_size",
         "dimensions",
         "selling_qty",
-        "selling_uom"
+        "selling_uom",
+        "application"
       ],
       "induced_from": [
         "3MABR-7100075678",
@@ -2640,26 +2640,6 @@
         "49-94-0903"
       ],
       "attributes": [
-        {
-          "key": "lumens",
-          "label": "Light Output",
-          "uom": "lm",
-          "fill_rate": 0.6,
-          "support": 6,
-          "cardinality": 1,
-          "filterable": false,
-          "discriminative": 0.0,
-          "values": [
-            [
-              "775",
-              6
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "LMP-LM-01"
-          ]
-        },
         {
           "key": "grit",
           "label": "Grit",
@@ -4942,7 +4922,7 @@
       "category_id": "Building Materials>Windows & Doors>Doors",
       "label": "Building Materials>Windows & Doors>Doors",
       "n_rows": 5,
-      "coverage": 1.6,
+      "coverage": 1.2,
       "item_types": [
         [
           "Door",
@@ -4950,7 +4930,6 @@
         ]
       ],
       "title_order": [
-        "lumens",
         "finish"
       ],
       "induced_from": [
@@ -4961,26 +4940,6 @@
         "1517605"
       ],
       "attributes": [
-        {
-          "key": "lumens",
-          "label": "Light Output",
-          "uom": "lm",
-          "fill_rate": 0.4,
-          "support": 2,
-          "cardinality": 1,
-          "filterable": false,
-          "discriminative": 0.0,
-          "values": [
-            [
-              "6068",
-              2
-            ]
-          ],
-          "synonyms": {},
-          "rule_ids": [
-            "LMP-LM-01"
-          ]
-        },
         {
           "key": "dimensions",
           "label": "Size",
@@ -6396,8 +6355,8 @@
       ]
     }
   ],
-  "fill_rate": 0.1057,
-  "mean_columns_filled": 26.63,
+  "fill_rate": 0.1056,
+  "mean_columns_filled": 26.6,
   "status_counts": {
     "ready": 774,
     "blocked": 176,

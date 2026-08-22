@@ -89,9 +89,14 @@ on camera.
 
 ## 0:52 – 1:22 · The thing that makes it different
 
-**Screen:** in the **Catalogue and evidence** tab, click the row
-`49-94-0121` (Milwaukee, Performance+ Metal Cut Off Wheel). The evidence panel
-opens directly underneath the table. Scroll down a little.
+**Screen:** in the **Catalogue and evidence** tab, click the **second row**,
+`3MABR-7100075678` (3M Stikit Film P150). It is visible without scrolling the
+table, which matters on camera. The evidence panel opens directly underneath.
+
+> If you would rather show the stronger example, scroll the table to
+> `49-94-0121` (Milwaukee) — there the evidence quote is `milw`, resolving an
+> abbreviation to Milwaukee®, which reads better than `3M` → `3M™`. Costs you
+> one scroll; rehearse it.
 
 **Say:**
 
@@ -101,15 +106,15 @@ opens directly underneath the table. Scroll down a little.
 > confidence, and — in the gold quote — **the exact characters of the input
 > that justified the value**, with the column they came from.
 >
-> `BRAND_NAME` became Milwaukee-registered-trademark under rule `IDN-BRD-01`,
-> because the four characters "milw" appear in `Part_Desc` and resolve against
-> the approved brand registry. Nothing on this screen was generated.
+> `BRAND_NAME` became 3M-trademark under rule `IDN-BRD-01`, because the
+> characters "3M" appear in `Part_Desc` and resolve against the approved brand
+> registry. Nothing on this screen was generated.
 
 **Screen:** hold on the `BRAND_NAME` and `Product Name` cells for two seconds.
 
 **Say:**
 
-> Twenty-six thousand six hundred and twenty-seven populated cells across the
+> Twenty-six thousand five hundred and ninety-six populated cells across the
 > catalogue carry provenance like this. It is produced by the pipeline — it is
 > not a report written afterwards.
 
@@ -128,8 +133,7 @@ opens directly underneath the table. Scroll down a little.
 >
 > We solve it as a budget problem instead. Facts are ranked by how much they
 > identify the product, each one carries an abbreviation ladder, and the solver
-> fits what it can and tells you what it dropped. Six facts, thirty-nine of
-> forty characters.
+> fits what it can and tells you what it dropped.
 >
 > One hundred percent compliance, by construction rather than by luck.
 

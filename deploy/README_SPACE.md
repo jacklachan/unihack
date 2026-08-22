@@ -66,7 +66,7 @@ run says so and continues deterministically rather than failing.
 | `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
 | Ready to publish unattended | 77.4 % |
 | Sibling agreement | 99.5 % over 1,516 comparisons |
-| Traceable cells | 26,627 |
+| Traceable cells | 26,596 |
 | Third-party packages in the pipeline | **0** |
 
 Accuracy against the published ground truth is 48.0 % exact on in-scope
