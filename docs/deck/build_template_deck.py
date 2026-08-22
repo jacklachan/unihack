@@ -161,30 +161,30 @@ prs = Presentation(TEMPLATE)
 S = prs.slides
 
 # ---- Slide 2 : Team details ---------------------------------------------
+TEAM_NAME = "Lord of the Ping"
+TEAM_LEAD = "L Mohit Jain"
+
 sl = S[1]
-box = heading_text(sl)
-tf = box.text_frame
-# Keep the template's own labels; make the blanks impossible to miss.
-for p in tf.paragraphs:
-    txt = p.text.strip()
+tf = heading_text(sl).text_frame
+for p_ in tf.paragraphs:
+    txt = p_.text.strip()
+    filled = None
     if txt.startswith("Team name"):
-        for r in p.runs:
-            r.text = ""
-        p.runs[0].text = "Team name:  "
-        r = p.add_run()
-        r.text = "<<< FILL IN >>>"
-        r.font.color.rgb = RED
-        r.font.bold = True
-        r.font.size = p.runs[0].font.size
+        filled = ("Team name:  ", TEAM_NAME)
     elif txt.startswith("Team leader"):
-        for r in p.runs:
-            r.text = ""
-        p.runs[0].text = "Team leader name:  "
-        r = p.add_run()
-        r.text = "<<< FILL IN >>>"
-        r.font.color.rgb = RED
-        r.font.bold = True
-        r.font.size = p.runs[0].font.size
+        filled = ("Team leader name:  ", TEAM_LEAD)
+    if not filled:
+        continue
+    # Keep the template's own run formatting; only the text changes.
+    label, value = filled
+    for r in p_.runs[1:]:
+        r.text = ""
+    p_.runs[0].text = label
+    r = p_.add_run()
+    r.text = value
+    r.font.bold = True
+    r.font.size = p_.runs[0].font.size
+    r.font.name = p_.runs[0].font.name
 
 # ---- Slide 3 : Brief about your solution --------------------------------
 sl = S[2]
@@ -555,6 +555,140 @@ for k, v, d in links:
          color=RED if v.startswith("<<<") else BLUE, space=3, line=1.0)
     para(tf, d, size=9, color=MUTE, space=0, line=1.0)
     t += 0.86
+
+
+# ---- Added slides : questions we expect ---------------------------------
+# The template stops at "Thank You". These are appended before it, using the
+# same layout and the same background artwork as the body slides, so they are
+# indistinguishable from the supplied ones.
+
+import copy
+import io
+
+
+def add_body_slide(heading):
+    """A new slide matching the template's own content slides."""
+    donor = S[2]                       # "Brief about your solution"
+    new = prs.slides.add_slide(donor.slide_layout)
+    for shape in list(new.shapes):     # drop layout placeholders
+        shape._element.getparent().remove(shape._element)
+    for shape in donor.shapes:         # full-bleed background artwork
+        if shape.shape_type == 13:
+            new.shapes.add_picture(io.BytesIO(shape.image.blob), 0, 0,
+                                   prs.slide_width, prs.slide_height)
+            break
+    box, tf = tb(new, 0.43, 0.85, 9.15, 0.61)
+    r = tf.paragraphs[0].add_run()
+    r.text = heading
+    r.font.size = Pt(18)
+    r.font.name = "Google Sans"
+    r.font.color.rgb = RGBColor(0, 0, 0)
+    return new
+
+
+QA = [
+    ("Questions you might ask (1 of 3)", [
+        ("“Forty-eight percent does not sound like much.”",
+         "It is 48.0% exact match on the in-scope fields of <b>two</b> labelled "
+         "rows — the only ground truth published with the challenge. We will "
+         "not quote it without that base. Eleven of the twelve attribute values "
+         "in that row appear nowhere in its input, so no method without "
+         "manufacturer retrieval scores much higher. That is why we also report "
+         "a measure needing no labels at all: sibling agreement, 99.5% over "
+         "1,516 comparisons across all 1,000 rows."),
+        ("“Why not just prompt a strong model and skip the rules?”",
+         "We do use a model — as a proposer and an auditor. What we do not do "
+         "is let it write a cell. A model that writes has to be checked "
+         "afterwards, and by then a wrong value is in the catalogue and looks "
+         "exactly like a right one. Here a proposal is discarded unless its "
+         "quote is literally present in the source, so the failure mode is a "
+         "missing value, which is visible, rather than a plausible wrong one, "
+         "which is not."),
+        ("“Rules are brittle. What happens on a category you have never seen?”",
+         "It abstains, and says so. 88.8% of rows are classified; the rest are "
+         "flagged and routed to review rather than guessed, because a wrong "
+         "classpath is worse than an empty one — attribute validation is keyed "
+         "on it. The category specifications are induced from the rows "
+         "themselves, so a category we have never seen produces a new spec "
+         "without anyone writing code."),
+    ]),
+    ("Questions you might ask (2 of 3)", [
+        ("“Where does the AI add value if it cannot write a cell?”",
+         "Two places, both auditable. <b>Recall:</b> on rows the rules cannot "
+         "resolve it proposes a fact, kept only if the quote is in the source. "
+         "<b>Judgement:</b> it returns supported / unsupported / unknown on "
+         "facts that already exist, which moves confidence and routes review. "
+         "Turning the key off costs recall on hard rows. It never costs "
+         "correctness."),
+        ("“The attributes are not in the supplier row. How will you ever fill them?”",
+         "Manufacturer retrieval — and it is the highest-value thing we could "
+         "build next, which is why we measured the gap instead of claiming to "
+         "have closed it. The Fact and Evidence types do not care whether a "
+         "quote came from a description or a datasheet, so retrieved content "
+         "enters under exactly the same rule: no evidence, no fact."),
+        ("“What does the human in the loop actually cost?”",
+         "77.4% of rows need no human at all. The rest arrive as a queue ranked "
+         "by how much the review is worth, not alphabetically, so the first "
+         "hour of reviewer time is spent where it pays. Every decision a "
+         "reviewer makes is captured with the fact it overrode and replays on "
+         "future runs — the deterministic path absorbs their judgement "
+         "permanently."),
+    ]),
+    ("Questions you might ask (3 of 3)", [
+        ("“How does it scale, and what does it cost to run?”",
+         "About three seconds per 1,000 rows on one core, single threaded, with "
+         "no network call — roughly one CPU-hour per million SKUs, and it is "
+         "linear because there is no model in the default path. The optional "
+         "model pass touches only the rows the rules could not resolve, about "
+         "12%, and caches its answers."),
+        ("“Does our catalogue leave our network?”",
+         "Not in the default path — there is no network call to make. If you "
+         "enable the model layer, only the unresolved rows are sent, to the "
+         "provider you choose, with your key. On the hosted demo that key is "
+         "held in process memory for one request: never written to disk, never "
+         "logged, never returned to the browser."),
+        ("“Zero third-party packages — is that a gimmick?”",
+         "It is load bearing. CSV and XLSX are both read and written with "
+         "zipfile and XML directly, so the pipeline runs on an air-gapped "
+         "machine, the container is stock Python plus source, and no build can "
+         "break because a wheel moved. Gradio is the single dependency and it "
+         "exists only to put a URL in front of it."),
+    ]),
+]
+
+for heading, pairs in QA:
+    sl = add_body_slide(heading)
+    t = T - 0.06
+    for q, a in pairs:
+        _, tf = tb(sl, L, t, W, 1.12)
+        para(tf, q, size=11.5, bold=True, color=NAVY, first=True, space=3,
+             line=1.05)
+        # <b>...</b> marks the few phrases worth weighting inside an answer.
+        parts, buf, bold = [], "", False
+        for chunk in a.replace("</b>", "<b>").split("<b>"):
+            parts.append((chunk, bold, INK))
+            bold = not bold
+        rich(tf, [x for x in parts if x[0]], size=9.5, space=0, line=1.22)
+        t += 1.18
+
+# Set apart from the answer above it, or it reads as a fourth question.
+_last = prs.slides[-1]
+_rule = _last.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(L), Inches(4.86),
+                               Inches(W), Emu(9525))
+_rule.fill.solid()
+_rule.fill.fore_color.rgb = RULE
+_rule.line.fill.background()
+_rule.shadow.inherit = False
+_, tf = tb(_last, L, 4.98, W, 0.5)
+para(tf, "If you only do one thing: open the prototype and click a row. "
+         "Everything above is visible in that one panel.",
+     size=10.5, bold=True, color=BLUE, first=True, space=0)
+
+# Keep "Thank You" last.
+ids = prs.slides._sldIdLst
+closing = list(ids)[14]
+ids.remove(closing)
+ids.append(closing)
 
 prs.save(OUT)
 print("wrote", OUT)

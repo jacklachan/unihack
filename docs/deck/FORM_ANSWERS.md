@@ -6,7 +6,7 @@ Fields as they appear on the Hack2Skill form.
 
 ## Upload your Prototype deck/presentation
 
-**File:** `docs/deck/CALIPER_UniHack.pdf` — 0.78 MB, 15 slides.
+**File:** `docs/deck/CALIPER_UniHack.pdf` — 0.81 MB, 18 slides.
 
 Built on the organisers' **mandatory template**, used as supplied: every slide
 keeps its background artwork, header bar and heading. Only the empty body area
@@ -19,12 +19,16 @@ wants the editable deck. Both are in `docs/deck/`. Rebuild either with:
 python docs/deck/build_template_deck.py
 ```
 
-### Two things you must fill in before uploading
+Team **Lord of the Ping**, led by **L Mohit Jain**, is filled in on slide 2.
 
-Both are marked in **red** on the slides so you cannot miss them:
+Slides 15–17 answer the questions a judge is most likely to push on — the
+two-labelled-rows base, why not just prompt a model, brittleness, scale, cost,
+data leaving the network — so the weak points are addressed before they are
+raised rather than after.
 
-- **Slide 2** — Team name and Team leader name.
-- **Slide 14** — the demo video link.
+### One thing you must still fill in
+
+- **Slide 14** — the demo video link, marked in **red** so you cannot miss it.
 
 ## Provide a brief overview of your solution and how it solves the problem *(2056 chars)*
 
@@ -88,7 +92,6 @@ Select **AI-Powered Product Intelligence for Industrial Commerce**.
 
 ## Final check before you press Submit
 
-- [ ] **Slide 2: team name and team leader filled in** *(red on the slide)*
 - [ ] **Slide 14: demo video link pasted** *(red on the slide)*
 - [ ] Deck uploads and previews correctly
 - [ ] Overview text pasted whole, under the 2056 limit
