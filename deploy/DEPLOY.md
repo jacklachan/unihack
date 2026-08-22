@@ -1,93 +1,85 @@
-# Hosting CALIPER so judges can click a link
+# Putting CALIPER on a public URL
 
-The submission form asks for a **live prototype link**. This puts one up on
-Hugging Face Spaces in about ten minutes, free, on a permanent URL.
+The submission form asks for a **live prototype link**. The Space is already
+created at:
 
-Spaces is the right host here because the app is a plain Python HTTP server
-with **no third-party packages** — the container is stock `python:3.12-slim`
-plus the source, so there is no dependency that can break at build time.
+```
+https://huggingface.co/spaces/jacklachan/unihack
+```
+
+This is the Gradio SDK, not Docker. That matters: Hugging Face now puts *CPU
+basic* behind a PRO subscription, and the only free hardware left — **ZeroGPU** —
+is offered on the Gradio SDK. So the front end for the Space is `app.py`, a
+Gradio wrapper around the same `caliper.pipeline.Pipeline` the CLI calls. The
+pipeline itself is untouched and still imports nothing outside the standard
+library; `gradio` is the one dependency, and it only exists to put a URL in front
+of it.
 
 ---
 
-## 1 · Create the Space
+## 1 · Push it
 
-1. Sign in at **huggingface.co** (free).
-2. **New** → **Space**.
-3. Fill in:
-   - **Owner** — your username
-   - **Space name** — `caliper` *(URL becomes `huggingface.co/spaces/<you>/caliper`)*
-   - **License** — MIT
-   - **SDK** — **Docker** → *Blank*
-   - **Hardware** — CPU basic (free)
-   - **Visibility** — **Public** *(judges must be able to open it without a login)*
-4. **Create Space.**
-
-## 2 · Push the code
-
-Hugging Face gives you a git remote. From the project root:
+Hugging Face reads its configuration from the frontmatter of `README.md` **at the
+repository root**. The GitHub README is a different document and should stay as
+it is, so the Space gets its own branch:
 
 ```bash
-git remote add space https://huggingface.co/spaces/<YOUR-USERNAME>/caliper
+bash deploy/push_space.sh
 ```
 
-The Space needs the `Dockerfile` and its `README.md` at the **repository root**,
-not inside `deploy/`, so copy them up before pushing:
+That script creates (or resets) a local `space` branch, swaps in
+`deploy/README_SPACE.md` as the root `README.md`, commits, and pushes to the
+Space. It leaves you back on `main` with the GitHub README untouched.
 
-```bash
-cp deploy/Dockerfile        ./Dockerfile
-cp deploy/README_SPACE.md   ./README_HF.md
-```
+**Git will ask for credentials.** Username is `jacklachan`; the password is a
+Hugging Face **access token with write permission**, from
+<https://huggingface.co/settings/tokens>. Paste the token into the password
+prompt — not your account password, which HF no longer accepts over git.
 
-Spaces reads configuration from the root `README.md` frontmatter. Keep the
-GitHub README as it is and push a Space-specific branch instead:
+## 2 · Watch the build
 
-```bash
-git checkout -b space
-cp deploy/README_SPACE.md README.md          # Space needs its frontmatter here
-git add Dockerfile README.md
-git commit -m "Space: Dockerfile and Space README"
-git push space space:main
-git checkout main                            # GitHub README is untouched
-```
+Open the Space and click **Logs**. The first build installs Gradio and takes
+2–4 minutes. When the status reads **Running**, the URL is live.
 
-First build takes 3–6 minutes. Watch the **Logs** tab. When it says *Running*,
-your URL is live:
+If the build fails, the two things worth checking first are the `sdk_version` in
+`deploy/README_SPACE.md` (it must be a version HF actually offers) and whether
+`requirements.txt` reached the root of the Space repo.
 
-```
-https://huggingface.co/spaces/<YOUR-USERNAME>/caliper
-```
+## 3 · Check it before you paste the link into the form
 
-## 3 · Check it before you submit the link
+Open the URL **in a private window**, so you are testing what a judge sees rather
+than what your logged-in session sees.
 
-- Opens without a login, in a private/incognito window.
-- The setup screen appears → choose **Deterministic only** → **Continue**.
-- **Catalogue** lists 1,000 rows.
-- Click a row, click a cell — the evidence panel shows a rule id and the source
-  substring. *(This is the thing to demo; make sure it works.)*
-- **Export delivery CSV** downloads a 252-column file.
+- It loads with no login.
+- The catalogue fills on its own — 1,000 rows, no button pressed. *(The Space
+  runs the real pipeline on page load; it takes a few seconds.)*
+- Click a row. The evidence panel underneath shows a rule id and a quoted source
+  substring. **This is the thing being demonstrated — make sure it works.**
+- **Try a file with completely different column names** returns 40 rows and
+  reports the detected column roles.
+- **Download the delivery file** gives a CSV that opens with 252 columns.
 
-## 4 · Notes that matter
+## 4 · Two things that will bite you on the day
 
-**It sleeps.** Free Spaces idle out after ~48 hours of no traffic and take
-20–30 seconds to wake. Open your own link a few hours before judging so it is
-warm, and again on the morning of.
+**It sleeps.** A free Space idles out after ~48 hours of no traffic and takes
+20–30 seconds to wake. Open your own link the evening before judging, and again
+on the morning of, so the judge does not meet a cold boot.
 
-**No key is stored in the image.** `.env` is gitignored and never ships. If a
-judge wants the AI path they paste their own key into the first screen; it lives
-in process memory for that session only.
+**No key ships in it.** `.env` is gitignored and never leaves your machine. A
+judge who wants the AI path pastes their own key into the form on the page; it
+lives in process memory for that request and is never written to disk, logged, or
+returned to the browser.
 
-**Rebuilding.** Push to the `space` branch again and the Space rebuilds:
-
-```bash
-git checkout space && git merge main && git push space space:main && git checkout main
-```
+To ship a change, commit to `main` as usual and run `bash deploy/push_space.sh`
+again.
 
 ---
 
 ## If you would rather not use Hugging Face
 
-Any host that runs a container works, because the app reads `PORT` and `HOST`
-from the environment.
+`deploy/Dockerfile` still builds the **stdlib** web console — `python -m caliper
+serve`, no Gradio, no third-party packages at all. Any host that runs a container
+works, because the app reads `HOST` and `PORT` from the environment.
 
 | Host | Notes |
 |---|---|
@@ -95,12 +87,12 @@ from the environment.
 | **Railway** | Docker, generous trial, no sleeping. |
 | **Fly.io** | `fly launch` detects the Dockerfile. Free allowance. |
 
-Locally, for a live demo without any host:
+Locally, for a live demo with no host at all:
 
 ```bash
 python -m caliper serve --host 0.0.0.0 --port 8765 --no-browser
 ```
 
 …then expose it with `cloudflared tunnel --url http://localhost:8765`, which
-gives a public HTTPS URL with no account. Good for a demo, **not** for a link
-you submit — it dies when your laptop does.
+gives a public HTTPS URL and needs no account. Good for a demo; **not** for a
+link you submit, because it dies when your laptop does.

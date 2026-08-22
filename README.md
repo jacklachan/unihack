@@ -5,6 +5,8 @@
 
 Built for **UniHack** — Unilog's AI-Powered Product Intelligence challenge.
 
+**[Try it live](https://huggingface.co/spaces/jacklachan/unihack)** — no login, no key, no setup. It enriches 1,000 real industrial SKUs the moment it opens; click any row to see the rule and the source characters behind every value it wrote.
+
 ---
 
 ## The problem, stated honestly

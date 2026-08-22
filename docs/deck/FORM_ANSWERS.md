@@ -38,19 +38,19 @@ Accuracy against the published ground truth is 48.0% exact, on two labelled rows
 ## Share the link to your live prototype demonstrating the core functionality *(1024 chars)*
 
 ```
-https://huggingface.co/spaces/<YOUR-USERNAME>/caliper
+https://huggingface.co/spaces/jacklachan/unihack
 ```
 
-Follow `deploy/DEPLOY.md` to put this up. **Open it in a private window before
-you submit** — it must load without a login.
+Put it up with `bash deploy/push_space.sh` (see `deploy/DEPLOY.md`; it asks for a
+Hugging Face **access token**, not your password). **Open the URL in a private
+window before you submit** — it must load without a login.
 
-Optionally append, if there is room:
+Append this if there is room, because it tells the judge where to click:
 
-> Opens on 1,000 enriched SKUs. Click any row, then any cell, to see the rule
-> and the source characters behind that value. Upload your own CSV — column
-> names are detected, not assumed.
-
----
+> Opens on 1,000 enriched SKUs — no button, no key, no setup. Click any row to
+> see, for every populated column, the rule that produced it and the exact
+> characters of the input that justified it. Upload your own CSV: column roles
+> are detected, not assumed.
 
 ## Share the GitHub Repository link
 

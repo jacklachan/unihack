@@ -18,3 +18,9 @@ data/out/*
 !data/out/inspect.json
 data/deck/render/
 docs/deck/render/
+
+# The AI-path run: keep the report and the corrections it produced as evidence,
+# drop the multi-megabyte graph and provenance dumps that nothing reads.
+data/out_ai/*
+!data/out_ai/report.json
+!data/out_ai/corrections.csv
