@@ -1,11 +1,61 @@
+<div align="center">
+
 # CALIPER
 
 **Evidence-bound product intelligence for industrial commerce.**
-*Measured, not guessed.*
+
+*Six supplier columns in. Unilog's 252-column delivery format out.
+And every value traceable to the rule that produced it and the characters that justified it.*
+
+[![Live prototype](https://img.shields.io/badge/live_prototype-open_the_Space-B98A34?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces/jacklachan/unihack)
+
+![Python](https://img.shields.io/badge/Python-3.12-12182B?style=flat-square&logo=python&logoColor=white)
+![Dependencies](https://img.shields.io/badge/third--party_packages-0-1F7A4C?style=flat-square)
+![Tests](https://img.shields.io/badge/invariant_tests-42_passing-1F7A4C?style=flat-square)
+![Columns](https://img.shields.io/badge/delivery_columns-252-B98A34?style=flat-square)
+![Licence](https://img.shields.io/badge/licence-MIT-6B7488?style=flat-square)
 
 Built for **UniHack** — Unilog's AI-Powered Product Intelligence challenge.
 
-**[Try it live](https://huggingface.co/spaces/jacklachan/unihack)** — no login, no key, no setup. It enriches 1,000 real industrial SKUs the moment it opens; click any row to see the rule and the source characters behind every value it wrote.
+</div>
+
+![The CALIPER console](docs/img/app.png)
+
+> **No login, no key, no setup.** The Space enriches 1,000 real industrial SKUs
+> the moment it opens. Click any row and it shows you the rule, the confidence,
+> and the exact characters of the input behind every value it wrote.
+
+---
+
+## The one thing to look at
+
+Most pipelines hand a row to a language model and validate what comes back.
+CALIPER makes that structurally impossible — and this is what that buys you:
+
+![The evidence panel](docs/img/evidence.png)
+
+Three columns of one row. Each carries the method (`rule`, `registry`), the rule
+id, a confidence, and — in the gold quote — the substring of the input that
+justified the value, with the column it came from. `BRAND_NAME` became
+Milwaukee® because the four characters `milw` appear in `Part_Desc` and resolve
+against the approved brand registry. **Nothing here was generated.**
+
+Across the sample, **26,627 populated cells** carry provenance of this kind.
+
+| | |
+|---|---|
+| Rows → columns | 1,000 → 252, in about 3 seconds |
+| Ready to publish unattended | **77.4 %** |
+| `INVOICE_DESC` ≤ 40 chars, upper case | **100 %** |
+| Brand resolved to an approved name | 92.5 % |
+| Classified | 88.8 % — the rest abstain rather than guess |
+| Sibling agreement | 99.5 % over 1,516 comparisons |
+| Third-party packages | **0** |
+
+Accuracy against the published ground truth is 48.0 % exact — on **two labelled
+rows**. That base is too narrow to carry a claim, so we print it beside every
+rate and measure a label-free signal across all 1,000 rows as well. The
+reasoning is in [Four findings from the data](#four-findings-from-the-data).
 
 ---
 
