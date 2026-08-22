@@ -27,52 +27,94 @@ FOREIGN = os.path.join(HERE, "data", "input", "foreign_schema_test.csv")
 
 MAX_ROWS = 3000
 
+# Hugging Face's only free tier for a Gradio Space is ZeroGPU, and ZeroGPU
+# refuses to start unless it finds a @spaces.GPU function at import time
+# ("No @spaces.GPU function detected during startup"). CALIPER is pure CPU and
+# never calls this -- the declaration exists solely to satisfy that check, and
+# no GPU is ever allocated. The `spaces` package is injected by the Space image
+# and is absent when running locally, hence the guard.
+try:
+    import spaces
+
+    @spaces.GPU(duration=1)
+    def _platform_probe() -> str:
+        return "CALIPER performs no GPU work; this exists to satisfy ZeroGPU."
+except ImportError:
+    pass
+
 CSS = """
+/* Gradio follows the viewer's colour scheme, so every surface and text colour
+   here comes from a token that is redefined under Gradio's own `.dark` class.
+   Hardcoding #fff cards was fine in light mode and unreadable in dark. */
+:root {
+  --cal-brass:#8A6417; --cal-rule:#B98A34;
+  --cal-quote-bg:rgba(185,138,52,.13); --cal-good:#1F7A4C; --cal-bad:#9A431F;
+}
+.dark {
+  --cal-brass:#D9A945; --cal-rule:#D9A945;
+  --cal-quote-bg:rgba(217,169,69,.16); --cal-good:#4ECB8D; --cal-bad:#E0785A;
+}
 .gradio-container {max-width: 1320px !important}
+
+/* The hero is a deliberate dark panel in both themes -- it is the one place
+   that commits to a single look, and it carries its own contrast. */
 #hero {border:1px solid #2A3450; background:#12182B; padding:22px 26px;
        margin-bottom:8px}
 #hero h1 {font-family:Cambria,Georgia,serif; font-size:38px; margin:0 0 8px;
           letter-spacing:.02em; color:#fff; line-height:1.1}
-#hero h1 b {color:#B98A34; font-weight:inherit}
+#hero h1 b {color:#D9A945; font-weight:inherit}
 #hero p {color:#C6CEDC; margin:0; font-size:14.5px; line-height:1.55;
          max-width:78ch}
 #hero .strip {display:flex; gap:36px; margin-top:18px; flex-wrap:wrap}
-#hero .strip .v {color:#B98A34; font-size:20px; font-weight:600;
+#hero .strip .v {color:#D9A945; font-size:20px; font-weight:600;
                  font-family:ui-monospace,Consolas,monospace}
 #hero .strip .l {color:#8592A6; font-size:10.5px; letter-spacing:.08em;
                  text-transform:uppercase; margin-top:2px}
+
 .metric-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
-              gap:1px; background:#D3D9E3; border:1px solid #D3D9E3}
-.metric-grid .m {background:#fff; padding:13px 15px}
+              gap:1px; background:var(--border-color-primary);
+              border:1px solid var(--border-color-primary)}
+.metric-grid .m {background:var(--background-fill-primary); padding:13px 15px}
 .metric-grid .m .v {font-family:ui-monospace,Consolas,monospace; font-size:22px;
-                    font-weight:600; color:#8A6417}
-.metric-grid .m .v.good {color:#1F7A4C}
+                    font-weight:600; color:var(--cal-brass)}
+.metric-grid .m .v.good {color:var(--cal-good)}
 .metric-grid .m .l {font-size:10px; letter-spacing:.07em; text-transform:uppercase;
-                    color:#6B7488; margin-top:7px}
-.metric-grid .m .n {font-size:11.5px; color:#6B7488; margin-top:3px}
-.lede {color:#6B7488; font-size:13px; line-height:1.55; margin:2px 0 10px;
-       max-width:82ch}
-.cell {border:1px solid #E2E7EF; margin-bottom:7px; background:#fff}
-.cell .h {display:flex; gap:12px; padding:7px 11px; background:#F7F9FC;
-          align-items:baseline; flex-wrap:wrap}
+                    color:var(--body-text-color-subdued); margin-top:7px}
+.metric-grid .m .n {font-size:11.5px; color:var(--body-text-color-subdued);
+                    margin-top:3px}
+
+.lede {color:var(--body-text-color-subdued); font-size:13px; line-height:1.55;
+       margin:2px 0 10px; max-width:82ch}
+.lede b {color:var(--body-text-color)}
+
+.cell {border:1px solid var(--border-color-primary); margin-bottom:7px;
+       background:var(--background-fill-primary)}
+.cell .h {display:flex; gap:12px; padding:7px 11px;
+          background:var(--background-fill-secondary); align-items:baseline;
+          flex-wrap:wrap}
 .cell .h .c {font-family:ui-monospace,Consolas,monospace; font-size:11.5px;
-             color:#8A6417; min-width:168px}
-.cell .h .v {flex:1; font-size:13px; color:#12182B; word-break:break-word}
+             color:var(--cal-brass); min-width:168px}
+.cell .h .v {flex:1; font-size:13px; color:var(--body-text-color);
+             word-break:break-word}
 .cell .h .q {font-family:ui-monospace,Consolas,monospace; font-size:11px;
-             color:#6B7488}
-.cell .b {padding:9px 11px; font-size:12.5px; color:#4A5468; line-height:1.6}
-.tag {display:inline-block; border:1px solid #D3D9E3; padding:1px 7px;
-      font-family:ui-monospace,Consolas,monospace; font-size:11px;
-      margin:0 5px 3px 0; color:#6B7488}
-.tag.k {border-color:#B98A34; color:#8A6417}
+             color:var(--body-text-color-subdued)}
+.cell .b {padding:9px 11px; font-size:12.5px; color:var(--body-text-color);
+          line-height:1.6}
+
+.tag {display:inline-block; border:1px solid var(--border-color-primary);
+      padding:1px 7px; font-family:ui-monospace,Consolas,monospace;
+      font-size:11px; margin:0 5px 3px 0; color:var(--body-text-color-subdued)}
+.tag.k {border-color:var(--cal-rule); color:var(--cal-brass)}
 .quote {font-family:ui-monospace,Consolas,monospace; font-size:11.5px;
-        background:rgba(185,138,52,.13); border-left:2px solid #B98A34;
-        padding:2px 8px}
-.small {font-size:11px; color:#6B7488}
-.note {border-left:2px solid #B98A34; background:rgba(185,138,52,.07);
-       padding:8px 12px; margin-bottom:5px; font-size:13px; color:#12182B}
-.note.bad {border-left-color:#9A431F; background:rgba(154,67,31,.07)}
-.note b {font-family:ui-monospace,Consolas,monospace; color:#8A6417}
+        background:var(--cal-quote-bg); border-left:2px solid var(--cal-rule);
+        padding:2px 8px; color:var(--body-text-color)}
+.small {font-size:11px; color:var(--body-text-color-subdued)}
+
+.note {border-left:2px solid var(--cal-rule); background:var(--cal-quote-bg);
+       padding:8px 12px; margin-bottom:5px; font-size:13px;
+       color:var(--body-text-color)}
+.note.bad {border-left-color:var(--cal-bad)}
+.note b {font-family:ui-monospace,Consolas,monospace; color:var(--cal-brass)}
 """
 
 HERO = """
@@ -474,5 +516,17 @@ if __name__ == "__main__":
         "server_port": int(os.environ.get("PORT", 7860)),
     }
     if _GR_MAJOR >= 6:
-        launch_kw.update(css=CSS, theme=_THEME)
+        # ssr_mode puts a Node proxy in front of the Python server. It buys this
+        # app nothing -- there is no first-paint content to stream -- and on
+        # Spaces the extra hop is what the health check was failing against.
+        launch_kw.update(css=CSS, theme=_THEME, ssr_mode=False)
     demo.launch(**launch_kw)
+
+    # launch() normally blocks. On Spaces it returned immediately, and the
+    # container is torn down the moment this script ends, which surfaces as a
+    # runtime error with a log that looks like a clean startup. Hold the thread
+    # explicitly so the process outlives launch() either way.
+    try:
+        demo.block_thread()
+    except (KeyboardInterrupt, AttributeError):
+        pass
