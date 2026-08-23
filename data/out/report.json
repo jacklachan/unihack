@@ -1,6 +1,6 @@
 {
   "n_rows": 1000,
-  "elapsed_s": 2.902,
+  "elapsed_s": 3.913,
   "schema": {
     "roles": {
       "mpn": "Mfg_Part_Num",
