@@ -378,7 +378,22 @@ def enrich(file_obj, use_ai, provider, api_key,
               len(r.delivery.get("INVOICE_DESC", ""))]
              for r in results]
 
-    note = "**Columns detected, not assumed** - " + ", ".join(
+    # Name the file that was just run. The page enriches the sample on load, and
+    # without saying so a visitor can reasonably wonder whether the result was
+    # prepared in advance rather than computed a moment ago.
+    if path == SAMPLE:
+        source_note = ("Enriched **just now, on page load** — "
+                       "`sample_1000_items.csv`, the 1,000-row sample supplied "
+                       "with the challenge. Upload your own file above to "
+                       "replace it.")
+    elif path == FOREIGN:
+        source_note = ("Enriched **just now** — `foreign_schema_test.csv`, a "
+                       "file whose column names this pipeline has never seen.")
+    else:
+        source_note = "Enriched **just now** — `{}`, your upload.".format(
+            os.path.basename(path))
+
+    note = source_note + "  \n**Columns detected, not assumed** - " + ", ".join(
         "`{}` as {}".format(v, k) for k, v in sorted(schema.roles.items()))
     if truncated:
         note += ("  \n*Only the first {:,} rows were run, to keep this shared "
