@@ -64,6 +64,11 @@ python -m caliper run data/input/sample_1000_items.csv -o data/out
 > SKUs the moment the page opens — because your first ten seconds should show
 > output, not a form.
 
+**[ Point at the line above the metrics that names the file. ]**
+
+> It even tells you what it just ran and when — this is the thousand-row sample
+> that came with the challenge, enriched on page load, not prepared earlier.
+
 **[ Let the metric strip land. Point at it. ]**
 
 > Seventy-seven point four percent ready to publish with no human. A hundred
