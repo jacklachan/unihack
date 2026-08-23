@@ -32,7 +32,7 @@ raised rather than after.
 
 ## Provide a brief overview of your solution and how it solves the problem *(2056 chars)*
 
-Paste the block below. Verified at **2,013 characters**, inside the 2,056 limit.
+Paste the block below. Verified at **1,978 characters**, inside the 2,056 limit.
 
 ---
 
@@ -40,7 +40,7 @@ CALIPER turns a messy supplier row into Unilog's 252-column delivery format, and
 
 Most pipelines hand a row to a language model and validate afterwards. CALIPER makes that structurally impossible. Every extractor — rules, the brand registry, taxonomy, family consensus, and the model — writes into one typed Product Fact Graph, where a fact without evidence is rejected at insertion. Composition, validation and export only read from it. The model may never write an output cell: it can propose a fact that quotes the source, or render a verdict on facts that already exist. That one-way boundary means the five description formats cannot contradict each other, and 26,596 populated cells each carry the rule that produced them and the characters that justified them.
 
-On the 1,000-row sample it enriches in about nine seconds with no API key and no third-party packages: 92.5% of rows resolved to an approved brand, 88.8% classified (the rest abstain rather than guess), 77.4% ready to publish unattended. INVOICE_DESC hits 100% compliance with its 40-character upper-case ceiling because the limit is solved as a budget problem — facts ranked by how much they identify the product, each with an abbreviation ladder — rather than requested of a model.
+On the 1,000-row sample it enriches in about three seconds with no API key and no third-party packages: 92.5% of rows resolved to an approved brand, 88.8% classified (the rest abstain rather than guess), 77.4% ready to publish unattended. INVOICE_DESC hits 100% compliance with its 40-character upper-case ceiling because the limit is solved as a budget problem — facts ranked by how much they identify the product, each with an abbreviation ladder — rather than requested of a model.
 
 Three findings came from measuring the data, and each changed the build. Unilog's own answer key fills only 63 of 252 columns, so we calibrate our fill rate against it instead of maximising — over-filling is fabrication. Eleven of the twelve attribute values in the labelled row appear nowhere in its input, an honest ceiling without manufacturer retrieval. And our own physical guardrail caught a parser bug, reporting an arbor hole wider than the wheel it was cut in.
 
