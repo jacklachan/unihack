@@ -1,35 +1,31 @@
-# Record this — word for word
+# Record this
 
-**Target 2:45. Hard limit 3:00.** Everything in `>` is what you say. Everything
-in `[ ]` is what you do. Every number spoken is on screen as you say it.
+**Target 2:45. Hard limit 3:00.** Read the `>` lines. Do the `[ ]` lines.
 
-**Commands are PowerShell** (Windows). They were run and verified today.
+One product carries the whole video: a **Diablo sanding belt**. It's the first
+row of the file *and* the first row of the table — so you open on the mess, and
+click the same product later to show it cleaned up. No scrolling, no searching.
 
-One product carries the whole video: `DCB518ASTS06G`, the Diablo sanding belt.
-It is the first data row of the file *and* the first row of the table, so you
-open on the raw input and click the same product later — no scrolling, no
-searching.
+Talk like you're showing this to a friend who's about to be impressed. Short
+sentences. Let the pauses do work.
 
 ---
 
-## Before you press record — 90 seconds
+## Before you press record
 
-1. **Wake the Space.** Open <https://jacklachan-unihack.hf.space> and let it
-   finish loading once. A sleeping Space takes 20–30 s to wake; warm, it loads
-   in about a second.
-2. Reload it so the catalogue fills fresh on camera.
-3. PowerShell open, and **run this first so you are in the right folder**:
+1. **Wake the Space** — open <https://jacklachan-unihack.hf.space>, let it load
+   once. Cold it takes 20–30 s; warm it's about a second. Then reload it.
+2. PowerShell, then **run this or nothing else will work**:
    ```powershell
    cd C:\Users\mohit\hackathons\unihack\caliper
    ```
-   Then clear the screen with `cls` so the recording starts clean.
-4. Browser at 100 % zoom, one window, no other tabs, bookmarks bar hidden.
-5. Notifications off. Record 1920×1080.
-6. Speak slower than feels natural. Pause between sections.
+   Your prompt must end in `...\caliper>`. Then `cls`.
+3. Browser at 100 %, one window, no other tabs, no bookmarks bar.
+4. Notifications off. 1920×1080.
 
 ---
 
-## 0:00 — The problem  *(20 s)*
+## 0:00 — The mess  *(22 s)*
 
 **[ PowerShell, full screen. Run: ]**
 
@@ -37,212 +33,216 @@ searching.
 Get-Content data\input\sample_1000_items.csv -TotalCount 2
 ```
 
-**[ Two lines print: the header, then the Diablo row. ]**
+> Okay. This is a real product, from a real distributor. Somewhere in that line
+> is a brand, a size, and a category.
+>
+> Three separate columns exist to tell you the brand. All three say
+> "unbranded". The manufacturer field says "Freud Inc" — with a random number
+> stapled to the end of it.
 
-> This is what a distributor actually hands over. Six columns.
+**[ Beat. ]**
+
+> Unilog needs two hundred and fifty-two columns out of that. Brand with the
+> right trademark symbol. Five different descriptions, each with its own rules.
+> A full attribute list.
 >
-> The description reads "Diablo, one-half by eighteen inch, Sanding Belt, six
-> pack". All three brand fields say unbranded — no brand, no Unilog brand, no
-> DIB brand. And the manufacturer column says "Freud Inc, bracket two-four-three-five" —
-> a distributor's internal code, not a clean company name.
->
-> Unilog's delivery format expects two hundred and fifty-two columns back from
-> that.
+> Right now, a person does this. By hand. For millions of products.
 
 ---
 
-## 0:20 — It runs, and it runs fast  *(20 s)*
+## 0:22 — Watch  *(18 s)*
 
-**[ Run. Let the progress bar finish — do not cut. ]**
+**[ Run it. Let the bar fill. Say nothing until it finishes. ]**
 
 ```powershell
 python -m caliper run data\input\sample_1000_items.csv -o data\out
 ```
 
-> A thousand rows in under four seconds. No API key. No pip install — there are
-> zero third-party packages in this pipeline. CSV and XLSX are both read and
-> written with the Python standard library.
-
-**[ The summary block prints. Hold on it for two full seconds. ]**
-
-> Ninety-two and a half percent of rows resolved to an approved brand.
-> Eighty-eight point eight percent classified. A hundred percent of invoice
-> descriptions inside their forty-character limit. And out comes the delivery
-> file, a provenance ledger of twenty-six and a half thousand cells, a review
-> queue, and a relationship graph.
-
----
-
-## 0:40 — The same thing, hosted  *(14 s)*
-
-**[ Switch to the browser. Reload the Space. Let the catalogue fill. ]**
-
-> That is the same pipeline, hosted — and this is the link the judges get. No
-> login, no key, nothing to configure. It enriches a thousand real industrial
-> SKUs the moment the page opens, because your first ten seconds should show
-> output, not a form.
-
-**[ Point at the line above the metrics that names the file. ]**
-
-> It tells you what it just ran and when. This is that same thousand-row sample,
-> enriched on page load — not prepared earlier.
-
-**[ Point at the first row of the table. ]**
-
-> And there is our sanding belt. Every brand field in the source said
-> "unbranded". The brand column here says Diablo, registered trademark.
-
----
-
-## 0:54 — The whole argument  *(32 s)*  **← never cut this**
-
-**[ Click the FIRST row, `DCB518ASTS06G`. The evidence panel opens directly
-underneath the table. No scrolling needed. ]**
-
-> Click the row, and here is the entire argument for this project.
+> A thousand products. Under four seconds.
 >
-> Every populated column shows the method that produced it, the rule that fired,
-> a confidence, and — in the gold quote — the exact characters of the input that
-> justified the value, with the column they came from.
+> No API key. Nothing installed. This thing has *zero* dependencies — it's
+> written entirely in Python's standard library. You could run it on a laptop
+> with the wifi switched off.
+
+**[ Point at the summary. ]**
+
+> Ninety-two percent of them found their real brand. Every single invoice line
+> came out inside its character limit. And nobody typed anything.
+
+---
+
+## 0:40 — Same thing, but you can click it  *(14 s)*
+
+**[ Browser. Reload the Space. Let the catalogue fill. ]**
+
+> That's the same engine, live on the internet. This is the link the judges get.
+> No login. No key. Nothing to set up.
+>
+> It starts working the second the page opens — because I'd rather show you
+> something than show you a file picker.
+
+**[ Point at the first row. ]**
+
+> And there's our sanding belt. Every brand field said "unbranded".
+>
+> It says Diablo.
+
+---
+
+## 0:54 — The receipts  *(34 s)*  **← this is the video. Never cut it.**
+
+**[ Click the FIRST row, `DCB518ASTS06G`. The panel opens right underneath. ]**
+
+> Now — here's the thing.
+>
+> Any AI can fill in two hundred and fifty-two columns. That's the easy part.
+> The problem is you have no idea which ones it just made up. And a made-up
+> product spec looks *exactly* like a real one.
+
+**[ Beat. Let the panel sit. ]**
+
+> So every value in here comes with a receipt.
 
 **[ Point at BRAND_NAME. ]**
 
-> Brand name became Diablo, registered trademark, under rule
-> I-D-N-B-R-D-oh-one. The evidence is the word "Diablo", found in Part
-> underscore Desc, resolved against the approved brand registry. Confidence
-> nought point eight eight.
+> Brand: Diablo. Why? Because the word "Diablo" is sitting right there in the
+> description — that's the highlighted bit — and it matched the approved brand
+> list. It's eighty-eight percent confident, and it'll tell you that too.
 
 **[ Point at MANUFACTURER_NAME. ]**
 
-> And the manufacturer — which arrived as "Freud Inc" with a distributor code
-> bolted on — came out as "Freud America, Incorporated", the approved corporate
-> name.
+> Manufacturer came in as "Freud Inc" plus junk. It came out as "Freud America,
+> Incorporated" — the actual company name.
 >
-> Nothing on this screen was generated. Twenty-six thousand five hundred and
-> ninety-six populated cells across this catalogue carry provenance exactly like
-> this, and it is produced by the pipeline — not written afterwards as a report.
+> Twenty-six thousand cells in this catalogue. Every one of them can do this.
+> Not a report we generated afterwards — this *is* how it works.
 
 ---
 
-## 1:26 — The constraint everybody fails  *(20 s)*
+## 1:28 — Forty characters  *(20 s)*
 
-**[ Scroll up slightly in the panel to the character-budget solver card. ]**
+**[ Scroll up a touch to the character-budget card. ]**
 
-> Invoice description has a hard ceiling: forty characters, upper case. Ask a
-> language model to be brief and you get forty-one characters some of the time.
+> Quick one. The invoice line has a hard limit: forty characters, all caps.
 >
-> We solve it as a budget problem instead. Facts are ranked by how much they
-> identify the product, each one carries an abbreviation ladder, and the solver
-> fits what it can and reports what it dropped. Here, three facts into
-> twenty-seven of forty characters.
+> Ask a language model to "keep it short" and it'll hand you forty-one
+> characters and a shrug.
+
+**[ Beat. ]**
+
+> So we don't ask. We treat it like packing a suitcase. Rank everything by how
+> much it actually identifies the product, pack until it's full, and tell you
+> what got left behind. Three facts, twenty-seven characters, done.
 >
-> A hundred percent compliance — by construction, not by luck.
+> A hundred percent. Every time. Not because it got lucky — because it can't
+> not.
 
 ---
 
-## 1:46 — What it found wrong with the supplier's data  *(22 s)*
+## 1:48 — It starts snitching  *(20 s)*
 
 **[ Click **Findings in the source data**. ]**
 
-> While it enriches, it audits. These are problems in the *supplier's* file, not
-> ours. Brands that disagree with the manufacturer. Rows where no approved brand
-> could be resolved. Items that break the pattern of their own product family.
+> Here's the part nobody asked for.
 >
-> A hundred and twenty-three rows abstained from classification rather than
-> guess. Abstaining is a feature — a wrong classpath is worse than an empty one,
-> because attribute validation is keyed on it.
+> While it was working, it started finding problems — in the *supplier's* file.
+> Brands that contradict the manufacturer. Products that don't match the rest of
+> their own family.
+>
+> And a hundred and twenty-three products where it just went: I don't know what
+> this is. So it left it blank and flagged it. Because a confidently wrong
+> category is worse than an honest gap.
 
 **[ Click **Induced category specs**. ]**
 
-> And these category rulebooks — which attributes a category has, which of them
-> are filterable — were derived from the rows themselves, with a fill rate
-> behind every attribute. That is work normally done by hand, one category at a
-> time, across tens of thousands of categories.
+> Oh, and these? Category rulebooks. Which attributes matter, which ones you can
+> filter on. It worked those out by itself, from the data. That's normally a
+> human job. Tens of thousands of times over.
 
 ---
 
-## 2:08 — It works on *your* file  *(20 s)*
+## 2:08 — Your file, not ours  *(20 s)*
 
 **[ Click **Try a file with completely different column names**. ]**
 
-> This file's headers are M-F-R PART hash, Item Description, Make, Vendor Name.
-> Nothing like the sample.
+> "Sure, but it only works on your file."
+>
+> This one's headers are M-F-R PART hash, Item Description, Make, Vendor Name.
+> Nothing in common with the last one.
 
-**[ Point at the "Columns detected, not assumed" line. ]**
+**[ Point at the detected-columns line. ]**
 
-> Column roles are detected, not assumed. Same pipeline, same two hundred and
-> fifty-two columns, no configuration.
+> It figured out what each column was. Same two hundred and fifty-two columns
+> out the other end. Nothing configured.
 
 **[ Click **Download the delivery file**. ]**
 
-> And you leave with the delivery file — header byte-identical to the published
-> sheet — plus a review queue ranked by how much each review is actually worth.
+> And you walk away with the finished file — plus a to-do list of the rows worth
+> a human's time, sorted by how much that time is worth.
 
 ---
 
-## 2:28 — The honest number  *(22 s)*  **← the part that earns trust**
+## 2:28 — The honest bit  *(20 s)*  **← the part that wins it**
 
-**[ Click **How it works**. Let the text sit on screen. ]**
+**[ Click **How it works**. ]**
 
-> One last thing, and it matters more than any percentage I have said.
+> Last thing. And this is the part I actually want you to remember.
 >
-> Our accuracy against the published ground truth is forty-eight percent exact —
-> measured on **two labelled rows**. Two rows cannot support a claim, so we
-> print that base beside the number every time, instead of quoting the
-> percentage on its own.
->
-> That is also why we measure something needing no labels at all: sibling
-> agreement across all one thousand rows. Ninety-nine point five percent, over
-> fifteen hundred and sixteen comparisons.
->
-> A model never writes a cell here. It can propose a fact that quotes the
-> source, or judge a fact that already exists. That boundary is the design — and
-> everything you have just seen follows from it.
+> Our accuracy against the official answer key is forty-eight percent.
 
-**[ Scroll to the top. End on the CALIPER header. Hold two seconds. Stop. ]**
+**[ Beat. Don't rush this. ]**
+
+> Measured on two rows. Two. That's the entire answer key that shipped with this
+> challenge.
+>
+> Two rows can't prove anything — so we print that next to the number every
+> single time, instead of quietly saying "forty-eight percent" and moving on.
+>
+> And it's why we measure something that doesn't need an answer key at all:
+> whether the thing agrees with itself across all thousand products. Ninety-nine
+> and a half percent.
+>
+> The AI here never writes a single value. It can point at something in the
+> text, or double-check something we already found. That's it. That's the whole
+> idea — and everything you just watched falls out of it.
+
+**[ Scroll to the top. Hold on the CALIPER header. Two seconds. Stop. ]**
 
 ---
 
-## If you overrun
+## Running long?
 
-Cut in this order:
+Cut in this order: **1:48–2:08** (the findings bit) → **0:22–0:40** (the
+terminal) → trim the ending to just the two-rows line.
 
-1. **1:46 – 2:08** — findings and induced specs. Costs the most content, but the
-   evidence panel carries the argument alone.
-2. **0:20 – 0:40** — the terminal run. The Space shows the same speed.
-3. Trim the closing to just the two-labelled-rows sentence.
-
-**Never cut 0:54 – 1:26.** That is the submission.
+**Never cut 0:54–1:28.** That's the whole submission.
 
 ---
 
-## Numbers, if you fumble and need to recover
+## Numbers, if you lose your place
 
 | | |
 |---|---|
-| Rows → columns | 1,000 → 252, under 4 seconds |
-| Ready to publish unattended | 77.4 % (774 rows) |
-| `INVOICE_DESC` ≤ 40 chars | 100 % |
-| Brand resolved | 92.5 % |
-| Classified | 88.8 % (the rest abstain) |
-| Sibling agreement | 99.5 % over 1,516 comparisons |
-| Cells with provenance | 26,596 |
-| Relationship edges | 614, linking 60 % of products |
-| Category specs induced | 64 |
-| Product families found | 578 |
-| Accuracy vs ground truth | 48.0 % exact — **on two labelled rows** |
-| Invariant tests | 46 passing |
-| Third-party packages | 0 |
+| Speed | 1,000 products → 252 columns, under 4 seconds |
+| Needs no human | 77.4 % (774 of 1,000) |
+| Invoice line within 40 chars | 100 % |
+| Found the real brand | 92.5 % |
+| Categorised | 88.8 % — the rest admit they don't know |
+| Agrees with itself | 99.5 %, across 1,516 checks |
+| Values with receipts | 26,596 |
+| Products linked to each other | 60 % — 614 connections |
+| Category rulebooks worked out | 64 |
+| Official accuracy | 48.0 % — **on two rows** |
+| Tests | 46 passing |
+| Dependencies | 0 |
 
 ---
 
-## Recording notes
+## Notes
 
-- **Say "two labelled rows" out loud.** Volunteering the weak number is the
-  single most credible thing in the video.
-- Do not speed up the enrichment. Real time is the proof.
-- If the Space is cold, stop, let it wake, start again. Never narrate over a
-  loading screen.
-- Upload **unlisted** to YouTube, or to Drive set to **anyone with the link —
-  Viewer**. Check it in a private window before you paste it. A judge hitting a
-  permission wall is a failed gate.
+- **Say "two rows" out loud and pause.** Admitting the weak number is the most
+  convincing thing in the whole video. Don't soften it.
+- Don't speed up the enrichment clip. The real four seconds is the flex.
+- Cold Space? Stop. Let it wake. Never talk over a loading spinner.
+- Upload **unlisted** to YouTube, or Drive set to **anyone with the link —
+  Viewer**. Test it in a private window before you paste it anywhere.
